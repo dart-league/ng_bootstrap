@@ -1,8 +1,8 @@
 import 'dart:html';
 
 import "package:angular2/angular2.dart";
-import 'package:ng2_strap/dropdown/index.dart';
-import 'package:ng2_strap/index.dart';
+import 'package:ng_bootstrap/dropdown/index.dart';
+import 'package:ng_bootstrap/index.dart';
 import 'package:stream_transformers/stream_transformers.dart';
 
 // todo: options loading by http not yet implemented

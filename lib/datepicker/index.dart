@@ -2,8 +2,8 @@ library n2s_date_picker;
 
 import "package:angular2/angular2.dart";
 import 'package:intl/intl.dart';
-import 'package:ng2_strap/buttons/button-checkbox.dart';
-import 'package:ng2_strap/dropdown/index.dart';
+import 'package:ng_bootstrap/buttons/button-checkbox.dart';
+import 'package:ng_bootstrap/dropdown/index.dart';
 import 'package:node_shims/js.dart';
 
 part "date_picker.dart";

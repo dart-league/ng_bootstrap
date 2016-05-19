@@ -1,6 +1,6 @@
 import "package:angular2/angular2.dart";
-import "package:ng2_strap/buttons/button-checkbox.dart";
-import 'package:ng2_strap/buttons/button-radio.dart';
+import "package:ng_bootstrap/buttons/button-checkbox.dart";
+import 'package:ng_bootstrap/buttons/button-radio.dart';
 
 @Component(
     selector: "buttons-demo",

@@ -1,5 +1,5 @@
 import "package:angular2/angular2.dart";
-import "package:ng2_strap/index.dart";
+import "package:ng_bootstrap/index.dart";
 
 @Component(
     selector: "demo-header",

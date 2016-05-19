@@ -1,5 +1,5 @@
 import "package:angular2/angular2.dart";
-import "package:ng2_strap/progressbar/progressbar.dart";
+import "package:ng_bootstrap/progressbar/progressbar.dart";
 import 'dart:math';
 
 @Component (selector: "progressbar-demo")

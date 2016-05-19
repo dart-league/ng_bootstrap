@@ -1,5 +1,5 @@
 import "package:angular2/angular2.dart";
-import 'package:ng2_strap/common.dart';
+import 'package:ng_bootstrap/common.dart';
 import 'package:node_shims/js.dart';
 
 // todo: add active event to tab

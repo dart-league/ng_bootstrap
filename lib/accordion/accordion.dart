@@ -1,8 +1,8 @@
 import 'package:angular2/angular2.dart';
 import 'package:node_shims/js.dart';
 import 'dart:html';
-import 'package:ng2_strap/collapse/collapse.dart';
-import 'package:ng2_strap/common.dart';
+import 'package:ng_bootstrap/collapse/collapse.dart';
+import 'package:ng_bootstrap/common.dart';
 import 'dart:async';
 
 /// Build on top of the [N2sCollapse] directive to provide a list of items, with collapsible bodies that

@@ -1,5 +1,5 @@
 import "package:angular2/angular2.dart";
-import "package:ng2_strap/alert/alert.dart";
+import "package:ng_bootstrap/alert/alert.dart";
 
 @Component(
     selector: "alert-demo",
