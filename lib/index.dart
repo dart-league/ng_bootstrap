@@ -1,7 +1,7 @@
 export "accordion/accordion.dart";
 export "alert/alert.dart";
-export "buttons/button-radio.dart";
-export "buttons/button-checkbox.dart";
+export "buttons/button_radio.dart";
+export "buttons/button_checkbox.dart";
 export "datepicker/index.dart";
 export "dropdown/index.dart";
 export "carousel/carousel.dart";

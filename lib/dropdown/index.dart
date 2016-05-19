@@ -6,9 +6,9 @@ import 'dart:html';
 import 'dart:async';
 
 part "dropdown.dart" ;
-part "dropdown-menu.dart";
-part "dropdown-toggle.dart" ;
-part "dropdown-keyboard-nav.dart";
-part "dropdown-service.dart";
+part "dropdown_menu.dart";
+part "dropdown_toggle.dart";
+part "dropdown_keyboard_nav.dart";
+part "dropdown_service.dart";
 
 const NGBS_DROPDOWN_DIRECTIVES = const [NgBsDropdown, NgBsDropdownMenu, NgBsDropdownToggle];

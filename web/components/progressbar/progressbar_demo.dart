@@ -3,7 +3,7 @@ import "package:ng_bootstrap/progressbar/progressbar.dart";
 import 'dart:math';
 
 @Component (selector: "progressbar-demo")
-@View (templateUrl: "progressbar-demo.html",
+@View (templateUrl: "progressbar_demo.html",
     directives: const [NGBS_PROGRESSBAR_DIRECTIVES])
 class ProgressbarDemo {
   num max = 200;

@@ -1,5 +1,5 @@
 import 'package:angular2/platform/browser.dart';
-import 'accordion-demo.dart';
+import 'accordion_demo.dart';
 
 main() {
   bootstrap(AccordionDemo);
