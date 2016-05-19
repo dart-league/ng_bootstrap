@@ -6,17 +6,17 @@ part of n2s_date_picker;
 /// Base specifications: [jquery-ui](https://api.jqueryui.com/datepicker/)
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#datepicker)
-@Component (selector: "n2s-date-picker",
+@Component (selector: "ngbs-date-picker",
     templateUrl: 'date_picker.html',
     directives: const [
-      N2sDatePickerInner,
-      N2sDayPicker,
-      N2sMonthPicker,
-      N2sYearPicker
+      NgBsDatePickerInner,
+      NgBsDayPicker,
+      NgBsMonthPicker,
+      NgBsYearPicker
     ])
-class N2sDatePicker extends DefaultValueAccessor with N2sDatePickerBase {
-  /// Constructs a [N2sDatePicker] component injecting [NgModel], [Renderer], and [ElementRef]
-  N2sDatePicker(this.ngModel, Renderer renderer, ElementRef elementRef)
+class NgBsDatePicker extends DefaultValueAccessor with NgBsDatePickerBase {
+  /// Constructs a [NgBsDatePicker] component injecting [NgModel], [Renderer], and [ElementRef]
+  NgBsDatePicker(this.ngModel, Renderer renderer, ElementRef elementRef)
       : super(renderer, elementRef) {
     ngModel.valueAccessor = this;
   }
@@ -25,8 +25,8 @@ class N2sDatePicker extends DefaultValueAccessor with N2sDatePickerBase {
   NgModel ngModel;
 
   /// provides access to the child datePickerInner
-  @ViewChild(N2sDatePickerInner)
-  N2sDatePickerInner datePickerInner;
+  @ViewChild(NgBsDatePickerInner)
+  NgBsDatePickerInner datePickerInner;
 
   /// provides the value of selected date
   DateTime _activeDate;
@@ -51,7 +51,7 @@ class N2sDatePicker extends DefaultValueAccessor with N2sDatePickerBase {
   }
 }
 
-abstract class N2sDatePickerBase {
+abstract class NgBsDatePickerBase {
 
   /// sets date-picker mode, supports: `day`, `month`, `year`
   @Input() String datePickerMode;

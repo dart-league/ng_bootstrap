@@ -6,7 +6,7 @@ import "package:ng_bootstrap/index.dart";
 @Component (
     selector: "demo-section",
     templateUrl: 'demo-section.html',
-    directives: const [N2S_TABS_DIRECTIVES])
+    directives: const [NGBS_TABS_DIRECTIVES])
 class DemoSection implements OnInit {
   @Input() String name;
 

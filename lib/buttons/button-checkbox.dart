@@ -6,11 +6,11 @@ import "package:angular2/angular2.dart";
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#buttons)
 @Directive(
-    selector: "n2s-btn-checkbox",
+    selector: "ngbs-btn-checkbox",
     host: const {"[class.active]" : "active"}
 )
-class N2sButtonCheckbox extends DefaultValueAccessor {
-  N2sButtonCheckbox(this.ngModel, Renderer renderer, ElementRef elementRef) : super(renderer, elementRef) {
+class NgBsButtonCheckbox extends DefaultValueAccessor {
+  NgBsButtonCheckbox(this.ngModel, Renderer renderer, ElementRef elementRef) : super(renderer, elementRef) {
     ngModel.valueAccessor = this;
   }
 

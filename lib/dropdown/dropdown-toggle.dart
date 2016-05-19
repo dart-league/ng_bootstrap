@@ -2,19 +2,19 @@ part of n2s_dropdown;
 
 /// Creates a component that will toggle the state of a dropdown-menu, in other words when clicked will
 /// open or close the dropdown-menu
-@Directive (selector: "n2s-dropdown-toggle, [n2s-dropdown-toggle], .dropdown-toggle",
+@Directive (selector: "ngbs-dropdown-toggle, [ngbs-dropdown-toggle], .dropdown-toggle",
     host: const {
       "[class.dropdown-toggle]" : "true",
       "[class.disabled]" : "disabled",
       "[attr.aria-haspopup]" : "true",
       "[attr.aria-expanded]" : "isOpen"
     })
-class N2sDropdownToggle implements OnInit {
-  /// Constructs a [N2sDropdownToggle] injecting the container [dropdown] and the current [elementRef]
-  N2sDropdownToggle(@Host() this.dropdown, this.elementRef);
+class NgBsDropdownToggle implements OnInit {
+  /// Constructs a [NgBsDropdownToggle] injecting the container [dropdown] and the current [elementRef]
+  NgBsDropdownToggle(@Host() this.dropdown, this.elementRef);
 
   /// Container dropdown
-  N2sDropdown dropdown;
+  NgBsDropdown dropdown;
 
   /// Reference to this HTML element
   ElementRef elementRef;

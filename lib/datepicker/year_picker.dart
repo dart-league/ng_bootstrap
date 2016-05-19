@@ -20,16 +20,16 @@ part of n2s_date_picker;
 //final CURRENT_THEME_TEMPLATE = TEMPLATE_OPTIONS [ Ng2BootstrapConfig.theme ] ||
 //    TEMPLATE_OPTIONS.bs3;
 
-/// Creates an [N2sYearPicker], this will be the view showed in the [N2sDatePicker] when user clicks
+/// Creates an [NgBsYearPicker], this will be the view showed in the [NgBsDatePicker] when user clicks
 /// year header button
-@Component (selector: "n2s-year-picker",
+@Component (selector: "ngbs-year-picker",
     templateUrl: 'year_picker.html')
-class N2sYearPicker implements OnInit {
-  /// Constructs a [N2sYearPicker] injecting the parent [datePickerInner]
-  N2sYearPicker(this.datePickerInner);
+class NgBsYearPicker implements OnInit {
+  /// Constructs a [NgBsYearPicker] injecting the parent [datePickerInner]
+  NgBsYearPicker(this.datePickerInner);
 
   /// container of the date-picker
-  N2sDatePickerInner datePickerInner;
+  NgBsDatePickerInner datePickerInner;
 
   /// label that appears in the day button which selects the day-picker
   String dayTitle;

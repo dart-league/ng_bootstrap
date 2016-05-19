@@ -3,7 +3,7 @@ part of n2s_dropdown;
 @Directive (selector: "[dropdown][keyboard-nav]",
     host: const { "(keydown)" : "onKeydown(\$event)"})
 class KeyboardNav {
-  N2sDropdown dd;
+  NgBsDropdown dd;
 
   ElementRef el;
 
