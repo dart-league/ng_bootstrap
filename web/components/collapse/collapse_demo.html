@@ -1,0 +1,7 @@
+<button type="button" class="btn btn-primary"
+        (click)="isCollapsed = !isCollapsed">Toggle collapse
+</button>
+<hr>
+<div [n2sCollapse]="isCollapsed" class="card card-block card-header">
+  <div class="well well-lg">Some content</div>
+</div>

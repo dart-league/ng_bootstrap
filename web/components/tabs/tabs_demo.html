@@ -1,0 +1,43 @@
+<div (click)="$event.preventDefault()">
+  <p>Select a tab by setting active binding to true:</p>
+  <p>
+    <button type="button" class="btn btn-primary btn-sm" (click)="tabs[0]['active'] = true">Select second tab</button>
+    <button type="button" class="btn btn-primary btn-sm" (click)="tabs[1]['active'] = true">Select third tab</button>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary btn-sm" (click)="tabs[1]['disabled'] = ! tabs[1]['disabled']">Enable / Disable third tab</button>
+  </p>
+  <hr />
+  <ngbs-tab-set>
+    <ngbs-tab heading="Static title">Static content</ngbs-tab>
+    <ngbs-tab *ngFor="let tabz of tabs"
+         [heading]="tabz['title']"
+         [active]="tabz['active'] == true"
+         (deselect)="tabz['active'] = false"
+         [disabled]="tabz['disabled'] == true">
+      {{tabz['content']}}
+    </ngbs-tab>
+    <ngbs-tab (select)="alertMe()">
+      <template ngbs-tab-heading>
+        <i class="glyphicon glyphicon-bell"></i> Alert!
+      </template>
+      I've got an HTML heading, and a select callback. Pretty cool!
+    </ngbs-tab>
+  </ngbs-tab-set>
+
+  <hr />
+
+  <ngbs-tab-set [vertical]="true" type="pills">
+    <ngbs-tab heading="Vertical 1">Vertical content 1</ngbs-tab>
+    <ngbs-tab heading="Vertical 2">Vertical content 2</ngbs-tab>
+  </ngbs-tab-set>
+
+  <hr />
+
+  <p><i>Bootstrap 4 doesn't have justified classes</i></p>
+  <ngbs-tab-set [justified]="true">
+    <ngbs-tab heading="Justified">Justified content</ngbs-tab>
+    <ngbs-tab heading="SJ">Short Labeled Justified content</ngbs-tab>
+    <ngbs-tab heading="Long Justified">Long Labeled Justified content</ngbs-tab>
+  </ngbs-tab-set>
+</div>

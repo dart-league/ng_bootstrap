@@ -1,0 +1,49 @@
+<div class="form-group">
+  <label>Dynamic Tooltip Text</label>
+  <input type="text" [(ngModel)]="dynamicTooltipText" class="form-control">
+</div>
+<div class="form-group">
+  <label>Dynamic Tooltip Popup Text</label>
+  <input type="text" [(ngModel)]="dynamicTooltip" class="form-control">
+</div>
+<p>
+  Pellentesque <a href="#" [n2sTooltip]="dynamicTooltip">{{dynamicTooltipText}}</a>,
+  sit amet venenatis urna cursus eget nunc scelerisque viverra mauris, in
+  aliquam. Tincidunt lobortis feugiat vivamus at
+  <a href="#" n2sTooltipPlacement="left" n2sTooltip="On the Left!">left</a> eget
+  arcu dictum varius duis at consectetur lorem. Vitae elementum curabitur
+  <a href="#" n2sTooltipPlacement="right" n2sTooltip="On the Right!">right</a>
+  nunc sed velit dignissim sodales ut eu sem integer vitae. Turpis egestas
+  <a href="#" n2sTooltipPlacement="bottom" n2sTooltip="On the Bottom!">bottom</a>
+  pharetra convallis posuere morbi leo urna,
+  <a href="#" n2sTooltipAnimation="false" n2sTooltip="I don't fade. :-(">fading</a>
+  at elementum eu, facilisis sed odio morbi quis commodo odio. In cursus
+  <a href="#" n2sTooltipPopupDelay="1000" n2sTooltip="appears with delay">delayed</a> turpis massa tincidunt dui ut.
+  <a href="#" n2sTooltipTemplate="'myTooltipTemplate.html'">Custom template</a>
+  nunc sed velit dignissim sodales ut eu sem integer vitae. Turpis egestas
+</p>
+
+<p>
+  I can even contain HTML. <a href="#" n2sTooltipHtml="htmlTooltip">Check me out!</a>
+</p>
+
+<p>
+  I can have a custom class. <a href="#" n2sTooltipTrigger="focus" n2sTooltip="I can have a custom class applied to me!" n2sTooltipClass="customClass">Check me out!</a>
+</p>
+
+<form role="form">
+  <div class="form-group">
+    <label>Or use custom triggers, like focus: </label>
+    <input type="text" value="Click me!" n2sTooltip="See? Now click away..."  n2sTooltipTrigger="focus" n2sTooltipPlacement="right" class="form-control" />
+  </div>
+
+  <div class="form-group" ngClass="{'has-error' : !inputModel}">
+    <label>Disable tooltips conditionally:</label>
+    <input type="text" [(ngModel)]="inputModel" class="form-control"
+           placeholder="Hover over this for a tooltip until this is filled"
+           n2sTooltip="Enter something in this input field to disable this tooltip"
+           n2sTooltipPlacement="top"
+           n2sTooltipTrigger="mouseenter"
+           [n2sTooltipEnable]="inputModel == null || inputModel == ''" />
+  </div>
+</form>

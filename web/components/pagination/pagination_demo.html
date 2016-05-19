@@ -1,0 +1,27 @@
+<div>
+  <h4>Default</h4>
+  <ngbs-pagination [totalItems]="totalItems" [(currentPage)]="currentPage" (currentPageChange)="pageChanged()"
+                  #p1></ngbs-pagination>
+  <ngbs-pagination [boundaryLinks]="true" [totalItems]="totalItems" [(currentPage)]="currentPage" class="sm"
+                  previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></ngbs-pagination>
+  <ngbs-pagination [directionLinks]="false" [boundaryLinks]="true" [totalItems]="totalItems"
+                  [(currentPage)]="currentPage"></ngbs-pagination>
+  <ngbs-pagination [directionLinks]="false" [totalItems]="totalItems" [(currentPage)]="currentPage"
+                  [(totalPages)]="smallnumPages"></ngbs-pagination>
+    <pre class="card card-block card-header">
+      The selected page no: {{currentPage}}/{{smallnumPages}}
+      totalItems: {{totalItems}}
+    </pre>
+  <button class="btn btn-info" (click)="setPage(3)">Set current page to: 3</button>
+  <hr>
+  <h4>Pager</h4>
+  <ngbs-pager [totalItems]="totalItems" [(currentPage)]="currentPage" (currentPageChange)="pageChanged()"></ngbs-pager>
+
+  <hr/>
+  <h4>Limit the maximum visible buttons</h4>
+  <ngbs-pagination [totalItems]="bigTotalItems" [(currentPage)]="bigCurrentPage" [maxSize]="maxSize" class="sm"
+                  [boundaryLinks]="true"></ngbs-pagination>
+  <ngbs-pagination [totalItems]="bigTotalItems" [(currentPage)]="bigCurrentPage" [maxSize]="maxSize" class="sm"
+                  [boundaryLinks]="true" [rotate]="false" [(totalPages)]="numPages"></ngbs-pagination>
+  <pre class="card card-block card-header">Page: {{bigCurrentPage}} / {{numPages}}</pre>
+</div>

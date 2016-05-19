@@ -1,0 +1,26 @@
+<ngbs-dropdown [(isOpen)]="isOpen">
+  <ngbs-dropdown-toggle class="input-group">
+    <input type="text" class="form-control" [(ngModel)]="ngModel.model">
+    <span class="input-group-btn">
+      <ngbs-btn-checkbox type="button" class="btn btn-default" [(ngModel)]="isOpen" (click)="$event.stopPropagation()">
+        <i class="glyphicon glyphicon-calendar"></i>
+      </ngbs-btn-checkbox>
+    </span>
+  </ngbs-dropdown-toggle>
+  <ngbs-dropdown-menu>
+    <ngbs-date-picker #datePicker [(ngModel)]="ngModel.model" [showWeeks]="true"
+                     (ngModelChange)="ngModel.viewToModelUpdate(ngModel.model)">
+    </ngbs-date-picker>
+    <div *ngIf="showButtonBar" style="padding:10px 9px 2px">
+      <span class="btn-group pull-left">
+        <button type="button" class="btn btn-sm btn-info" (click)="datePicker.datePickerInner.selectToday()">
+          {{currentText}}
+        </button>
+        <button type="button" class="btn btn-sm btn-danger"
+                (click)="ngModel.model = null; ngModel.viewToModelUpdate(ngModel.model)">{{clearText}}
+        </button>
+      </span>
+      <button type="button" class="btn btn-sm btn-success pull-right">{{closeText}}</button>
+    </div>
+  </ngbs-dropdown-menu>
+</ngbs-dropdown>

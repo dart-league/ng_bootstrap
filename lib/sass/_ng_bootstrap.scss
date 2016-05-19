@@ -1,0 +1,41 @@
+$icon-font-path: '../../../packages/bootstrap_sass/fonts/bootstrap/';
+
+@import "packages/bootstrap_sass/stylesheets/bootstrap";
+
+ngbs-progress {
+  @extend .progress;
+  display: block;
+}
+
+ngbs-bar {
+  @extend .progress-bar;
+  display: block;
+}
+
+ngbs-bar.success {
+  @extend .progress-bar-success;
+}
+
+ngbs-bar.info {
+  @extend .progress-bar-info;
+}
+
+ngbs-bar.danger {
+  @extend .progress-bar-danger;
+}
+
+ngbs-bar.warning {
+  @extend .progress-bar-warning;
+}
+
+ngbs-progress.striped, ngbs-progressbar.striped {
+  @extend .progress-striped;
+}
+
+ngbs-progress.active, ngbs-progressbar.active {
+  @extend .progress.active;
+}
+
+ngbs-dropdown-menu {
+  @extend .dropdown-menu;
+}

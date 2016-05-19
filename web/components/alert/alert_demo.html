@@ -1,0 +1,11 @@
+<ngbs-alert [closeable]="true">This alert is closeable/dismissible</ngbs-alert>
+<ngbs-alert type="info">This alert is info</ngbs-alert>
+
+<ngbs-alert *ngFor="let alert of alerts; let i = index" [type]="alert['type']" (close)="closeAlert(i)"
+           [closeable]="alert['closable']">
+  {{ alert['msg'] }}
+</ngbs-alert>
+
+<ngbs-alert [dismissOnTimeout]="3000">This alert will dismiss in 3s</ngbs-alert>
+
+<button type="button" class='btn btn-primary' (click)="addAlert()">Add Alert</button>

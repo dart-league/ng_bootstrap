@@ -1,0 +1,45 @@
+name: ng_bootstrap
+version: 0.1.0
+description: Angular 2 and Bootstrap 4
+authors:
+  - Adao Jr. <itsjunnior@gmail.com>
+  - Luis Vargas <luisvargastijerino@gmail.com>
+homepage: https://github.com/dart-league/ng_bootstrap
+environment:
+  sdk: '>=1.12.0 <2.0.0'
+dependencies:
+  angular2: ^2.0.0-beta.17
+  browser: ^0.10.0
+  node_shims: ^0.1.3
+  intl: ^0.12.4+2
+  dart_to_js_script_rewriter: ^1.0.1
+  markdown: ^0.8.0
+  sass: ^0.4.2
+  bootstrap_sass: ^3.3.6
+  stream_transformers: ^0.3.0+3
+transformers:
+- sass
+- angular2:
+    platform_directives:
+    - package:angular2/common.dart#COMMON_DIRECTIVES
+    platform_pipes:
+    - package:angular2/common.dart#COMMON_PIPES
+    entry_points:
+    - web/index.dart
+    - web/components/accordion/main.dart
+    - web/components/alert/main.dart
+    - web/components/buttons/main.dart
+    - web/components/carousel/main.dart
+    - web/components/collapse/main.dart
+    - web/components/datepicker/main.dart
+    - web/components/dropdown/main.dart
+    - web/components/pagination/main.dart
+    - web/components/progressbar/main.dart
+    - web/components/rating/main.dart
+    - web/components/tabs/main.dart
+    - web/components/timepicker/main.dart
+    - web/components/tooltip/main.dart
+    - web/components/typeahead/main.dart
+- dart_to_js_script_rewriter
+- $dart2js:
+    $include: web/index.dart

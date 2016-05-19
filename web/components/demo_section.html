@@ -1,0 +1,27 @@
+<section id="{{name.toLowerCase()}}">
+  <h1>{{name}} <small>(<a href="{{docUrl}}">documentation</a>)</small></h1>
+
+  <hr>
+
+  <div class="col-lg-5">
+    <h2>Example</h2>
+
+    <div class="card card-block panel panel-default panel-body">
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="col-lg-7">
+    <ngbs-tab-set>
+      <ngbs-tab heading="Markup">
+        <pre class="prettyprint"><code class="language-html">{{html}}</code></pre>
+      </ngbs-tab>
+      <ngbs-tab heading="Dart">
+        <pre class="prettyprint"><code class="language-dart">{{dart}}</code></pre>
+      </ngbs-tab>
+    </ngbs-tab-set>
+  </div>
+
+</section>
