@@ -1,0 +1,24 @@
+<n2s-datepicker-inner [activeDate]="activeDate"
+                      (update)="writeValue($event)"
+                      [datePickerMode]="datePickerMode"
+                      [initDate]="initDate"
+                      [minDate]="minDate"
+                      [maxDate]="maxDate"
+                      [minDode]="minMode"
+                      [maxDode]="maxMode"
+                      [showDeeks]="showWeeks"
+                      [formatDay]="formatDay"
+                      [formatMonth]="formatMonth"
+                      [formatYear]="formatYear"
+                      [formatDayHeader]="formatDayHeader"
+                      [formatDayTitle]="formatDayTitle"
+                      [formatMonthTitle]="formatMonthTitle"
+                      [startingDay]="startingDay"
+                      [yearRange]="yearRange"
+                      [customClass]="customClass"
+                      [dateDisabled]="dateDisabled"
+                      [shortcutPropagation]="shortcutPropagation">
+  <n2s-day-picker tabindex="0"></n2s-day-picker>
+  <n2s-month-picker tabindex="0"></n2s-month-picker>
+  <n2s-year-picker tabindex="0"></n2s-year-picker>
+</n2s-datepicker-inner>

@@ -1,0 +1,43 @@
+<div (click)="$event.preventDefault()">
+  <p>Select a tab by setting active binding to true:</p>
+  <p>
+    <button type="button" class="btn btn-primary btn-sm" (click)="tabs[0]['active'] = true">Select second tab</button>
+    <button type="button" class="btn btn-primary btn-sm" (click)="tabs[1]['active'] = true">Select third tab</button>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary btn-sm" (click)="tabs[1]['disabled'] = ! tabs[1]['disabled']">Enable / Disable third tab</button>
+  </p>
+  <hr />
+  <n2s-tab-set>
+    <n2s-tab heading="Static title">Static content</n2s-tab>
+    <n2s-tab *ngFor="let tabz of tabs"
+         [heading]="tabz['title']"
+         [active]="tabz['active'] == true"
+         (deselect)="tabz['active'] = false"
+         [disabled]="tabz['disabled'] == true">
+      {{tabz['content']}}
+    </n2s-tab>
+    <n2s-tab (select)="alertMe()">
+      <template n2s-tab-heading>
+        <i class="glyphicon glyphicon-bell"></i> Alert!
+      </template>
+      I've got an HTML heading, and a select callback. Pretty cool!
+    </n2s-tab>
+  </n2s-tab-set>
+
+  <hr />
+
+  <n2s-tab-set [vertical]="true" type="pills">
+    <n2s-tab heading="Vertical 1">Vertical content 1</n2s-tab>
+    <n2s-tab heading="Vertical 2">Vertical content 2</n2s-tab>
+  </n2s-tab-set>
+
+  <hr />
+
+  <p><i>Bootstrap 4 doesn't have justified classes</i></p>
+  <n2s-tab-set [justified]="true">
+    <n2s-tab heading="Justified">Justified content</n2s-tab>
+    <n2s-tab heading="SJ">Short Labeled Justified content</n2s-tab>
+    <n2s-tab heading="Long Justified">Long Labeled Justified content</n2s-tab>
+  </n2s-tab-set>
+</div>

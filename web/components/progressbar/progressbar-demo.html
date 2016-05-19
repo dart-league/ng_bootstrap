@@ -1,0 +1,36 @@
+<h3>Static</h3>
+<div class="row">
+  <div class="col-sm-4">
+    <n2s-progressbar [value]="55"></n2s-progressbar>
+  </div>
+  <div class="col-sm-4">
+    <n2s-progressbar class="striped" [value]="22" type="warning">22%</n2s-progressbar>
+  </div>
+  <div class="col-sm-4">
+    <n2s-progressbar class="striped active" [max]="200" [value]="167" type="danger"><i>166 / 200</i></n2s-progressbar>
+  </div>
+</div>
+
+<hr/>
+<h3>Dynamic
+  <button type="button" class="btn btn-sm btn-primary" (click)="random()">Randomize</button>
+</h3>
+<n2s-progressbar [max]="max" [value]="value"><span style="color:white; white-space:nowrap;">{{value}} / {{max}}</span>
+</n2s-progressbar>
+
+<small><em>No animation</em></small>
+<n2s-progressbar [animate]="false" [value]="value" type="success"><b>{{value}}%</b></n2s-progressbar>
+
+<small><em>Object (changes type based on value)</em></small>
+<n2s-progressbar class="striped active" [value]="value" [type]="type">{{type}} <i [hidden]="!showWarning">!!!
+  Watch out !!!</i></n2s-progressbar>
+
+<hr/>
+<h3>Stacked
+  <button type="button" class="btn btn-sm btn-primary" (click)="randomStacked()">Randomize</button>
+</h3>
+<n2s-progress>
+  <n2s-bar *ngFor="let baz of stacked" [value]="baz['value']" [type]="baz['type']">
+    <span [hidden]="baz['value'] < 5">{{baz['value']}}%</span>
+  </n2s-bar>
+</n2s-progress>

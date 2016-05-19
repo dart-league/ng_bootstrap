@@ -1,0 +1,27 @@
+<div>
+  <h4>Default</h4>
+  <n2s-pagination [totalItems]="totalItems" [(currentPage)]="currentPage" (currentPageChange)="pageChanged()"
+                  #p1></n2s-pagination>
+  <n2s-pagination [boundaryLinks]="true" [totalItems]="totalItems" [(currentPage)]="currentPage" class="sm"
+                  previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></n2s-pagination>
+  <n2s-pagination [directionLinks]="false" [boundaryLinks]="true" [totalItems]="totalItems"
+                  [(currentPage)]="currentPage"></n2s-pagination>
+  <n2s-pagination [directionLinks]="false" [totalItems]="totalItems" [(currentPage)]="currentPage"
+                  [(totalPages)]="smallnumPages"></n2s-pagination>
+    <pre class="card card-block card-header">
+      The selected page no: {{currentPage}}/{{smallnumPages}}
+      totalItems: {{totalItems}}
+    </pre>
+  <button class="btn btn-info" (click)="setPage(3)">Set current page to: 3</button>
+  <hr>
+  <h4>Pager</h4>
+  <n2s-pager [totalItems]="totalItems" [(currentPage)]="currentPage" (currentPageChange)="pageChanged()"></n2s-pager>
+
+  <hr/>
+  <h4>Limit the maximum visible buttons</h4>
+  <n2s-pagination [totalItems]="bigTotalItems" [(currentPage)]="bigCurrentPage" [maxSize]="maxSize" class="sm"
+                  [boundaryLinks]="true"></n2s-pagination>
+  <n2s-pagination [totalItems]="bigTotalItems" [(currentPage)]="bigCurrentPage" [maxSize]="maxSize" class="sm"
+                  [boundaryLinks]="true" [rotate]="false" [(totalPages)]="numPages"></n2s-pagination>
+  <pre class="card card-block card-header">Page: {{bigCurrentPage}} / {{numPages}}</pre>
+</div>

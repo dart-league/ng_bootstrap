@@ -1,0 +1,34 @@
+<style>
+  .full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+  }
+  .partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+  }
+</style>
+
+<div>
+  <pre>Selected date is: <em>{{dt}}</em></pre>
+  <h4>Inline</h4>
+  <div style="display:inline-block; min-height:290px;">
+    <n2s-date-picker [(ngModel)]="dt" [minDate]="minDate" [showWeeks]="true"></n2s-date-picker>
+  </div>
+
+  <hr />
+  <button type="button" class="btn btn-sm btn-info" (click)="today()">Today</button>
+  <button type="button" class="btn btn-sm btn-default btn-secondary" (click)="d20090824();">2009-08-24</button>
+  <button type="button" class="btn btn-sm btn-danger" (click)="clear()">Clear</button>
+  <button type="button" class="btn btn-sm btn-default btn-secondary" (click)="toggleMin()" tooltip="After today restriction">Min date</button>
+
+  <hr>
+
+  <pre>Selected date is: <em>{{dt2}}</em></pre>
+  <h4>Popup</h4>
+  <div style="display:inline-block; min-height:290px;">
+    <n2s-date-picker-popup [(ngModel)]="dt2"></n2s-date-picker-popup>
+  </div>
+</div>

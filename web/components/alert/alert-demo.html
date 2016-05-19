@@ -1,0 +1,11 @@
+<n2s-alert [closeable]="true">This alert is closeable/dismissible</n2s-alert>
+<n2s-alert type="info">This alert is info</n2s-alert>
+
+<n2s-alert *ngFor="let alert of alerts; let i = index" [type]="alert['type']" (close)="closeAlert(i)"
+           [closeable]="alert['closable']">
+  {{ alert['msg'] }}
+</n2s-alert>
+
+<n2s-alert [dismissOnTimeout]="3000">This alert will dismiss in 3s</n2s-alert>
+
+<button type="button" class='btn btn-primary' (click)="addAlert()">Add Alert</button>

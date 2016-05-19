@@ -1,0 +1,23 @@
+<n2s-dropdown [(isOpen)]="isOpen">
+  <n2s-dropdown-toggle class="input-group">
+    <input type="text" class="form-control"
+           [(ngModel)]="ngModel.model"
+           (ngModelChange)="processMatches()"
+           (click)="$event.stopPropagation()"
+           (keyup)="onTypeaheadChange($event)">
+    <span class="input-group-btn">
+      <n2s-btn-checkbox type="button" class="btn btn-default" [(ngModel)]="isOpen" (click)="$event.stopPropagation()">
+        <i class="glyphicon glyphicon-triangle-bottom"></i>
+      </n2s-btn-checkbox>
+    </span>
+  </n2s-dropdown-toggle>
+  <n2s-dropdown-menu>
+    <li *ngFor="let match of matches"
+        [ngClass]="{active: selectedItem == match }">
+      <a href="#"
+         (click)="selectMatch(match, $event)"
+         tabindex="-1"
+         [innerHtml]="highlight(match, ngModel.model)"></a>
+    </li>
+  </n2s-dropdown-menu>
+</n2s-dropdown>
