@@ -3,7 +3,7 @@ import "package:ng_bootstrap/typeahead/typeahead.dart";
 import 'dart:async';
 
 @Component (selector: "typeahead-demo",
-    templateUrl: 'typeahead-demo.html',
+    templateUrl: 'typeahead_demo.html',
     directives: const [NgBsTypeAhead, NgBsRenderer])
 class TypeaheadDemo {
   String selected = "";

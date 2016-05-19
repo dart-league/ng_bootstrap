@@ -4,7 +4,7 @@ import 'package:ng_bootstrap/collapse/collapse.dart';
 
 @Component(
     selector: "collapse-demo",
-    templateUrl: 'collapse-demo.html',
+    templateUrl: 'collapse_demo.html',
     directives: const [NgBsCollapse])
 class CollapseDemo {
   bool isCollapsed = false;

@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:html';
 
 @Component(selector: "tabs-demo")
-@View(templateUrl: "tabs-demo.html", directives: const [NGBS_TABS_DIRECTIVES])
+@View(templateUrl: "tabs_demo.html", directives: const [NGBS_TABS_DIRECTIVES])
 class TabsDemo {
   var tabs = [
     {
