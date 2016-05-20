@@ -1,4 +1,4 @@
 export 'components.dart';
-export "position.dart";
-export "common.dart";
-export "ng2-bootstrap-config.dart";
+export "package:ng_bootstrap/core/position.dart";
+export "package:ng_bootstrap/core/common.dart";
+export "package:ng_bootstrap/core/ng2-bootstrap-config.dart";
