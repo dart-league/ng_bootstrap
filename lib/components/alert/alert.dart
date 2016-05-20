@@ -5,7 +5,6 @@ import "package:angular2/angular2.dart";
 /// with the handful of available and flexible alert messages.
 @Component (
     selector: "bs-alert",
-    templateUrl: 'alert.html',
     styles: const [':host { display:block; }'],
     template: '''
     <button *ngIf="dismissible" type="button" class="close" (click)="onClose()">
