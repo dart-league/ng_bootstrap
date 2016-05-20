@@ -3,24 +3,10 @@ import 'dart:async';
 import "package:angular2/angular2.dart";
 import 'package:node_shims/js.dart';
 
-/// Provides contextual feedback messages for typical user actions with the handful of available and
-/// flexible alert messages.
-///
-/// Base specifications: [bootstrap 3](http://getbootstrap.com/components/#alerts) or
-/// [bootstrap 4](http://v4-alpha.getbootstrap.com/components/alerts/)
-///
-/// This directive can be used to generate alerts from the dynamic model data
-/// (using the `ngFor` directive).
-///
-/// [demo](http://luisvt.github.io/ng2_strap/#alert)
-@Component (selector: "ngbs-alert",
-    templateUrl: 'alert.html')
+/// Provide contextual feedback messages for typical user actions
+/// with the handful of available and flexible alert messages.
+@Component (selector: "ngbs-alert", templateUrl: 'alert.html')
 class NgBsAlert implements OnInit {
-  /// Constructs a new [NgBsAlert] injecting the current [elementRef]
-  NgBsAlert(this.elementRef) {
-    _closeable = _closeable || elementRef.nativeElement.getAttribute("(close)") != null;
-  }
-
   /// provides the element reference to get native element
   ElementRef elementRef;
 
@@ -28,10 +14,12 @@ class NgBsAlert implements OnInit {
   ///  `success`,`info`, `warning`, `danger`
   @Input() String type;
 
-  /// fired when `alert` closed with inline button or by timeout, `$event` is an instance of `Alert` component
+  /// fired when `alert` closed with inline button or by timeout,
+  /// `$event` is an instance of `Alert` component
   @Output() EventEmitter close = new EventEmitter ();
 
-  /// number of milliseconds, if specified sets a timeout duration, after which the alert will be closed
+  /// number of milliseconds, if specified sets a timeout duration,
+  /// after which the alert will be closed
   @Input() int dismissOnTimeout;
 
   /// variable to check if the alert is closed
@@ -43,15 +31,18 @@ class NgBsAlert implements OnInit {
   /// if `true` alert could be closed
   bool _closeable = false;
 
+  NgBsAlert(this.elementRef) {
+    _closeable = _closeable || elementRef.nativeElement.getAttribute("(close)") != null;
+  }
+
+
   /// if `true` alert could be closed
   @Input() set closeable(bool v) {
     _closeable = v;
   }
 
   /// if `true` alert could be closed
-  bool get closeable {
-    return _closeable;
-  }
+  bool get closeable => _closeable;
 
   /// initialize attributes
   ngOnInit() {
@@ -67,8 +58,8 @@ class NgBsAlert implements OnInit {
   }
 
   /// listen when close button is pressed
-  // todo: mouse event + touch + pointer
   onClose() {
+    // todo: mouse event + touch + pointer
     close.add(this);
     elementRef.nativeElement.remove();
     closed = true;
