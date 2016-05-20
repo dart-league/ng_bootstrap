@@ -8,4 +8,3 @@ export "components/pagination/pagination.dart";
 export "components/progressbar/progressbar.dart";
 export "components/tabs/tabs.dart";
 export "components/tooltip/tooltip.dart";
-export "components/typeahead/typeahead.dart";

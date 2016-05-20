@@ -13,7 +13,6 @@ import 'components/pagination/pagination_demo.dart';
 import 'components/progressbar/progressbar_demo.dart';
 import 'components/tabs/tabs_demo.dart';
 import 'components/tooltip/tooltip_demo.dart';
-import 'components/typeahead/typeahead_demo.dart';
 
 @Component(
     selector: "app",
@@ -29,8 +28,7 @@ import 'components/typeahead/typeahead_demo.dart';
       PaginationDemo,
       ProgressbarDemo,
       TabsDemo,
-      TooltipDemo,
-      TypeaheadDemo
+      TooltipDemo
     ])
 class Demo implements OnInit {
   bool isBs3 = Ng2BootstrapConfig.theme == Ng2BootstrapTheme.BS3;
