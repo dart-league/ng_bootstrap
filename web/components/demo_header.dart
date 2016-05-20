@@ -7,18 +7,14 @@ import "package:ng_bootstrap/index.dart";
     directives: const [NgBsCollapse, NGBS_DROPDOWN_DIRECTIVES])
 class DemoHeader {
   List<String> components = [
-    "Accordion",
     "Alert",
     "Buttons",
     "Carousel",
     "Collapse",
-    "Datepicker",
     "Dropdown",
     "Pagination",
     "Progressbar",
-    "Rating",
     "Tabs",
-    "Timepicker",
     "Tooltip",
     "Typeahead"
   ];
