@@ -7,7 +7,7 @@ import "package:angular2/angular2.dart";
     selector: "bs-alert",
     styles: const [':host { display:block; }'],
     template: '''
-    <button *ngIf="dismissible" type="button" class="close" (click)="onClose()">
+    <button *ngIf="dismissible" type="button" class="close" (click)="close()">
         <span aria-hidden="true">&times;</span>
         <span class="sr-only">Close</span>
     </button>
@@ -31,7 +31,8 @@ class Alert implements OnInit {
 
   /// fired when `alert` closed with inline button or by timeout,
   /// `$event` is an instance of `Alert` component
-  @Output() EventEmitter close = new EventEmitter ();
+  @Output('close')
+  EventEmitter onClose = new EventEmitter ();
 
   /// number of milliseconds, if specified sets a timeout duration,
   /// after which the alert will be closed
@@ -55,13 +56,13 @@ class Alert implements OnInit {
 
   ngOnInit() {
     if (hasTimeout) {
-      new Timer(new Duration(milliseconds: timeout), onClose);
+      new Timer(new Duration(milliseconds: timeout), close);
     }
   }
 
-  onClose() {
+  close() {
     // todo: mouse event + touch + pointer
-    close.add(this);
+    onClose.add(this);
     _elementRef.nativeElement.remove();
   }
 }
