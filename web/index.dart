@@ -30,25 +30,8 @@ import 'components/tooltip/tooltip_demo.dart';
       TabsDemo,
       TooltipDemo
     ])
-class Demo implements OnInit {
-  bool isBs3 = Ng2BootstrapConfig.theme == Ng2BootstrapTheme.BS3;
-
-  ViewContainerRef viewRef;
-
-  Demo(@Inject(ViewContainerRef) this.viewRef);
-  @override
-  ngOnInit() {
-//    HttpRequest.getString('./getting-started.md').then((result) {
-//      (viewRef.element.nativeElement as Element).querySelector('#getting-started').innerHtml = markdownToHtml(result);
-//    });
-  }
-}
+class Demo implements OnInit {}
 
 main() {
-//var gettingStarted = require("./getting-started.md");
-//  var w = window;
-//  if (w && identical(w.___theme, "bs4")) {
-//    Ng2BootstrapConfig.theme = Ng2BootstrapTheme.BS4;
-//  }
   bootstrap(Demo);
 }
