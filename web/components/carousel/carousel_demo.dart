@@ -3,7 +3,7 @@ import "package:ng_bootstrap/carousel/carousel.dart";
 import 'package:node_shims/js.dart';
 
 @Component(selector: "carousel-demo",
-    templateUrl: "carousel-demo.html",
+    templateUrl: "carousel_demo.html",
     directives: const [NGBS_CAROUSEL_DIRECTIVES])
 class CarouselDemo {
   num myIntervalInSeconds = 1;

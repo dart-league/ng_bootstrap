@@ -3,7 +3,7 @@ import "package:ng_bootstrap/rating/rating.dart";
 
 @Component(selector: "rating-demo")
 @View(
-    templateUrl: "rating-demo.html",
+    templateUrl: "rating_demo.html",
     directives: const [Rating])
 class RatingDemo {
   num x = 5;

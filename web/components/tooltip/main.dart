@@ -1,5 +1,5 @@
 import 'package:angular2/platform/browser.dart';
-import 'tooltip-demo.dart';
+import 'tooltip_demo.dart';
 
 main() {
   bootstrap(TooltipDemo);
