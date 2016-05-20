@@ -1,12 +1,29 @@
 import 'dart:async';
-
 import "package:angular2/angular2.dart";
-import 'package:node_shims/js.dart';
+///import 'package:node_shims/js.dart';
 
 /// Provide contextual feedback messages for typical user actions
 /// with the handful of available and flexible alert messages.
-@Component (selector: "ngbs-alert", templateUrl: 'alert.html')
-class NgBsAlert implements OnInit {
+@Component (
+    selector: "bs-alert",
+    templateUrl: 'alert.html',
+    styles: const [':host { display:block; }'],
+    template: '''
+    <button *ngIf="dismissible" type="button" class="close" (click)="onClose()">
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+    <ng-content></ng-content>
+    ''',
+    host: const {
+      'class': 'alert',
+      'role': 'alert',
+      '[class.alert-success]': 'isType("success")',
+      '[class.alert-info]': 'isType("info")',
+      '[class.alert-warning]': 'isType("warning") || isType(null)',
+      '[class.alert-danger]': 'isType("danger")',
+    })
+class Alert implements OnInit {
   /// provides the element reference to get native element
   ElementRef elementRef;
 
@@ -20,48 +37,27 @@ class NgBsAlert implements OnInit {
 
   /// number of milliseconds, if specified sets a timeout duration,
   /// after which the alert will be closed
-  @Input() int dismissOnTimeout;
+  @Input() int timeout;
 
-  /// variable to check if the alert is closed
-  bool closed = false;
+  @Input()
+  @HostBinding('[class.alert-dismissible]')
+  bool dismissible = false;
 
-  /// css classes
-  Set<String> classes = new Set();
+  Alert(this.elementRef);
 
-  /// if `true` alert could be closed
-  bool _closeable = false;
+  bool get hasTimeout => timeout != null;
 
-  NgBsAlert(this.elementRef) {
-    _closeable = _closeable || elementRef.nativeElement.getAttribute("(close)") != null;
-  }
+  bool isType(String type) => this.type == type;
 
-
-  /// if `true` alert could be closed
-  @Input() set closeable(bool v) {
-    _closeable = v;
-  }
-
-  /// if `true` alert could be closed
-  bool get closeable => _closeable;
-
-  /// initialize attributes
   ngOnInit() {
-    type ??= "warning";
-    classes.add("alert-$type");
-    if (_closeable) {
-      classes.add("alert-dismissible");
-    }
-    if (truthy(dismissOnTimeout)) {
-      closeable = true;
-      new Timer(new Duration(milliseconds: dismissOnTimeout), onClose);
+    if (hasTimeout) {
+      new Timer(new Duration(milliseconds: timeout), onClose);
     }
   }
 
-  /// listen when close button is pressed
   onClose() {
     // todo: mouse event + touch + pointer
     close.add(this);
     elementRef.nativeElement.remove();
-    closed = true;
   }
 }
