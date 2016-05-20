@@ -1,5 +1,5 @@
 import "package:angular2/angular2.dart";
-import "package:ng_bootstrap/tabs/tabs.dart";
+import 'package:ng_bootstrap/components.dart';
 import 'dart:async';
 import 'dart:html';
 

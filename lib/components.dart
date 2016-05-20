@@ -9,6 +9,3 @@ export "components/progressbar/progressbar.dart";
 export "components/tabs/tabs.dart";
 export "components/tooltip/tooltip.dart";
 export "components/typeahead/typeahead.dart";
-export "position.dart";
-export "common.dart";
-export "ng2-bootstrap-config.dart";

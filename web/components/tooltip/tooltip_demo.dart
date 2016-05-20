@@ -1,5 +1,5 @@
 import "package:angular2/angular2.dart";
-import 'package:ng_bootstrap/tooltip/tooltip.dart';
+import 'package:ng_bootstrap/components.dart';
 
 @Component(selector: "tooltip-demo",
     templateUrl: 'tooltip_demo.html',

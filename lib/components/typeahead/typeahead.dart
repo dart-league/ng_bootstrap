@@ -1,7 +1,7 @@
 import 'dart:html';
 
 import "package:angular2/angular2.dart";
-import 'package:ng_bootstrap/dropdown/index.dart';
+import 'package:ng_bootstrap/components/dropdown/index.dart';
 import 'package:ng_bootstrap/index.dart';
 import 'package:stream_transformers/stream_transformers.dart';
 
