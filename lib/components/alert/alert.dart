@@ -61,7 +61,6 @@ class Alert implements OnInit {
   }
 
   close() {
-    // todo: mouse event + touch + pointer
     onClose.add(this);
     _elementRef.nativeElement.remove();
   }
