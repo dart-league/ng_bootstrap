@@ -4,7 +4,7 @@ import "package:ng_bootstrap/alert/alert.dart";
 @Component(
     selector: "alert-demo",
     templateUrl: "alert-demo.html",
-    directives: const [N2sAlert])
+    directives: const [NgBsAlert])
 class AlertDemo {
   List alerts = [
     {

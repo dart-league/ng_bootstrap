@@ -1,7 +1,7 @@
 <div>
   <div>
-    <n2s-carousel [interval]="myIntervalInMs" [noWrap]="noWrapSlides">
-      <n2s-slide *ngFor="let slide of slides; let index=index"
+    <ngbs-carousel [interval]="myIntervalInMs" [noWrap]="noWrapSlides">
+      <ngbs-slide *ngFor="let slide of slides; let index=index"
              [active]="slide['active'] != null ? slide['active'] : false ">
         <img [src]="slide['image']">
 
@@ -10,8 +10,8 @@
 
           <p>{{slide['text']}}</p>
         </div>
-      </n2s-slide>
-    </n2s-carousel>
+      </ngbs-slide>
+    </ngbs-carousel>
   </div>
   <br>
   <div>

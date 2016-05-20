@@ -4,7 +4,7 @@ import "package:ng_bootstrap/index.dart";
 
 @Component(selector: "datepicker-demo",
     templateUrl: 'datepicker-demo.html',
-    directives: const [N2S_DATEPICKER_DIRECTIVES])
+    directives: const [NGBS_DATEPICKER_DIRECTIVES])
 class DatepickerDemo {
   String dt = new DateTime.now().toIso8601String();
   String dt2 = new DateTime.now().toIso8601String();

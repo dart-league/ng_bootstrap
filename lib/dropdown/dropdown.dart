@@ -6,12 +6,12 @@ part of n2s_dropdown;
 /// [bootstrap 4](http://v4-alpha.getbootstrap.com/components/dropdowns/)
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#dropdown)
-@Directive (selector: "n2s-dropdown, .dropdown",
+@Directive (selector: "ngbs-dropdown, .dropdown",
     host: const {"[class.dropdown]" : "true", "[class.open]" : "isOpen"})
-class N2sDropdown implements OnInit, OnDestroy {
+class NgBsDropdown implements OnInit, OnDestroy {
 
   /// Constructs a dropdown injecting [elementRef]
-  N2sDropdown(this.elementRef);
+  NgBsDropdown(this.elementRef);
 
   /// injected [elementRef] to get access to native attributes
   ElementRef elementRef;
@@ -71,7 +71,7 @@ class N2sDropdown implements OnInit, OnDestroy {
   @Output() EventEmitter isOpenChange = new EventEmitter();
 
   /// sets the element that will fire the toggle of the dropdown
-  set dropDownToggle(N2sDropdownToggle dropdownToggle) {
+  set dropDownToggle(NgBsDropdownToggle dropdownToggle) {
     // init toggle element
     toggleEl = dropdownToggle.elementRef;
   }
@@ -92,7 +92,7 @@ class N2sDropdown implements OnInit, OnDestroy {
   }
 
   /// sets the element that will be showed by the dropdown
-  set dropDownMenu(N2sDropdownMenu dropdownMenu) {
+  set dropDownMenu(NgBsDropdownMenu dropdownMenu) {
     // init drop down menu
     menuEl = dropdownMenu.elementRef;
     if (dropdownAppendToBody) {

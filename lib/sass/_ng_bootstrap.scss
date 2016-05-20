@@ -2,40 +2,40 @@ $icon-font-path: '../../../packages/bootstrap_sass/fonts/bootstrap/';
 
 @import "packages/bootstrap_sass/stylesheets/bootstrap";
 
-n2s-progress {
+ngbs-progress {
   @extend .progress;
   display: block;
 }
 
-n2s-bar {
+ngbs-bar {
   @extend .progress-bar;
   display: block;
 }
 
-n2s-bar.success {
+ngbs-bar.success {
   @extend .progress-bar-success;
 }
 
-n2s-bar.info {
+ngbs-bar.info {
   @extend .progress-bar-info;
 }
 
-n2s-bar.danger {
+ngbs-bar.danger {
   @extend .progress-bar-danger;
 }
 
-n2s-bar.warning {
+ngbs-bar.warning {
   @extend .progress-bar-warning;
 }
 
-n2s-progress.striped, n2s-progressbar.striped {
+ngbs-progress.striped, ngbs-progressbar.striped {
   @extend .progress-striped;
 }
 
-n2s-progress.active, n2s-progressbar.active {
+ngbs-progress.active, ngbs-progressbar.active {
   @extend .progress.active;
 }
 
-n2s-dropdown-menu {
+ngbs-dropdown-menu {
   @extend .dropdown-menu;
 }

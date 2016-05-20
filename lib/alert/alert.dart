@@ -13,11 +13,11 @@ import 'package:node_shims/js.dart';
 /// (using the `ngFor` directive).
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#alert)
-@Component (selector: "n2s-alert",
+@Component (selector: "ngbs-alert",
     templateUrl: 'alert.html')
-class N2sAlert implements OnInit {
-  /// Constructs a new [N2sAlert] injecting the current [elementRef]
-  N2sAlert(this.elementRef) {
+class NgBsAlert implements OnInit {
+  /// Constructs a new [NgBsAlert] injecting the current [elementRef]
+  NgBsAlert(this.elementRef) {
     _closeable = _closeable || elementRef.nativeElement.getAttribute("(close)") != null;
   }
 

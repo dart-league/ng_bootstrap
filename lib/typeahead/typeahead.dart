@@ -10,13 +10,13 @@ import 'package:stream_transformers/stream_transformers.dart';
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#typeahed)
 @Component(
-    selector: "n2s-type-ahead",
+    selector: "ngbs-type-ahead",
     templateUrl: 'typeahead.html',
-    directives: const [N2S_DROPDOWN_DIRECTIVES, N2sButtonCheckbox])
-class N2sTypeAhead extends DefaultValueAccessor {
+    directives: const [NGBS_DROPDOWN_DIRECTIVES, NgBsButtonCheckbox])
+class NgBsTypeAhead extends DefaultValueAccessor {
 
-  /// Construct a N2sTypeAhead [N2sTypeAhead] component injecting [ngModel], [renderer], [elementRef]
-  N2sTypeAhead(this.ngModel, Renderer renderer, ElementRef elementRef)
+  /// Construct a NgBsTypeAhead [NgBsTypeAhead] component injecting [ngModel], [renderer], [elementRef]
+  NgBsTypeAhead(this.ngModel, Renderer renderer, ElementRef elementRef)
       : super(renderer, elementRef) {
     ngModel.valueAccessor = this;
 
@@ -209,11 +209,11 @@ class N2sTypeAhead extends DefaultValueAccessor {
 }
 
 /// (*not implemented*) This component is used to pass an html template to the dropdown-menu-item
-@Directive(selector: 'template[n2s-renderer]')
-class N2sRenderer {
+@Directive(selector: 'template[ngbs-renderer]')
+class NgBsRenderer {
 
-  /// constructs a [N2sRenderer] passing the [templateRef]
-  N2sRenderer(this.templateRef);
+  /// constructs a [NgBsRenderer] passing the [templateRef]
+  NgBsRenderer(this.templateRef);
 
   /// current DOM element reference.
   TemplateRef templateRef;

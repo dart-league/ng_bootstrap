@@ -5,29 +5,29 @@ import 'package:ng_bootstrap/collapse/collapse.dart';
 import 'package:ng_bootstrap/common.dart';
 import 'dart:async';
 
-/// Build on top of the [N2sCollapse] directive to provide a list of items, with collapsible bodies that
+/// Build on top of the [NgBsCollapse] directive to provide a list of items, with collapsible bodies that
 /// are collapsed or expanded by clicking on the item's header.
 ///
 /// Base specifications: [bootstrap 3](http://getbootstrap.com/javascript/#collapse-example-accordion)
 /// or [bootstrap 4](http://v4-alpha.getbootstrap.com/components/collapse/#accordion-example)
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#accordion)
-@Component (selector: 'n2s-accordion',
+@Component (selector: 'ngbs-accordion',
     host: const { '[class.panel-group]' : 'true'},
     template: '<ng-content></ng-content>')
-class N2sAccordion {
+class NgBsAccordion {
   /// if `true` expanding one item will close all others
   @Input() bool closeOthers;
 
   /// provides the list of children panels
-  List<N2sAccordionPanel> panels = [];
+  List<NgBsAccordionPanel> panels = [];
 
   /// close other panels
-  closeOtherPanels(N2sAccordionPanel openGroup) {
+  closeOtherPanels(NgBsAccordionPanel openGroup) {
     if (!closeOthers) {
       return;
     }
-    panels.forEach((N2sAccordionPanel group) {
+    panels.forEach((NgBsAccordionPanel group) {
       if (!identical(group, openGroup)) {
         group.isOpen = false;
       }
@@ -35,12 +35,12 @@ class N2sAccordion {
   }
 
   /// adds a new [panel] at the bottom
-  addPanel(N2sAccordionPanel panel) {
+  addPanel(NgBsAccordionPanel panel) {
     panels.add(panel);
   }
 
   /// removes specified [panel]
-  removePanel(N2sAccordionPanel panel) {
+  removePanel(NgBsAccordionPanel panel) {
     panels.remove(panel);
   }
 }
@@ -48,16 +48,16 @@ class N2sAccordion {
 /// Creates an accordion-panel
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#accordion)
-@Component(selector: 'n2s-accordion-panel',
+@Component(selector: 'ngbs-accordion-panel',
     host: const { '[class.panel-open]' : 'isOpen'},
     templateUrl: 'accordion_panel.html',
-    directives: const [N2sCollapse, N2sTransclude])
-class N2sAccordionPanel implements OnInit, OnDestroy {
-  /// Constructs a new [N2sAccordionPanel] injecting the parent [N2sAccordion]
-  N2sAccordionPanel(this.accordion);
+    directives: const [NgBsCollapse, NgBsTransclude])
+class NgBsAccordionPanel implements OnInit, OnDestroy {
+  /// Constructs a new [NgBsAccordionPanel] injecting the parent [NgBsAccordion]
+  NgBsAccordionPanel(this.accordion);
 
-  /// instance of the parent [N2sAccordion]
-  N2sAccordion accordion;
+  /// instance of the parent [NgBsAccordion]
+  NgBsAccordion accordion;
 
   /// provides an HTML template of the Heading
   TemplateRef headingTemplate;
@@ -117,5 +117,5 @@ class N2sAccordionPanel implements OnInit, OnDestroy {
 }
 
 /// List of directives needed to create an accordion
-const List<dynamic> N2S_ACCORDION_DIRECTIVES = const [
-  N2sAccordion, N2sAccordionPanel];
+const List<dynamic> NGBS_ACCORDION_DIRECTIVES = const [
+  NgBsAccordion, NgBsAccordionPanel];

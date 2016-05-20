@@ -30,11 +30,11 @@ const DateTime MAX_DATE = null;
 
 const bool SHORTCUT_PROPAGATION = false;
 
-/// Component that will be inside a [N2sDatePicker], this component serve as container for
-/// [N2sDayPicker] [N2sMonthPicker] and [N2sYearPicker]
-@Component (selector: "n2s-datepicker-inner",
+/// Component that will be inside a [NgBsDatePicker], this component serve as container for
+/// [NgBsDayPicker] [NgBsMonthPicker] and [NgBsYearPicker]
+@Component (selector: "ngbs-datepicker-inner",
     templateUrl: 'date_picker_inner.html')
-class N2sDatePickerInner extends N2sDatePickerBase implements OnInit {
+class NgBsDatePickerInner extends NgBsDatePickerBase implements OnInit {
 
   /// provides the number of steps needed to change from other views to day view
   Map stepDay = {};

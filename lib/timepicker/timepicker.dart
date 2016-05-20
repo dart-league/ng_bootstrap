@@ -14,11 +14,11 @@ DateTime addMinutes(DateTime time, int minutes) => time.add(new Duration(minutes
 /// A lightweight & configurable timepicker directive
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#timepicker)
-@Component (selector: "n2s-time-picker",
+@Component (selector: "ngbs-time-picker",
     templateUrl: 'timepicker.html')
-class N2sTimePicker extends DefaultValueAccessor implements OnInit {
+class NgBsTimePicker extends DefaultValueAccessor implements OnInit {
   ///
-  N2sTimePicker(this.cd, Renderer renderer, ElementRef elementRef)
+  NgBsTimePicker(this.cd, Renderer renderer, ElementRef elementRef)
       : super (renderer, elementRef) {
     cd.valueAccessor = this;
   }

@@ -8,7 +8,7 @@ import 'package:node_shims/js.dart';
 /// you will need to add a link to [`glyphicons.css`](https://github.com/valor-software/ng2-bootstrap/blob/master/demo/assets/css/glyphicons.css)
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#accordion)
-@Component (selector: "n2s-rating",
+@Component (selector: "ngbs-rating",
     templateUrl: 'rating.html')
 class Rating extends DefaultValueAccessor implements OnInit {
   Rating(this.cd, Renderer renderer, ElementRef elementRef)

@@ -3,7 +3,7 @@ import 'package:ng_bootstrap/tooltip/tooltip.dart';
 
 @Component(selector: "tooltip-demo",
     templateUrl: 'tooltip-demo.html',
-    directives: const [N2S_TOOLTIP_DIRECTIVES],
+    directives: const [NGBS_TOOLTIP_DIRECTIVES],
     styles: const [
       '''
     /* Specify styling for tooltip contents */

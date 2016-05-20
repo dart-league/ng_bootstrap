@@ -7,10 +7,10 @@ part of pagination;
 /// [bootstrap 4](http://v4-alpha.getbootstrap.com/components/pagination/)
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#pagination)
-@Component (selector: "n2s-pager",
+@Component (selector: "ngbs-pager",
     templateUrl: 'pager.html')
-class N2sPager {
-  N2sPager(this.elementRef);
+class NgBsPager {
+  NgBsPager(this.elementRef);
 
   /// Contains the current dom-element
   ElementRef elementRef;

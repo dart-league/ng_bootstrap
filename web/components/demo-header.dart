@@ -4,7 +4,7 @@ import "package:ng_bootstrap/index.dart";
 @Component(
     selector: "demo-header",
     templateUrl: 'demo-header.html',
-    directives: const [N2sCollapse, N2S_DROPDOWN_DIRECTIVES])
+    directives: const [NgBsCollapse, NGBS_DROPDOWN_DIRECTIVES])
 class DemoHeader {
   List<String> components = [
     "Accordion",

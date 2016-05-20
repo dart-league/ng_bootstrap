@@ -6,8 +6,8 @@ import 'package:ng_bootstrap/buttons/button-radio.dart';
     selector: "buttons-demo",
     templateUrl: "buttons-demo.html",
     directives: const [
-      N2sButtonCheckbox,
-      N2sButtonRadio
+      NgBsButtonCheckbox,
+      NgBsButtonRadio
     ])
 class ButtonsDemo {
   String singleModel = "1";

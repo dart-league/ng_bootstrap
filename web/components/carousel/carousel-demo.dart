@@ -4,7 +4,7 @@ import 'package:node_shims/js.dart';
 
 @Component(selector: "carousel-demo",
     templateUrl: "carousel-demo.html",
-    directives: const [N2S_CAROUSEL_DIRECTIVES])
+    directives: const [NGBS_CAROUSEL_DIRECTIVES])
 class CarouselDemo {
   num myIntervalInSeconds = 1;
   num get myIntervalInMs => myIntervalInSeconds * 1000;

@@ -21,4 +21,4 @@ todo: general:
 5. template-url attribute support
  */
 
-const N2S_DATEPICKER_DIRECTIVES = const [N2sDatePicker, N2sDatePickerPopup];
+const NGBS_DATEPICKER_DIRECTIVES = const [NgBsDatePicker, NgBsDatePickerPopup];

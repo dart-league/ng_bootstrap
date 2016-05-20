@@ -1,15 +1,15 @@
 part of n2s_date_picker;
 
-/// Creates an [N2sDayPicker], this will be the view showed in the [N2sDatePicker] when user clicks
+/// Creates an [NgBsDayPicker], this will be the view showed in the [NgBsDatePicker] when user clicks
 /// day header button
-@Component (selector: "n2s-day-picker",
+@Component (selector: "ngbs-day-picker",
     templateUrl: 'day_picker.html')
-class N2sDayPicker implements OnInit {
-  /// Constructs an [N2sDayPicker] injecting [datePickerInner]
-  N2sDayPicker(this.datePickerInner);
+class NgBsDayPicker implements OnInit {
+  /// Constructs an [NgBsDayPicker] injecting [datePickerInner]
+  NgBsDayPicker(this.datePickerInner);
 
-  /// provides access to [N2sDatePickerInner] parent container
-  N2sDatePickerInner datePickerInner;
+  /// provides access to [NgBsDatePickerInner] parent container
+  NgBsDatePickerInner datePickerInner;
 
   /// labels of the days week
   List labels = [];

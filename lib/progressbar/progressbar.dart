@@ -7,16 +7,16 @@ import 'dart:html';
 /// [bootstrap 4](http://v4-alpha.getbootstrap.com/components/progress/)
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#progress)
-@Directive(selector: 'n2s-progress',
+@Directive(selector: 'ngbs-progress',
     host: const {'[attr.max]' : 'max'})
-class N2sProgress implements OnInit {
-  N2sProgress();
+class NgBsProgress implements OnInit {
+  NgBsProgress();
 
   /// if `true` changing `value` of progress bar will be animated (*note*: not supported by Bootstrap 4)
   @Input() bool animate = true;
 
   /// provides the list of bars that this element contains
-  List<N2sBar> bars = [];
+  List<NgBsBar> bars = [];
 
   num _max = 100;
 
@@ -38,7 +38,7 @@ class N2sProgress implements OnInit {
   }
 
   /// add a new bar at the last position
-  addBar(N2sBar bar) {
+  addBar(NgBsBar bar) {
     if (!animate) {
       bar.transition = 'none';
     }
@@ -46,7 +46,7 @@ class N2sProgress implements OnInit {
   }
 
   /// removes the specified bar
-  removeBar(N2sBar bar) {
+  removeBar(NgBsBar bar) {
     bars.remove(bar);
   }
 }
@@ -54,7 +54,7 @@ class N2sProgress implements OnInit {
 /// Creates the bar that will be changing in the progress-bar element
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#progress)
-@Directive(selector: 'n2s-bar',
+@Directive(selector: 'ngbs-bar',
     host: const {
       'style':'min-width: 0;',
       'role':'progressbar',
@@ -65,15 +65,15 @@ class N2sProgress implements OnInit {
       '[attr.aria-valuetext]':'percent.toStringAsFixed(0) + "%"',
       '[attr.aria-valuemax]':'max'
     })
-class N2sBar implements OnInit, OnDestroy {
-  /// Constructs a [N2sBar] injecting [progress] and [elementRef]
-  N2sBar(@Host() this.progress, this.elementRef);
+class NgBsBar implements OnInit, OnDestroy {
+  /// Constructs a [NgBsBar] injecting [progress] and [elementRef]
+  NgBsBar(@Host() this.progress, this.elementRef);
 
   /// the element reference to the HTML DOM element
   ElementRef elementRef;
 
   /// container progress element
-  N2sProgress progress;
+  NgBsProgress progress;
 
   /// value in percentage of the bar
   num percent = 0;
@@ -132,10 +132,10 @@ class N2sBar implements OnInit, OnDestroy {
 /// [bootstrap 4](http://v4-alpha.getbootstrap.com/components/progress/)
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#progress)
-@Component (selector: 'n2s-progressbar',
+@Component (selector: 'ngbs-progressbar',
     templateUrl: 'progressbar.html',
-    directives: const [N2sProgress, N2sBar])
-class N2sProgressbar {
+    directives: const [NgBsProgress, NgBsBar])
+class NgBsProgressbar {
 
   /// if `true` changing `value` of progress bar will be animated (*note*: not supported by Bootstrap 4)
   @Input() bool animate;
@@ -152,4 +152,4 @@ class N2sProgressbar {
 }
 
 /// List of needed directives to create a progress-bar
-const N2S_PROGRESSBAR_DIRECTIVES = const [N2sProgress, N2sBar, N2sProgressbar];
+const NGBS_PROGRESSBAR_DIRECTIVES = const [NgBsProgress, NgBsBar, NgBsProgressbar];

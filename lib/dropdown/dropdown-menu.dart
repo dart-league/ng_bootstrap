@@ -1,13 +1,13 @@
 part of n2s_dropdown;
 
-/// Creates a dropdown-menu component that will be showed every time that a [N2sDropdown] is open
-@Directive (selector: "n2s-dropdown-menu, .dropdown-menu")
-class N2sDropdownMenu implements OnInit {
-  N2sDropdown dropdown;
+/// Creates a dropdown-menu component that will be showed every time that a [NgBsDropdown] is open
+@Directive (selector: "ngbs-dropdown-menu, .dropdown-menu")
+class NgBsDropdownMenu implements OnInit {
+  NgBsDropdown dropdown;
 
   ElementRef elementRef;
 
-  N2sDropdownMenu(@Host() this.dropdown, this.elementRef);
+  NgBsDropdownMenu(@Host() this.dropdown, this.elementRef);
 
   ngOnInit() {
     dropdown.dropDownMenu = this;
