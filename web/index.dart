@@ -30,7 +30,7 @@ import 'components/tooltip/tooltip_demo.dart';
       TabsDemo,
       TooltipDemo
     ])
-class Demo implements OnInit {}
+class Demo {}
 
 main() {
   bootstrap(Demo);

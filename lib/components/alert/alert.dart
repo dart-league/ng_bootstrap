@@ -16,18 +16,18 @@ import "package:angular2/angular2.dart";
     host: const {
       'class': 'alert',
       'role': 'alert',
-      '[class.alert-success]': 'isType("success")',
-      '[class.alert-info]': 'isType("info")',
-      '[class.alert-warning]': 'isType("warning") || isType(null)',
-      '[class.alert-danger]': 'isType("danger")',
+      '[class.alert-success]': 'isSuccess',
+      '[class.alert-info]': 'isInfo',
+      '[class.alert-warning]': 'isWarning',
+      '[class.alert-danger]': 'isDanger',
     })
 class Alert implements OnInit {
   /// provides the element reference to get native element
-  ElementRef elementRef;
+  ElementRef _elementRef;
 
   ///  provide one of the four supported contextual classes:
   ///  `success`,`info`, `warning`, `danger`
-  @Input() String type;
+  @Input() String type = 'warning';
 
   /// fired when `alert` closed with inline button or by timeout,
   /// `$event` is an instance of `Alert` component
@@ -41,11 +41,17 @@ class Alert implements OnInit {
   @HostBinding('[class.alert-dismissible]')
   bool dismissible = false;
 
-  Alert(this.elementRef);
+  Alert(this._elementRef);
+
+  bool get isSuccess => type == 'success';
+
+  bool get isInfo => type == 'info';
+
+  bool get isWarning => type == 'warning';
+
+  bool get isDanger => type == 'danger';
 
   bool get hasTimeout => timeout != null;
-
-  bool isType(String type) => this.type == type;
 
   ngOnInit() {
     if (hasTimeout) {
@@ -56,6 +62,6 @@ class Alert implements OnInit {
   onClose() {
     // todo: mouse event + touch + pointer
     close.add(this);
-    elementRef.nativeElement.remove();
+    _elementRef.nativeElement.remove();
   }
 }
