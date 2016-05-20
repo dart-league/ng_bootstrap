@@ -1,6 +1,6 @@
 import "package:angular2/angular2.dart";
 import 'package:angular2/platform/browser.dart';
-import "package:ng_bootstrap/index.dart";
+import "package:ng_bootstrap/ng_bootstrap.dart";
 
 import 'components/alert/alert_demo.dart';
 import 'components/buttons/buttons_demo.dart';
