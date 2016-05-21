@@ -1,5 +1,4 @@
 import 'package:angular2/angular2.dart';
-import 'dart:html';
 
 /// Creates a progress component with multiple bars
 ///
