@@ -64,6 +64,8 @@ class Pagination extends Pager implements OnInit {
   ngOnInit() {
 //    classes = elementRef.nativeElement.getAttribute("class") ?? "";
     totalPages = _calculateTotalPages();
+    previousText = 'Previous';
+    nextText = 'Next';
 //    currentPageEmitter.emit(currentPage);
   }
 
