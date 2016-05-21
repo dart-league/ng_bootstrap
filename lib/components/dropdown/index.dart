@@ -11,4 +11,4 @@ part "dropdown_toggle.dart";
 part "dropdown_keyboard_nav.dart";
 part "dropdown_service.dart";
 
-const NGBS_DROPDOWN_DIRECTIVES = const [NgBsDropdown, NgBsDropdownMenu, NgBsDropdownToggle];
+const NGBS_DROPDOWN_DIRECTIVES = const [Dropdown, DropdownMenu, DropdownToggle];

@@ -1,7 +1,7 @@
 import "package:angular2/angular2.dart";
 
-@Directive (selector: "ngbs-transclude")
-class NgBsTransclude {
+@Directive (selector: "bs-transclude")
+class Transclude {
   ViewContainerRef viewRef;
 
   TemplateRef _templateRef;
@@ -16,5 +16,5 @@ class NgBsTransclude {
 
   get templateRef => _templateRef;
 
-  NgBsTransclude(@Inject(ViewContainerRef) this.viewRef);
+  Transclude(@Inject(ViewContainerRef) this.viewRef);
 }

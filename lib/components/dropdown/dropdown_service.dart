@@ -7,15 +7,15 @@ const _DISABLED = "disabled";
 const _OUTSIDECLICK = "outsideClick";
 
 class DropdownService {
-  NgBsDropdown openScope;
+  Dropdown openScope;
 
-  NgBsDropdown dropdownScope;
+  Dropdown dropdownScope;
 
   StreamSubscription closeDropdownStSub;
 
   StreamSubscription keybindFilterStSub;
 
-  open(NgBsDropdown dropdownScope) {
+  open(Dropdown dropdownScope) {
     if (openScope == null) {
       closeDropdownStSub = window.onClick.listen(closeDropdown);
       keybindFilterStSub = window.onKeyDown.listen(keybindFilter);
@@ -26,7 +26,7 @@ class DropdownService {
     openScope = dropdownScope;
   }
 
-  close(NgBsDropdown dropdownScope) {
+  close(Dropdown dropdownScope) {
     if (openScope != dropdownScope) {
       return;
     }

@@ -13,10 +13,10 @@ import 'package:node_shims/js.dart';
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#tabs)
 @Component (
-    selector: "ngbs-tab-set",
+    selector: "bs-tab-set",
     templateUrl: 'tabset.html',
-    directives: const [NgBsTransclude])
-class NgBsTabSet implements OnInit {
+    directives: const [Transclude])
+class TabSet implements OnInit {
 
   /// if `true` tabs will be placed vertically
   @Input() bool vertical = false;
@@ -28,7 +28,7 @@ class NgBsTabSet implements OnInit {
   @Input() String type;
 
   /// List of sub tabs
-  List<NgBsTab> tabs = [];
+  List<Tab> tabs = [];
 
   /// initialize attributes
   ngOnInit() {
@@ -36,13 +36,13 @@ class NgBsTabSet implements OnInit {
   }
 
   /// adds a new tab at the end
-  addTab(NgBsTab tab) {
+  addTab(Tab tab) {
     tabs.add(tab);
     tab.active = tabs.length == 1 && tab.active != false;
   }
 
   /// removes the specified tab
-  removeTab(NgBsTab tab) {
+  removeTab(Tab tab) {
     var index = tabs.indexOf(tab);
     if (identical(index, -1)) {
       return;
@@ -59,17 +59,17 @@ class NgBsTabSet implements OnInit {
   }
 }
 
-/// Creates a tab which will be inside the [NgBsTabSet]
+/// Creates a tab which will be inside the [TabSet]
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#tab)
-@Directive (selector: "ngbs-tab",
+@Directive (selector: "bs-tab",
     host: const { "[class.tab-pane]" : "true", "[class.active]" : "active"})
-class NgBsTab implements OnInit, OnDestroy {
+class Tab implements OnInit, OnDestroy {
   /// Construct a tab injecting the parent [tabset], and adding itself to the parent.
-  NgBsTab(this.tabset);
+  Tab(this.tabset);
 
   /// provides the injected parent tabset
-  NgBsTabSet tabset;
+  TabSet tabset;
 
   /// if `true` tab can not be activated
   @Input() bool disabled = false;
@@ -105,7 +105,7 @@ class NgBsTab implements OnInit, OnDestroy {
     }
     _active = active;
     select.add(this);
-    tabset.tabs.forEach((NgBsTab tab) {
+    tabset.tabs.forEach((Tab tab) {
       if (!identical(tab, this)) {
         tab.active = false;
       }
@@ -124,10 +124,10 @@ class NgBsTab implements OnInit, OnDestroy {
 }
 
 /// Creates a new tab header template
-@Directive (selector: "[ngbs-tab-heading]")
-class NgBsTabHeading {
-  /// constructs a [NgBsTabHeading] injecting its own [templateRef] and its parent [tab]
-  NgBsTabHeading(this.templateRef, NgBsTab tab) {
+@Directive (selector: "[bs-tab-heading]")
+class TabHeading {
+  /// constructs a [TabHeading] injecting its own [templateRef] and its parent [tab]
+  TabHeading(this.templateRef, Tab tab) {
     tab.headingRef = templateRef;
   }
 
@@ -136,4 +136,4 @@ class NgBsTabHeading {
 }
 
 /// Directives needed to create a tab-set
-const NGBS_TABS_DIRECTIVES = const [NgBsTab, NgBsTabHeading, NgBsTabSet];
+const NGBS_TABS_DIRECTIVES = const [Tab, TabHeading, TabSet];

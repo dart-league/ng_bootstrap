@@ -19,9 +19,9 @@ import 'dart:async';
       "[attr.aria-hidden]" : "isCollapsed",
       "[style.height]" : "height"
     })
-class NgBsCollapse {
+class Collapse {
   /// Constructs an collapsible component injecting the [elementRef]
-  NgBsCollapse(this.elementRef);
+  Collapse(this.elementRef);
 
   /// Contains the element reference of this component
   ElementRef elementRef;

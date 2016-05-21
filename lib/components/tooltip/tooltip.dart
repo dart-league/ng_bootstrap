@@ -4,10 +4,10 @@ import 'dart:async';
 import 'dart:html';
 
 /// Options passed when creating a new Tooltip
-class NgBsTooltipOptions {
+class TooltipOptions {
 
   /// Construct the options for tooltip
-  const NgBsTooltipOptions({
+  const TooltipOptions({
   this.placement,
   this.popupClass,
   this.animation,
@@ -33,13 +33,13 @@ class NgBsTooltipOptions {
   final ElementRef hostEl;
 }
 
-@Component (selector: 'ngbs-tooltip-container',
+@Component (selector: 'bs-tooltip-container',
     templateUrl: 'tooltip_container.html',
     encapsulation: ViewEncapsulation.None)
-class NgBsTooltipContainer implements AfterViewInit {
+class TooltipContainer implements AfterViewInit {
 
-  /// Constructs a new [NgBsTooltipContainer] injecting its [elementRef] and the [options]
-  NgBsTooltipContainer(this.elementRef, this.cdr, NgBsTooltipOptions options) {
+  /// Constructs a new [TooltipContainer] injecting its [elementRef] and the [options]
+  TooltipContainer(this.elementRef, this.cdr, TooltipOptions options) {
     classMap = { 'in' : false, 'fade': false};
     placement = options.placement;
     popupClass = options.popupClass;
@@ -109,9 +109,9 @@ class NgBsTooltipContainer implements AfterViewInit {
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#tooltip)
 @Directive(selector: '[n2sTooltip]')
-class NgBsTooltip {
-  /// Constructs a new [NgBsTooltip] injecting [viewContainerRef] and [loader]
-  NgBsTooltip(this.viewContainerRef, this.loader);
+class Tooltip {
+  /// Constructs a new [Tooltip] injecting [viewContainerRef] and [loader]
+  Tooltip(this.viewContainerRef, this.loader);
 
   /// Reference to HTML DOM
   ViewContainerRef viewContainerRef;
@@ -165,13 +165,13 @@ class NgBsTooltip {
       return;
     }
     visible = true;
-    var options = new NgBsTooltipOptions(
+    var options = new TooltipOptions(
         content: content,
         placement: placement,
         popupClass: popupClass,
         hostEl: viewContainerRef.element);
-    var providers = ReflectiveInjector.resolve([provide(NgBsTooltipOptions, useValue: options)]);
-    tooltip = loader.loadNextToLocation(NgBsTooltipContainer, viewContainerRef, providers);
+    var providers = ReflectiveInjector.resolve([provide(TooltipOptions, useValue: options)]);
+    tooltip = loader.loadNextToLocation(TooltipContainer, viewContainerRef, providers);
   }
 
   /// hide the tooltip when mouseleave and focusout events happens
@@ -194,4 +194,4 @@ class NgBsTooltip {
 }
 
 ///
-const NGBS_TOOLTIP_DIRECTIVES = const [NgBsTooltip, NgBsTooltipContainer];
+const NGBS_TOOLTIP_DIRECTIVES = const [Tooltip, TooltipContainer];
