@@ -24,6 +24,6 @@ class AlertDemo {
   }
 
   addAlert() {
-    alerts.add({"msg": "Another alert!", 'dismissible': true});
+    alerts.add({"msg": "Another alert!", 'dismissible': true, "type": "info"});
   }
 }
