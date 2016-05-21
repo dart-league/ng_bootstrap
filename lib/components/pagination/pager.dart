@@ -1,14 +1,11 @@
-part of pagination;
+import 'dart:html';
+import 'dart:math' as math;
+import "package:angular2/angular2.dart";
 
-/// **Pagination** - provide pagination links for your site or app with the multi-page pagination
-/// component, or the simpler pager alternative.
-///
-/// Base specifications: [bootstrap 3](http://getbootstrap.com/components/#pagination) or
-/// [bootstrap 4](http://v4-alpha.getbootstrap.com/components/pagination/)
-///
-/// [demo](http://luisvt.github.io/ng2_strap/#pagination)
-@Component (selector: "bs-pager",
-    templateUrl: 'pager.html')
+/// Quick previous and next links for simple
+/// pagination implementations with light markup and styles.
+/// It’s great for simple sites like blogs or magazines.
+@Component (selector: "bs-pager", templateUrl: 'pager.html')
 class Pager {
   Pager(this.elementRef);
 
@@ -63,7 +60,7 @@ class Pager {
   /// sets the maximum number of items per page. If value less than 1 will display all items on one page
   @Input() set itemsPerPage(int v) {
     _itemsPerPage = v;
-    totalPages = _calculateTotalPages();
+    totalPages = calculateTotalPages();
   }
 
   int _totalItems = 10;
@@ -74,13 +71,13 @@ class Pager {
   /// sets the total items per page
   @Input() set totalItems(int v) {
     _totalItems = v;
-    totalPages = _calculateTotalPages();
+    totalPages = calculateTotalPages();
   }
 
   /// calculates total pages
-  _calculateTotalPages() {
+  num calculateTotalPages() {
     var totalPages = itemsPerPage < 1 ? 1 : (totalItems / itemsPerPage).ceil();
-    return max(totalPages ?? 0, 1);
+    return math.max(totalPages ?? 0, 1);
   }
 
   /// checks if there is no previous page
@@ -104,5 +101,4 @@ class Pager {
       totalPagesChange.emit(_page);
     }
   }
-
 }
