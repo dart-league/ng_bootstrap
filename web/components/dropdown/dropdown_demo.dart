@@ -3,7 +3,7 @@ import 'package:ng_bootstrap/components.dart';
 import 'dart:html';
 
 @Component(selector: "dropdown-demo",
-    templateUrl: 'dropdown-demo.html',
+    templateUrl: 'dropdown_demo.html',
     directives: const [NGBS_DROPDOWN_DIRECTIVES])
 class DropdownDemo {
   bool disabled = false;
