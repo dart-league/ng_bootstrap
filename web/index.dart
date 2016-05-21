@@ -10,7 +10,7 @@ import "components/demo_header.dart";
 import "components/demo_section.dart";
 import 'components/dropdown/dropdown_demo.dart';
 import 'components/pagination/pagination_demo.dart';
-import 'components/progressbar/progressbar_demo.dart';
+import 'components/progress/progress_demo.dart';
 import 'components/tabs/tabs_demo.dart';
 import 'components/tooltip/tooltip_demo.dart';
 
@@ -26,7 +26,7 @@ import 'components/tooltip/tooltip_demo.dart';
       CollapseDemo,
       DropdownDemo,
       PaginationDemo,
-      ProgressbarDemo,
+      ProgressDemo,
       TabsDemo,
       TooltipDemo
     ])

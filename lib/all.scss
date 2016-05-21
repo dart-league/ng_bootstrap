@@ -1,1 +1,41 @@
 @import "packages/bootstrap_sass/scss/bootstrap";
+
+bs-progress {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-top: 3px;
+
+
+  & > progress {
+    @extend .progress;
+  }
+
+  &.success > progress {
+    @extend .progress-success;
+  }
+
+  &.warning > progress {
+    @extend .progress-warning;
+  }
+
+  &.info > progress {
+    @extend .progress-info;
+  }
+
+  &.danger > progress {
+    @extend .progress-danger;
+  }
+
+  &.striped > progress {
+    @extend .progress-striped;
+  }
+
+  & > #label {
+    @extend .text-xs-center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+  }
+}

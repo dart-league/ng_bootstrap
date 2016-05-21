@@ -13,7 +13,7 @@ class DemoHeader {
     "Collapse",
     "Dropdown",
     "Pagination",
-    "Progressbar",
+    "Progress",
     "Tabs",
     "Tooltip"
   ];
