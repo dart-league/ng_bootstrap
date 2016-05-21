@@ -1,16 +1,9 @@
-library pagination;
-
+import 'dart:math' as math;
 import "package:angular2/angular2.dart";
-import 'dart:html';
-import 'dart:math';
-import 'package:node_shims/js.dart';
+import 'pager.dart';
 
-part 'pager.dart';
-
-/// **Pager** - quick previous and next links for simple pagination implementations with light
-/// markup and styles. It's great for simple sites like blogs or magazines.
-///
-/// [demo](http://luisvt.github.io/ng2_strap/#pagination)
+/// Provide pagination links for your site or app with
+/// the multi-page pagination component
 @Component(selector: "bs-pagination",
     templateUrl: 'pagination.html',
     inputs: const [
@@ -27,7 +20,8 @@ part 'pager.dart';
       'currentPageChange'
     ])
 class Pagination extends Pager implements OnInit {
-  /// Constructor to create a new Pagination component in which [elementRef] is injected.
+  /// Constructor to create a new Pagination component
+  /// in which [elementRef] is injected.
   Pagination(ElementRef elementRef) : super(elementRef);
 
   /// css classes
@@ -63,7 +57,7 @@ class Pagination extends Pager implements OnInit {
 
   ngOnInit() {
 //    classes = elementRef.nativeElement.getAttribute("class") ?? "";
-    totalPages = _calculateTotalPages();
+    totalPages = calculateTotalPages();
     previousText = 'Previous';
     nextText = 'Next';
 //    currentPageEmitter.emit(currentPage);
@@ -85,7 +79,7 @@ class Pagination extends Pager implements OnInit {
     if (isMaxSized) {
       if (rotate) {
         // Current page is displayed in the middle of the visible ones
-        startPage = max(currentPage - (maxSize / 2).floor(), 1);
+        startPage = math.max(currentPage - (maxSize / 2).floor(), 1);
         endPage = startPage + maxSize - 1;
         // Adjust if limit is exceeded
         if (endPage > totalPages) {
@@ -96,7 +90,7 @@ class Pagination extends Pager implements OnInit {
         // Visible pages are paginated with maxSize
         startPage = (((currentPage / maxSize).ceil() - 1) * maxSize) + 1;
         // Adjust last page if limit is exceeded
-        endPage = min(startPage + maxSize - 1, totalPages);
+        endPage = math.min(startPage + maxSize - 1, totalPages);
       }
     }
     // Add page number links
@@ -108,11 +102,11 @@ class Pagination extends Pager implements OnInit {
     if (isMaxSized && !rotate) {
       if (startPage > 1) {
         var previousPageSet = makePage(startPage - 1, "...", false);
-        unshift(pages, previousPageSet);
+        pages.insert(0, previousPageSet);
       }
       if (endPage < totalPages) {
         var nextPageSet = makePage(endPage + 1, "...", false);
-        push(pages, nextPageSet);
+        pages.add(nextPageSet);
       }
     }
     return pages;
