@@ -8,7 +8,7 @@
     (click)="$event.preventDefault()">
   <li *ngFor="let tab of tabs" class="nav-item" [ngClass]="{active: tab.active, disabled: tab.disabled}">
     <a href class="nav-link" [ngClass]="{active: tab.active, disabled: tab.disabled}" (click)="tab.active = true">
-      <ngbs-transclude [templateRef]="tab.headingRef">{{tab.heading}}</ngbs-transclude>
+      <bs-transclude [templateRef]="tab.headingRef">{{tab.heading}}</bs-transclude>
     </a>
   </li>
 </ul>

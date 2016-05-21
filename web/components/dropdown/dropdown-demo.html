@@ -1,7 +1,7 @@
 <div (click)="$event.preventDefault()">
   <!-- Simple dropdown -->
-  <ngbs-dropdown (on-toggle)="toggled($event)">
-    <a href id="simple-dropdown" ngbs-dropdown-toggle>
+  <bs-dropdown (on-toggle)="toggled($event)">
+    <a href id="simple-dropdown" bs-dropdown-toggle>
       Click me for a dropdown, yo!
     </a>
     <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
@@ -9,13 +9,13 @@
         <a class="dropdown-item" href="#">{{choice}}</a>
       </li>
     </ul>
-  </ngbs-dropdown>
+  </bs-dropdown>
 
   <!-- Single button -->
-  <ngbs-dropdown class="btn-group" [isOpen]="status['isopen']">
-    <ngbs-dropdown-toggle id="single-button" type="button" class="btn btn-primary" dropdown-toggle [disabled]="disabled">
+  <bs-dropdown class="btn-group" [isOpen]="status['isopen']">
+    <bs-dropdown-toggle id="single-button" type="button" class="btn btn-primary" dropdown-toggle [disabled]="disabled">
       Button dropdown <span class="caret"></span>
-    </ngbs-dropdown-toggle>
+    </bs-dropdown-toggle>
     <ul class="dropdown-menu" aria-labelledby="single-button">
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -23,15 +23,15 @@
       <li class="divider dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
-  </ngbs-dropdown>
+  </bs-dropdown>
 
   <!-- Split button -->
-  <ngbs-dropdown class="btn-group">
+  <bs-dropdown class="btn-group">
     <button id="split-button" type="button" class="btn btn-danger">Action</button>
-    <ngbs-dropdown-toggle type="button" class="btn btn-danger">
+    <bs-dropdown-toggle type="button" class="btn btn-danger">
       <span class="caret"></span>
       <span class="sr-only">Split button!</span>
-    </ngbs-dropdown-toggle>
+    </bs-dropdown-toggle>
     <ul class="dropdown-menu" role="menu" aria-labelledby="split-button">
       <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
       <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
@@ -39,7 +39,7 @@
       <li class="divider dropdown-divider"></li>
       <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
-  </ngbs-dropdown>
+  </bs-dropdown>
 
   <hr/>
   <p>
@@ -50,10 +50,10 @@
 
   <hr>
   <!-- Single button with keyboard nav -->
-  <ngbs-dropdown class="btn-group" [keyboardNav]="true">
-    <ngbs-dropdown-toggle id="simple-btn-keyboard-nav" type="button" class="btn btn-primary" dropdown-toggle>
+  <bs-dropdown class="btn-group" [keyboardNav]="true">
+    <bs-dropdown-toggle id="simple-btn-keyboard-nav" type="button" class="btn btn-primary" dropdown-toggle>
       Dropdown with keyboard navigation <span class="caret"></span>
-    </ngbs-dropdown-toggle>
+    </bs-dropdown-toggle>
     <ul class="dropdown-menu" role="menu" aria-labelledby="simple-btn-keyboard-nav">
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -61,5 +61,5 @@
       <li class="divider dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
-  </ngbs-dropdown>
+  </bs-dropdown>
 </div>

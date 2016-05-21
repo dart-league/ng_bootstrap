@@ -11,7 +11,7 @@ part 'pager.dart';
 /// markup and styles. It's great for simple sites like blogs or magazines.
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#pagination)
-@Component(selector: "ngbs-pagination",
+@Component(selector: "bs-pagination",
     templateUrl: 'pagination.html',
     inputs: const [
       'previousText',
@@ -26,9 +26,9 @@ part 'pager.dart';
       'totalPagesChange',
       'currentPageChange'
     ])
-class NgBsPagination extends NgBsPager implements OnInit {
+class Pagination extends Pager implements OnInit {
   /// Constructor to create a new Pagination component in which [elementRef] is injected.
-  NgBsPagination(ElementRef elementRef) : super(elementRef);
+  Pagination(ElementRef elementRef) : super(elementRef);
 
   /// css classes
   @Input('class') String classes = "";
@@ -121,4 +121,4 @@ class NgBsPagination extends NgBsPager implements OnInit {
       pages = getPages(currentPage, totalPages);
 }
 
-const PAGINATION_DIRECTIVES = const [NgBsPagination, NgBsPager];
+const PAGINATION_DIRECTIVES = const [Pagination, Pager];

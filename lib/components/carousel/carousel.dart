@@ -13,9 +13,9 @@ enum Direction { UNKNOWN, NEXT, PREV }
 /// [bootstrap 4](http://v4-alpha.getbootstrap.com/components/carousel/)
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#carousel)
-@Component(selector: "ngbs-carousel",
+@Component(selector: "bs-carousel",
     templateUrl: 'carousel.html')
-class NgBsCarousel implements OnDestroy {
+class Carousel implements OnDestroy {
 
   /// if `true` will disable pausing on carousel mouse hover
   @Input() bool noPause = false;
@@ -27,7 +27,7 @@ class NgBsCarousel implements OnDestroy {
   @Input() bool noTransition;
 
   /// provides the slides of the carousel
-  List<NgBsSlide> slides = [];
+  List<Slide> slides = [];
 
   /// the interval of time of the current slide
   Timer currentInterval;
@@ -39,7 +39,7 @@ class NgBsCarousel implements OnDestroy {
   bool destroyed = false;
 
   /// currently active slide
-  NgBsSlide currentSlide;
+  Slide currentSlide;
 
   /// amount of time in milliseconds to delay between automatically cycling an item. If `false`, carousel will not automatically cycle
   @Input() num interval;
@@ -50,7 +50,7 @@ class NgBsCarousel implements OnDestroy {
   }
 
   /// listen when an slide is selected
-  select(NgBsSlide nextSlide, [ Direction direction = Direction.UNKNOWN ]) {
+  select(Slide nextSlide, [ Direction direction = Direction.UNKNOWN ]) {
     var nextIndex = nextSlide.index;
     if (identical(direction, Direction.UNKNOWN)) {
       direction =
@@ -63,7 +63,7 @@ class NgBsCarousel implements OnDestroy {
   }
 
   /// go to next slide after beeing selected
-  goNext(NgBsSlide slide, Direction direction) {
+  goNext(Slide slide, Direction direction) {
     if (destroyed) {
       return;
     }
@@ -157,7 +157,7 @@ class NgBsCarousel implements OnDestroy {
   }
 
   /// add an slide to the carousel
-  addSlide(NgBsSlide slide) {
+  addSlide(Slide slide) {
     slide.index = slides.length;
     push(slides, slide);
     if (identical(slides.length, 1) || slide.active) {
@@ -171,7 +171,7 @@ class NgBsCarousel implements OnDestroy {
   }
 
   /// removes an slide to the carousel
-  removeSlide(NgBsSlide slide) {
+  removeSlide(Slide slide) {
     splice(slides, slide.index, 1);
     if (identical(slides.length, 0)) {
       currentSlide = null;
@@ -186,7 +186,7 @@ class NgBsCarousel implements OnDestroy {
 /// Creates the slide element that will be displayed in the carousel
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#carousel)
-@Component (selector: "ngbs-slide",
+@Component (selector: "bs-slide",
     inputs: const [ "direction", "active", "index"],
     host: const {
       "[class.active]" : "active",
@@ -198,12 +198,12 @@ class NgBsCarousel implements OnDestroy {
     <ng-content></ng-content>
   </div>
   ''', directives: const [NgClass])
-class NgBsSlide implements OnInit, OnDestroy {
+class Slide implements OnInit, OnDestroy {
   /// Constructs a new slide injecting the parent carousel
-  NgBsSlide(this.carousel);
+  Slide(this.carousel);
 
   /// parent carousel
-  NgBsCarousel carousel;
+  Carousel carousel;
 
   /// if `true` the slide is been showed
   bool active;
@@ -226,4 +226,4 @@ class NgBsSlide implements OnInit, OnDestroy {
 }
 
 /// List of Directives needed to create a carousel
-const NGBS_CAROUSEL_DIRECTIVES = const [NgBsCarousel, NgBsSlide];
+const NGBS_CAROUSEL_DIRECTIVES = const [Carousel, Slide];
