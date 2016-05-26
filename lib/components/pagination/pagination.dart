@@ -116,5 +116,3 @@ class Pagination extends Pager implements OnInit {
   onCurrentPageChange(currentPage) =>
       pages = getPages(currentPage, totalPages);
 }
-
-const PAGINATION_DIRECTIVES = const [Pagination, Pager];
