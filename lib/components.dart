@@ -1,6 +1,6 @@
 export "components/alert/alert.dart";
-export "components/buttons/button_radio.dart";
-export "components/buttons/button_checkbox.dart";
+export "components/button/radio.dart";
+export "components/button/toggle.dart";
 export "components/dropdown/index.dart";
 export "components/carousel/carousel.dart";
 export "components/collapse/collapse.dart";
