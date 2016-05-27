@@ -1,13 +1,9 @@
 import "package:angular2/angular2.dart";
 
-/// Creates  a group of buttons that behave like a set of radio
-/// buttons, or a hybrid where radio buttons can be unchecked.
-///
-/// [demo](http://luisvt.github.io/ng2_strap/#buttons)
-@Directive(selector: "bs-btn-radio",
+@Directive(selector: "bs-radio-button",
     host: const {"[class.active]" : "active"})
-class ButtonRadio extends DefaultValueAccessor {
-  ButtonRadio(this.ngModel, Renderer renderer, ElementRef elementRef)
+class RadioButton extends DefaultValueAccessor {
+  RadioButton(this.ngModel, Renderer renderer, ElementRef elementRef)
       : super (renderer, elementRef) {
     ngModel.valueAccessor = this;
   }

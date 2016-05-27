@@ -1,21 +1,16 @@
 import "package:angular2/angular2.dart";
 
-/// Create a group of buttons that behave like a set of checkboxes
-///
-/// Base specifications: [bootstrap 3](http://getbootstrap.com/javascript/#buttons) or [bootstrap 4](http://v4-alpha.getbootstrap.com/components/buttons/#checkbox-and-radio-buttons)
-///
-/// [demo](http://luisvt.github.io/ng2_strap/#buttons)
+
 @Directive(
-    selector: "bs-btn-checkbox",
+    selector: "bs-toggle-button",
     host: const {"[class.active]" : "active"}
 )
-class ButtonCheckbox extends DefaultValueAccessor {
-  ButtonCheckbox(this.ngModel, Renderer renderer, ElementRef elementRef) : super(renderer, elementRef) {
-    ngModel.valueAccessor = this;
-  }
-
+class ToggleButton extends DefaultValueAccessor {
   NgModel ngModel;
 
+  ToggleButton(this.ngModel, Renderer renderer, ElementRef elementRef) : super(renderer, elementRef) {
+    ngModel.valueAccessor = this;
+  }
   /// if it is equals to the [ngModel] value then the checkbox is going to be active
   @Input() dynamic trueValue = true;
 
