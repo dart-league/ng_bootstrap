@@ -96,7 +96,7 @@ class TooltipContainer implements AfterViewInit {
   }
 }
 
-@Directive(selector: '[n2sTooltip]')
+@Directive(selector: '[bsTooltip]')
 class Tooltip {
   /// Constructs a new [Tooltip] injecting [viewContainerRef] and [loader]
   Tooltip(this.viewContainerRef, this.loader);
@@ -111,25 +111,25 @@ class Tooltip {
   bool visible = false;
 
   /// text of tooltip
-  @Input('n2sTooltip')
+  @Input('bsTooltip')
   String content;
 
   /// tooltip positioning instruction, supported positions: 'top', 'bottom', 'left', 'right'
-  @Input('n2sTooltipPlacement')
+  @Input('bsTooltipPlacement')
   String placement = 'top';
 
   /// (*not implemented*) (`?boolean=false`) - if `true` tooltip will be appended to body
-  @Input('n2sTooltipAppendToBody')
+  @Input('bsTooltipAppendToBody')
   bool appendToBody = false;
 
   /// if `true` tooltip is currently visible
-  @Input('n2sTooltipIsOpen')
+  @Input('bsTooltipIsOpen')
   bool isOpen;
 
   bool _enable = true;
 
   /// if `false` tooltip is disabled and will not be shown
-  @Input('n2sTooltipEnable')
+  @Input('bsTooltipEnable')
   set enable(bool enable) {
     _enable = enable ?? true;
     if (!_enable) {
@@ -138,11 +138,11 @@ class Tooltip {
   }
 
   /// array of event names which triggers tooltip opening
-  @Input('n2sTooltipTrigger')
+  @Input('bsTooltipTrigger')
   String trigger;
 
   /// (*not implemented*) (`?string`) - custom tooltip class applied to the tooltip container.
-  @Input('n2sTooltipClass')
+  @Input('bsTooltipClass')
   String popupClass;
 
   /// DOM reference to tooltip component
