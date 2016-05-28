@@ -8,5 +8,9 @@ const List NG_BOOTSTRAP_DIRECTIVES = const [
   Pager,
   Pagination,
   RadioButton,
-  ToggleButton
+  ToggleButton,
+  Tab,
+  Tabs,
+  TabContent,
+  TabPanel
 ];
