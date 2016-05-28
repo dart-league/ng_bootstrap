@@ -1,20 +1,11 @@
 part of n2s_dropdown;
-/// Dropdowns are toggleable, contextual overlays for displaying lists of links and more.
-/// They’re made interactive with the included dropdown directives.
-///
-/// Base specifications: [bootstrap 3](http://getbootstrap.com/javascript/#dropdowns) or
-/// [bootstrap 4](http://v4-alpha.getbootstrap.com/components/dropdowns/)
-///
-/// [demo](http://luisvt.github.io/ng2_strap/#dropdown)
+
 @Directive (selector: "bs-dropdown, .dropdown",
     host: const {"[class.dropdown]" : "true", "[class.open]" : "isOpen"})
 class Dropdown implements OnInit, OnDestroy {
-
-  /// Constructs a dropdown injecting [elementRef]
-  Dropdown(this.elementRef);
-
-  /// injected [elementRef] to get access to native attributes
   ElementRef elementRef;
+
+  Dropdown(this.elementRef);
 
   /// if `true` `dropdown-menu` content will be appended to the body. This is useful when
   /// the dropdown button is inside a div with `overflow: hidden`, and the menu would

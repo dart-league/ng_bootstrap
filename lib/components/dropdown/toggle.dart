@@ -1,7 +1,7 @@
 part of n2s_dropdown;
 
-/// Creates a component that will toggle the state of a dropdown-menu, in other words when clicked will
-/// open or close the dropdown-menu
+/// Creates a component that will toggle the state of a dropdown-menu,
+/// in other words when clicked will open or close the dropdown-menu
 @Directive (selector: "bs-dropdown-toggle, [bs-dropdown-toggle], .dropdown-toggle",
     host: const {
       "[class.dropdown-toggle]" : "true",
@@ -10,14 +10,11 @@ part of n2s_dropdown;
       "[attr.aria-expanded]" : "isOpen"
     })
 class DropdownToggle implements OnInit {
-  /// Constructs a [DropdownToggle] injecting the container [dropdown] and the current [elementRef]
-  DropdownToggle(@Host() this.dropdown, this.elementRef);
-
-  /// Container dropdown
   Dropdown dropdown;
-
   /// Reference to this HTML element
   ElementRef elementRef;
+
+  DropdownToggle(@Host() this.dropdown, this.elementRef);
 
   /// if `true` this component is disabled
   @Input() bool disabled = false;
