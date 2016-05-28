@@ -1,4 +1,5 @@
-part of n2s_dropdown;
+import 'package:angular2/angular2.dart';
+import 'dropdown.dart';
 
 /// Creates a dropdown-menu component that will be showed
 /// every time that a [Dropdown] is open

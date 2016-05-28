@@ -1,10 +1,11 @@
 export "components/alert/alert.dart";
 export "components/button/radio.dart";
 export "components/button/toggle.dart";
-export "components/dropdown/index.dart";
+export "components/dropdown/dropdown.dart";
+export "components/dropdown/menu.dart";
+export "components/dropdown/toggle.dart";
 export "components/carousel/carousel.dart";
 export "components/collapse/collapse.dart";
-export 'components/dropdown/index.dart';
 export "components/pagination/pagination.dart";
 export "components/pagination/pager.dart";
 export "components/progress/progress.dart";

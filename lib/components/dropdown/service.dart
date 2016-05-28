@@ -1,10 +1,12 @@
-part of n2s_dropdown;
+import 'dart:async';
+import 'dart:html';
+import 'dropdown.dart';
 
-const _ALWAYS = "always";
+const ALWAYS = "always";
 
-const _DISABLED = "disabled";
+const DISABLED = "disabled";
 
-const _OUTSIDECLICK = "outsideClick";
+const OUTSIDECLICK = "outsideClick";
 
 class DropdownService {
   Dropdown openScope;
@@ -39,7 +41,7 @@ class DropdownService {
     if (openScope == null) {
       return;
     }
-    if (event != null && identical(openScope.autoClose, _DISABLED)) {
+    if (event != null && identical(openScope.autoClose, DISABLED)) {
       return;
     }
     if (event != null
@@ -47,7 +49,7 @@ class DropdownService {
         && openScope.toggleEl.nativeElement == event.target) {
       return;
     }
-    if (event != null && openScope.autoClose == _OUTSIDECLICK &&
+    if (event != null && openScope.autoClose == OUTSIDECLICK &&
         openScope.menuEl != null &&
         openScope.menuEl.nativeElement == event.target) {
       return;

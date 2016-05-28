@@ -1,4 +1,10 @@
-part of n2s_dropdown;
+import "package:angular2/angular2.dart";
+import 'package:node_shims/js.dart';
+import 'dart:html';
+
+import 'service.dart';
+import 'menu.dart';
+import 'toggle.dart';
 
 @Directive (selector: "bs-dropdown, .dropdown",
     host: const {"[class.dropdown]" : "true", "[class.open]" : "isOpen"})
@@ -19,7 +25,7 @@ class Dropdown implements OnInit, OnDestroy {
   ///  * `disabled` - disables the auto close. You can then control the open/close status of the
   ///  dropdown manually, by using `is-open`. Please notice that the dropdown will still close
   ///  if the toggle is clicked, the `esc` key is pressed or another dropdown is open
-  @Input() String autoClose = _ALWAYS;
+  @Input() String autoClose = ALWAYS;
 
   /// if `true` will enable navigation of dropdown list elements with the arrow keys
   @Input() bool keyboardNav = false;

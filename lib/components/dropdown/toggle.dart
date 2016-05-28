@@ -1,4 +1,6 @@
-part of n2s_dropdown;
+import 'dart:html';
+import 'package:angular2/angular2.dart';
+import 'dropdown.dart';
 
 /// Creates a component that will toggle the state of a dropdown-menu,
 /// in other words when clicked will open or close the dropdown-menu
