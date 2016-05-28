@@ -5,16 +5,14 @@ import 'dart:html';
 
 /// Options passed when creating a new Tooltip
 class TooltipOptions {
-
   /// Construct the options for tooltip
-  const TooltipOptions({
-  this.placement,
-  this.popupClass,
-  this.animation,
-  this.isOpen,
-  this.content,
-  this.hostEl
-  });
+  const TooltipOptions(
+      {this.placement,
+      this.popupClass,
+      this.animation,
+      this.isOpen,
+      this.content,
+      this.hostEl});
 
   /// tooltip positioning instruction, supported positions: 'top', 'bottom', 'left', 'right'
   final String placement;
@@ -33,14 +31,14 @@ class TooltipOptions {
   final ElementRef hostEl;
 }
 
-@Component (selector: 'bs-tooltip-container',
-    templateUrl: 'tooltip_container.html',
+@Component(
+    selector: 'bs-tooltip-container',
+    templateUrl: 'container.html',
     encapsulation: ViewEncapsulation.None)
 class TooltipContainer implements AfterViewInit {
-
   /// Constructs a new [TooltipContainer] injecting its [elementRef] and the [options]
   TooltipContainer(this.elementRef, this.cdr, TooltipOptions options) {
-    classMap = { 'in' : false, 'fade': false};
+    classMap = {'in': false, 'fade': false};
     placement = options.placement;
     popupClass = options.popupClass;
     animation = options.animation;
@@ -90,24 +88,14 @@ class TooltipContainer implements AfterViewInit {
   @override
   ngAfterViewInit() {
     display = 'block';
-    var p = positionElements(
-        hostEl.nativeElement,
-        elementRef.nativeElement.children[0],
-        placement,
-        appendToBody);
+    var p = positionElements(hostEl.nativeElement,
+        elementRef.nativeElement.children[0], placement, appendToBody);
     top = p.top.toString() + 'px';
     left = p.left.toString() + 'px';
     classMap['in'] = true;
   }
 }
 
-/// Inspired by the excellent Tipsy jQuery plugin written by Jason Frame. Tooltips are an updated
-/// version, which don’t rely on images, use CSS3 for animations, and much more.
-///
-/// Base specifications: [bootstrap 3](http://getbootstrap.com/javascript/#tooltips) or
-/// [bootstrap 4](http://v4-alpha.getbootstrap.com/components/tooltips/)
-///
-/// [demo](http://luisvt.github.io/ng2_strap/#tooltip)
 @Directive(selector: '[n2sTooltip]')
 class Tooltip {
   /// Constructs a new [Tooltip] injecting [viewContainerRef] and [loader]
@@ -123,21 +111,26 @@ class Tooltip {
   bool visible = false;
 
   /// text of tooltip
-  @Input('n2sTooltip') String content;
+  @Input('n2sTooltip')
+  String content;
 
   /// tooltip positioning instruction, supported positions: 'top', 'bottom', 'left', 'right'
-  @Input('n2sTooltipPlacement') String placement = 'top';
+  @Input('n2sTooltipPlacement')
+  String placement = 'top';
 
   /// (*not implemented*) (`?boolean=false`) - if `true` tooltip will be appended to body
-  @Input('n2sTooltipAppendToBody') bool appendToBody = false;
+  @Input('n2sTooltipAppendToBody')
+  bool appendToBody = false;
 
   /// if `true` tooltip is currently visible
-  @Input('n2sTooltipIsOpen') bool isOpen;
+  @Input('n2sTooltipIsOpen')
+  bool isOpen;
 
   bool _enable = true;
 
   /// if `false` tooltip is disabled and will not be shown
-  @Input('n2sTooltipEnable') set enable(bool enable) {
+  @Input('n2sTooltipEnable')
+  set enable(bool enable) {
     _enable = enable ?? true;
     if (!_enable) {
       hide();
@@ -145,10 +138,12 @@ class Tooltip {
   }
 
   /// array of event names which triggers tooltip opening
-  @Input('n2sTooltipTrigger') String trigger;
+  @Input('n2sTooltipTrigger')
+  String trigger;
 
   /// (*not implemented*) (`?string`) - custom tooltip class applied to the tooltip container.
-  @Input('n2sTooltipClass') String popupClass;
+  @Input('n2sTooltipClass')
+  String popupClass;
 
   /// DOM reference to tooltip component
   Future<ComponentRef> tooltip;
@@ -157,8 +152,8 @@ class Tooltip {
   @HostListener('mouseenter', const ['\$event'])
   @HostListener('focusin', const ['\$event'])
   show([Event event]) {
-    if (event is MouseEvent && trigger == 'focus'
-        || event is FocusEvent && trigger == 'mouse') {
+    if (event is MouseEvent && trigger == 'focus' ||
+        event is FocusEvent && trigger == 'mouse') {
       return;
     }
     if (visible || !_enable) {
@@ -170,16 +165,18 @@ class Tooltip {
         placement: placement,
         popupClass: popupClass,
         hostEl: viewContainerRef.element);
-    var providers = ReflectiveInjector.resolve([provide(TooltipOptions, useValue: options)]);
-    tooltip = loader.loadNextToLocation(TooltipContainer, viewContainerRef, providers);
+    var providers = ReflectiveInjector
+        .resolve([provide(TooltipOptions, useValue: options)]);
+    tooltip = loader.loadNextToLocation(
+        TooltipContainer, viewContainerRef, providers);
   }
 
   /// hide the tooltip when mouseleave and focusout events happens
   @HostListener('mouseleave', const ['\$event'])
   @HostListener('focusout', const ['\$event'])
   hide([Event event]) {
-    if (event is MouseEvent && trigger == 'focus'
-        || event is FocusEvent && trigger == 'mouse') {
+    if (event is MouseEvent && trigger == 'focus' ||
+        event is FocusEvent && trigger == 'mouse') {
       return;
     }
     if (!visible) {
@@ -193,5 +190,3 @@ class Tooltip {
   }
 }
 
-///
-const NGBS_TOOLTIP_DIRECTIVES = const [Tooltip, TooltipContainer];

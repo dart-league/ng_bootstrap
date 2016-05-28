@@ -1,9 +1,9 @@
 import "package:angular2/angular2.dart";
-import 'package:ng_bootstrap/components.dart';
+import 'package:ng_bootstrap/ng_bootstrap.dart';
 
 @Component(selector: "tooltip-demo",
     templateUrl: 'tooltip_demo.html',
-    directives: const [NGBS_TOOLTIP_DIRECTIVES],
+    directives: const [NG_BOOTSTRAP_DIRECTIVES],
     styles: const [
       '''
     /* Specify styling for tooltip contents */

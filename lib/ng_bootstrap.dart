@@ -15,5 +15,7 @@ const List NG_BOOTSTRAP_DIRECTIVES = const [
   Tab,
   Tabs,
   TabContent,
-  TabPanel
+  TabPanel,
+  Tooltip,
+  TooltipContainer
 ];
