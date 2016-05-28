@@ -1,0 +1,7 @@
+<ul class="nav nav-tabs" (click)="$event.preventDefault()">
+    <li class="nav-item" *ngFor="let tab of tabs">
+        <a class="nav-link" (click)="setSelected(tab)" [class.active]="tab.active" [href]="toAnchor(tab.select)">
+            <template [ngTemplateOutlet]="tab.templateRef"></template>
+        </a>
+    </li>
+</ul>

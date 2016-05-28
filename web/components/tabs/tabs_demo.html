@@ -1,43 +1,17 @@
-<div (click)="$event.preventDefault()">
-  <p>Select a tab by setting active binding to true:</p>
-  <p>
-    <button type="button" class="btn btn-primary btn-sm" (click)="tabs[0]['active'] = true">Select second tab</button>
-    <button type="button" class="btn btn-primary btn-sm" (click)="tabs[1]['active'] = true">Select third tab</button>
-  </p>
-  <p>
-    <button type="button" class="btn btn-primary btn-sm" (click)="tabs[1]['disabled'] = ! tabs[1]['disabled']">Enable / Disable third tab</button>
-  </p>
-  <hr />
-  <bs-tab-set>
-    <bs-tab heading="Static title">Static content</bs-tab>
-    <bs-tab *ngFor="let tabz of tabs"
-         [heading]="tabz['title']"
-         [active]="tabz['active'] == true"
-         (deselect)="tabz['active'] = false"
-         [disabled]="tabz['disabled'] == true">
-      {{tabz['content']}}
-    </bs-tab>
-    <bs-tab (select)="alertMe()">
-      <template bs-tab-heading>
-        <i class="glyphicon glyphicon-bell"></i> Alert!
-      </template>
-      I've got an HTML heading, and a select callback. Pretty cool!
-    </bs-tab>
-  </bs-tab-set>
+<bs-tabs #tabs>
+    <template bsTab [active]="true" select="products">
+        Products
+    </template>
+    <template bsTab select="prices">
+        Prices
+    </template>
+</bs-tabs>
 
-  <hr />
-
-  <bs-tab-set [vertical]="true" type="pills">
-    <bs-tab heading="Vertical 1">Vertical content 1</bs-tab>
-    <bs-tab heading="Vertical 2">Vertical content 2</bs-tab>
-  </bs-tab-set>
-
-  <hr />
-
-  <p><i>Bootstrap 4 doesn't have justified classes</i></p>
-  <bs-tab-set [justified]="true">
-    <bs-tab heading="Justified">Justified content</bs-tab>
-    <bs-tab heading="SJ">Short Labeled Justified content</bs-tab>
-    <bs-tab heading="Long Justified">Long Labeled Justified content</bs-tab>
-  </bs-tab-set>
-</div>
+<bs-tab-content [for]="tabs">
+    <template bs-tab-panel name="products">
+        <h1>Products</h1>
+    </template>
+    <template bs-tab-panel name="prices">
+        <h1>Prices</h1>
+    </template>
+</bs-tab-content>
