@@ -5,6 +5,9 @@ export "package:ng_bootstrap/core/common.dart";
 
 const List NG_BOOTSTRAP_DIRECTIVES = const [
   Alert,
+  Dropdown,
+  DropdownMenu,
+  DropdownToggle,
   Pager,
   Pagination,
   RadioButton,

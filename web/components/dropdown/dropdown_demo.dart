@@ -1,10 +1,10 @@
 import "package:angular2/angular2.dart";
-import 'package:ng_bootstrap/components.dart';
+import 'package:ng_bootstrap/ng_bootstrap.dart';
 import 'dart:html';
 
 @Component(selector: "dropdown-demo",
     templateUrl: 'dropdown_demo.html',
-    directives: const [NGBS_DROPDOWN_DIRECTIVES])
+    directives: const [NG_BOOTSTRAP_DIRECTIVES])
 class DropdownDemo {
   bool disabled = false;
   Map status = {"isopen": false};

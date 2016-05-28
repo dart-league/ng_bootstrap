@@ -4,7 +4,7 @@ import "package:ng_bootstrap/ng_bootstrap.dart";
 @Component(
     selector: "demo-header",
     templateUrl: 'demo_header.html',
-    directives: const [Collapse, NGBS_DROPDOWN_DIRECTIVES])
+    directives: const [Collapse, NG_BOOTSTRAP_DIRECTIVES])
 class DemoHeader {
   List<String> components = [
     "Alert",
