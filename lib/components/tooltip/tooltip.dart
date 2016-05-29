@@ -37,7 +37,8 @@ class Tooltip implements OnInit {
   /// if `true` tooltip is currently visible
   bool isOpen;
 
-  /// (*not implemented*) (`?string`) - custom tooltip class applied to the tooltip container.
+  /// (*not implemented*) (`?string`) -
+  /// custom tooltip class applied to the tooltip container.
   String popupClass;
 
   /// if `false` fade tooltip animation will be disabled
@@ -81,21 +82,20 @@ class Tooltip implements OnInit {
   @override
   ngOnInit() {
     hostEl ??= (elementRef.nativeElement as Element).parent;
+    hostEl.on[showEvent].listen((_) => show());
+    hostEl.on[hideEvent].listen((_) => hide());
+  }
 
-    hostEl.on[showEvent].listen((e) {
-      if (!_enable) return;
+  void show() {
+    if (!_enable) return;
 
-      display = 'block';
-      new Timer(new Duration(milliseconds: 100 + popupDelay), () {
-        var p = positionElements(
-            hostEl, elementRef.nativeElement, placement, false);
-        top = p.top.toString() + 'px';
-        left = p.left.toString() + 'px';
-        classIn = true;
-      });
-    });
-    hostEl.on[hideEvent].listen((e) {
-      hide();
+    display = 'block';
+    new Timer(new Duration(milliseconds: 100 + popupDelay), () {
+      var p = positionElements(
+          hostEl, elementRef.nativeElement, placement, false);
+      top = '${p.top}px';
+      left = '${p.left}px';
+      classIn = true;
     });
   }
 
