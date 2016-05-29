@@ -1,6 +1,4 @@
 @import "packages/bootstrap_sass/scss/bootstrap";
 @import "components/progress/progress";
-
-bs-button-group {
-  @extend .btn-group;
-}
+@import "components/tooltip/tooltip";
+@import "components/button/button_group";
