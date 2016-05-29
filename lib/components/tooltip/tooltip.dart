@@ -3,50 +3,23 @@ import 'package:ng_bootstrap/core/position.dart';
 import 'dart:async';
 import 'dart:html';
 
-/// Options passed when creating a new Tooltip
-class TooltipOptions {
-  /// Construct the options for tooltip
-  const TooltipOptions(
-      {this.placement,
-      this.popupClass,
-      this.animation,
-      this.isOpen,
-      this.content,
-      this.hostEl});
-
-  /// tooltip positioning instruction, supported positions: 'top', 'bottom', 'left', 'right'
-  final String placement;
-
-  /// (*not implemented*) - custom tooltip class applied to the tooltip container.
-  final String popupClass;
-
-  final bool animation;
-
-  /// if `true` tooltip is currently visible
-  final bool isOpen;
-
-  /// text of tooltip
-  final content;
-
-  final ElementRef hostEl;
-}
-
 @Component(
-    selector: 'bs-tooltip-container',
-    templateUrl: 'container.html',
-    encapsulation: ViewEncapsulation.None)
-class TooltipContainer implements AfterViewInit {
-  /// Constructs a new [TooltipContainer] injecting its [elementRef] and the [options]
-  TooltipContainer(this.elementRef, this.cdr, TooltipOptions options) {
-    classMap = {'in': false, 'fade': false};
-    placement = options.placement;
-    popupClass = options.popupClass;
-    animation = options.animation;
-    isOpen = options.isOpen;
-    content = options.content;
-    hostEl = options.hostEl;
-    classMap[placement] = true;
-  }
+    selector: 'bs-tooltip',
+    template: '''
+<div class="tooltip-arrow"></div>
+<div class="tooltip-inner">
+  <ng-content></ng-content>
+</div>''',
+    host: const {
+      '[style.display]': 'display',
+      '[class.in]': 'classIn',
+      '[class.fade]': 'animation',
+      '[style.top]': 'top',
+      '[style.left]': 'left'
+    })
+class Tooltip implements OnInit {
+  /// Constructs a new [Tooltip] injecting its [elementRef] and the [options]
+  Tooltip(this.elementRef);
 
   ChangeDetectorRef cdr;
 
@@ -54,7 +27,7 @@ class TooltipContainer implements AfterViewInit {
   ElementRef elementRef;
 
   /// map of css classes values
-  Map<String, dynamic> classMap;
+  Map<String, dynamic> classMap = {};
 
   /// value in pixels of the top style
   String top;
@@ -63,15 +36,9 @@ class TooltipContainer implements AfterViewInit {
   String left;
 
   /// display style of the tooltip
-  String display;
+  String display = 'none';
 
-  /// text of tooltip
-  String content;
-
-  String placement = 'top';
-
-  /// (*not implemented*) (`?boolean=false`) - if `true` tooltip will be appended to body
-  bool appendToBody = false;
+  @Input() String placement = 'top';
 
   /// if `true` tooltip is currently visible
   bool isOpen;
@@ -80,113 +47,54 @@ class TooltipContainer implements AfterViewInit {
   String popupClass;
 
   /// if `false` fade tooltip animation will be disabled
-  bool animation;
+  @Input() bool animation = true;
 
-  ElementRef hostEl;
+  @Input('for') Element hostEl;
 
-  /// positions its DOM element next to the parent in the desired position
-  @override
-  ngAfterViewInit() {
-    display = 'block';
-    var p = positionElements(hostEl.nativeElement,
-        elementRef.nativeElement.children[0], placement, appendToBody);
-    top = p.top.toString() + 'px';
-    left = p.left.toString() + 'px';
-    classMap['in'] = true;
-  }
-}
+  /// String of event name which triggers tooltip opening
+  @Input() String showEvent = 'mouseenter';
 
-@Directive(selector: '[bsTooltip]')
-class Tooltip {
-  /// Constructs a new [Tooltip] injecting [viewContainerRef] and [loader]
-  Tooltip(this.viewContainerRef, this.loader);
+  /// String of event name which triggers tooltip opening
+  @Input() String hideEvent = 'mouseleave';
 
-  /// Reference to HTML DOM
-  ViewContainerRef viewContainerRef;
-
-  /// load components dynamically
-  DynamicComponentLoader loader;
-
-  ///
-  bool visible = false;
-
-  /// text of tooltip
-  @Input('bsTooltip')
-  String content;
-
-  /// tooltip positioning instruction, supported positions: 'top', 'bottom', 'left', 'right'
-  @Input('bsTooltipPlacement')
-  String placement = 'top';
-
-  /// (*not implemented*) (`?boolean=false`) - if `true` tooltip will be appended to body
-  @Input('bsTooltipAppendToBody')
-  bool appendToBody = false;
-
-  /// if `true` tooltip is currently visible
-  @Input('bsTooltipIsOpen')
-  bool isOpen;
+  bool classIn = false;
 
   bool _enable = true;
 
   /// if `false` tooltip is disabled and will not be shown
-  @Input('bsTooltipEnable')
-  set enable(bool enable) {
+  @Input() set enable(bool enable) {
     _enable = enable ?? true;
     if (!_enable) {
       hide();
     }
   }
 
-  /// array of event names which triggers tooltip opening
-  @Input('bsTooltipTrigger')
-  String trigger;
+  @Input() int popupDelay = 0;
 
-  /// (*not implemented*) (`?string`) - custom tooltip class applied to the tooltip container.
-  @Input('bsTooltipClass')
-  String popupClass;
+  /// positions its DOM element next to the parent in the desired position
+  @override
+  ngOnInit() {
+    hostEl ??= (elementRef.nativeElement as Element).parent;
 
-  /// DOM reference to tooltip component
-  Future<ComponentRef> tooltip;
+    hostEl.on[showEvent].listen((e) {
+      if (!_enable) return;
 
-  /// show the tooltip when mouseleave and focusout events happens
-  @HostListener('mouseenter', const ['\$event'])
-  @HostListener('focusin', const ['\$event'])
-  show([Event event]) {
-    if (event is MouseEvent && trigger == 'focus' ||
-        event is FocusEvent && trigger == 'mouse') {
-      return;
-    }
-    if (visible || !_enable) {
-      return;
-    }
-    visible = true;
-    var options = new TooltipOptions(
-        content: content,
-        placement: placement,
-        popupClass: popupClass,
-        hostEl: viewContainerRef.element);
-    var providers = ReflectiveInjector
-        .resolve([provide(TooltipOptions, useValue: options)]);
-    tooltip = loader.loadNextToLocation(
-        TooltipContainer, viewContainerRef, providers);
-  }
-
-  /// hide the tooltip when mouseleave and focusout events happens
-  @HostListener('mouseleave', const ['\$event'])
-  @HostListener('focusout', const ['\$event'])
-  hide([Event event]) {
-    if (event is MouseEvent && trigger == 'focus' ||
-        event is FocusEvent && trigger == 'mouse') {
-      return;
-    }
-    if (!visible) {
-      return;
-    }
-    visible = false;
-    tooltip.then((ComponentRef componentRef) {
-      componentRef.destroy();
-      return componentRef;
+      display = 'block';
+      new Timer(new Duration(milliseconds: 100 + popupDelay), () {
+        var p = positionElements(hostEl,
+            elementRef.nativeElement, placement, false);
+        top = p.top.toString() + 'px';
+        left = p.left.toString() + 'px';
+        classIn = true;
+      });
+    });
+    hostEl.on[hideEvent].listen((e) {
+      hide();
     });
   }
-}
 
+  void hide() {
+    display = 'none';
+    classIn = false;
+  }
+}

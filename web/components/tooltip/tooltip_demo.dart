@@ -7,13 +7,13 @@ import 'package:ng_bootstrap/ng_bootstrap.dart';
     styles: const [
       '''
     /* Specify styling for tooltip contents */
-    .tooltip.customClass .tooltip-inner {
+    bs-tooltip.customClass /deep/ .tooltip-inner {
         color: #880000;
         background-color: #ffff66;
         box-shadow: 0 6px 12px rgba(0,0,0,.175);
     }
     /* Hide arrow */
-    .tooltip.customClass .tooltip-arrow {
+    bs-tooltip.customClass /deep/ .tooltip-arrow {
         display: none;
     }
   '''
