@@ -33,6 +33,7 @@ transformers:
     - web/components/collapse/main.dart
     - web/components/datepicker/main.dart
     - web/components/dropdown/main.dart
+    - web/components/modal/main.dart
     - web/components/pagination/main.dart
     - web/components/progress/main.dart
     - web/components/rating/main.dart

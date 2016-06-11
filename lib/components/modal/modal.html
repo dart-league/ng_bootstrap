@@ -1,0 +1,47 @@
+<div class="modal-backdrop fade in"
+     [style.display]="showModal ? 'block' : 'none'"></div>
+<div class="modal"
+     tabindex="-1"
+     role="dialog"
+     [style.display]="showModal ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button"
+                class="close"
+                aria-label="Close"
+                (click)="cancelAction()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">
+          {{header}}
+          <ng-content select="header"></ng-content>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <ng-content></ng-content>
+      </div>
+      <div class="modal-footer">
+        <ng-content select="footer"></ng-content>
+        <button *ngIf="actions.contains('POSITIVE')"
+                type="button"
+                class="btn btn-primary"
+                (click)="positiveAction()">
+          {{positiveLabel}}
+        </button>
+        <button *ngIf="actions.contains('NEGATIVE')"
+                type="button"
+                class="btn btn-secondary"
+                (click)="negativeAction()">
+          {{negativeLabel}}
+        </button>
+        <button *ngIf="actions.contains('CANCEL')"
+                type="button"
+                class="btn btn-secondary"
+                (click)="cancelAction()">
+          {{cancelLabel}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

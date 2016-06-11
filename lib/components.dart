@@ -11,3 +11,4 @@ export "components/pagination/pager.dart";
 export "components/progress/progress.dart";
 export "components/tabs/tabs.dart";
 export "components/tooltip/tooltip.dart";
+export 'components/modal/modal.dart';

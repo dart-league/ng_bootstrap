@@ -12,6 +12,7 @@ class DemoHeader {
     "Carousel",
     "Collapse",
     "Dropdown",
+    "Modal",
     "Pagination",
     "Progress",
     "Tabs",

@@ -8,6 +8,7 @@ const List NG_BOOTSTRAP_DIRECTIVES = const [
   Dropdown,
   DropdownMenu,
   DropdownToggle,
+  Modal,
   Pager,
   Pagination,
   RadioButton,

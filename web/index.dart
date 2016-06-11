@@ -13,6 +13,7 @@ import 'components/pagination/pagination_demo.dart';
 import 'components/progress/progress_demo.dart';
 import 'components/tabs/tabs_demo.dart';
 import 'components/tooltip/tooltip_demo.dart';
+import 'components/modal/modal_demo.dart';
 
 @Component(
     selector: "app",
@@ -25,6 +26,7 @@ import 'components/tooltip/tooltip_demo.dart';
       CarouselDemo,
       CollapseDemo,
       DropdownDemo,
+      ModalDemo,
       PaginationDemo,
       ProgressDemo,
       TabsDemo,
