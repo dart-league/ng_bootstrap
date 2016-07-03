@@ -1,5 +1,4 @@
-import 'package:angular2/angular2.dart';
-import 'dropdown.dart';
+part of bs_dropdown;
 
 /// Creates a dropdown-menu component that will be showed
 /// every time that a [Dropdown] is open

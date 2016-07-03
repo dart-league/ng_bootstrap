@@ -1,0 +1,32 @@
+<div class='container-fluid'>
+  <h4>Static arrays</h4>
+    <pre>Model: {{selected}}
+Selected Item: {{selectedItem}}</pre>
+  <bs-typeahead [(ngModel)]="selected"
+                 [source]="statesComplex"
+                 [(selectedItem)]="selectedItem"
+                 (selectedItemChange)="typeaheadOnSelect($event)"
+                 [optionField]="'name'">
+    <!--<template ngbs-renderer>-->
+      <!--{{item['name']}}-->
+    <!--</template>-->
+  </bs-typeahead>
+
+  <h4>Asynchronous results</h4>
+    <pre>Model: {{selectedAsync}}
+Selected Item: {{selectedItemAsync}}</pre>
+  <bs-typeahead [(ngModel)]="selectedAsync"
+                 [source]="getAsyncData"
+                 [(selectedItem)]="selectedItemAsync"
+                 (loading)="changeTypeaheadLoading($event)"
+                 (noResults)="changeTypeaheadNoResults($event)"
+                 (select)="typeaheadOnSelect($event)"
+                 [optionsLimit]="7"
+                 placeholder="Locations loaded with timeout"></bs-typeahead>
+  <div [hidden]="typeaheadLoading!==true">
+    <i class="glyphicon glyphicon-refresh ng-hide" style=""></i>
+  </div>
+  <div [hidden]="typeaheadNoResults!==true" class="" style="">
+    <i class="glyphicon glyphicon-remove"></i> No Results Found
+  </div>
+</div>

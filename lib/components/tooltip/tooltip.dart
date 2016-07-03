@@ -20,15 +20,15 @@ class Tooltip implements OnInit {
   Map<String, dynamic> classMap = {};
 
   /// value in pixels of the top style
-  @HostBinding('[style.top]')
+  @HostBinding('style.top')
   String top;
 
   /// value in pixels of the left style
-  @HostBinding('[style.left]')
+  @HostBinding('style.left')
   String left;
 
   /// display style of the tooltip
-  @HostBinding('[style.display]')
+  @HostBinding('style.display')
   String display = 'none';
 
   @Input()
@@ -43,7 +43,7 @@ class Tooltip implements OnInit {
 
   /// if `false` fade tooltip animation will be disabled
   @Input()
-  @HostBinding('[class.fade]')
+  @HostBinding('class.fade')
   bool animation = true;
 
   @Input('for')
@@ -57,14 +57,10 @@ class Tooltip implements OnInit {
   @Input()
   String hideEvent = 'mouseleave';
 
-  @HostBinding('[class.in]')
+  @HostBinding('class.in')
   bool classIn = false;
 
   bool _enable = true;
-
-  /// Constructs a new [Tooltip]
-  /// injecting its [elementRef] and the [options]
-  Tooltip(this.elementRef);
 
   /// if `false` tooltip is disabled and will not be shown
   @Input()
@@ -77,6 +73,10 @@ class Tooltip implements OnInit {
 
   @Input()
   int popupDelay = 0;
+
+  /// Constructs a new [Tooltip]
+  /// injecting its [elementRef] and the [options]
+  Tooltip(this.elementRef);
 
   /// positions its DOM element next to the parent in the desired position
   @override

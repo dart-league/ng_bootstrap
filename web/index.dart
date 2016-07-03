@@ -1,6 +1,5 @@
 import "package:angular2/angular2.dart";
 import 'package:angular2/platform/browser.dart';
-import "package:ng_bootstrap/ng_bootstrap.dart";
 
 import 'components/alert/alert_demo.dart';
 import 'components/buttons/buttons_demo.dart';
@@ -14,6 +13,7 @@ import 'components/progress/progress_demo.dart';
 import 'components/tabs/tabs_demo.dart';
 import 'components/tooltip/tooltip_demo.dart';
 import 'components/modal/modal_demo.dart';
+import 'components/typeahead/typeahead_demo.dart';
 
 @Component(
     selector: "app",
@@ -30,7 +30,8 @@ import 'components/modal/modal_demo.dart';
       PaginationDemo,
       ProgressDemo,
       TabsDemo,
-      TooltipDemo
+      TooltipDemo,
+      TypeaheadDemo
     ])
 class Demo {}
 

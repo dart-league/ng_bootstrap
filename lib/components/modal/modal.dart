@@ -46,7 +46,7 @@ class Modal {
 
   negativeAction() {
     showModal = false;
-    close.emit(ModalAction.POSITIVE);
+    close.emit(ModalAction.NEGATIVE);
     return false;
   }
 

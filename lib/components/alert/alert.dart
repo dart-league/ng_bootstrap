@@ -15,11 +15,7 @@ import "package:angular2/angular2.dart";
     ''',
     host: const {
       'class': 'alert',
-      'role': 'alert',
-      '[class.alert-success]': 'isSuccess',
-      '[class.alert-info]': 'isInfo',
-      '[class.alert-warning]': 'isWarning',
-      '[class.alert-danger]': 'isDanger',
+      'role': 'alert'
     })
 class Alert implements OnInit {
   /// provides the element reference to get native element
@@ -39,20 +35,24 @@ class Alert implements OnInit {
   @Input() int timeout;
 
   @Input()
-  @HostBinding('[class.alert-dismissible]')
+  @HostBinding('class.alert-dismissible')
   bool dismissible = false;
 
-  Alert(this._elementRef);
-
+  @HostBinding('class.alert-success')
   bool get isSuccess => type == 'success';
 
+  @HostBinding('class.alert-info')
   bool get isInfo => type == 'info';
 
+  @HostBinding('class.alert-warning')
   bool get isWarning => type == 'warning';
 
+  @HostBinding('class.alert-danger')
   bool get isDanger => type == 'danger';
 
   bool get hasTimeout => timeout != null;
+
+  Alert(this._elementRef);
 
   ngOnInit() {
     if (hasTimeout) {

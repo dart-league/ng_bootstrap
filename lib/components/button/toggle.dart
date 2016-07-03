@@ -1,7 +1,8 @@
 import "package:angular2/angular2.dart";
 
 @Directive(
-    selector: "bs-toggle-button", host: const {"[class.active]": "active"})
+    selector: "bs-toggle-button",
+    host: const {"[class.active]": "active"})
 class ToggleButton extends DefaultValueAccessor {
   NgModel ngModel;
 

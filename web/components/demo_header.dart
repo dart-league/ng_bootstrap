@@ -16,7 +16,8 @@ class DemoHeader {
     "Pagination",
     "Progress",
     "Tabs",
-    "Tooltip"
+    "Tooltip",
+    "Typeahead"
   ];
 
   String prefix;

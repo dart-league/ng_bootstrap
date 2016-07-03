@@ -1,10 +1,4 @@
-import "package:angular2/angular2.dart";
-import 'package:node_shims/js.dart';
-import 'dart:html';
-
-import 'service.dart';
-import 'menu.dart';
-import 'toggle.dart';
+part of bs_dropdown;
 
 @Directive (selector: "bs-dropdown, .dropdown",
     host: const {"[class.dropdown]" : "true", "[class.open]" : "isOpen"})
