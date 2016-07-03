@@ -11,3 +11,4 @@ export "components/tabs/tabs.dart";
 export "components/tooltip/tooltip.dart";
 export "components/typeahead/typeahead.dart";
 export 'components/modal/modal.dart';
+export 'components/datepicker/index.dart';
