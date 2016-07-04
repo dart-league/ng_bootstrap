@@ -95,7 +95,7 @@ class AccordionPanel implements OnInit, OnDestroy {
   /// initialize the default values of the attributes
   @override
   ngOnInit() {
-    panelClass = or(panelClass, 'panel-default');
+    panelClass = or(panelClass, 'panel-secondary');
     accordion.addPanel(this);
     _isOpen ??= false;
   }
