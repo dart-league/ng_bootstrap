@@ -30,8 +30,8 @@
   <bs-accordion-panel [(isOpen)]="status['isLastOpen']">
     <header>
       <i>I can have markup, too!</i>
-      <!--<i class="pull-right glyphicon"-->
-         <!--[ngClass]="{'glyphicon-chevron-down': status['isLastOpen'], 'glyphicon-chevron-right': !status['isLastOpen']}"></i>-->
+      <i class="pull-right fa"
+         [ngClass]="{'fa-chevron-down': status['isLastOpen'], 'fa-chevron-right': !status['isLastOpen']}"></i>
     </header>
     This is just some content to illustrate fancy headings.
   </bs-accordion-panel>
