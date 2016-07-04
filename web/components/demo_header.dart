@@ -19,6 +19,7 @@ class DemoHeader {
     "Progress",
     "Rating",
     "Tabs",
+    "Tabsx",
     "Timepicker",
     "Tooltip",
     "Typeahead"

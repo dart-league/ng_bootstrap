@@ -34,7 +34,7 @@ class Tabs implements AfterContentInit{
   String toAnchor(String path) => '#$path';
 }
 
-@Directive(selector: "[bsTab]")
+@Directive(selector: "template[bsTab]")
 class Tab {
   TemplateRef templateRef;
 
@@ -70,7 +70,7 @@ class TabContent implements AfterContentInit {
   }
 }
 
-@Directive(selector: '[bs-tab-panel]')
+@Directive(selector: 'template[bs-tab-panel]')
 class TabPanel {
   TemplateRef templateRef;
 

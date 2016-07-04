@@ -14,26 +14,18 @@
   <br>
 
   <div class="col-lg-7">
-    <bs-tabs #tabs>
-        <template bsTab select="markup">
-            Markup
-        </template>
-        <template bsTab select="code">
-            Dart
-        </template>
-    </bs-tabs>
-    <bs-tab-content [for]="tabs">
-      <template bs-tab-panel name="markup">
-          <pre class="prettyprint">
-              <code class="language-html">{{html}}</code>
-          </pre>
-      </template>
-      <template bs-tab-panel name="code">
-          <pre class="prettyprint">
-              <code class="language-dart">{{dart}}</code>
-          </pre>
-      </template>
-    </bs-tab-content>
+    <bs-tabsx #tabs>
+      <bs-tabx header="Markup">
+        <pre class="prettyprint">
+            <code class="language-html">{{html}}</code>
+        </pre>
+      </bs-tabx>
+      <bs-tabx header="Dart">
+        <pre class="prettyprint">
+          <code class="language-dart">{{dart}}</code>
+        </pre>
+      </bs-tabx>
+    </bs-tabsx>
   </div>
 
 </section>

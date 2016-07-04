@@ -18,6 +18,7 @@ import 'components/timepicker/timepicker_demo.dart';
 import 'components/tooltip/tooltip_demo.dart';
 import 'components/modal/modal_demo.dart';
 import 'components/typeahead/typeahead_demo.dart';
+import 'components/tabsx/tabsx_demo.dart';
 
 @Component(
     selector: "app",
@@ -37,6 +38,7 @@ import 'components/typeahead/typeahead_demo.dart';
       ProgressDemo,
       RatingDemo,
       TabsDemo,
+      TabsxDemo,
       TimepickerDemo,
       TooltipDemo,
       TypeaheadDemo

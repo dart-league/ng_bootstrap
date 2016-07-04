@@ -1,0 +1,18 @@
+<ul class="nav"
+    [ngClass]="{
+          'nav-stacked' : vertical,
+          'nav-justified' : justified,
+          'nav-tabs' : type == 'tabs',
+          'nav-pills' : type == 'pills'
+        }"
+    (click)="$event.preventDefault()">
+  <li *ngFor="let tab of tabs" class="nav-item" [ngClass]="{active: tab.active, disabled: tab.disabled}">
+    <a href class="nav-link" [ngClass]="{active: tab.active, disabled: tab.disabled}" (click)="tab.active = true">
+      {{tab.header}}
+      <template [ngTemplateOutlet]="tab.headerRef"></template>
+    </a>
+  </li>
+</ul>
+<div class="tab-content">
+  <ng-content></ng-content>
+</div>
