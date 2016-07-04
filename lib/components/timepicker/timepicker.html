@@ -1,9 +1,9 @@
 <table>
   <tbody>
   <tr class="text-center" [ngClass]="{hidden: !showSpinners}">
-    <td><a (click)="incrementHours()" [ngClass]="{disabled: noIncrementHours()}" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+    <td><a (click)="incrementHours()" [ngClass]="{disabled: noIncrementHours()}" class="btn btn-link"><span class="fa fa-chevron-up"></span></a></td>
     <td>&nbsp;</td>
-    <td><a (click)="incrementMinutes()" [ngClass]="{disabled: noIncrementMinutes()}" class="btn btn-link"><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+    <td><a (click)="incrementMinutes()" [ngClass]="{disabled: noIncrementMinutes()}" class="btn btn-link"><span class="fa fa-chevron-up"></span></a></td>
     <td [ngClass]="{hidden: !showMeridian}" [hidden]="!showMeridian"></td>
   </tr>
   <tr>
@@ -17,9 +17,9 @@
     <td [ngClass]="{hidden: !showMeridian}" [hidden]="!showMeridian"><button type="button" [ngClass]="{disabled: noToggleMeridian()}" class="btn btn-default text-center" (click)="toggleMeridian()">{{meridian}}</button></td>
   </tr>
   <tr class="text-center" [ngClass]="{hidden: !showSpinners}">
-    <td><a (click)="decrementHours()" [ngClass]="{disabled: noDecrementHours()}" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+    <td><a (click)="decrementHours()" [ngClass]="{disabled: noDecrementHours()}" class="btn btn-link"><span class="fa fa-chevron-down"></span></a></td>
     <td>&nbsp;</td>
-    <td><a (click)="decrementMinutes()" [ngClass]="{disabled: noDecrementMinutes()}" class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+    <td><a (click)="decrementMinutes()" [ngClass]="{disabled: noDecrementMinutes()}" class="btn btn-link"><span class="fa fa-chevron-down"></span></a></td>
     <td [ngClass]="{hidden: !showMeridian}" [hidden]="!showMeridian"></td>
   </tr>
   </tbody>

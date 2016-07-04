@@ -17,6 +17,7 @@ dependencies:
   sass: ^0.4.2
   bootstrap_sass: 4.0.0-alpha.2
   stream_transformers: ^0.3.0+3
+  font_awesome: ^4.6.3
 transformers:
 - sass
 - angular2:

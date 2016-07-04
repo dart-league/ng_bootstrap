@@ -56,8 +56,8 @@ class Rating extends DefaultValueAccessor implements OnInit {
   ngOnInit() {
     max ??= 5;
     readonly = readonly == true;
-    stateOn ??= "glyphicon-star";
-    stateOff ??= "glyphicon-star-empty";
+    stateOn ??= "fa-star";
+    stateOff ??= "fa-star-o";
     titles = titles != null && titles.length > 0  ? titles : ["one", "two", "three", "four", "five"];
     ratingStates ??= [];
     range = _buildTemplateObjects();
