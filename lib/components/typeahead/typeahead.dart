@@ -4,6 +4,7 @@ import "package:angular2/angular2.dart";
 import 'package:ng_bootstrap/components/dropdown/index.dart';
 import 'package:stream_transformers/stream_transformers.dart';
 import 'package:ng_bootstrap/components/button/toggle.dart';
+import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart';
 
 // todo: options loading by http not yet implemented
 /// Creates a type-ahead component
@@ -12,7 +13,7 @@ import 'package:ng_bootstrap/components/button/toggle.dart';
 @Component(
     selector: "bs-typeahead",
     templateUrl: 'typeahead.html',
-    directives: const [NG_BOOTSTRAP_DROPDOWN_DIRECTIVES, ToggleButton])
+    directives: const [NG_BOOTSTRAP_DROPDOWN_DIRECTIVES, ToggleButton, BsTemplateOutlet])
 class TypeAhead extends DefaultValueAccessor {
 
   /// Construct a [TypeAhead] component injecting [ngModel], [renderer], [elementRef]
@@ -33,6 +34,9 @@ class TypeAhead extends DefaultValueAccessor {
 
   /// binds to string user's input
   NgModel ngModel;
+
+  @ContentChild(TemplateRef)
+  TemplateRef itemTemplate;
 
   /// fires 'busy' state of this component was changed, fired on `async` mode only, returns
   /// `boolean`
@@ -208,14 +212,12 @@ class TypeAhead extends DefaultValueAccessor {
   }
 }
 
-/// (*not implemented*) This component is used to pass an html template to the dropdown-menu-item
-@Directive(selector: 'template[ngbs-renderer]')
-class NgBsRenderer {
-
-  /// constructs a [NgBsRenderer] passing the [templateRef]
-  NgBsRenderer(this.templateRef);
-
-  /// current DOM element reference.
-  TemplateRef templateRef;
-
-}
+///// This component is used to pass an html template to the dropdown-menu-item
+//@Directive(selector: 'template[bsRenderer]')
+//class BsRenderer {
+//
+//  /// constructs a [BsRenderer] passing the [templateRef]
+//  BsRenderer(TemplateRef templateRef, TypeAhead typeAhead) {
+//    typeAhead.rendererRef = templateRef;
+//  }
+//}
