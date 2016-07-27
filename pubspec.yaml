@@ -2,8 +2,8 @@ name: ng_bootstrap
 version: 0.1.0
 description: Angular 2 and Bootstrap 4
 authors:
-  - Adao Jr. <itsjunnior@gmail.com>
   - Luis Vargas <luisvargastijerino@gmail.com>
+  - Adao Jr. <itsjunnior@gmail.com>
 homepage: https://github.com/dart-league/ng_bootstrap
 environment:
   sdk: '>=1.12.0 <2.0.0'
