@@ -1,0 +1,24 @@
+<bs-datepicker-inner [activeDate]="activeDate"
+                      (update)="writeValue($event)"
+                      [datePickerMode]="datePickerMode"
+                      [initDate]="initDate"
+                      [minDate]="minDate"
+                      [maxDate]="maxDate"
+                      [minDode]="minMode"
+                      [maxDode]="maxMode"
+                      [showDeeks]="showWeeks"
+                      [formatDay]="formatDay"
+                      [formatMonth]="formatMonth"
+                      [formatYear]="formatYear"
+                      [formatDayHeader]="formatDayHeader"
+                      [formatDayTitle]="formatDayTitle"
+                      [formatMonthTitle]="formatMonthTitle"
+                      [startingDay]="startingDay"
+                      [yearRange]="yearRange"
+                      [customClass]="customClass"
+                      [dateDisabled]="dateDisabled"
+                      [shortcutPropagation]="shortcutPropagation">
+  <bs-day-picker tabindex="0"></bs-day-picker>
+  <bs-month-picker tabindex="0"></bs-month-picker>
+  <bs-year-picker tabindex="0"></bs-year-picker>
+</bs-datepicker-inner>

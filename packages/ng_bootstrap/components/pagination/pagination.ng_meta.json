@@ -1,0 +1,127 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "dart:math",
+        "4": "math",
+        "5": false
+      },
+      {
+        "1": "package:angular2/angular2.dart",
+        "5": false
+      },
+      {
+        "1": "pager.dart",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "Pagination",
+        "5": [
+          {
+            "1": "ElementRef",
+            "4": "elementRef"
+          }
+        ],
+        "6": [
+          "OnInit"
+        ]
+      }
+    ],
+    "6": "pagination.dart",
+    "7": [
+      {
+        "1": "package:angular2/angular2.ngfactory.dart",
+        "4": "i0"
+      },
+      {
+        "1": "pager.ngfactory.dart",
+        "4": "i1"
+      }
+    ]
+  },
+  "type": {
+    "Pagination": {
+      "class": "Directive",
+      "isComponent": true,
+      "selector": "bs-pagination",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "Pagination",
+        "moduleUrl": "asset:ng_bootstrap/lib/components/pagination/pagination.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "ElementRef",
+                "moduleUrl": "asset:angular2/lib/src/core/linker/element_ref.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 5,
+      "inputs": {
+        "previousText": "previousText",
+        "nextText": "nextText",
+        "align": "align",
+        "disabled": "disabled",
+        "currentPage": "currentPage",
+        "itemsPerPage": "itemsPerPage",
+        "totalItems": "totalItems",
+        "classes": "class",
+        "maxSize": "maxSize",
+        "rotate": "rotate",
+        "directionLinks": "directionLinks",
+        "boundaryLinks": "boundaryLinks",
+        "firstText": "firstText",
+        "lastText": "lastText"
+      },
+      "outputs": {
+        "totalPagesChange": "totalPagesChange",
+        "currentPageChange": "currentPageChange"
+      },
+      "hostListeners": {
+        "currentPageChange": "onCurrentPageChange($event)"
+      },
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [
+        0
+      ],
+      "template": {
+        "encapsulation": 2,
+        "template": "<ul class=\"pagination\" [ngClass]=\"'pagination-' + classes\">\n  <li class=\"page-item\"\n      [ngClass]=\"{disabled: noPrevious() || disabled, hidden: !boundaryLinks}\"\n      *ngIf=\"boundaryLinks\">\n    <a class=\"page-link\" href (click)=\"selectPage(1, $event)\">{{firstText}}</a>\n  </li>\n\n  <li class=\"page-item\"\n      [ngClass]=\"{disabled: noPrevious()||disabled, hidden: !directionLinks}\"\n      *ngIf=\"directionLinks\">\n    <a class=\"page-link\" href=\"\" (click)=\"selectPage(currentPage - 1, $event)\">{{previousText}}</a>\n  </li>\n\n  <li *ngFor=\"let page of pages\" [ngClass]=\"{active: page['active'], disabled: disabled && !page['active']}\"\n      class=\"page-item\">\n    <a class=\"page-link\" href (click)=\"selectPage(page['number'], $event)\">{{page['text']}}</a>\n  </li>\n\n  <li class=\"page-item\"\n      [ngClass]=\"{disabled: noNext() || disabled, hidden: !directionLinks}\"\n      *ngIf=\"directionLinks\">\n    <a class=\"page-link\" href (click)=\"selectPage(currentPage + 1, $event)\">{{nextText}}</a>\n  </li>\n\n  <li class=\"page-item\"\n      [ngClass]=\"{disabled: noNext() || disabled, hidden: !boundaryLinks}\"\n      *ngIf=\"boundaryLinks\">\n    <a class=\"page-link\" href=\"\" (click)=\"selectPage(totalPages, $event)\">{{lastText}}</a>\n  </li>\n</ul>\n",
+        "templateUrl": "asset:ng_bootstrap/lib/components/pagination/pagination.html",
+        "styles": [],
+        "styleUrls": [],
+        "ngContentSelectors": []
+      },
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    }
+  },
+  "alias": {}
+}

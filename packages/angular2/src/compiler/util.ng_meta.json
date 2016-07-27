@@ -1,0 +1,55 @@
+{
+  "ngDeps": {
+    "1": "angular2.src.compiler.util",
+    "3": [
+      {
+        "1": "package:angular2/src/facade/lang.dart",
+        "2": [
+          "IS_DART",
+          "StringWrapper",
+          "Math",
+          "isBlank"
+        ],
+        "5": false
+      }
+    ],
+    "6": "util.dart",
+    "7": [
+      {
+        "1": "package:angular2/src/facade/lang.ngfactory.dart",
+        "4": "i0"
+      }
+    ]
+  },
+  "type": {
+    "camelCaseToDashCase": {
+      "class": "Identifier",
+      "name": "camelCaseToDashCase",
+      "moduleUrl": "asset:angular2/lib/src/compiler/util.dart",
+      "prefix": null,
+      "value": null
+    },
+    "dashCaseToCamelCase": {
+      "class": "Identifier",
+      "name": "dashCaseToCamelCase",
+      "moduleUrl": "asset:angular2/lib/src/compiler/util.dart",
+      "prefix": null,
+      "value": null
+    },
+    "splitAtColon": {
+      "class": "Identifier",
+      "name": "splitAtColon",
+      "moduleUrl": "asset:angular2/lib/src/compiler/util.dart",
+      "prefix": null,
+      "value": null
+    },
+    "sanitizeIdentifier": {
+      "class": "Identifier",
+      "name": "sanitizeIdentifier",
+      "moduleUrl": "asset:angular2/lib/src/compiler/util.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

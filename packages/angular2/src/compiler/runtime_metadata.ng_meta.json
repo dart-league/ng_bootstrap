@@ -1,0 +1,507 @@
+{
+  "ngDeps": {
+    "1": "angular2.src.compiler.runtime_metadata",
+    "3": [
+      {
+        "1": "package:angular2/src/core/di.dart",
+        "2": [
+          "resolveForwardRef"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/facade/lang.dart",
+        "2": [
+          "Type",
+          "isBlank",
+          "isPresent",
+          "isArray",
+          "stringify",
+          "isString",
+          "RegExpWrapper",
+          "StringWrapper"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/facade/collection.dart",
+        "2": [
+          "StringMapWrapper"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/facade/exceptions.dart",
+        "2": [
+          "BaseException"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/core/di/reflective_exceptions.dart",
+        "2": [
+          "NoAnnotationError"
+        ],
+        "5": false
+      },
+      {
+        "1": "compile_metadata.dart",
+        "4": "cpl",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/core/metadata/directives.dart",
+        "4": "md",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/core/metadata/di.dart",
+        "4": "dimd",
+        "5": false
+      },
+      {
+        "1": "directive_resolver.dart",
+        "2": [
+          "DirectiveResolver"
+        ],
+        "5": false
+      },
+      {
+        "1": "pipe_resolver.dart",
+        "2": [
+          "PipeResolver"
+        ],
+        "5": false
+      },
+      {
+        "1": "view_resolver.dart",
+        "2": [
+          "ViewResolver"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/core/metadata/view.dart",
+        "2": [
+          "ViewMetadata"
+        ],
+        "5": false
+      },
+      {
+        "1": "directive_lifecycle_reflector.dart",
+        "2": [
+          "hasLifecycleHook"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/core/metadata/lifecycle_hooks.dart",
+        "2": [
+          "LifecycleHooks",
+          "LIFECYCLE_HOOKS_VALUES"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/core/reflection/reflection.dart",
+        "2": [
+          "reflector"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/core/di.dart",
+        "2": [
+          "Injectable",
+          "Inject",
+          "Optional"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/core/platform_directives_and_pipes.dart",
+        "2": [
+          "PLATFORM_DIRECTIVES",
+          "PLATFORM_PIPES"
+        ],
+        "5": false
+      },
+      {
+        "1": "util.dart",
+        "2": [
+          "MODULE_SUFFIX",
+          "sanitizeIdentifier"
+        ],
+        "5": false
+      },
+      {
+        "1": "assertions.dart",
+        "2": [
+          "assertArrayOfStrings"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/compiler/url_resolver.dart",
+        "2": [
+          "getUrlScheme"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/core/di/provider.dart",
+        "2": [
+          "Provider"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/core/di/reflective_provider.dart",
+        "2": [
+          "constructDependencies",
+          "ReflectiveDependency"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/core/di/metadata.dart",
+        "2": [
+          "OptionalMetadata",
+          "SelfMetadata",
+          "HostMetadata",
+          "SkipSelfMetadata"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/core/reflection/reflector_reader.dart",
+        "2": [
+          "ReflectorReader"
+        ],
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "RuntimeMetadataResolver",
+        "4": [
+          {
+            "1": "Injectable",
+            "4": false
+          }
+        ],
+        "5": [
+          {
+            "1": "DirectiveResolver",
+            "4": "_directiveResolver"
+          },
+          {
+            "1": "PipeResolver",
+            "4": "_pipeResolver"
+          },
+          {
+            "1": "ViewResolver",
+            "4": "_viewResolver"
+          },
+          {
+            "1": "List",
+            "2": "<Type>",
+            "3": [
+              "const Optional()",
+              "const Inject(PLATFORM_DIRECTIVES)"
+            ],
+            "4": "_platformDirectives"
+          },
+          {
+            "1": "List",
+            "2": "<Type>",
+            "3": [
+              "const Optional()",
+              "const Inject(PLATFORM_PIPES)"
+            ],
+            "4": "_platformPipes"
+          },
+          {
+            "1": "ReflectorReader",
+            "4": "_reflector"
+          }
+        ]
+      }
+    ],
+    "6": "runtime_metadata.dart",
+    "7": [
+      {
+        "1": "package:angular2/src/core/di.ngfactory.dart",
+        "4": "i0"
+      },
+      {
+        "1": "package:angular2/src/facade/lang.ngfactory.dart",
+        "4": "i1"
+      },
+      {
+        "1": "package:angular2/src/facade/collection.ngfactory.dart",
+        "4": "i2"
+      },
+      {
+        "1": "package:angular2/src/facade/exceptions.ngfactory.dart",
+        "4": "i3"
+      },
+      {
+        "1": "package:angular2/src/core/di/reflective_exceptions.ngfactory.dart",
+        "4": "i4"
+      },
+      {
+        "1": "compile_metadata.ngfactory.dart",
+        "4": "i5"
+      },
+      {
+        "1": "package:angular2/src/core/metadata/directives.ngfactory.dart",
+        "4": "i6"
+      },
+      {
+        "1": "package:angular2/src/core/metadata/di.ngfactory.dart",
+        "4": "i7"
+      },
+      {
+        "1": "directive_resolver.ngfactory.dart",
+        "4": "i8"
+      },
+      {
+        "1": "pipe_resolver.ngfactory.dart",
+        "4": "i9"
+      },
+      {
+        "1": "view_resolver.ngfactory.dart",
+        "4": "i10"
+      },
+      {
+        "1": "package:angular2/src/core/metadata/view.ngfactory.dart",
+        "4": "i11"
+      },
+      {
+        "1": "directive_lifecycle_reflector.ngfactory.dart",
+        "4": "i12"
+      },
+      {
+        "1": "package:angular2/src/core/metadata/lifecycle_hooks.ngfactory.dart",
+        "4": "i13"
+      },
+      {
+        "1": "package:angular2/src/core/reflection/reflection.ngfactory.dart",
+        "4": "i14"
+      },
+      {
+        "1": "package:angular2/src/core/platform_directives_and_pipes.ngfactory.dart",
+        "4": "i15"
+      },
+      {
+        "1": "util.ngfactory.dart",
+        "4": "i16"
+      },
+      {
+        "1": "assertions.ngfactory.dart",
+        "4": "i17"
+      },
+      {
+        "1": "package:angular2/src/compiler/url_resolver.ngfactory.dart",
+        "4": "i18"
+      },
+      {
+        "1": "package:angular2/src/core/di/provider.ngfactory.dart",
+        "4": "i19"
+      },
+      {
+        "1": "package:angular2/src/core/di/reflective_provider.ngfactory.dart",
+        "4": "i20"
+      },
+      {
+        "1": "package:angular2/src/core/di/metadata.ngfactory.dart",
+        "4": "i21"
+      },
+      {
+        "1": "package:angular2/src/core/reflection/reflector_reader.ngfactory.dart",
+        "4": "i22"
+      }
+    ]
+  },
+  "type": {
+    "RuntimeMetadataResolver": {
+      "class": "Type",
+      "name": "RuntimeMetadataResolver",
+      "moduleUrl": "asset:angular2/lib/src/compiler/runtime_metadata.dart",
+      "prefix": null,
+      "isHost": false,
+      "value": null,
+      "diDeps": [
+        {
+          "token": {
+            "value": null,
+            "identifier": {
+              "class": "Identifier",
+              "name": "DirectiveResolver",
+              "moduleUrl": "asset:angular2/lib/src/compiler/directive_resolver.dart",
+              "prefix": null,
+              "value": null
+            },
+            "identifierIsInstance": false
+          },
+          "query": null,
+          "viewQuery": null,
+          "value": null,
+          "isAttribute": false,
+          "isSelf": false,
+          "isHost": false,
+          "isSkipSelf": false,
+          "isOptional": false,
+          "isValue": false
+        },
+        {
+          "token": {
+            "value": null,
+            "identifier": {
+              "class": "Identifier",
+              "name": "PipeResolver",
+              "moduleUrl": "asset:angular2/lib/src/compiler/pipe_resolver.dart",
+              "prefix": null,
+              "value": null
+            },
+            "identifierIsInstance": false
+          },
+          "query": null,
+          "viewQuery": null,
+          "value": null,
+          "isAttribute": false,
+          "isSelf": false,
+          "isHost": false,
+          "isSkipSelf": false,
+          "isOptional": false,
+          "isValue": false
+        },
+        {
+          "token": {
+            "value": null,
+            "identifier": {
+              "class": "Identifier",
+              "name": "ViewResolver",
+              "moduleUrl": "asset:angular2/lib/src/compiler/view_resolver.dart",
+              "prefix": null,
+              "value": null
+            },
+            "identifierIsInstance": false
+          },
+          "query": null,
+          "viewQuery": null,
+          "value": null,
+          "isAttribute": false,
+          "isSelf": false,
+          "isHost": false,
+          "isSkipSelf": false,
+          "isOptional": false,
+          "isValue": false
+        },
+        {
+          "token": {
+            "value": null,
+            "identifier": {
+              "class": "Identifier",
+              "name": "PLATFORM_DIRECTIVES",
+              "moduleUrl": "asset:angular2/lib/src/core/platform_directives_and_pipes.dart",
+              "prefix": null,
+              "value": null
+            },
+            "identifierIsInstance": false
+          },
+          "query": null,
+          "viewQuery": null,
+          "value": null,
+          "isAttribute": false,
+          "isSelf": false,
+          "isHost": false,
+          "isSkipSelf": false,
+          "isOptional": true,
+          "isValue": false
+        },
+        {
+          "token": {
+            "value": null,
+            "identifier": {
+              "class": "Identifier",
+              "name": "PLATFORM_PIPES",
+              "moduleUrl": "asset:angular2/lib/src/core/platform_directives_and_pipes.dart",
+              "prefix": null,
+              "value": null
+            },
+            "identifierIsInstance": false
+          },
+          "query": null,
+          "viewQuery": null,
+          "value": null,
+          "isAttribute": false,
+          "isSelf": false,
+          "isHost": false,
+          "isSkipSelf": false,
+          "isOptional": true,
+          "isValue": false
+        },
+        {
+          "token": {
+            "value": null,
+            "identifier": {
+              "class": "Identifier",
+              "name": "ReflectorReader",
+              "moduleUrl": "asset:angular2/lib/src/core/reflection/reflector_reader.dart",
+              "prefix": null,
+              "value": null
+            },
+            "identifierIsInstance": false
+          },
+          "query": null,
+          "viewQuery": null,
+          "value": null,
+          "isAttribute": false,
+          "isSelf": false,
+          "isHost": false,
+          "isSkipSelf": false,
+          "isOptional": false,
+          "isValue": false
+        }
+      ]
+    },
+    "flattenDirectives": {
+      "class": "Identifier",
+      "name": "flattenDirectives",
+      "moduleUrl": "asset:angular2/lib/src/compiler/runtime_metadata.dart",
+      "prefix": null,
+      "value": null
+    },
+    "flattenPipes": {
+      "class": "Identifier",
+      "name": "flattenPipes",
+      "moduleUrl": "asset:angular2/lib/src/compiler/runtime_metadata.dart",
+      "prefix": null,
+      "value": null
+    },
+    "flattenArray": {
+      "class": "Identifier",
+      "name": "flattenArray",
+      "moduleUrl": "asset:angular2/lib/src/compiler/runtime_metadata.dart",
+      "prefix": null,
+      "value": null
+    },
+    "isValidType": {
+      "class": "Identifier",
+      "name": "isValidType",
+      "moduleUrl": "asset:angular2/lib/src/compiler/runtime_metadata.dart",
+      "prefix": null,
+      "value": null
+    },
+    "calcModuleUrl": {
+      "class": "Identifier",
+      "name": "calcModuleUrl",
+      "moduleUrl": "asset:angular2/lib/src/compiler/runtime_metadata.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

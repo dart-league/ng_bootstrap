@@ -1,0 +1,476 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/angular2.dart",
+        "5": false
+      },
+      {
+        "1": "package:node_shims/js.dart",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "Tabsx",
+        "6": [
+          "OnInit"
+        ]
+      },
+      {
+        "1": "Tabx",
+        "5": [
+          {
+            "1": "Tabsx",
+            "4": "tabsx"
+          }
+        ],
+        "6": [
+          "OnInit",
+          "OnDestroy"
+        ]
+      },
+      {
+        "1": "TabxHeader",
+        "5": [
+          {
+            "1": "TemplateRef",
+            "4": "templateRef"
+          },
+          {
+            "1": "Tabx",
+            "4": "tab"
+          }
+        ]
+      }
+    ],
+    "6": "tabsx.dart",
+    "7": [
+      {
+        "1": "package:angular2/angular2.ngfactory.dart",
+        "4": "i0"
+      }
+    ]
+  },
+  "type": {
+    "NG_BOOTSTRAP_TABS_DIRECTIVES": {
+      "class": "Identifier",
+      "name": "NG_BOOTSTRAP_TABS_DIRECTIVES",
+      "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+      "prefix": null,
+      "value": [
+        {
+          "class": "Provider",
+          "token": {
+            "value": null,
+            "identifier": {
+              "class": "Type",
+              "name": "Tabx",
+              "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+              "prefix": null,
+              "isHost": false,
+              "value": null,
+              "diDeps": [
+                {
+                  "token": {
+                    "value": null,
+                    "identifier": {
+                      "class": "Identifier",
+                      "name": "Tabsx",
+                      "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+                      "prefix": null,
+                      "value": null
+                    },
+                    "identifierIsInstance": false
+                  },
+                  "query": null,
+                  "viewQuery": null,
+                  "value": null,
+                  "isAttribute": false,
+                  "isSelf": false,
+                  "isHost": false,
+                  "isSkipSelf": false,
+                  "isOptional": false,
+                  "isValue": false
+                }
+              ]
+            },
+            "identifierIsInstance": false
+          },
+          "useClass": {
+            "class": "Type",
+            "name": "Tabx",
+            "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+            "prefix": null,
+            "isHost": false,
+            "value": null,
+            "diDeps": [
+              {
+                "token": {
+                  "value": null,
+                  "identifier": {
+                    "class": "Identifier",
+                    "name": "Tabsx",
+                    "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+                    "prefix": null,
+                    "value": null
+                  },
+                  "identifierIsInstance": false
+                },
+                "query": null,
+                "viewQuery": null,
+                "value": null,
+                "isAttribute": false,
+                "isSelf": false,
+                "isHost": false,
+                "isSkipSelf": false,
+                "isOptional": false,
+                "isValue": false
+              }
+            ]
+          },
+          "useExisting": null,
+          "useValue": null,
+          "useFactory": null,
+          "multi": false,
+          "deps": null
+        },
+        {
+          "class": "Provider",
+          "token": {
+            "value": null,
+            "identifier": {
+              "class": "Type",
+              "name": "TabxHeader",
+              "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+              "prefix": null,
+              "isHost": false,
+              "value": null,
+              "diDeps": [
+                {
+                  "token": {
+                    "value": null,
+                    "identifier": {
+                      "class": "Identifier",
+                      "name": "TemplateRef",
+                      "moduleUrl": "asset:angular2/lib/src/core/linker/template_ref.dart",
+                      "prefix": null,
+                      "value": null
+                    },
+                    "identifierIsInstance": false
+                  },
+                  "query": null,
+                  "viewQuery": null,
+                  "value": null,
+                  "isAttribute": false,
+                  "isSelf": false,
+                  "isHost": false,
+                  "isSkipSelf": false,
+                  "isOptional": false,
+                  "isValue": false
+                },
+                {
+                  "token": {
+                    "value": null,
+                    "identifier": {
+                      "class": "Identifier",
+                      "name": "Tabx",
+                      "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+                      "prefix": null,
+                      "value": null
+                    },
+                    "identifierIsInstance": false
+                  },
+                  "query": null,
+                  "viewQuery": null,
+                  "value": null,
+                  "isAttribute": false,
+                  "isSelf": false,
+                  "isHost": false,
+                  "isSkipSelf": false,
+                  "isOptional": false,
+                  "isValue": false
+                }
+              ]
+            },
+            "identifierIsInstance": false
+          },
+          "useClass": {
+            "class": "Type",
+            "name": "TabxHeader",
+            "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+            "prefix": null,
+            "isHost": false,
+            "value": null,
+            "diDeps": [
+              {
+                "token": {
+                  "value": null,
+                  "identifier": {
+                    "class": "Identifier",
+                    "name": "TemplateRef",
+                    "moduleUrl": "asset:angular2/lib/src/core/linker/template_ref.dart",
+                    "prefix": null,
+                    "value": null
+                  },
+                  "identifierIsInstance": false
+                },
+                "query": null,
+                "viewQuery": null,
+                "value": null,
+                "isAttribute": false,
+                "isSelf": false,
+                "isHost": false,
+                "isSkipSelf": false,
+                "isOptional": false,
+                "isValue": false
+              },
+              {
+                "token": {
+                  "value": null,
+                  "identifier": {
+                    "class": "Identifier",
+                    "name": "Tabx",
+                    "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+                    "prefix": null,
+                    "value": null
+                  },
+                  "identifierIsInstance": false
+                },
+                "query": null,
+                "viewQuery": null,
+                "value": null,
+                "isAttribute": false,
+                "isSelf": false,
+                "isHost": false,
+                "isSkipSelf": false,
+                "isOptional": false,
+                "isValue": false
+              }
+            ]
+          },
+          "useExisting": null,
+          "useValue": null,
+          "useFactory": null,
+          "multi": false,
+          "deps": null
+        },
+        {
+          "class": "Provider",
+          "token": {
+            "value": null,
+            "identifier": {
+              "class": "Type",
+              "name": "Tabsx",
+              "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+              "prefix": null,
+              "isHost": false,
+              "value": null,
+              "diDeps": []
+            },
+            "identifierIsInstance": false
+          },
+          "useClass": {
+            "class": "Type",
+            "name": "Tabsx",
+            "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+            "prefix": null,
+            "isHost": false,
+            "value": null,
+            "diDeps": []
+          },
+          "useExisting": null,
+          "useValue": null,
+          "useFactory": null,
+          "multi": false,
+          "deps": null
+        }
+      ]
+    },
+    "Tabx": {
+      "class": "Directive",
+      "isComponent": false,
+      "selector": "bs-tabx",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "Tabx",
+        "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "Tabsx",
+                "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 5,
+      "inputs": {
+        "disabled": "disabled",
+        "header": "header",
+        "active": "active"
+      },
+      "outputs": {
+        "select": "select",
+        "deselect": "deselect"
+      },
+      "hostListeners": {},
+      "hostProperties": {
+        "class.tab-pane": "true",
+        "class.active": "active"
+      },
+      "hostAttributes": {},
+      "lifecycleHooks": [
+        0,
+        1
+      ],
+      "template": null,
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    },
+    "TabxHeader": {
+      "class": "Directive",
+      "isComponent": false,
+      "selector": "template[bs-tabx-header]",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "TabxHeader",
+        "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "TemplateRef",
+                "moduleUrl": "asset:angular2/lib/src/core/linker/template_ref.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          },
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "Tabx",
+                "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 5,
+      "inputs": {},
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [],
+      "template": null,
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    },
+    "Tabsx": {
+      "class": "Directive",
+      "isComponent": true,
+      "selector": "bs-tabsx",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "Tabsx",
+        "moduleUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": []
+      },
+      "changeDetection": 5,
+      "inputs": {
+        "vertical": "vertical",
+        "justified": "justified",
+        "type": "type"
+      },
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [
+        0
+      ],
+      "template": {
+        "encapsulation": 2,
+        "template": "<ul class=\"nav\"\n    [ngClass]=\"{\n          'nav-stacked' : vertical,\n          'nav-justified' : justified,\n          'nav-tabs' : type == 'tabs',\n          'nav-pills' : type == 'pills'\n        }\"\n    (click)=\"$event.preventDefault()\">\n  <li *ngFor=\"let tab of tabs\" class=\"nav-item\" [ngClass]=\"{active: tab.active, disabled: tab.disabled}\">\n    <a href class=\"nav-link\" [ngClass]=\"{active: tab.active, disabled: tab.disabled}\" (click)=\"tab.active = true\">\n      {{tab.header}}\n      <template [ngTemplateOutlet]=\"tab.headerRef\"></template>\n    </a>\n  </li>\n</ul>\n<div class=\"tab-content\">\n  <ng-content></ng-content>\n</div>\n",
+        "templateUrl": "asset:ng_bootstrap/lib/components/tabsx/tabsx.html",
+        "styles": [],
+        "styleUrls": [],
+        "ngContentSelectors": [
+          "*"
+        ]
+      },
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    }
+  },
+  "alias": {
+    "NG_BOOTSTRAP_TABS_DIRECTIVES": [
+      "Tabx",
+      "TabxHeader",
+      "Tabsx"
+    ]
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "ngDeps": {
+    "1": "angular2.transform.template_compiler.transformer",
+    "3": [
+      {
+        "1": "dart:async",
+        "5": false
+      },
+      {
+        "1": "package:barback/barback.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/platform/server/html_adapter.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/transform/common/asset_reader.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/transform/common/code/ng_deps_code.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/transform/common/code/source_module.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/transform/common/formatter.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/transform/common/names.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/transform/common/options.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/transform/common/logging.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/transform/common/zone.dart",
+        "4": "zone",
+        "5": false
+      },
+      {
+        "1": "package:angular2/i18n.dart",
+        "5": false
+      },
+      {
+        "1": "generator.dart",
+        "5": false
+      }
+    ],
+    "6": "transformer.dart",
+    "7": [
+      {
+        "1": "package:angular2/src/platform/server/html_adapter.ngfactory.dart",
+        "4": "i0"
+      },
+      {
+        "1": "package:angular2/src/transform/common/asset_reader.ngfactory.dart",
+        "4": "i1"
+      },
+      {
+        "1": "package:angular2/src/transform/common/code/ng_deps_code.ngfactory.dart",
+        "4": "i2"
+      },
+      {
+        "1": "package:angular2/src/transform/common/code/source_module.ngfactory.dart",
+        "4": "i3"
+      },
+      {
+        "1": "package:angular2/src/transform/common/formatter.ngfactory.dart",
+        "4": "i4"
+      },
+      {
+        "1": "package:angular2/src/transform/common/names.ngfactory.dart",
+        "4": "i5"
+      },
+      {
+        "1": "package:angular2/src/transform/common/options.ngfactory.dart",
+        "4": "i6"
+      },
+      {
+        "1": "package:angular2/src/transform/common/logging.ngfactory.dart",
+        "4": "i7"
+      },
+      {
+        "1": "package:angular2/src/transform/common/zone.ngfactory.dart",
+        "4": "i8"
+      },
+      {
+        "1": "package:angular2/i18n.ngfactory.dart",
+        "4": "i9"
+      },
+      {
+        "1": "generator.ngfactory.dart",
+        "4": "i10"
+      }
+    ]
+  },
+  "type": {
+    "_emptyNgDepsContents": {
+      "class": "Identifier",
+      "name": "_emptyNgDepsContents",
+      "moduleUrl": "asset:angular2/lib/src/transform/template_compiler/transformer.dart",
+      "prefix": null,
+      "value": null
+    },
+    "TemplateCompiler": {
+      "class": "Identifier",
+      "name": "TemplateCompiler",
+      "moduleUrl": "asset:angular2/lib/src/transform/template_compiler/transformer.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

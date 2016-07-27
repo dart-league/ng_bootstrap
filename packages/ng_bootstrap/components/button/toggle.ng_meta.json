@@ -1,0 +1,141 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/angular2.dart",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "ToggleButton",
+        "5": [
+          {
+            "1": "NgModel",
+            "4": "ngModel"
+          },
+          {
+            "1": "Renderer",
+            "4": "renderer"
+          },
+          {
+            "1": "ElementRef",
+            "4": "elementRef"
+          }
+        ]
+      }
+    ],
+    "6": "toggle.dart",
+    "7": [
+      {
+        "1": "package:angular2/angular2.ngfactory.dart",
+        "4": "i0"
+      }
+    ]
+  },
+  "type": {
+    "ToggleButton": {
+      "class": "Directive",
+      "isComponent": false,
+      "selector": "bs-toggle-button",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "ToggleButton",
+        "moduleUrl": "asset:ng_bootstrap/lib/components/button/toggle.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "NgModel",
+                "moduleUrl": "asset:angular2/lib/src/common/forms/directives/ng_model.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          },
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "Renderer",
+                "moduleUrl": "asset:angular2/lib/src/core/render/api.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          },
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "ElementRef",
+                "moduleUrl": "asset:angular2/lib/src/core/linker/element_ref.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 5,
+      "inputs": {
+        "trueValue": "trueValue",
+        "falseValue": "falseValue"
+      },
+      "outputs": {},
+      "hostListeners": {
+        "click": "onClick()"
+      },
+      "hostProperties": {
+        "class.active": "active"
+      },
+      "hostAttributes": {},
+      "lifecycleHooks": [],
+      "template": null,
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    }
+  },
+  "alias": {}
+}

@@ -1,0 +1,53 @@
+{
+  "ngDeps": {
+    "1": "angular2.src.core.render",
+    "4": [
+      {
+        "1": "render/api.dart",
+        "2": [
+          "RootRenderer",
+          "Renderer",
+          "RenderComponentType"
+        ]
+      }
+    ],
+    "6": "render.dart",
+    "7": [
+      {
+        "1": "render/api.ngfactory.dart",
+        "4": "i0"
+      }
+    ]
+  },
+  "type": {
+    "RenderComponentType": {
+      "class": "Identifier",
+      "name": "RenderComponentType",
+      "moduleUrl": "asset:angular2/lib/src/core/render/api.dart",
+      "prefix": null,
+      "value": null
+    },
+    "RenderDebugInfo": {
+      "class": "Identifier",
+      "name": "RenderDebugInfo",
+      "moduleUrl": "asset:angular2/lib/src/core/render/api.dart",
+      "prefix": null,
+      "value": null
+    },
+    "Renderer": {
+      "class": "Identifier",
+      "name": "Renderer",
+      "moduleUrl": "asset:angular2/lib/src/core/render/api.dart",
+      "prefix": null,
+      "value": null
+    },
+    "RootRenderer": {
+      "class": "Identifier",
+      "name": "RootRenderer",
+      "moduleUrl": "asset:angular2/lib/src/core/render/api.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

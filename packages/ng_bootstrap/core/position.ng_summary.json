@@ -1,0 +1,65 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/angular2.dart",
+        "5": false
+      },
+      {
+        "1": "package:node_shims/js.dart",
+        "5": false
+      },
+      {
+        "1": "dart:html",
+        "5": false
+      }
+    ],
+    "6": "position.dart"
+  },
+  "type": {
+    "_document": {
+      "class": "Identifier",
+      "name": "_document",
+      "moduleUrl": "asset:ng_bootstrap/lib/core/position.dart",
+      "prefix": null,
+      "value": null
+    },
+    "_isStaticPositioned": {
+      "class": "Identifier",
+      "name": "_isStaticPositioned",
+      "moduleUrl": "asset:ng_bootstrap/lib/core/position.dart",
+      "prefix": null,
+      "value": null
+    },
+    "_parentOffsetEl": {
+      "class": "Identifier",
+      "name": "_parentOffsetEl",
+      "moduleUrl": "asset:ng_bootstrap/lib/core/position.dart",
+      "prefix": null,
+      "value": null
+    },
+    "_position": {
+      "class": "Identifier",
+      "name": "_position",
+      "moduleUrl": "asset:ng_bootstrap/lib/core/position.dart",
+      "prefix": null,
+      "value": null
+    },
+    "positionElements": {
+      "class": "Identifier",
+      "name": "positionElements",
+      "moduleUrl": "asset:ng_bootstrap/lib/core/position.dart",
+      "prefix": null,
+      "value": null
+    },
+    "Position": {
+      "class": "Identifier",
+      "name": "Position",
+      "moduleUrl": "asset:ng_bootstrap/lib/core/position.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

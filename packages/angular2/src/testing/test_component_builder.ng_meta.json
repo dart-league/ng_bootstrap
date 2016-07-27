@@ -1,0 +1,197 @@
+{
+  "ngDeps": {
+    "1": "angular2.src.testing.test_component_builder",
+    "3": [
+      {
+        "1": "dart:async",
+        "5": false
+      },
+      {
+        "1": "package:angular2/core.dart",
+        "2": [
+          "ComponentRef",
+          "DynamicComponentLoader",
+          "Injector",
+          "Injectable",
+          "ViewMetadata",
+          "ElementRef",
+          "EmbeddedViewRef",
+          "ChangeDetectorRef",
+          "provide"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/compiler.dart",
+        "2": [
+          "DirectiveResolver",
+          "ViewResolver"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/facade/lang.dart",
+        "2": [
+          "Type",
+          "isPresent",
+          "isBlank"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/facade/async.dart",
+        "2": [
+          "PromiseWrapper"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/facade/collection.dart",
+        "2": [
+          "ListWrapper",
+          "MapWrapper"
+        ],
+        "5": false
+      },
+      {
+        "1": "utils.dart",
+        "2": [
+          "el"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/platform/dom/dom_tokens.dart",
+        "2": [
+          "DOCUMENT"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/platform/dom/dom_adapter.dart",
+        "2": [
+          "DOM"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/core/debug/debug_node.dart",
+        "2": [
+          "DebugNode",
+          "DebugElement",
+          "getDebugNode"
+        ],
+        "5": false
+      },
+      {
+        "1": "fake_async.dart",
+        "2": [
+          "tick"
+        ],
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "TestComponentBuilder",
+        "4": [
+          {
+            "1": "Injectable",
+            "4": false
+          }
+        ],
+        "5": [
+          {
+            "1": "Injector",
+            "4": "_injector"
+          }
+        ]
+      }
+    ],
+    "6": "test_component_builder.dart",
+    "7": [
+      {
+        "1": "package:angular2/core.ngfactory.dart",
+        "4": "i0"
+      },
+      {
+        "1": "package:angular2/compiler.ngfactory.dart",
+        "4": "i1"
+      },
+      {
+        "1": "package:angular2/src/facade/lang.ngfactory.dart",
+        "4": "i2"
+      },
+      {
+        "1": "package:angular2/src/facade/async.ngfactory.dart",
+        "4": "i3"
+      },
+      {
+        "1": "package:angular2/src/facade/collection.ngfactory.dart",
+        "4": "i4"
+      },
+      {
+        "1": "utils.ngfactory.dart",
+        "4": "i5"
+      },
+      {
+        "1": "package:angular2/src/platform/dom/dom_tokens.ngfactory.dart",
+        "4": "i6"
+      },
+      {
+        "1": "package:angular2/src/platform/dom/dom_adapter.ngfactory.dart",
+        "4": "i7"
+      },
+      {
+        "1": "package:angular2/src/core/debug/debug_node.ngfactory.dart",
+        "4": "i8"
+      },
+      {
+        "1": "fake_async.ngfactory.dart",
+        "4": "i9"
+      }
+    ]
+  },
+  "type": {
+    "ComponentFixture": {
+      "class": "Identifier",
+      "name": "ComponentFixture",
+      "moduleUrl": "asset:angular2/lib/src/testing/test_component_builder.dart",
+      "prefix": null,
+      "value": null
+    },
+    "TestComponentBuilder": {
+      "class": "Type",
+      "name": "TestComponentBuilder",
+      "moduleUrl": "asset:angular2/lib/src/testing/test_component_builder.dart",
+      "prefix": null,
+      "isHost": false,
+      "value": null,
+      "diDeps": [
+        {
+          "token": {
+            "value": null,
+            "identifier": {
+              "class": "Identifier",
+              "name": "Injector",
+              "moduleUrl": "asset:angular2/lib/src/core/di/injector.dart",
+              "prefix": null,
+              "value": null
+            },
+            "identifierIsInstance": false
+          },
+          "query": null,
+          "viewQuery": null,
+          "value": null,
+          "isAttribute": false,
+          "isSelf": false,
+          "isHost": false,
+          "isSkipSelf": false,
+          "isOptional": false,
+          "isValue": false
+        }
+      ]
+    }
+  },
+  "alias": {}
+}

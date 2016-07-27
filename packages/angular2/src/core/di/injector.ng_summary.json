@@ -1,0 +1,39 @@
+{
+  "ngDeps": {
+    "1": "angular2.src.core.di.injector",
+    "3": [
+      {
+        "1": "package:angular2/src/facade/exceptions.dart",
+        "2": [
+          "unimplemented"
+        ],
+        "5": false
+      }
+    ],
+    "6": "injector.dart"
+  },
+  "type": {
+    "_THROW_IF_NOT_FOUND": {
+      "class": "Identifier",
+      "name": "_THROW_IF_NOT_FOUND",
+      "moduleUrl": "asset:angular2/lib/src/core/di/injector.dart",
+      "prefix": null,
+      "value": null
+    },
+    "THROW_IF_NOT_FOUND": {
+      "class": "Identifier",
+      "name": "THROW_IF_NOT_FOUND",
+      "moduleUrl": "asset:angular2/lib/src/core/di/injector.dart",
+      "prefix": null,
+      "value": null
+    },
+    "Injector": {
+      "class": "Identifier",
+      "name": "Injector",
+      "moduleUrl": "asset:angular2/lib/src/core/di/injector.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

@@ -1,0 +1,49 @@
+<table [hidden]="datePickerInner.datePickerMode!='month'" role="grid">
+  <thead>
+  <tr>
+    <th colspan="3">
+      <button type="button" class="btn btn-default btn-sm col-xs-2"
+              (click)="$event.stopPropagation(); datePickerInner.move(-1)" tabindex="-1">
+        <i class="fa fa-chevron-left"></i>
+      </button>
+      <button type="button"
+              class="btn btn-default btn-sm col-xs-2"
+              (click)="$event.stopPropagation(); datePickerInner.toggleMode(-1)"
+              [disabled]="datePickerInner.datePickerMode == maxMode"
+              [ngClass]="{disabled: datePickerInner.datePickerMode == maxMode}"
+              tabindex="-1">
+        <strong>{{dayTitle}}</strong>
+      </button>
+      <button type="button"
+              class="btn btn-default btn-sm col-xs-6"
+              (click)="$event.stopPropagation(); datePickerInner.toggleMode()"
+              [disabled]="datePickerInner.datePickerMode == maxMode"
+              [ngClass]="{disabled: datePickerInner.datePickerMode == maxMode}"
+              tabindex="-1">
+        <strong>{{yearTitle}}</strong>
+      </button>
+      <button type="button" class="btn btn-default btn-sm col-xs-2"
+              (click)="$event.stopPropagation(); datePickerInner.move(1)" tabindex="-1">
+        <i class="fa fa-chevron-right"></i>
+      </button>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let row of rows">
+    <td *ngFor="let dt of row" class="text-center" role="gridcell" [ngClass]="dt['customClass']">
+
+      <button type="button"
+              style="min-width:100%;"
+              class="btn btn-default"
+              [ngClass]="{'btn-info': dt['selected'], active: datePickerInner.isActive(dt), disabled: dt['disabled']}"
+              [disabled]="dt['disabled']"
+              (click)="$event.stopPropagation(); datePickerInner.select(dt['date'])"
+              tabindex="-1">
+        <span [ngClass]="{'text-info': dt['current']}">{{dt['label']}}</span>
+      </button>
+
+
+    </td>
+  </tr>
+  </tbody>
+</table>

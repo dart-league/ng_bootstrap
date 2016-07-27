@@ -1,0 +1,65 @@
+{
+  "ngDeps": {
+    "1": "angular2.src.core.change_detection.change_detection_util",
+    "3": [
+      {
+        "1": "package:angular2/src/facade/lang.dart",
+        "2": [
+          "isBlank",
+          "looseIdentical",
+          "isPrimitive"
+        ],
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/facade/collection.dart",
+        "2": [
+          "StringMapWrapper",
+          "isListLikeIterable",
+          "areIterablesEqual"
+        ],
+        "5": false
+      }
+    ],
+    "4": [
+      {
+        "1": "package:angular2/src/facade/lang.dart",
+        "2": [
+          "looseIdentical"
+        ]
+      }
+    ],
+    "6": "change_detection_util.dart"
+  },
+  "type": {
+    "devModeEqual": {
+      "class": "Identifier",
+      "name": "devModeEqual",
+      "moduleUrl": "asset:angular2/lib/src/core/change_detection/change_detection_util.dart",
+      "prefix": null,
+      "value": null
+    },
+    "WrappedValue": {
+      "class": "Identifier",
+      "name": "WrappedValue",
+      "moduleUrl": "asset:angular2/lib/src/core/change_detection/change_detection_util.dart",
+      "prefix": null,
+      "value": null
+    },
+    "ValueUnwrapper": {
+      "class": "Identifier",
+      "name": "ValueUnwrapper",
+      "moduleUrl": "asset:angular2/lib/src/core/change_detection/change_detection_util.dart",
+      "prefix": null,
+      "value": null
+    },
+    "SimpleChange": {
+      "class": "Identifier",
+      "name": "SimpleChange",
+      "moduleUrl": "asset:angular2/lib/src/core/change_detection/change_detection_util.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

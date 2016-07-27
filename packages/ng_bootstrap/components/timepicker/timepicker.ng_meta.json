@@ -1,0 +1,168 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/angular2.dart",
+        "5": false
+      },
+      {
+        "1": "dart:html",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "NgBsTimePicker",
+        "5": [
+          {
+            "1": "NgModel",
+            "4": "cd"
+          },
+          {
+            "1": "Renderer",
+            "4": "renderer"
+          },
+          {
+            "1": "ElementRef",
+            "4": "elementRef"
+          }
+        ],
+        "6": [
+          "OnInit"
+        ]
+      }
+    ],
+    "6": "timepicker.dart",
+    "7": [
+      {
+        "1": "package:angular2/angular2.ngfactory.dart",
+        "4": "i0"
+      }
+    ]
+  },
+  "type": {
+    "addMinutes": {
+      "class": "Identifier",
+      "name": "addMinutes",
+      "moduleUrl": "asset:ng_bootstrap/lib/components/timepicker/timepicker.dart",
+      "prefix": null,
+      "value": null
+    },
+    "NgBsTimePicker": {
+      "class": "Directive",
+      "isComponent": true,
+      "selector": "bs-time-picker",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "NgBsTimePicker",
+        "moduleUrl": "asset:ng_bootstrap/lib/components/timepicker/timepicker.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "NgModel",
+                "moduleUrl": "asset:angular2/lib/src/common/forms/directives/ng_model.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          },
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "Renderer",
+                "moduleUrl": "asset:angular2/lib/src/core/render/api.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          },
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "ElementRef",
+                "moduleUrl": "asset:angular2/lib/src/core/linker/element_ref.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 5,
+      "inputs": {
+        "hourStep": "hourStep",
+        "minuteStep": "minuteStep",
+        "meridians": "meridians",
+        "readonlyInput": "readonlyInput",
+        "mousewheel": "mousewheel",
+        "arrowkeys": "arrowkeys",
+        "showSpinners": "showSpinners",
+        "min": "min",
+        "max": "max",
+        "showMeridian": "showMeridian"
+      },
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [
+        0
+      ],
+      "template": {
+        "encapsulation": 2,
+        "template": "<table>\n  <tbody>\n  <tr class=\"text-center\" [ngClass]=\"{hidden: !showSpinners}\">\n    <td><a (click)=\"incrementHours()\" [ngClass]=\"{disabled: noIncrementHours()}\" class=\"btn btn-link\"><span class=\"fa fa-chevron-up\"></span></a></td>\n    <td>&nbsp;</td>\n    <td><a (click)=\"incrementMinutes()\" [ngClass]=\"{disabled: noIncrementMinutes()}\" class=\"btn btn-link\"><span class=\"fa fa-chevron-up\"></span></a></td>\n    <td [ngClass]=\"{hidden: !showMeridian}\" [hidden]=\"!showMeridian\"></td>\n  </tr>\n  <tr>\n    <td class=\"form-group\" [ngClass]=\"{'has-error': invalidHours}\">\n      <input style=\"width:50px;\" type=\"text\" [(ngModel)]=\"hours\" (change)=\"updateHours()\" class=\"form-control text-center\" [readonly]=\"readonlyInput\" (blur)=\"hoursOnBlur($event)\" maxlength=\"2\">\n    </td>\n    <td>:</td>\n    <td class=\"form-group\" [ngClass]=\"{'has-error': invalidMinutes}\">\n      <input style=\"width:50px;\" type=\"text\" [(ngModel)]=\"minutes\" (change)=\"updateMinutes()\" class=\"form-control text-center\" [readonly]=\"readonlyInput\" (blur)=\"minutesOnBlur($event)\" maxlength=\"2\">\n    </td>\n    <td [ngClass]=\"{hidden: !showMeridian}\" [hidden]=\"!showMeridian\"><button type=\"button\" [ngClass]=\"{disabled: noToggleMeridian()}\" class=\"btn btn-default text-center\" (click)=\"toggleMeridian()\">{{meridian}}</button></td>\n  </tr>\n  <tr class=\"text-center\" [ngClass]=\"{hidden: !showSpinners}\">\n    <td><a (click)=\"decrementHours()\" [ngClass]=\"{disabled: noDecrementHours()}\" class=\"btn btn-link\"><span class=\"fa fa-chevron-down\"></span></a></td>\n    <td>&nbsp;</td>\n    <td><a (click)=\"decrementMinutes()\" [ngClass]=\"{disabled: noDecrementMinutes()}\" class=\"btn btn-link\"><span class=\"fa fa-chevron-down\"></span></a></td>\n    <td [ngClass]=\"{hidden: !showMeridian}\" [hidden]=\"!showMeridian\"></td>\n  </tr>\n  </tbody>\n</table>",
+        "templateUrl": "asset:ng_bootstrap/lib/components/timepicker/timepicker.html",
+        "styles": [],
+        "styleUrls": [],
+        "ngContentSelectors": []
+      },
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    }
+  },
+  "alias": {}
+}

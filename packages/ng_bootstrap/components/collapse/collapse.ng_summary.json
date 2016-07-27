@@ -1,0 +1,89 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/angular2.dart",
+        "5": false
+      },
+      {
+        "1": "dart:async",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "Collapse",
+        "5": [
+          {
+            "1": "ElementRef",
+            "4": "elementRef"
+          }
+        ]
+      }
+    ],
+    "6": "collapse.dart"
+  },
+  "type": {
+    "Collapse": {
+      "class": "Directive",
+      "isComponent": false,
+      "selector": "[n2sCollapse]",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "Collapse",
+        "moduleUrl": "asset:ng_bootstrap/lib/components/collapse/collapse.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "ElementRef",
+                "moduleUrl": null,
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 5,
+      "inputs": {
+        "n2sCollapse": "n2sCollapse"
+      },
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {
+        "attr.aria-expanded": "isExpanded",
+        "attr.aria-hidden": "isCollapsed",
+        "class.collapse": "isCollapse",
+        "style.height": "height",
+        "class.in": "isExpanded",
+        "class.collapsing": "isCollapsing"
+      },
+      "hostAttributes": {},
+      "lifecycleHooks": [],
+      "template": null,
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    }
+  },
+  "alias": {}
+}

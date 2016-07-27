@@ -1,0 +1,13 @@
+{
+  "ngDeps": null,
+  "type": {
+    "CssAnimationOptions": {
+      "class": "Identifier",
+      "name": "CssAnimationOptions",
+      "moduleUrl": "asset:angular2/lib/src/animate/css_animation_options.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}

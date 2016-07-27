@@ -1,0 +1,362 @@
+{
+  "ngDeps": {
+    "1": "bs_dropdown",
+    "3": [
+      {
+        "1": "package:angular2/angular2.dart",
+        "5": false
+      },
+      {
+        "1": "package:node_shims/js.dart",
+        "5": false
+      },
+      {
+        "1": "dart:html",
+        "5": false
+      },
+      {
+        "1": "dart:async",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "Dropdown",
+        "5": [
+          {
+            "1": "ElementRef",
+            "4": "elementRef"
+          }
+        ],
+        "6": [
+          "OnInit",
+          "OnDestroy"
+        ]
+      },
+      {
+        "1": "DropdownMenu",
+        "5": [
+          {
+            "1": "Dropdown",
+            "3": [
+              "const Host()"
+            ],
+            "4": "dropdown"
+          },
+          {
+            "1": "ElementRef",
+            "4": "elementRef"
+          }
+        ],
+        "6": [
+          "OnInit"
+        ]
+      },
+      {
+        "1": "DropdownToggle",
+        "5": [
+          {
+            "1": "Dropdown",
+            "3": [
+              "const Host()"
+            ],
+            "4": "dropdown"
+          },
+          {
+            "1": "ElementRef",
+            "4": "elementRef"
+          }
+        ],
+        "6": [
+          "OnInit"
+        ]
+      }
+    ],
+    "6": "index.dart"
+  },
+  "type": {
+    "ALWAYS": {
+      "class": "Identifier",
+      "name": "ALWAYS",
+      "moduleUrl": "asset:ng_bootstrap/lib/components/dropdown/index.dart",
+      "prefix": null,
+      "value": null
+    },
+    "DISABLED": {
+      "class": "Identifier",
+      "name": "DISABLED",
+      "moduleUrl": "asset:ng_bootstrap/lib/components/dropdown/index.dart",
+      "prefix": null,
+      "value": null
+    },
+    "OUTSIDECLICK": {
+      "class": "Identifier",
+      "name": "OUTSIDECLICK",
+      "moduleUrl": "asset:ng_bootstrap/lib/components/dropdown/index.dart",
+      "prefix": null,
+      "value": null
+    },
+    "NG_BOOTSTRAP_DROPDOWN_DIRECTIVES": {
+      "class": "Identifier",
+      "name": "NG_BOOTSTRAP_DROPDOWN_DIRECTIVES",
+      "moduleUrl": "asset:ng_bootstrap/lib/components/dropdown/index.dart",
+      "prefix": null,
+      "value": [
+        {
+          "class": "Identifier",
+          "name": "Dropdown",
+          "moduleUrl": null,
+          "prefix": null,
+          "value": null
+        },
+        {
+          "class": "Identifier",
+          "name": "DropdownMenu",
+          "moduleUrl": null,
+          "prefix": null,
+          "value": null
+        },
+        {
+          "class": "Identifier",
+          "name": "DropdownToggle",
+          "moduleUrl": null,
+          "prefix": null,
+          "value": null
+        }
+      ]
+    },
+    "Dropdown": {
+      "class": "Directive",
+      "isComponent": false,
+      "selector": "bs-dropdown, .dropdown",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "Dropdown",
+        "moduleUrl": "asset:ng_bootstrap/lib/components/dropdown/index.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "ElementRef",
+                "moduleUrl": null,
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 5,
+      "inputs": {
+        "dropdownAppendToBody": "dropdownAppendToBody",
+        "autoClose": "autoClose",
+        "keyboardNav": "keyboardNav",
+        "isOpen": "isOpen"
+      },
+      "outputs": {
+        "isOpenChange": "isOpenChange"
+      },
+      "hostListeners": {},
+      "hostProperties": {
+        "class.open": "isOpen",
+        "class.dropdown": "true"
+      },
+      "hostAttributes": {},
+      "lifecycleHooks": [
+        0,
+        1
+      ],
+      "template": null,
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    },
+    "DropdownMenu": {
+      "class": "Directive",
+      "isComponent": false,
+      "selector": "bs-dropdown-menu, .dropdown-menu",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "DropdownMenu",
+        "moduleUrl": "asset:ng_bootstrap/lib/components/dropdown/index.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "Dropdown",
+                "moduleUrl": null,
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": true,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          },
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "ElementRef",
+                "moduleUrl": null,
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 5,
+      "inputs": {},
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [
+        0
+      ],
+      "template": null,
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    },
+    "DropdownToggle": {
+      "class": "Directive",
+      "isComponent": false,
+      "selector": "bs-dropdown-toggle, .dropdown-toggle",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "DropdownToggle",
+        "moduleUrl": "asset:ng_bootstrap/lib/components/dropdown/index.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "Dropdown",
+                "moduleUrl": null,
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": true,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          },
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "ElementRef",
+                "moduleUrl": null,
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 5,
+      "inputs": {
+        "disabled": "disabled"
+      },
+      "outputs": {},
+      "hostListeners": {
+        "click": "toggleDropdown($event)"
+      },
+      "hostProperties": {
+        "attr.aria-expanded": "isOpen",
+        "attr.aria-haspopup": "true",
+        "class.disabled": "disabled"
+      },
+      "hostAttributes": {},
+      "lifecycleHooks": [
+        0
+      ],
+      "template": null,
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    },
+    "DropdownService": {
+      "class": "Identifier",
+      "name": "DropdownService",
+      "moduleUrl": "asset:ng_bootstrap/lib/components/dropdown/index.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {
+    "NG_BOOTSTRAP_DROPDOWN_DIRECTIVES": [
+      "Dropdown",
+      "DropdownMenu",
+      "DropdownToggle"
+    ]
+  }
+}

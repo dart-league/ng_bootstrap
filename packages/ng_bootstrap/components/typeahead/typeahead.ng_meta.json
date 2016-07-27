@@ -1,0 +1,221 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "dart:html",
+        "5": false
+      },
+      {
+        "1": "package:angular2/angular2.dart",
+        "5": false
+      },
+      {
+        "1": "package:ng_bootstrap/components/dropdown/index.dart",
+        "5": false
+      },
+      {
+        "1": "package:stream_transformers/stream_transformers.dart",
+        "5": false
+      },
+      {
+        "1": "package:ng_bootstrap/components/button/toggle.dart",
+        "5": false
+      },
+      {
+        "1": "package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "TypeAhead",
+        "5": [
+          {
+            "1": "NgModel",
+            "4": "ngModel"
+          },
+          {
+            "1": "Renderer",
+            "4": "renderer"
+          },
+          {
+            "1": "ElementRef",
+            "4": "elementRef"
+          }
+        ],
+        "7": [
+          {
+            "2": "NG_BOOTSTRAP_DROPDOWN_DIRECTIVES"
+          },
+          {
+            "2": "ToggleButton"
+          },
+          {
+            "2": "BsTemplateOutlet"
+          }
+        ]
+      }
+    ],
+    "6": "typeahead.dart",
+    "7": [
+      {
+        "1": "package:angular2/angular2.ngfactory.dart",
+        "4": "i0"
+      },
+      {
+        "1": "package:ng_bootstrap/components/dropdown/index.ngfactory.dart",
+        "4": "i1"
+      },
+      {
+        "1": "package:ng_bootstrap/components/button/toggle.ngfactory.dart",
+        "4": "i2"
+      },
+      {
+        "1": "package:ng_bootstrap/components/template_outlet/bs_template_outlet.ngfactory.dart",
+        "4": "i3"
+      }
+    ]
+  },
+  "type": {
+    "TypeAhead": {
+      "class": "Directive",
+      "isComponent": true,
+      "selector": "bs-typeahead",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "TypeAhead",
+        "moduleUrl": "asset:ng_bootstrap/lib/components/typeahead/typeahead.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "NgModel",
+                "moduleUrl": "asset:angular2/lib/src/common/forms/directives/ng_model.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          },
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "Renderer",
+                "moduleUrl": "asset:angular2/lib/src/core/render/api.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          },
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "ElementRef",
+                "moduleUrl": "asset:angular2/lib/src/core/linker/element_ref.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 5,
+      "inputs": {
+        "minLength": "minLength",
+        "waitMs": "waitMs",
+        "optionsLimit": "optionsLimit",
+        "editable": "editable",
+        "focusFirst": "focusFirst",
+        "inputFormatter": "inputFormatter",
+        "selectOnExact": "selectOnExact",
+        "selectOnBlur": "selectOnBlur",
+        "focusOnSelect": "focusOnSelect",
+        "optionField": "optionField",
+        "source": "source",
+        "autocomplete": "autocomplete"
+      },
+      "outputs": {
+        "loading": "loading",
+        "noResults": "noResults",
+        "selectedItemChange": "selectedItemChange"
+      },
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [],
+      "template": {
+        "encapsulation": 2,
+        "template": "<bs-dropdown [(isOpen)]=\"isOpen\">\n  <bs-dropdown-toggle class=\"input-group\">\n    <input type=\"text\" class=\"form-control\"\n           [(ngModel)]=\"ngModel.model\"\n           (ngModelChange)=\"processMatches()\"\n           (click)=\"$event.stopPropagation()\"\n           (keyup)=\"onTypeaheadChange($event)\">\n    <span class=\"input-group-btn\">\n      <bs-toggle-button type=\"button\" class=\"btn btn-secondary\" [(ngModel)]=\"isOpen\" (click)=\"$event.stopPropagation()\">\n        <svg version=\"1.1\" id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\"\n             xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n             viewBox=\"0 0 488.076 488.076\"\n             height=\"0.625rem\"\n             xml:space=\"preserve\"\n             preserveAspectRatio>\n          <path d=\"M0,49.017c0-13.824,11.207-25.03,25.03-25.03h438.017c13.824,0,25.029,11.207,25.029,25.03L262.81,\n                   455.745 c0,0-18.772,18.773-37.545,0C206.494,436.973,0,49.017,0,49.017z\"></path>\n        </svg>\n      </bs-toggle-button>\n    </span>\n  </bs-dropdown-toggle>\n  <bs-dropdown-menu>\n    <li *ngFor=\"let match of matches\"\n        [ngClass]=\"{active: selectedItem == match }\">\n      <a *ngIf=\"itemTemplate == null\"\n         href=\"#\"\n         (click)=\"selectMatch(match, $event)\"\n         tabindex=\"-1\"\n         [innerHtml]=\"highlight(match, ngModel.model)\">\n      </a>\n      <a *ngIf=\"itemTemplate != null\"\n         href=\"#\"\n         (click)=\"selectMatch(match, $event)\"\n         tabindex=\"-1\">\n      <template [bsTemplateOutlet]=\"itemTemplate\" [ngOutletContext]=\"match\"></template>\n      </a>\n    </li>\n  </bs-dropdown-menu>\n</bs-dropdown>\n",
+        "templateUrl": "asset:ng_bootstrap/lib/components/typeahead/typeahead.html",
+        "styles": [],
+        "styleUrls": [],
+        "ngContentSelectors": []
+      },
+      "providers": [],
+      "viewProviders": [],
+      "queries": [
+        {
+          "selectors": [
+            {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "TemplateRef",
+                "moduleUrl": "asset:angular2/lib/src/core/linker/template_ref.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            }
+          ],
+          "descendants": false,
+          "first": true,
+          "propertyName": "itemTemplate",
+          "read": null
+        }
+      ],
+      "viewQueries": []
+    }
+  },
+  "alias": {}
+}

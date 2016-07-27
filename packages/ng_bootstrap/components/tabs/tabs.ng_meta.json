@@ -1,0 +1,324 @@
+{
+  "ngDeps": {
+    "1": "",
+    "3": [
+      {
+        "1": "package:angular2/angular2.dart",
+        "5": false
+      }
+    ],
+    "5": [
+      {
+        "1": "Tabs",
+        "6": [
+          "AfterContentInit"
+        ]
+      },
+      {
+        "1": "Tab",
+        "5": [
+          {
+            "1": "TemplateRef",
+            "4": "templateRef"
+          }
+        ]
+      },
+      {
+        "1": "TabContent",
+        "6": [
+          "AfterContentInit"
+        ]
+      },
+      {
+        "1": "TabPanel",
+        "5": [
+          {
+            "1": "TemplateRef",
+            "4": "templateRef"
+          }
+        ]
+      }
+    ],
+    "6": "tabs.dart",
+    "7": [
+      {
+        "1": "package:angular2/angular2.ngfactory.dart",
+        "4": "i0"
+      }
+    ]
+  },
+  "type": {
+    "Tab": {
+      "class": "Directive",
+      "isComponent": false,
+      "selector": "template[bsTab]",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "Tab",
+        "moduleUrl": "asset:ng_bootstrap/lib/components/tabs/tabs.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "TemplateRef",
+                "moduleUrl": "asset:angular2/lib/src/core/linker/template_ref.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 5,
+      "inputs": {
+        "active": "active",
+        "select": "select"
+      },
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [],
+      "template": null,
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    },
+    "TabContent": {
+      "class": "Directive",
+      "isComponent": true,
+      "selector": "bs-tab-content",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "TabContent",
+        "moduleUrl": "asset:ng_bootstrap/lib/components/tabs/tabs.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": []
+      },
+      "changeDetection": 5,
+      "inputs": {
+        "target": "for"
+      },
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [
+        4
+      ],
+      "template": {
+        "encapsulation": 2,
+        "template": "<template [ngTemplateOutlet]=\"current.templateRef\"></template>",
+        "templateUrl": "asset:ng_bootstrap/lib/components/tabs/tabs.dart",
+        "styles": [],
+        "styleUrls": [],
+        "ngContentSelectors": []
+      },
+      "providers": [],
+      "viewProviders": [],
+      "queries": [
+        {
+          "selectors": [
+            {
+              "value": null,
+              "identifier": {
+                "class": "Type",
+                "name": "TabPanel",
+                "moduleUrl": "asset:ng_bootstrap/lib/components/tabs/tabs.dart",
+                "prefix": null,
+                "isHost": false,
+                "value": null,
+                "diDeps": [
+                  {
+                    "token": {
+                      "value": null,
+                      "identifier": {
+                        "class": "Identifier",
+                        "name": "TemplateRef",
+                        "moduleUrl": "asset:angular2/lib/src/core/linker/template_ref.dart",
+                        "prefix": null,
+                        "value": null
+                      },
+                      "identifierIsInstance": false
+                    },
+                    "query": null,
+                    "viewQuery": null,
+                    "value": null,
+                    "isAttribute": false,
+                    "isSelf": false,
+                    "isHost": false,
+                    "isSkipSelf": false,
+                    "isOptional": false,
+                    "isValue": false
+                  }
+                ]
+              },
+              "identifierIsInstance": false
+            }
+          ],
+          "descendants": false,
+          "first": false,
+          "propertyName": "panels",
+          "read": null
+        }
+      ],
+      "viewQueries": []
+    },
+    "TabPanel": {
+      "class": "Directive",
+      "isComponent": false,
+      "selector": "template[bs-tab-panel]",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "TabPanel",
+        "moduleUrl": "asset:ng_bootstrap/lib/components/tabs/tabs.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": [
+          {
+            "token": {
+              "value": null,
+              "identifier": {
+                "class": "Identifier",
+                "name": "TemplateRef",
+                "moduleUrl": "asset:angular2/lib/src/core/linker/template_ref.dart",
+                "prefix": null,
+                "value": null
+              },
+              "identifierIsInstance": false
+            },
+            "query": null,
+            "viewQuery": null,
+            "value": null,
+            "isAttribute": false,
+            "isSelf": false,
+            "isHost": false,
+            "isSkipSelf": false,
+            "isOptional": false,
+            "isValue": false
+          }
+        ]
+      },
+      "changeDetection": 5,
+      "inputs": {
+        "name": "name"
+      },
+      "outputs": {},
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [],
+      "template": null,
+      "providers": [],
+      "viewProviders": [],
+      "queries": [],
+      "viewQueries": []
+    },
+    "Tabs": {
+      "class": "Directive",
+      "isComponent": true,
+      "selector": "bs-tabs",
+      "exportAs": null,
+      "type": {
+        "class": "Type",
+        "name": "Tabs",
+        "moduleUrl": "asset:ng_bootstrap/lib/components/tabs/tabs.dart",
+        "prefix": null,
+        "isHost": false,
+        "value": null,
+        "diDeps": []
+      },
+      "changeDetection": 5,
+      "inputs": {},
+      "outputs": {
+        "onTabChange": "onTabChange"
+      },
+      "hostListeners": {},
+      "hostProperties": {},
+      "hostAttributes": {},
+      "lifecycleHooks": [
+        4
+      ],
+      "template": {
+        "encapsulation": 2,
+        "template": "<ul class=\"nav nav-tabs\" (click)=\"$event.preventDefault()\">\n    <li class=\"nav-item\" *ngFor=\"let tab of tabs\">\n        <a class=\"nav-link\" (click)=\"setSelected(tab)\" [class.active]=\"tab.active\" [href]=\"toAnchor(tab.select)\">\n            <template [ngTemplateOutlet]=\"tab.templateRef\"></template>\n        </a>\n    </li>\n</ul>\n",
+        "templateUrl": "asset:ng_bootstrap/lib/components/tabs/tabs.html",
+        "styles": [],
+        "styleUrls": [],
+        "ngContentSelectors": []
+      },
+      "providers": [],
+      "viewProviders": [],
+      "queries": [
+        {
+          "selectors": [
+            {
+              "value": null,
+              "identifier": {
+                "class": "Type",
+                "name": "Tab",
+                "moduleUrl": "asset:ng_bootstrap/lib/components/tabs/tabs.dart",
+                "prefix": null,
+                "isHost": false,
+                "value": null,
+                "diDeps": [
+                  {
+                    "token": {
+                      "value": null,
+                      "identifier": {
+                        "class": "Identifier",
+                        "name": "TemplateRef",
+                        "moduleUrl": "asset:angular2/lib/src/core/linker/template_ref.dart",
+                        "prefix": null,
+                        "value": null
+                      },
+                      "identifierIsInstance": false
+                    },
+                    "query": null,
+                    "viewQuery": null,
+                    "value": null,
+                    "isAttribute": false,
+                    "isSelf": false,
+                    "isHost": false,
+                    "isSkipSelf": false,
+                    "isOptional": false,
+                    "isValue": false
+                  }
+                ]
+              },
+              "identifierIsInstance": false
+            }
+          ],
+          "descendants": false,
+          "first": false,
+          "propertyName": "tabs",
+          "read": null
+        }
+      ],
+      "viewQueries": []
+    }
+  },
+  "alias": {}
+}

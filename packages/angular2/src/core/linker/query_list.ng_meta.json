@@ -1,0 +1,40 @@
+{
+  "ngDeps": {
+    "1": "angular2.src.core.compiler.query_list",
+    "3": [
+      {
+        "1": "dart:collection",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/facade/collection.dart",
+        "5": false
+      },
+      {
+        "1": "package:angular2/src/facade/async.dart",
+        "5": false
+      }
+    ],
+    "6": "query_list.dart",
+    "7": [
+      {
+        "1": "package:angular2/src/facade/collection.ngfactory.dart",
+        "4": "i0"
+      },
+      {
+        "1": "package:angular2/src/facade/async.ngfactory.dart",
+        "4": "i1"
+      }
+    ]
+  },
+  "type": {
+    "QueryList": {
+      "class": "Identifier",
+      "name": "QueryList",
+      "moduleUrl": "asset:angular2/lib/src/core/linker/query_list.dart",
+      "prefix": null,
+      "value": null
+    }
+  },
+  "alias": {}
+}
