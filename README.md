@@ -68,6 +68,12 @@ transformers:
 - [x] [Timepicker](http://dart-league.github.io/ng_bootstrap/#timepicker)
 - [x] [Tooltip](http://dart-league.github.io/ng_bootstrap/#tooltip)
 - [x] [Typeahead](http://dart-league.github.io/ng_bootstrap/#typeahead)
+- [ ] Grid
+- [ ] FileInput
+- [ ] ImageInput
+- [ ] SignItInput
+- [ ] SignInput
+- [ ] Charts
 
 - [x] BsTemplateOutlet - to transclude templates (Most likely will be removed in future versions)
 - [x] positional service
