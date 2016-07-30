@@ -4704,6 +4704,9 @@ bs-progress {
     top: 0;
     width: 100%; }
 
+bs-dropdown {
+  display: inline-block; }
+
 .panel {
   margin-bottom: 1.5;
   background-color: #fff;
