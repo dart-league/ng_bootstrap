@@ -66,9 +66,9 @@ class TypeAhead extends DefaultValueAccessor {
   // todo: not yet implemented
   @Input() bool focusFirst;
 
-  /// (*not implemented*) (`?any`) - format the ngModel result after selection
-  // todo: not yet implemented
-  @Input() dynamic inputFormatter;
+  /// (`?any`) - format the ngModel result after selection
+
+  @Input() Func1<dynamic, String> inputFormatter;
 
   /// (*not implemented*) (`?boolean=false`) - if `true` automatically select an item when there is one option that exactly matches the user input
   // todo: not yet implemented
@@ -176,8 +176,22 @@ class TypeAhead extends DefaultValueAccessor {
   }
 
   /// Returns the item as string
-  _itemString(item, String optionField) =>
-      item is String ? item : item[optionField];
+  _itemString(item, String optionField) {
+    if (inputFormatter != null) {
+      /*
+       * If the user has defined his own input formatter, just pass the
+       * object to him and expect he will return a string.
+       */
+      return inputFormatter(item);
+    } else {
+      /*
+       * Use the default formatter, which returns the item itself if
+       * it's already a string, otherwise tries to find a map entry
+       * with the key 'optionField'
+       */
+      return item is String ? item : item[optionField];
+    }
+  }
 
   /// highlights the matching part of the matched item. For example if user types "a" and the matched
   /// word is "Alaska" the result will be `<strong>A</strong>l<strong>a</strong>sk<strong>a</strong>`
