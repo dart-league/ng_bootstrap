@@ -53,7 +53,7 @@ class Tabsx implements OnInit {
           : index + 1;
       tabs [ newActiveIndex ].active = true;
     }
-    slice(tabs, index, 1);
+    tabs.remove(tab);
   }
 }
 
