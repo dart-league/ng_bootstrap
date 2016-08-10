@@ -1,10 +1,10 @@
 import "package:angular2/angular2.dart";
-import 'package:ng_bootstrap/components.dart';
+import 'package:ng_bootstrap/components/carousel/carousel.dart';
 import 'package:node_shims/js.dart';
 
 @Component(selector: "carousel-demo",
     templateUrl: "carousel_demo.html",
-    directives: const [NGBS_CAROUSEL_DIRECTIVES])
+    directives: const [NG_BOOTSTRAP_CAROUSEL_DIRECTIVES])
 class CarouselDemo {
   num myIntervalInSeconds = 1;
   num get myIntervalInMs => myIntervalInSeconds * 1000;

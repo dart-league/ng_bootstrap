@@ -5,6 +5,7 @@ import 'package:ng_bootstrap/components/dropdown/index.dart';
 import 'package:stream_transformers/stream_transformers.dart';
 import 'package:ng_bootstrap/components/button/toggle.dart';
 import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart';
+import 'package:dson/dson.dart';
 
 // todo: options loading by http not yet implemented
 /// Creates a type-ahead component
@@ -111,10 +112,7 @@ class TypeAhead extends DefaultValueAccessor {
         _queryStream.add(ngModel.model);
       } else if (source is Iterable) {
         var query = new RegExp(ngModel.model);
-        matches = source.where((item) =>
-        /**/item is Map && item[optionField] != null && query.hasMatch(item[optionField]) ||
-            item is String && query.hasMatch(item)
-        ).take(optionsLimit).toList();
+        matches = source.where((item) => query.hasMatch(_itemString(item)) ).take(optionsLimit).toList();
       }
     } else {
       matches.clear();
@@ -169,20 +167,22 @@ class TypeAhead extends DefaultValueAccessor {
       e.stopPropagation();
       e.preventDefault();
     }
-    changeModel(_itemString(value, optionField));
+    changeModel(_itemString(value));
     selectedItem = value;
     selectedItemChange.emit(value);
     return false;
   }
 
   /// Returns the item as string
-  _itemString(item, String optionField) =>
-      item is String ? item : item[optionField];
+  _itemString(item) =>
+      item is String ? item :
+      item is Map ? item[optionField] :
+      serializable.reflect(item).invokeGetter(optionField);
 
   /// highlights the matching part of the matched item. For example if user types "a" and the matched
   /// word is "Alaska" the result will be `<strong>A</strong>l<strong>a</strong>sk<strong>a</strong>`
   String highlight(item, String query) {
-    String itemStr = _itemString(item, optionField);
+    String itemStr = _itemString(item);
     // Replaces the capture string with a the same string inside of a "strong" tag
     return query != null && !query.isEmpty
         ? itemStr.replaceAllMapped(_escapeRegexp(query), (m) => "<strong>${m[0]}</strong>")

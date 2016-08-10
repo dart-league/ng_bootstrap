@@ -4,7 +4,7 @@ import 'dart:html';
 import 'package:ng_bootstrap/components/tabsx/tabsx.dart';
 
 @Component(selector: "tabsx-demo")
-@View(templateUrl: "tabsx_demo.html", directives: const [NG_BOOTSTRAP_TABS_DIRECTIVES])
+@View(templateUrl: "tabsx_demo.html", directives: const [NG_BOOTSTRAP_TABSX_DIRECTIVES])
 class TabsxDemo {
   var tabs = [{
     "title": "Dynamic Title 1",
