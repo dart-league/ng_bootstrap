@@ -12078,7 +12078,7 @@ aD:function(){var z=0,y=new P.eP(),x=1,w,v=this,u,t
 var $async$aD=P.fv(function(a,b){if(a===1){w=b
 z=x}while(true)switch(z){case 0:u=v.a.toLowerCase()
 v.b=u
-v.c="https://www.dartdocs.org/documentation/ng_bootstrap/0.1.0/"+u+"/"+H.p(v.b)+"-library.html"
+v.c="https://www.dartdocs.org/documentation/ng_bootstrap/0.2.0+1/"+u+"/"+H.p(v.b)+"-library.html"
 t=v
 z=2
 return P.b1(W.mq("https://raw.githubusercontent.com/dart-league/ng_bootstrap/develop/web/components/"+H.p(v.b)+"/"+H.p(v.b)+"_demo.dart",null,null),$async$aD,y)
