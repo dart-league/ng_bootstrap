@@ -1,6 +1,8 @@
-import "package:angular2/angular2.dart";
-import 'package:ng_bootstrap/components.dart';
 import 'dart:async';
+
+import "package:angular2/angular2.dart";
+import 'package:dson/dson.dart';
+import 'package:ng_bootstrap/ng_bootstrap.dart';
 
 @Component (selector: "typeahead-demo",
     templateUrl: 'typeahead_demo.html',
@@ -8,7 +10,11 @@ import 'dart:async';
 class TypeaheadDemo {
   String selected = "";
 
+  String selectedObj = "";
+
   var selectedItem;
+
+  State selectedItemObj;
 
   String selectedAsync = "";
 
@@ -124,6 +130,59 @@ class TypeaheadDemo {
     { "id" : 51, "name" : "Wyoming"}
   ];
 
+  List<State> statesObj = [
+    new State()..id = 1..name = "Alabama",
+    new State()..id = 2..name = "Alaska",
+    new State()..id = 3..name = "Arizona",
+    new State()..id = 4..name = "Arkansas",
+    new State()..id = 5..name = "California",
+    new State()..id = 6..name = "Colorado",
+    new State()..id = 7..name = "Connecticut",
+    new State()..id = 8..name = "Delaware",
+    new State()..id = 9..name = "Florida",
+    new State()..id = 10..name = "Georgia",
+    new State()..id = 11..name = "Hawaii",
+    new State()..id = 12..name = "Idaho",
+    new State()..id = 13..name = "Illinois",
+    new State()..id = 14..name = "Indiana",
+    new State()..id = 15..name = "Iowa",
+    new State()..id = 16..name = "Kansas",
+    new State()..id = 17..name = "Kentucky",
+    new State()..id = 18..name = "Louisiana",
+    new State()..id = 19..name = "Maine",
+    new State()..id = 21..name = "Maryland",
+    new State()..id = 22..name = "Massachusetts",
+    new State()..id = 23..name = "Michigan",
+    new State()..id = 24..name = "Minnesota",
+    new State()..id = 25..name = "Mississippi",
+    new State()..id = 26..name = "Missouri",
+    new State()..id = 27..name = "Montana",
+    new State()..id = 28..name = "Nebraska",
+    new State()..id = 29..name = "Nevada",
+    new State()..id = 30..name = "New Hampshire",
+    new State()..id = 31..name = "New Jersey",
+    new State()..id = 32..name = "New Mexico",
+    new State()..id = 33..name = "New York",
+    new State()..id = 34..name = "North Dakota",
+    new State()..id = 35..name = "North Carolina",
+    new State()..id = 36..name = "Ohio",
+    new State()..id = 37..name = "Oklahoma",
+    new State()..id = 38..name = "Oregon",
+    new State()..id = 39..name = "Pennsylvania",
+    new State()..id = 40..name = "Rhode Island",
+    new State()..id = 41..name = "South Carolina",
+    new State()..id = 42..name = "South Dakota",
+    new State()..id = 43..name = "Tennessee",
+    new State()..id = 44..name = "Texas",
+    new State()..id = 45..name = "Utah",
+    new State()..id = 46..name = "Vermont",
+    new State()..id = 47..name = "Virginia",
+    new State()..id = 48..name = "Washington",
+    new State()..id = 49..name = "West Virginia",
+    new State()..id = 50..name = "Wisconsin",
+    new State()..id = 51..name = "Wyoming"
+  ];
+  
   TypeaheadDemo get context => this;
 
   Future<Iterable<String>> getAsyncData(String queryStr) =>
@@ -143,4 +202,10 @@ class TypeaheadDemo {
   typeaheadOnSelect(e) {
     print('Selected value: ${e}');
   }
+}
+
+@serializable
+class State {
+  int id;
+  String name;
 }

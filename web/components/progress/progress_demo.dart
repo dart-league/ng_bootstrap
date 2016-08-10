@@ -1,6 +1,7 @@
-import "package:angular2/angular2.dart";
-import 'package:ng_bootstrap/components.dart';
 import 'dart:math';
+
+import "package:angular2/angular2.dart";
+import 'package:ng_bootstrap/ng_bootstrap.dart';
 
 @Component (selector: "progress-demo")
 @View (templateUrl: "progress_demo.html",

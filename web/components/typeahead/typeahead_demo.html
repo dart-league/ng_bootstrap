@@ -7,8 +7,22 @@ Selected Item: {{selectedItem}}</pre>
                 [source]="statesComplex"
                 [(selectedItem)]="selectedItem"
                 (selectedItemChange)="typeaheadOnSelect($event)"
-                [optionField]="'name'">
-    <template let-item>{{item['name']}}</template>
+                optionField="name">
+    <!-- You can also use custom templates -->
+    <!--<template let-item>{{item['name']}}</template>-->
+  </bs-typeahead>
+
+  <h4>Static arrays of Objects</h4>
+  <pre>Model: {{selectedObj}}
+Selected Item: {{selectedItemObj}}</pre>
+
+  <bs-typeahead [(ngModel)]="selectedObj"
+                [source]="statesObj"
+                [(selectedItem)]="selectedItemObj"
+                (selectedItemChange)="typeaheadOnSelect($event)"
+                optionField="name">
+    <!-- You can also use custom templates -->
+    <!--<template let-item>{{item.name}}</template>-->
   </bs-typeahead>
 
   <h4>Asynchronous results</h4>
