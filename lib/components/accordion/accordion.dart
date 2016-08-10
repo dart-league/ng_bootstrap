@@ -4,6 +4,9 @@ import 'dart:html';
 import 'dart:async';
 import 'package:ng_bootstrap/components/collapse/collapse.dart';
 
+/// List of directives needed to create an accordion
+const NG_BOOTSTRAP_ACCORDION_DIRECTIVES = const [Accordion, AccordionPanel];
+
 /// Build on top of the [NgBsCollapse] directive to provide a list of items, with collapsible bodies that
 /// are collapsed or expanded by clicking on the item's header.
 ///
@@ -114,6 +117,3 @@ class AccordionPanel implements OnInit, OnDestroy {
     }
   }
 }
-
-/// List of directives needed to create an accordion
-const List<dynamic> NG_BOOTSTRAP_ACCORDION_DIRECTIVES = const [Accordion, AccordionPanel];

@@ -46,7 +46,7 @@ transformers:
 ```dart
 @Component(
     ...
-    directives: const [BS_ACCORDION_DIRECTIVES])
+    directives: const [NG_BOOTSTRAP_DIRECTIVES])
 ```
 
 ## Components
