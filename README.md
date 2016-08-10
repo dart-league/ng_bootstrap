@@ -74,7 +74,10 @@ transformers:
 - [ ] SignItInput
 - [ ] SignInput
 - [ ] Charts
+- [ ] Header Bar
+- [ ] Scafold - Base Layout
 
+### Others
 - [x] BsTemplateOutlet - to transclude templates (Most likely will be removed in future versions)
 - [x] positional service
 
