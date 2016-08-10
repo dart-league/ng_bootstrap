@@ -21,7 +21,7 @@ class DemoSection implements OnInit {
     nameLC = name.toLowerCase();
     var rawMasterUrl = 'https://raw.githubusercontent.com/dart-league/ng_bootstrap/develop';
     var componentsUrl = '$rawMasterUrl/web/components';
-    docUrl = 'https://www.dartdocs.org/documentation/ng_bootstrap/0.1.0/$nameLC/$nameLC-library.html';
+    docUrl = 'https://www.dartdocs.org/documentation/ng_bootstrap/0.2.0+1/$nameLC/$nameLC-library.html';
     dart = await HttpRequest.getString('$componentsUrl/$nameLC/${nameLC}_demo.dart');
     html = await HttpRequest.getString('$componentsUrl/$nameLC/${nameLC}_demo.html');
   }
