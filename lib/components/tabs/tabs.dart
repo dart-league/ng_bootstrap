@@ -1,5 +1,8 @@
 import "package:angular2/angular2.dart";
 
+/// Directives needed to create a tab-set
+const NG_BOOTSTRAP_TABS_DIRECTIVES = const [Tab, Tabs, TabContent, TabPanel];
+
 /// todo(adaojunior): refactor this component
 /// https://github.com/angular/angular/issues/8563
 @Component (

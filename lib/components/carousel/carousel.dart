@@ -3,6 +3,9 @@ import "package:angular2/angular2.dart";
 import "package:node_shims/js.dart";
 import 'dart:async';
 
+/// List of Directives needed to create a carousel
+const NG_BOOTSTRAP_CAROUSEL_DIRECTIVES = const [Carousel, Slide];
+
 /// Provides the direction of the Carousel
 enum Direction { UNKNOWN, NEXT, PREV }
 
@@ -224,6 +227,3 @@ class Slide implements OnInit, OnDestroy {
     carousel.removeSlide(this);
   }
 }
-
-/// List of Directives needed to create a carousel
-const NGBS_CAROUSEL_DIRECTIVES = const [Carousel, Slide];

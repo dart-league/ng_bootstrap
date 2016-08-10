@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.2.0
+
+* upgrade to angular 2.0.0-beta.19
+* Fix Removing tabs sometimes didn't work #23
+* Added support for typeaheads to specify a `optionField` in complex Objects
+* Rename NG_BOOTSTRAP_TABS_DIRECTIVES to NG_BOOTSTRAP_TABSX_DIRECTIVES
+* Add NG_BOOTSTRAP_TABS_DIRECTIVES constant
+* Remove components.dart and put the code into ng_bootstrap.dart directly
+* Rename NGBS_CAROUSEL_DIRECTIVES to NG_BOOTSTRAP_CAROUSEL_DIRECTIVES
+
 ## v0.1.1
 
 * correct bug sass not founding files doubt to usage of relative path instead of packages path

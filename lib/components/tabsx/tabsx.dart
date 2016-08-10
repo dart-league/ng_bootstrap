@@ -1,7 +1,8 @@
 import "package:angular2/angular2.dart";
 import 'package:node_shims/js.dart';
 
-// todo: add active event to tab
+/// Directives needed to create a tab-set
+const NG_BOOTSTRAP_TABSX_DIRECTIVES = const [Tabx, TabxHeader, Tabsx];
 
 // todo: fix? mixing static and dynamic tabs position tabs in order of creation
 /// Add quick, dynamic tab functionality to transition through panes of local content, even via
@@ -53,7 +54,7 @@ class Tabsx implements OnInit {
           : index + 1;
       tabs [ newActiveIndex ].active = true;
     }
-    tabs.remove(tab);
+    slice(tabs, index, 1);
   }
 }
 
@@ -130,6 +131,3 @@ class TabxHeader {
     tab.headerRef = templateRef;
   }
 }
-
-/// Directives needed to create a tab-set
-const NG_BOOTSTRAP_TABS_DIRECTIVES = const [Tabx, TabxHeader, Tabsx];
