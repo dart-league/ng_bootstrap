@@ -6,3 +6,17 @@ bs-dropdown {
 bs-dropdown-menu {
   @extend .dropdown-menu;
 }
+
+.scrollable-menu {
+  height: auto;
+  max-height: 220px;
+  overflow-x: hidden;
+}
+
+.dropdown-item {
+  cursor: pointer;
+
+  &:disabled {
+    cursor: wait;
+  }
+}

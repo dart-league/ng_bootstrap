@@ -1,6 +1,7 @@
 <bs-dropdown [(isOpen)]="isOpen">
   <bs-dropdown-toggle class="input-group">
-    <input type="text" class="form-control"
+    <input type="text"
+           class="form-control"
            [(ngModel)]="ngModel.model"
            (ngModelChange)="processMatches()"
            (click)="$event.stopPropagation()"
@@ -11,21 +12,25 @@
       </bs-toggle-button>
     </span>
   </bs-dropdown-toggle>
-  <bs-dropdown-menu>
+  <bs-dropdown-menu class="scrollable-menu">
+    <button *ngIf="loadingVal" class="dropdown-item" disabled>
+      <i class="fa fa-refresh"></i> Loading...
+    </button>
+    <button *ngIf="noResultsVal" class="dropdown-item" disabled>
+      <i class="fa fa-times"></i> No Results Found
+    </button>
     <li *ngFor="let match of matches"
-        [ngClass]="{active: selectedItem == match }">
-      <a *ngIf="itemTemplate == null"
-         href="#"
-         (click)="selectMatch(match, $event)"
+        class="dropdown-item"
+        [ngClass]="{active: selectedItem == match }"
+        (click)="selectMatch(match, $event)">
+      <span *ngIf="itemTemplate == null"
          tabindex="-1"
          [innerHtml]="highlight(match, ngModel.model)">
-      </a>
-      <a *ngIf="itemTemplate != null"
-         href="#"
-         (click)="selectMatch(match, $event)"
+      </span>
+      <span *ngIf="itemTemplate != null"
          tabindex="-1">
-      <template [bsTemplateOutlet]="itemTemplate" [ngOutletContext]="match"></template>
-      </a>
+        <template [bsTemplateOutlet]="itemTemplate" [ngOutletContext]="match"></template>
+      </span>
     </li>
   </bs-dropdown-menu>
 </bs-dropdown>

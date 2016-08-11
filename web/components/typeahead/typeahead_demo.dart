@@ -187,7 +187,9 @@ class TypeaheadDemo {
 
   Future<Iterable<String>> getAsyncData(String queryStr) =>
     new Future<Iterable<String>>.delayed(const Duration(seconds: 2), () {
-      var query = new RegExp(queryStr);
+      if (queryStr == '') return states;
+
+      var query = new RegExp(queryStr, caseSensitive: false);
       return states.where(query.hasMatch);
     });
 
