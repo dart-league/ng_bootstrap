@@ -10,7 +10,7 @@ import 'dart:async';
 /// or [bootstrap 4](http://v4-alpha.getbootstrap.com/components/collapse/)
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#collapse)
-@Directive(selector: "[n2sCollapse]",
+@Directive(selector: "[bsCollapse]",
     host: const {
       "[class.in]" : "isExpanded",
       "[class.collapse]" : "isCollapse",
@@ -44,7 +44,7 @@ class Collapse {
   bool isCollapse = true;
 
   /// sets and fires the collapsed state of the component
-  @Input() set n2sCollapse(bool value) {
+  @Input() set bsCollapse(bool value) {
     if (value ?? false) {
       hide();
     } else {

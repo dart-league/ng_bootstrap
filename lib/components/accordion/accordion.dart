@@ -26,7 +26,7 @@ class Accordion {
 
   /// close other panels
   closeOtherPanels(AccordionPanel openGroup) {
-    if (!closeOthers) {
+    if (closeOthers == false) {
       return;
     }
     panels.forEach((AccordionPanel group) {
