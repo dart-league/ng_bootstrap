@@ -7,7 +7,7 @@ part of n2s_date_picker;
     directives: const [NG_BOOTSTRAP_DROPDOWN_DIRECTIVES, DatePicker, ToggleButton]
 )
 class DatePickerPopup extends DefaultValueAccessor {
-  ///
+  /// Constructs a DatePickerPopup
   DatePickerPopup(this.ngModel, Renderer renderer, ElementRef elementRef)
       : super(renderer, elementRef) {
     ngModel.valueAccessor = this;
@@ -30,15 +30,6 @@ class DatePickerPopup extends DefaultValueAccessor {
 
   /// if `true` the dropdown-menu will be open, and the date-picker visible
   bool isOpen;
-
-  /// writes the value from the view
-  void writeValue(dynamic value) {
-    if (value != null) {
-      if (value is String) {
-        value = DateTime.parse(value);
-      }
-    }
-  }
 
   /// updates the value to the view, is fired when active date changes
   void update() {

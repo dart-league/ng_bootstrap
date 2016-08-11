@@ -44,7 +44,11 @@ class DatePicker extends DefaultValueAccessor with NgBsDatePickerBase {
   writeValue(dynamic value) {
     if (value != null) {
       if (value is String) {
-        value = DateTime.parse(value);
+        try {
+          value = DateTime.parse(value);
+        } catch (e) {
+          return;
+        }
       }
       activeDate = value;
     }

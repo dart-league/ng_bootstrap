@@ -4,6 +4,8 @@
 
 * rename `n2sCollapse` to `bsCollapse`
 * fix bug in `accordion` caused when `closeOthers` attribute is null
+* remove unneeded code on `DatePickerPopup` (solves #26)
+* correct error caused by entering wrong date onto DatePickerPopup-TextBox
 
 ## v0.2.0
 
