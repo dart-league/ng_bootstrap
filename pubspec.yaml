@@ -41,6 +41,7 @@ transformers:
     - web/components/progress/main.dart
     - web/components/rating/main.dart
     - web/components/tabs/main.dart
+    - web/components/table/main.dart
     - web/components/tabsx/main.dart
     - web/components/timepicker/main.dart
     - web/components/tooltip/main.dart

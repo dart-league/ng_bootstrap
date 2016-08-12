@@ -1,0 +1,20 @@
+<input *ngIf="config['filtering'] != null" placeholder="Filter"
+       [bsTableFiltering]="config['filtering']"
+       (tableChanged)="onChangeTable(config)"/>
+
+<bs-table [config]="config['sorting'] != null"
+           (tableChanged)="onChangeTable(config)"
+           [rows]="rows" [columns]="columns">
+</bs-table>
+<bs-pagination *ngIf="config['paging']"
+            class="pagination-sm"
+            [(currentPage)]="page"
+            [totalItems]="length"
+            [itemsPerPage]="itemsPerPage"
+            [maxSize]="maxSize"
+            [boundaryLinks]="true"
+            [rotate]="false"
+            (pageChanged)="onChangeTable(config, $event)"
+            (numPages)="numPages = $event">
+</bs-pagination>
+<pre *ngIf="config['paging']" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>
