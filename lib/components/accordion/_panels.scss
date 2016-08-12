@@ -95,7 +95,7 @@ $panel-danger-heading-bg:     $state-danger-bg !default;
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: ceil(($font-size-base * 1.125));
+  font-size: $font-size-base * 1.125;
   color: inherit;
 
   > a,
