@@ -21,7 +21,7 @@
       </ul>
     </nav>
     <nav class="visible-xs hidden-md-up">
-      <ul class="nav nav-pills nav-stacked scrollable-menu" [bsCollapse]="isCollapsed" (click)="isCollapsed = !isCollapsed; true">
+      <ul class="nav nav-pills nav-stacked scrollable-navbar-menu" [bsCollapse]="isCollapsed" (click)="isCollapsed = !isCollapsed; true">
         <li *ngFor="let comp of components" class="nav-item"><a class="dropdown-item nav-link" href="{{prefix}}#{{comp.toLowerCase()}}">{{comp}}</a></li>
       </ul>
     </nav>

@@ -15,7 +15,7 @@ dependencies:
   dart_to_js_script_rewriter: ^1.0.1
   markdown: ^0.8.0
   sass: ^0.4.2
-  bootstrap_sass: 4.0.0-alpha.2
+  bootstrap_sass: 4.0.0-alpha.3+1
   stream_transformers: ^0.3.0+3
   font_awesome: ^4.6.3
   dson: ^0.3.4
