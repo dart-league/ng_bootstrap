@@ -28,7 +28,7 @@ class Alert implements OnInit {
   /// fired when `alert` closed with inline button or by timeout,
   /// `$event` is an instance of `Alert` component
   @Output('close')
-  EventEmitter onClose = new EventEmitter ();
+  EventEmitter onClose = new EventEmitter();
 
   /// number of milliseconds, if specified sets a timeout duration,
   /// after which the alert will be closed
