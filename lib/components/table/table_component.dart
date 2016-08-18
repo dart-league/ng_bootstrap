@@ -1,6 +1,4 @@
-import "package:angular2/core.dart";
-import "package:ng_bootstrap/components/table/table_sorting_directive.dart";
-import 'package:node_shims/js.dart';
+part of table_directives;
 
 @Component(
     selector: "bs-table",
@@ -9,75 +7,95 @@ import 'package:node_shims/js.dart';
        role="grid" style="width: 100%;">
   <thead>
   <tr role="row">
-    <th *ngFor="let column of columns" [bsTableSorting]="config" [column]="column" (sortChanged)="onChangeTable(\$event)">
-      {{column['title']}}
-      <i *ngIf="config != null && column['sort'] != null" class="pull-right fa"
-        [ngClass]="{\'fa-chevron-down\': column['sort'] == \'desc\', \'fa-chevron-up\': column['sort'] == \'asc\'}"></i>
+    <th *ngFor="let column of columns" (click)="toggleSort(column, \$event)">
+      {{column.header}}
+      <i *ngIf="config != null && column.sort != null" class="pull-right fa"
+        [ngClass]="{\'fa-chevron-down\': column.sort == \'DES\', \'fa-chevron-up\': column.sort == \'ASC\'}"></i>
     </th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let row of rows">
-    <td *ngFor="let column of columns">{{getData(row, column['name'])}}</td>
+  <tr *ngFor="let row of rowsPage">
+    <td *ngFor="let column of columns">{{getData(row, column.fieldName)}}</td>
   </tr>
   </tbody>
 </table>
-''',
-    directives: const [TableSortingDirective])
-class TableComponent {
+''')
+class BsTableComponent {
   // Table values
-  @Input()
-  List rows = [];
-  @Input()
-  dynamic config = {};
+  List _rows;
 
-  // Outputs (Events)
-  @Output()
-  EventEmitter<dynamic> tableChanged = new EventEmitter();
+  @Input() set rows(List rows) {
+    _rows = rows;
+    rowsAux = rows.toList();
+    pageNumber = 1;
+  }
 
-  @Input()
-  set columns(List values) {
-    values.forEach((dynamic value) {
-      var column = this._columns.firstWhere((col) => identical(col['name'], value['name']), orElse: () => null);
-      if (truthy(column)) {
-//        Object.assign(column, value);
-        column = value;
+  List rowsAux;
+
+  List rowsPage;
+
+  @Input() Map config = {};
+
+  @Output() EventEmitter tableChanged = new EventEmitter();
+
+  List<BsColumnDirective> columns = [];
+
+  @Input() bool sortable;
+
+  @Input() num itemsPerPage = 10;
+
+  num _pageNumber = 1;
+
+  num get pageNumber => _pageNumber;
+
+  @Input() set pageNumber(num pageNumber) {
+    _pageNumber = pageNumber ?? 1;
+    pageNumberChange.emit(_pageNumber);
+  }
+
+  @Output() EventEmitter<num> pageNumberChange = new EventEmitter();
+
+  @Output() EventEmitter<num> totalItemsChange = new EventEmitter();
+
+  @HostListener('pageNumberChange')
+  void updatePage() {
+    var start = (pageNumber - 1) * itemsPerPage;
+    var end = min(rowsAux.length, start + itemsPerPage);
+    rowsPage = rowsAux.getRange(start, end).toList();
+    totalItemsChange.emit(rowsAux.length);
+  }
+
+  void toggleSort(BsColumnDirective column, MouseEvent event) {
+    event.preventDefault();
+
+    if (column.sort != 'NO_SORTABLE') {
+      switch (column.sort) {
+        case 'ASC':
+          column.sort = 'DES';
+          break;
+        case 'DES':
+          column.sort = 'NONE';
+          break;
+        default:
+          column.sort = 'ASC';
+          break;
       }
-      if (falsey(column)) {
-        this._columns.add(value);
+      if (column.sort != 'NONE') {
+        rowsAux.sort((r1, r2) {
+          var comparison = getData(r1, column.fieldName).compareTo(getData(r2, column.fieldName));
+          return column.sort == 'ASC' ? comparison : -comparison;
+        });
+      } else {
+        rowsAux = _rows.toList();
       }
-    });
+      columns.forEach((c) {
+        if(c.fieldName != column.fieldName && c.sort != 'NO_SORTABLE') c.sort = 'NONE';
+      });
+      updatePage();
+    }
   }
 
-  List get columns {
-    return this._columns;
-  }
-
-  dynamic get configColumns {
-    List sortColumns = [];
-    this.columns.forEach((dynamic column) {
-      if (truthy(column['sort'])) {
-        sortColumns.add(column);
-      }
-    });
-    return {"columns": sortColumns};
-  }
-
-  List _columns = [];
-
-  void onChangeTable(dynamic column) {
-    this._columns.forEach((dynamic col) {
-      if (!identical(col['name'], column['name']) && !identical(col['sort'], false)) {
-        col['sort'] = "";
-      }
-    });
-    this.tableChanged.emit({'sorting': this.configColumns});
-  }
-
-  String getData(dynamic row, String propertyName) {
-    return propertyName
-        .split(".")
-        .fold(row, (prev, String curr) =>
-    prev[curr].toString());
-  }
+  String getData(dynamic row, String propertyName) =>
+      propertyName.split('.').fold(row, (prev, String curr) => prev[curr].toString());
 }

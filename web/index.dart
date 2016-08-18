@@ -1,3 +1,4 @@
+import 'components/table/table_demo.dart';
 import "package:angular2/angular2.dart";
 import 'package:angular2/platform/browser.dart';
 
@@ -37,6 +38,7 @@ import 'components/tabsx/tabsx_demo.dart';
       PaginationDemo,
       ProgressDemo,
       RatingDemo,
+      TableDemoComponent,
       TabsDemo,
       TabsxDemo,
       TimepickerDemo,

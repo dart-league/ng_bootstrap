@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.2.3
+
+* add `BsTableComponent` and `BsColumnComponent`:
+  - no column template supported
+  - no complex objects as row input supported
+  - no selection
+  - no actions (delete, edit, view, ...)
+* correct pagination directive totalItems change
+* Collapse directive:
+  - correct collapsing animation
+  - remove `isCollapse` and `isCollapsed attributes`
+  - add `bsCollapseChange` and `collapsingChange` event-emitters
+* upgrade bootstrap_sass to 4.0.0-alpha.3+1
+* use $ling-height-base instead $line-height in _panel.scss
+* rename css-class scrolabe-menu to scrollable-navbar-menu to avoid crashes with class in _dropdown.scss
+* fix collapse_demo.html: collapse not being hidden
+* correct panel-title font too big
+
 ## v0.2.2
 
 * make `TypeAhead.dropdownMenu` scrollable. Fixes #7.

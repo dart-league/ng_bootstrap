@@ -1,20 +1,28 @@
 <input *ngIf="config['filtering'] != null" placeholder="Filter"
-       [bsTableFiltering]="config['filtering']"
-       (tableChanged)="onChangeTable(config)"/>
+       [(ngModel)]="config['filtering']['filterString']"
+       (ngModelChange)="filterRows()"/>
 
-<bs-table [config]="config['sorting'] != null"
-           (tableChanged)="onChangeTable(config)"
-           [rows]="rows" [columns]="columns">
+<bs-table [rows]="rows"
+          [(pageNumber)]="page"
+          [itemsPerPage]="itemsPerPage"
+          [sortable]="true"
+          [(totalItems)]="length">
+  <bs-column header="Name" fieldName="name"></bs-column>
+  <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
+  <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
+  <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
+  <bs-column header="Start date" fieldName="startDate"></bs-column>
+  <bs-column header="Salary ($)" fieldName="salary"></bs-column>
 </bs-table>
 <bs-pagination *ngIf="config['paging']"
-            class="pagination-sm"
-            [(currentPage)]="page"
-            [totalItems]="length"
-            [itemsPerPage]="itemsPerPage"
-            [maxSize]="maxSize"
-            [boundaryLinks]="true"
-            [rotate]="false"
-            (pageChanged)="onChangeTable(config, $event)"
-            (numPages)="numPages = $event">
+               class="pagination-sm"
+               [(currentPage)]="page"
+               [totalItems]="length"
+               [itemsPerPage]="itemsPerPage"
+               [maxSize]="maxSize"
+               [boundaryLinks]="true"
+               [rotate]="false">
 </bs-pagination>
-<pre *ngIf="config['paging']" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>
+<pre *ngIf="config['paging']" class="card card-block card-header">Page: {{page}} / {{numPages}}
+Total Items: {{length}}
+</pre>

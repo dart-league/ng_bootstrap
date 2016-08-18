@@ -61,7 +61,7 @@ class Tabsx implements OnInit {
 /// Creates a tab which will be inside the [Tabsx]
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#tab)
-@Directive (selector: "bs-tabx",
+@Directive(selector: "bs-tabx",
     host: const { "[class.tab-pane]" : "true"})
 class Tabx implements OnInit, OnDestroy {
   /// Construct a tab injecting the parent [tabsx], and adding itself to the parent.
