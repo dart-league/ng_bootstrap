@@ -1,5 +1,6 @@
 part of table_directives;
 
+/// Directive to create columns for [BsTableComponent]
 @Directive(selector: 'bs-column')
 class BsColumnDirective implements OnInit {
   /// Handles the sort of the column. It could have next values:
@@ -16,13 +17,15 @@ class BsColumnDirective implements OnInit {
   /// Value displayed in the column header
   @Input() String header;
 
+  /// Creates a [BsColumnDirective] and add it to it's parent [_tableComponent]
+  BsColumnDirective(this._tableComponent);
 
-  BsColumnDirective(this.tableComponent);
+  /// Parent [_tableComponent]
+  BsTableComponent _tableComponent;
 
-  BsTableComponent tableComponent;
-
+  /// Initialize the [BsColumnDirective]
   @override
   ngOnInit() {
-    tableComponent.columns.add(this);
+    _tableComponent.columns.add(this);
   }
 }

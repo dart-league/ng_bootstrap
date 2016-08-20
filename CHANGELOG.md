@@ -14,7 +14,7 @@
   - add `bsCollapseChange` and `collapsingChange` event-emitters
 * upgrade bootstrap_sass to 4.0.0-alpha.3+1
 * use $ling-height-base instead $line-height in _panel.scss
-* rename css-class scrolabe-menu to scrollable-navbar-menu to avoid crashes with class in _dropdown.scss
+* rename css-class scrollable-menu to scrollable-navbar-menu to avoid crashes with class in _dropdown.scss
 * fix collapse_demo.html: collapse not being hidden
 * correct panel-title font too big
 

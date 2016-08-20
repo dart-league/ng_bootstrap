@@ -1,11 +1,9 @@
-import 'dart:math';
 import 'package:angular2/core.dart';
 import 'package:ng_bootstrap/components/pagination/pagination.dart';
 import 'package:ng_bootstrap/components/table/table_directives.dart';
 import 'package:node_shims/js.dart';
 import 'table_data.dart';
 
-// webpack html imports
 @Component (selector: 'table-demo',
     templateUrl: 'table_demo.html',
     directives: const [NG_BOOTSTRAP_TABLE_DIRECTIVES, Pagination])
@@ -43,9 +41,11 @@ class TableDemoComponent implements OnInit {
   void filterRows() {
     if (falsey(config['filtering'])) {
       rows = data.toList();
-    } else {}
-    rows = data.where((item) =>
-        (item[config['filtering']['columnName']] as String).contains(this.config['filtering']['filterString']))
-        .toList();
+    } else {
+      rows = data.where((item) =>
+          (item[config['filtering']['columnName']] as String)
+              .contains(config['filtering']['filterString'])
+      ).toList();
+    }
   }
 }
