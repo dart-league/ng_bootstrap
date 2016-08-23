@@ -18,6 +18,7 @@ class DemoHeader {
     "Pagination",
     "Progress",
     "Rating",
+    "Table",
     "Tabs",
     "Tabsx",
     "Timepicker",
