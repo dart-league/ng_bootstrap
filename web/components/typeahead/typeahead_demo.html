@@ -34,7 +34,6 @@ Selected Item: {{selectedItemAsync}}</pre>
                 (loading)="changeTypeaheadLoading($event)"
                 (noResults)="changeTypeaheadNoResults($event)"
                 (select)="typeaheadOnSelect($event)"
-                [optionsLimit]="7"
                 placeholder="Locations loaded with timeout"></bs-typeahead>
   <div [hidden]="typeaheadLoading!==true">
     <i class="fa fa-refresh ng-hide" style=""></i>

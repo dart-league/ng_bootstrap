@@ -1,6 +1,6 @@
-import "package:angular2/angular2.dart";
+import 'dart:html';
+import 'package:angular2/angular2.dart';
 import 'dart:async';
-// todo: add animate
 
 /// Collapse component allows you to toggle content on your pages with a bit of JavaScript and some
 /// classes. Flexible component that utilizes a handful of classes (from the **required transitions
@@ -10,73 +10,78 @@ import 'dart:async';
 /// or [bootstrap 4](http://v4-alpha.getbootstrap.com/components/collapse/)
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#collapse)
-@Directive(selector: "[bsCollapse]",
+@Directive(selector: '[bsCollapse]',
     host: const {
-      "[class.in]" : "isExpanded",
-      "[class.collapse]" : "isCollapse",
-      "[class.collapsing]" : "isCollapsing",
-      "[attr.aria-expanded]" : "isExpanded",
-      "[attr.aria-hidden]" : "isCollapsed",
-      "[style.height]" : "height"
+      '[class.collapse]' : '!collapsing',
+      '[attr.aria-hidden]': '!expanded'
     })
-class Collapse {
-  /// Constructs an collapsible component injecting the [elementRef]
+class Collapse implements OnInit {
+  /// Constructs an collapsible component
   Collapse(this.elementRef);
 
   /// Contains the element reference of this component
   ElementRef elementRef;
 
+  // TODO: try to use scroll values instead saving auxiliary value
+  /// Auxiliary variable to saves original height of the component
+  String _originalHeight;
+
   /// provides the height style of the component in pixels
+  @HostBinding('style.height')
   String height;
 
-  // classes
-
   /// if `true` the component is shown
-  bool isExpanded = true;
-
-  /// if `true` the component is hidden
-  bool isCollapsed = false;
+  @HostBinding('class.in')
+  @HostBinding('attr.aria-expanded')
+  bool expanded = true;
 
   /// provides the animation state
-  bool isCollapsing = false;
-
-  /// stale state
-  bool isCollapse = true;
+  @HostBinding('class.collapsing')
+  bool collapsing = false;
 
   /// sets and fires the collapsed state of the component
   @Input() set bsCollapse(bool value) {
     if (value ?? false) {
-      hide();
+      _hide();
     } else {
-      show();
+      _show();
     }
   }
 
-  hide() {
-    if(isCollapsed) return;
+  /// Emits the Collapse state of the component
+  @Output() EventEmitter<bool> bsCollapseChange = new EventEmitter<bool>();
 
-    isCollapse = false;
-    isCollapsing = true;
-    isExpanded = false;
-    isCollapsed = true;
-    new Timer(const Duration(milliseconds: 4), () {
-      height = "0";
-      isCollapse = true;
-      isCollapsing = false;
+  /// Emits the collapsing state of the component
+  @Output() EventEmitter<bool> collapsingChange = new EventEmitter<bool>();
+
+  /// Initialize the [Collapse] [height] value
+  ngOnInit() {
+    height = _originalHeight = (elementRef.nativeElement as Element).getComputedStyle().height;
+  }
+
+  _hide() {
+    if (!expanded && !collapsing) return;
+
+    collapsingChange.emit(collapsing = true);
+    height = '0';
+    new Timer(const Duration(milliseconds: 350), () {
+      expanded = false;
+      collapsingChange.emit(collapsing = false);
+      bsCollapseChange.emit(!expanded);
     });
   }
 
-  show() {
-    if(isExpanded) return;
+  _show() {
+    if (expanded && !collapsing) return;
 
-    isCollapse = false;
-    isCollapsing = true;
-    isExpanded = true;
-    isCollapsed = false;
-    new Timer(const Duration(milliseconds: 4), () {
-      height = "auto";
-      isCollapse = true;
-      isCollapsing = false;
+    collapsingChange.emit(collapsing = true);
+    expanded = true;
+    new Future(() {
+      height = _originalHeight;
+      new Timer(const Duration(milliseconds: 350), () {
+        collapsingChange.emit(collapsing = false);
+        bsCollapseChange.emit(!expanded);
+      });
     });
   }
 }

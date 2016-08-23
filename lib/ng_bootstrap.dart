@@ -10,6 +10,7 @@ import 'package:ng_bootstrap/components/modal/modal.dart';
 import 'package:ng_bootstrap/components/pagination/pager.dart';
 import 'package:ng_bootstrap/components/pagination/pagination.dart';
 import 'package:ng_bootstrap/components/progress/progress.dart';
+import 'package:ng_bootstrap/components/table/table_directives.dart';
 import 'package:ng_bootstrap/components/tabs/tabs.dart';
 import 'package:ng_bootstrap/components/tabsx/tabsx.dart';
 import 'package:ng_bootstrap/components/tooltip/tooltip.dart';
@@ -29,6 +30,7 @@ export 'components/modal/modal.dart';
 export 'components/pagination/pager.dart';
 export 'components/pagination/pagination.dart';
 export 'components/progress/progress.dart';
+export 'components/table/table_directives.dart';
 export 'components/tabs/tabs.dart';
 export 'components/tabsx/tabsx.dart';
 export 'components/tooltip/tooltip.dart';
@@ -46,6 +48,7 @@ const List NG_BOOTSTRAP_DIRECTIVES = const [
   Modal,
   Pager,
   Pagination,
+  Pager,
   Progress,
   RadioButton,
   ToggleButton,
@@ -59,5 +62,6 @@ const List NG_BOOTSTRAP_DIRECTIVES = const [
   Tooltip,
   DatePicker,
   DatePickerPopup,
-  TypeAhead
+  TypeAhead,
+  NG_BOOTSTRAP_TABLE_DIRECTIVES
 ];

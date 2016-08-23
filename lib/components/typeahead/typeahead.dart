@@ -2,6 +2,7 @@ import 'dart:html';
 
 import "package:angular2/angular2.dart";
 import 'package:ng_bootstrap/components/dropdown/index.dart';
+import 'package:node_shims/js.dart';
 import 'package:stream_transformers/stream_transformers.dart';
 import 'package:ng_bootstrap/components/button/toggle.dart';
 import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart';
@@ -15,23 +16,7 @@ import 'package:dson/dson.dart';
     selector: "bs-typeahead",
     templateUrl: 'typeahead.html',
     directives: const [NG_BOOTSTRAP_DROPDOWN_DIRECTIVES, ToggleButton, BsTemplateOutlet])
-class TypeAhead extends DefaultValueAccessor {
-
-  /// Construct a [TypeAhead] component injecting [ngModel], [renderer], [elementRef]
-  TypeAhead(this.ngModel, Renderer renderer, ElementRef elementRef)
-      : super(renderer, elementRef) {
-    ngModel.valueAccessor = this;
-
-    _queryStream
-        .transform(new Debounce(new Duration(milliseconds: waitMs)))
-        .distinct()
-        .transform(new FlatMapLatest((term) => source(term).asStream()))
-        .forEach((matchesAux) {
-      matches = matchesAux.take(optionsLimit).toList();
-      isOpen = !matches.isEmpty;
-      loading.emit(false);
-    });
-  }
+class TypeAhead extends DefaultValueAccessor implements OnInit {
 
   /// binds to string user's input
   NgModel ngModel;
@@ -39,9 +24,15 @@ class TypeAhead extends DefaultValueAccessor {
   @ContentChild(TemplateRef)
   TemplateRef itemTemplate;
 
+  /// local value to handle loading value
+  bool loadingVal = false;
+
   /// fires 'busy' state of this component was changed, fired on `async` mode only, returns
   /// `boolean`
   @Output() EventEmitter loading = new EventEmitter();
+
+  /// local value to handle noResults value
+  bool noResultsVal = false;
 
   /// fires `true` in case of matches are not detected when any user key event occurs
   @Output() EventEmitter noResults = new EventEmitter();
@@ -51,10 +42,10 @@ class TypeAhead extends DefaultValueAccessor {
 
   /// minimal no of characters that needs to be entered before typeahead kicks-in. Must be greater
   /// than or equal to 1.
-  @Input() num minLength = 1;
+  @Input() num minLength = 0;
 
   /// minimal wait time after last character typed before typeahead kicks-in
-  @Input() num waitMs = 300;
+  @Input() num waitMs = 400;
 
   /// maximum length of options items list
   @Input() num optionsLimit = 20;
@@ -81,14 +72,13 @@ class TypeAhead extends DefaultValueAccessor {
 
   /// (*not implemented*) (`?boolean=true`) - if `false` don't focus the input element the typeahead directive is associated with on selection
   // todo: not yet implemented
-  @Input() bool focusOnSelect;
+  @Input() bool focusOnSelect = true;
 
-  /// (`?string`) - name of field in array of states that contain options as objects, we use array
-  /// item as option in case of this field is missing
+  /// If [source] items is an iterable of [Object] or [Map] we use this attribute to get the value of the field that matches [optionField]
   @Input() String optionField;
 
-  /// provides the source of the dropdown list, it could be any [Iterable] list or an [Function],
-  /// if a function is passed, it means the list of elements is going to be loaded asynchronously.
+  /// provides the source of the dropdown list, it could be an [Iterable] or a [Function],
+  /// if a function is passed, it means the list of elements could be loaded asynchronously.
   @Input() dynamic source;
 
   /// list of elements that match the typed input
@@ -102,27 +92,49 @@ class TypeAhead extends DefaultValueAccessor {
 
   final EventEmitter _queryStream = new EventEmitter();
 
+  var selectedItem;
+
+  /// Construct a [TypeAhead] component injecting [ngModel], [renderer], [elementRef]
+  TypeAhead(this.ngModel, Renderer renderer, ElementRef elementRef)
+      : super(renderer, elementRef) {
+    ngModel.valueAccessor = this;
+
+    _queryStream
+        .transform(new Debounce(new Duration(milliseconds: waitMs)))
+        .transform(new FlatMapLatest((term) => source(term).asStream()))
+        .forEach((matchesAux) {
+      matches = matchesAux.take(optionsLimit).toList();
+      loading.emit(loadingVal = false);
+      if (matches.isEmpty) noResults.emit(noResultsVal = true);
+    });
+  }
+
+  @override
+  ngOnInit() async {
+    ngModel.model = or(ngModel.model, '');
+    processMatches();
+  }
+
   /// process the elements that matches the entered query
   void processMatches() {
+    isOpen = true;
+    noResults.emit(noResultsVal = false);
     if (ngModel.model.length >= minLength) {
       // if source is function we should retrieve the results asynchronously
       if (source is Function) {
-        loading.emit(true);
+        loading.emit(loadingVal = true);
         matches.clear();
         _queryStream.add(ngModel.model);
       } else if (source is Iterable) {
-        var query = new RegExp(ngModel.model);
-        matches = source.where((item) => query.hasMatch(_itemString(item)) ).take(optionsLimit).toList();
+        var query = new RegExp(ngModel.model, caseSensitive: false);
+        matches = source.where((item) => query.hasMatch(_itemString(item))).take(optionsLimit).toList();
       }
     } else {
       matches.clear();
     }
-    isOpen = !matches.isEmpty;
   }
 
-  var selectedItem;
-
-  /// fired when user do a keyboard event
+  /// fired when user do a keyboard event on the text-box
   onTypeaheadChange(KeyboardEvent e) {
     if (!isOpen) {
       if ((e.keyCode == KeyCode.DOWN || e.keyCode == KeyCode.UP) && !matches.isEmpty)
@@ -155,21 +167,16 @@ class TypeAhead extends DefaultValueAccessor {
     }
   }
 
-  /// fired when model changes
-  changeModel(String value) {
-    ngModel.viewToModelUpdate(value);
-    isOpen = false;
-  }
-
   /// selects the matched item
   selectMatch(value, [Event e = null]) {
     if (e != null) {
       e.stopPropagation();
       e.preventDefault();
     }
-    changeModel(_itemString(value));
-    selectedItem = value;
-    selectedItemChange.emit(value);
+
+    ngModel.viewToModelUpdate(_itemString(value));
+    isOpen = false;
+    selectedItemChange.emit(selectedItem = value);
     return false;
   }
 
@@ -211,13 +218,3 @@ class TypeAhead extends DefaultValueAccessor {
     selectMatch(selectedItem);
   }
 }
-
-///// This component is used to pass an html template to the dropdown-menu-item
-//@Directive(selector: 'template[bsRenderer]')
-//class BsRenderer {
-//
-//  /// constructs a [BsRenderer] passing the [templateRef]
-//  BsRenderer(TemplateRef templateRef, TypeAhead typeAhead) {
-//    typeAhead.rendererRef = templateRef;
-//  }
-//}

@@ -68,7 +68,7 @@ transformers:
 - [x] [Timepicker](http://dart-league.github.io/ng_bootstrap/#timepicker)
 - [x] [Tooltip](http://dart-league.github.io/ng_bootstrap/#tooltip)
 - [x] [Typeahead](http://dart-league.github.io/ng_bootstrap/#typeahead)
-- [ ] Grid
+- [x] Grid/Table
 - [ ] FileInput
 - [ ] ImageInput
 - [ ] SignItInput

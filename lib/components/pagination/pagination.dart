@@ -53,6 +53,7 @@ class Pagination extends Pager implements OnInit {
     if (currentPage > v) {
       selectPage(v);
     }
+    onCurrentPageChange(currentPage);
   }
 
   ngOnInit() {
