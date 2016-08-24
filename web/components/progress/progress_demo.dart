@@ -5,7 +5,7 @@ import 'package:ng_bootstrap/ng_bootstrap.dart';
 
 @Component (selector: "progress-demo")
 @View (templateUrl: "progress_demo.html",
-    directives: const [Progress])
+    directives: const [BsProgressComponent])
 class ProgressDemo {
   num max = 200;
 

@@ -6,8 +6,8 @@ import "package:angular2/angular2.dart";
 /// pagination implementations with light markup and styles.
 /// It’s great for simple sites like blogs or magazines.
 @Component (selector: "bs-pager", templateUrl: 'pager.html')
-class Pager {
-  Pager(this.elementRef);
+class BsPagerComponent {
+  BsPagerComponent(this.elementRef);
 
   /// Contains the current dom-element
   ElementRef elementRef;

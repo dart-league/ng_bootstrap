@@ -1,4 +1,4 @@
-part of n2s_date_picker;
+part of bs_date_picker;
 
 /// Highly configurable component that adds datepicker functionality to
 /// your pages. You can customize the date format and language, restrict the selectable date ranges.
@@ -9,14 +9,14 @@ part of n2s_date_picker;
 @Component (selector: "bs-date-picker",
     templateUrl: 'date_picker.html',
     directives: const [
-      NgBsDatePickerInner,
-      NgBsDayPicker,
-      NgBsMonthPicker,
-      NgBsYearPicker
+      BsDatePickerInnerComponent,
+      BsDayPickerComponent,
+      BsMonthPickerComponent,
+      BsYearPickerComponent
     ])
-class DatePicker extends DefaultValueAccessor with NgBsDatePickerBase {
+class BsDatePickerComponent extends DefaultValueAccessor with BsDatePickerBase {
   /// Constructs a [NgBsDatePicker] component injecting [NgModel], [Renderer], and [ElementRef]
-  DatePicker(this.ngModel, Renderer renderer, ElementRef elementRef)
+  BsDatePickerComponent(this.ngModel, Renderer renderer, ElementRef elementRef)
       : super(renderer, elementRef) {
     ngModel.valueAccessor = this;
   }
@@ -25,8 +25,8 @@ class DatePicker extends DefaultValueAccessor with NgBsDatePickerBase {
   NgModel ngModel;
 
   /// provides access to the child datePickerInner
-  @ViewChild(NgBsDatePickerInner)
-  NgBsDatePickerInner datePickerInner;
+  @ViewChild(BsDatePickerInnerComponent)
+  BsDatePickerInnerComponent datePickerInner;
 
   /// provides the value of selected date
   DateTime _activeDate;
@@ -41,7 +41,7 @@ class DatePicker extends DefaultValueAccessor with NgBsDatePickerBase {
   }
 
   /// writes value from the view
-  writeValue(dynamic value) {
+  writeValue(dynamic value) async {
     if (value != null) {
       if (value is String) {
         try {
@@ -55,7 +55,7 @@ class DatePicker extends DefaultValueAccessor with NgBsDatePickerBase {
   }
 }
 
-abstract class NgBsDatePickerBase {
+abstract class BsDatePickerBase {
 
   /// sets date-picker mode, supports: `day`, `month`, `year`
   @Input() String datePickerMode;

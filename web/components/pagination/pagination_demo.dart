@@ -4,7 +4,7 @@ import 'package:ng_bootstrap/ng_bootstrap.dart';
 @Component(selector: "pagination-demo")
 @View(
     templateUrl: "pagination_demo.html",
-    directives: const [Pagination, Pager])
+    directives: const [BsPaginationComponent, BsPagerComponent])
 class PaginationDemo {
   int totalItems = 64;
   int currentPage = 4;

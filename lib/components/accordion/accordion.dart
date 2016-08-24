@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:ng_bootstrap/components/collapse/collapse.dart';
 
 /// List of directives needed to create an accordion
-const NG_BOOTSTRAP_ACCORDION_DIRECTIVES = const [Accordion, AccordionPanel];
+const NG_BOOTSTRAP_ACCORDION_DIRECTIVES = const [BsAccordionComponent, BsAccordionPanelComponent];
 
 /// Build on top of the [NgBsCollapse] directive to provide a list of items, with collapsible bodies that
 /// are collapsed or expanded by clicking on the item's header.
@@ -17,19 +17,19 @@ const NG_BOOTSTRAP_ACCORDION_DIRECTIVES = const [Accordion, AccordionPanel];
 @Component (selector: 'bs-accordion',
     host: const { '[class.panel-group]' : 'true'},
     template: '<ng-content></ng-content>')
-class Accordion {
+class BsAccordionComponent {
   /// if `true` expanding one item will close all others
   @Input() bool closeOthers;
 
   /// provides the list of children panels
-  List<AccordionPanel> panels = [];
+  List<BsAccordionPanelComponent> panels = [];
 
   /// close other panels
-  closeOtherPanels(AccordionPanel openGroup) {
+  closeOtherPanels(BsAccordionPanelComponent openGroup) {
     if (closeOthers == false) {
       return;
     }
-    panels.forEach((AccordionPanel group) {
+    panels.forEach((BsAccordionPanelComponent group) {
       if (!identical(group, openGroup)) {
         group.isOpen = false;
       }
@@ -37,12 +37,12 @@ class Accordion {
   }
 
   /// adds a new [panel] at the bottom
-  addPanel(AccordionPanel panel) {
+  addPanel(BsAccordionPanelComponent panel) {
     panels.add(panel);
   }
 
   /// removes specified [panel]
-  removePanel(AccordionPanel panel) {
+  removePanel(BsAccordionPanelComponent panel) {
     panels.remove(panel);
   }
 }
@@ -53,13 +53,13 @@ class Accordion {
 @Component(selector: 'bs-accordion-panel',
     host: const { '[class.panel-open]' : 'isOpen'},
     templateUrl: 'accordion_panel.html',
-    directives: const [Collapse])
-class AccordionPanel implements OnInit, OnDestroy {
-  /// Constructs a new [AccordionPanel] injecting the parent [Accordion]
-  AccordionPanel(this.accordion);
+    directives: const [BsCollapseDirective])
+class BsAccordionPanelComponent implements OnInit, OnDestroy {
+  /// Constructs a new [BsAccordionPanelComponent] injecting the parent [BsAccordionComponent]
+  BsAccordionPanelComponent(this.accordion);
 
-  /// instance of the parent [Accordion]
-  Accordion accordion;
+  /// instance of the parent [BsAccordionComponent]
+  BsAccordionComponent accordion;
 
   /// provides an HTML template of the Heading
   TemplateRef headingTemplate;

@@ -1,4 +1,4 @@
-library n2s_date_picker;
+library bs_date_picker;
 
 import "package:angular2/angular2.dart";
 import 'package:intl/intl.dart';
@@ -18,7 +18,6 @@ todo: general:
 2. Keyboard support
 3. custom-class attribute support
 4. date-disabled attribute support
-5. template-url attribute support
  */
 
-const NG_BOOTSTRAP_DATEPICKER_DIRECTIVES = const [DatePicker, DatePickerPopup];
+const NG_BOOTSTRAP_DATEPICKER_DIRECTIVES = const [BsDatePickerComponent, BsDatePickerPopupComponent];

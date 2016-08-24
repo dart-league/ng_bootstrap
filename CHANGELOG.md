@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.3.0
+
+* Rename components to use pattern `Bs<name>Component`
+* Rename directives to use pattern `Bs<name>Directive`
+* Make `BsTimePickerComponent.writeValue` method `async`
+* Make `BsDatePickerComponent.writeValue` method `async`
+* Add styling for `bs-pager`
+* Add `min-width` to `bs-pagination` components in `bs-pagination-demo`
+* Upgrade to `angular 2.0.0-alpha.20`
+
 ## v0.2.3
 
 * add `BsTableComponent` and `BsColumnComponent`:

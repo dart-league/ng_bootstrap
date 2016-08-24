@@ -10,7 +10,7 @@ import 'dart:html';
       <div class="tooltip-inner">
       <ng-content></ng-content>
     </div>''')
-class Tooltip implements OnInit {
+class BsTooltipComponent implements OnInit {
   ChangeDetectorRef cdr;
 
   /// Current element DOM reference
@@ -74,9 +74,9 @@ class Tooltip implements OnInit {
   @Input()
   int popupDelay = 0;
 
-  /// Constructs a new [Tooltip]
+  /// Constructs a new [BsTooltipComponent]
   /// injecting its [elementRef] and the [options]
-  Tooltip(this.elementRef);
+  BsTooltipComponent(this.elementRef);
 
   /// positions its DOM element next to the parent in the desired position
   @override

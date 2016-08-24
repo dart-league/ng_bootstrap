@@ -1,30 +1,28 @@
-<ul class="pagination" [ngClass]="'pagination-' + classes">
-  <li class="page-item"
-      [ngClass]="{disabled: noPrevious() || disabled, hidden: !boundaryLinks}"
-      *ngIf="boundaryLinks">
-    <a class="page-link" href (click)="selectPage(1, $event)">{{firstText}}</a>
-  </li>
+<li class="page-item"
+    [ngClass]="{disabled: noPrevious() || disabled, hidden: !boundaryLinks}"
+    *ngIf="boundaryLinks">
+  <a class="page-link" href (click)="selectPage(1, $event)">{{firstText}}</a>
+</li>
 
-  <li class="page-item"
-      [ngClass]="{disabled: noPrevious()||disabled, hidden: !directionLinks}"
-      *ngIf="directionLinks">
-    <a class="page-link" href="" (click)="selectPage(currentPage - 1, $event)">{{previousText}}</a>
-  </li>
+<li class="page-item"
+    [ngClass]="{disabled: noPrevious()||disabled, hidden: !directionLinks}"
+    *ngIf="directionLinks">
+  <a class="page-link" href="" (click)="selectPage(currentPage - 1, $event)">{{previousText}}</a>
+</li>
 
-  <li *ngFor="let page of pages" [ngClass]="{active: page['active'], disabled: disabled && !page['active']}"
-      class="page-item">
-    <a class="page-link" href (click)="selectPage(page['number'], $event)">{{page['text']}}</a>
-  </li>
+<li *ngFor="let page of pages" [ngClass]="{active: page['active'], disabled: disabled && !page['active']}"
+    class="page-item">
+  <a class="page-link" href (click)="selectPage(page['number'], $event)">{{page['text']}}</a>
+</li>
 
-  <li class="page-item"
-      [ngClass]="{disabled: noNext() || disabled, hidden: !directionLinks}"
-      *ngIf="directionLinks">
-    <a class="page-link" href (click)="selectPage(currentPage + 1, $event)">{{nextText}}</a>
-  </li>
+<li class="page-item"
+    [ngClass]="{disabled: noNext() || disabled, hidden: !directionLinks}"
+    *ngIf="directionLinks">
+  <a class="page-link" href (click)="selectPage(currentPage + 1, $event)">{{nextText}}</a>
+</li>
 
-  <li class="page-item"
-      [ngClass]="{disabled: noNext() || disabled, hidden: !boundaryLinks}"
-      *ngIf="boundaryLinks">
-    <a class="page-link" href="" (click)="selectPage(totalPages, $event)">{{lastText}}</a>
-  </li>
-</ul>
+<li class="page-item"
+    [ngClass]="{disabled: noNext() || disabled, hidden: !boundaryLinks}"
+    *ngIf="boundaryLinks">
+  <a class="page-link" href="" (click)="selectPage(totalPages, $event)">{{lastText}}</a>
+</li>

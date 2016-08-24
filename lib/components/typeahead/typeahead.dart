@@ -15,8 +15,8 @@ import 'package:dson/dson.dart';
 @Component(
     selector: "bs-typeahead",
     templateUrl: 'typeahead.html',
-    directives: const [NG_BOOTSTRAP_DROPDOWN_DIRECTIVES, ToggleButton, BsTemplateOutlet])
-class TypeAhead extends DefaultValueAccessor implements OnInit {
+    directives: const [NG_BOOTSTRAP_DROPDOWN_DIRECTIVES, BsToggleButtonDirective, BsTemplateOutletDirective])
+class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
 
   /// binds to string user's input
   NgModel ngModel;
@@ -94,8 +94,8 @@ class TypeAhead extends DefaultValueAccessor implements OnInit {
 
   var selectedItem;
 
-  /// Construct a [TypeAhead] component injecting [ngModel], [renderer], [elementRef]
-  TypeAhead(this.ngModel, Renderer renderer, ElementRef elementRef)
+  /// Construct a [BsTypeAheadComponent] component injecting [ngModel], [renderer], [elementRef]
+  BsTypeAheadComponent(this.ngModel, Renderer renderer, ElementRef elementRef)
       : super(renderer, elementRef) {
     ngModel.valueAccessor = this;
 

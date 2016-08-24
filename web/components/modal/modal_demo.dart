@@ -3,7 +3,7 @@ import 'package:ng_bootstrap/components/modal/modal.dart';
 
 @Component(selector: "modal-demo",
     templateUrl: "modal_demo.html",
-    directives: const [Modal])
+    directives: const [BsModalComponent])
 class ModalDemo {
 
   ModalAction modalAction;

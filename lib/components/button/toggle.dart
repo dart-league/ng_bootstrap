@@ -3,7 +3,7 @@ import "package:angular2/angular2.dart";
 @Directive(
     selector: "bs-toggle-button",
     host: const {"[class.active]": "active"})
-class ToggleButton extends DefaultValueAccessor {
+class BsToggleButtonDirective extends DefaultValueAccessor {
   NgModel ngModel;
 
   /// if it is equals to the [ngModel] value then the checkbox is going to be active
@@ -19,7 +19,7 @@ class ToggleButton extends DefaultValueAccessor {
   /// active status of the button
   bool get active => trueValue == _value;
 
-  ToggleButton(this.ngModel, Renderer renderer, ElementRef elementRef)
+  BsToggleButtonDirective(this.ngModel, Renderer renderer, ElementRef elementRef)
       : super(renderer, elementRef) {
     ngModel.valueAccessor = this;
   }

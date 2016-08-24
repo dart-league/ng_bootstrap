@@ -2,7 +2,7 @@ import "package:angular2/angular2.dart";
 import 'package:node_shims/js.dart';
 
 /// Directives needed to create a tab-set
-const NG_BOOTSTRAP_TABSX_DIRECTIVES = const [Tabx, TabxHeader, Tabsx];
+const NG_BOOTSTRAP_TABSX_DIRECTIVES = const [BsTabxDirective, BsTabxHeaderDirective, BsTabsxComponents];
 
 // todo: fix? mixing static and dynamic tabs position tabs in order of creation
 /// Add quick, dynamic tab functionality to transition through panes of local content, even via
@@ -15,7 +15,7 @@ const NG_BOOTSTRAP_TABSX_DIRECTIVES = const [Tabx, TabxHeader, Tabsx];
 @Component (
     selector: "bs-tabsx",
     templateUrl: 'tabsx.html')
-class Tabsx implements OnInit {
+class BsTabsxComponents implements OnInit {
 
   /// if `true` tabs will be placed vertically
   @Input() bool vertical = false;
@@ -27,7 +27,7 @@ class Tabsx implements OnInit {
   @Input() String type;
 
   /// List of sub tabs
-  List<Tabx> tabs = [];
+  List<BsTabxDirective> tabs = [];
 
   /// initialize attributes
   ngOnInit() {
@@ -35,13 +35,13 @@ class Tabsx implements OnInit {
   }
 
   /// adds a new tab at the end
-  addTab(Tabx tab) {
+  addTab(BsTabxDirective tab) {
     tabs.add(tab);
     tab.active = tabs.length == 1 && tab.active != false;
   }
 
   /// removes the specified tab
-  removeTab(Tabx tab) {
+  removeTab(BsTabxDirective tab) {
     var index = tabs.indexOf(tab);
     if (identical(index, -1)) {
       return;
@@ -58,17 +58,17 @@ class Tabsx implements OnInit {
   }
 }
 
-/// Creates a tab which will be inside the [Tabsx]
+/// Creates a tab which will be inside the [BsTabsxComponents]
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#tab)
 @Directive(selector: "bs-tabx",
     host: const { "[class.tab-pane]" : "true"})
-class Tabx implements OnInit, OnDestroy {
+class BsTabxDirective implements OnInit, OnDestroy {
   /// Construct a tab injecting the parent [tabsx], and adding itself to the parent.
-  Tabx(this.tabsx);
+  BsTabxDirective(this.tabsx);
 
   /// provides the injected parent tabset
-  Tabsx tabsx;
+  BsTabsxComponents tabsx;
 
   /// if `true` tab can not be activated
   @Input() bool disabled = false;
@@ -105,7 +105,7 @@ class Tabx implements OnInit, OnDestroy {
     }
     _active = active;
     select.add(this);
-    tabsx.tabs.forEach((Tabx tab) {
+    tabsx.tabs.forEach((BsTabxDirective tab) {
       if (!identical(tab, this)) {
         tab.active = false;
       }
@@ -125,9 +125,9 @@ class Tabx implements OnInit, OnDestroy {
 
 /// Creates a new tab header template
 @Directive (selector: "template[bs-tabx-header]")
-class TabxHeader {
-  /// constructs a [TabxHeader] injecting its own [templateRef] and its parent [tab]
-  TabxHeader(TemplateRef templateRef, Tabx tab) {
+class BsTabxHeaderDirective {
+  /// constructs a [BsTabxHeaderDirective] injecting its own [templateRef] and its parent [tab]
+  BsTabxHeaderDirective(TemplateRef templateRef, BsTabxDirective tab) {
     tab.headerRef = templateRef;
   }
 }

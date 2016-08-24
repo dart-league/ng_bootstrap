@@ -8,12 +8,12 @@ part of bs_dropdown;
       "[attr.aria-haspopup]" : "true",
       "[attr.aria-expanded]" : "isOpen"
     })
-class DropdownToggle implements OnInit {
-  Dropdown dropdown;
+class BsDropdownToggleDirective implements OnInit {
+  BsDropdownDirective dropdown;
   /// Reference to this HTML element
   ElementRef elementRef;
 
-  DropdownToggle(@Host() this.dropdown, this.elementRef);
+  BsDropdownToggleDirective(@Host() this.dropdown, this.elementRef);
 
   /// if `true` this component is disabled
   @Input() bool disabled = false;

@@ -11,7 +11,7 @@ import 'package:angular2/angular2.dart';
 @Component(
     selector: 'bs-modal',
     templateUrl: 'modal.html')
-class Modal {
+class BsModalComponent {
 
   @Input() String header;
   @Input() String cancelLabel = 'Cancel';
@@ -27,7 +27,7 @@ class Modal {
 
   bool showModal = false;
 
-  Modal() {
+  BsModalComponent() {
     print('showModal = $showModal');
   }
 

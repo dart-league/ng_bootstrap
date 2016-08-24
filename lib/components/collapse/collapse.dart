@@ -15,20 +15,16 @@ import 'dart:async';
       '[class.collapse]' : '!collapsing',
       '[attr.aria-hidden]': '!expanded'
     })
-class Collapse implements OnInit {
+class BsCollapseDirective implements OnInit {
   /// Constructs an collapsible component
-  Collapse(this.elementRef);
+  BsCollapseDirective(this.elementRef);
 
   /// Contains the element reference of this component
   ElementRef elementRef;
 
-  // TODO: try to use scroll values instead saving auxiliary value
-  /// Auxiliary variable to saves original height of the component
-  String _originalHeight;
-
   /// provides the height style of the component in pixels
   @HostBinding('style.height')
-  String height;
+  String height = '0';
 
   /// if `true` the component is shown
   @HostBinding('class.in')
@@ -48,6 +44,8 @@ class Collapse implements OnInit {
     }
   }
 
+  String get _scrollHeight => (elementRef.nativeElement as Element).scrollHeight.toString() + 'px';
+
   /// Emits the Collapse state of the component
   @Output() EventEmitter<bool> bsCollapseChange = new EventEmitter<bool>();
 
@@ -56,18 +54,20 @@ class Collapse implements OnInit {
 
   /// Initialize the [Collapse] [height] value
   ngOnInit() {
-    height = _originalHeight = (elementRef.nativeElement as Element).getComputedStyle().height;
+    height = _scrollHeight;
   }
 
   _hide() {
     if (!expanded && !collapsing) return;
 
     collapsingChange.emit(collapsing = true);
-    height = '0';
-    new Timer(const Duration(milliseconds: 350), () {
-      expanded = false;
-      collapsingChange.emit(collapsing = false);
-      bsCollapseChange.emit(!expanded);
+    new Future(() {
+      height = '0';
+      new Timer(const Duration(milliseconds: 350), () {
+        expanded = false;
+        collapsingChange.emit(collapsing = false);
+        bsCollapseChange.emit(!expanded);
+      });
     });
   }
 
@@ -77,7 +77,7 @@ class Collapse implements OnInit {
     collapsingChange.emit(collapsing = true);
     expanded = true;
     new Future(() {
-      height = _originalHeight;
+      height = _scrollHeight;
       new Timer(const Duration(milliseconds: 350), () {
         collapsingChange.emit(collapsing = false);
         bsCollapseChange.emit(!expanded);

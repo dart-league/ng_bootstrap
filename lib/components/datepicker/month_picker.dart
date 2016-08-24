@@ -1,16 +1,16 @@
-part of n2s_date_picker;
+part of bs_date_picker;
 
-/// Creates a [NgBsMonthPicker], this will be the view showed in the [NgBsDatePicker] when user clicks
+/// Creates a [BsMonthPickerComponent], this will be the view showed in the [NgBsDatePicker] when user clicks
 /// month header button
 @Component (selector: "bs-month-picker",
     templateUrl: 'month_picker.html')
-class NgBsMonthPicker implements OnInit {
+class BsMonthPickerComponent implements OnInit {
 
-  /// Constructs a [NgBsMonthPicker] injecting [datePickerInner]
-  NgBsMonthPicker(this.datePickerInner);
+  /// Constructs a [BsMonthPickerComponent] injecting [datePickerInner]
+  BsMonthPickerComponent(this.datePickerInner);
 
-  /// parent [NgBsDatePickerInner]
-  NgBsDatePickerInner datePickerInner;
+  /// parent [BsDatePickerInnerComponent]
+  BsDatePickerInnerComponent datePickerInner;
 
   /// label that appears in the year button header
   String yearTitle;
