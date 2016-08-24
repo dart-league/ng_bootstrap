@@ -3298,7 +3298,7 @@ bs-button-group.open .dropdown-toggle {
   .breadcrumb-item.active {
     color: #818a91; }
 
-.pagination {
+.pagination, bs-pagination {
   display: inline-block;
   padding-left: 0;
   margin-top: 1rem;
@@ -3341,23 +3341,23 @@ bs-button-group.open .dropdown-toggle {
     background-color: #eceeef;
     border-color: #ddd; }
 
-.pagination-lg .page-link {
+.pagination-lg .page-link, bs-pagination.lg .page-link {
   padding: 0.75rem 1.5rem;
   font-size: 1.25rem; }
-.pagination-lg .page-item:first-child .page-link {
+.pagination-lg .page-item:first-child .page-link, bs-pagination.lg .page-item:first-child .page-link {
   border-bottom-left-radius: 0.3rem;
   border-top-left-radius: 0.3rem; }
-.pagination-lg .page-item:last-child .page-link {
+.pagination-lg .page-item:last-child .page-link, bs-pagination.lg .page-item:last-child .page-link {
   border-bottom-right-radius: 0.3rem;
   border-top-right-radius: 0.3rem; }
 
-.pagination-sm .page-link {
+.pagination-sm .page-link, bs-pagination.sm .page-link {
   padding: 0.275rem 0.75rem;
   font-size: 0.875rem; }
-.pagination-sm .page-item:first-child .page-link {
+.pagination-sm .page-item:first-child .page-link, bs-pagination.sm .page-item:first-child .page-link {
   border-bottom-left-radius: 0.2rem;
   border-top-left-radius: 0.2rem; }
-.pagination-sm .page-item:last-child .page-link {
+.pagination-sm .page-item:last-child .page-link, bs-pagination.sm .page-item:last-child .page-link {
   border-bottom-right-radius: 0.2rem;
   border-top-right-radius: 0.2rem; }
 
@@ -5125,3 +5125,39 @@ bs-dropdown {
       background-color: #a94442; }
   .panel-danger > .panel-footer + .panel-collapse > .panel-body {
     border-bottom-color: #ebcccc; }
+
+bs-pager {
+  padding-left: 0;
+  margin: 1.5 0;
+  list-style: none;
+  text-align: center; }
+  bs-pager::after {
+    content: "";
+    display: table;
+    clear: both; }
+  bs-pager li {
+    display: inline; }
+    bs-pager li > a,
+    bs-pager li > span {
+      display: inline-block;
+      padding: 5px 14px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 15px; }
+    bs-pager li > a:hover,
+    bs-pager li > a:focus {
+      text-decoration: none;
+      background-color: #eceeef; }
+  bs-pager .next > a,
+  bs-pager .next > span {
+    float: right; }
+  bs-pager .previous > a,
+  bs-pager .previous > span {
+    float: left; }
+  bs-pager .disabled > a,
+  bs-pager .disabled > a:hover,
+  bs-pager .disabled > a:focus,
+  bs-pager .disabled > span {
+    color: #818a91;
+    background-color: #fff;
+    cursor: not-allowed; }
