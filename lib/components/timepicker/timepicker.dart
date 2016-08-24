@@ -16,9 +16,9 @@ DateTime addMinutes(DateTime time, int minutes) => time.add(new Duration(minutes
 /// [demo](http://luisvt.github.io/ng2_strap/#timepicker)
 @Component (selector: "bs-time-picker",
     templateUrl: 'timepicker.html')
-class NgBsTimePicker extends DefaultValueAccessor implements OnInit {
+class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   ///
-  NgBsTimePicker(this.cd, Renderer renderer, ElementRef elementRef)
+  BsTimePickerComponent(this.cd, Renderer renderer, ElementRef elementRef)
       : super (renderer, elementRef) {
     cd.valueAccessor = this;
   }
@@ -122,7 +122,7 @@ class NgBsTimePicker extends DefaultValueAccessor implements OnInit {
   }
 
   /// writes value to selected datetime whenever the inputs change
-  writeValue(v) {
+  writeValue(v) async {
     selected = DateTime.parse(v ?? '1971-01-01T00:00:00');
   }
 

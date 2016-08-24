@@ -18,7 +18,7 @@ import 'package:angular2/angular2.dart';
       '[class.warning]': 'type == "warning"',
       '[class.danger]': 'type == "danger"'
     })
-class Progress implements OnInit {
+class BsProgressComponent implements OnInit {
 
   /// if `true` changing `value` of progress bar will be animated (*note*: not supported by Bootstrap 4)
   @Input() bool animate = true;

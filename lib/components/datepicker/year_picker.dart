@@ -1,15 +1,15 @@
-part of n2s_date_picker;
+part of bs_date_picker;
 
-/// Creates an [NgBsYearPicker], this will be the view showed in the [NgBsDatePicker] when user clicks
+/// Creates an [BsYearPickerComponent], this will be the view showed in the [NgBsDatePicker] when user clicks
 /// year header button
 @Component (selector: "bs-year-picker",
     templateUrl: 'year_picker.html')
-class NgBsYearPicker implements OnInit {
-  /// Constructs a [NgBsYearPicker] injecting the parent [datePickerInner]
-  NgBsYearPicker(this.datePickerInner);
+class BsYearPickerComponent implements OnInit {
+  /// Constructs a [BsYearPickerComponent] injecting the parent [datePickerInner]
+  BsYearPickerComponent(this.datePickerInner);
 
   /// container of the date-picker
-  NgBsDatePickerInner datePickerInner;
+  BsDatePickerInnerComponent datePickerInner;
 
   /// label that appears in the day button which selects the day-picker
   String dayTitle;

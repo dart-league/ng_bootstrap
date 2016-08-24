@@ -3,12 +3,12 @@ import 'package:angular2/src/facade/lang.dart';
 import 'dart:async';
 
 @Directive(selector: "template[bsTemplateOutlet]")
-class BsTemplateOutlet {
+class BsTemplateOutletDirective {
   ViewContainerRef _viewContainerRef;
 
   EmbeddedViewRef _insertedViewRef;
 
-  BsTemplateOutlet(this._viewContainerRef);
+  BsTemplateOutletDirective(this._viewContainerRef);
 
   @Input() var ngOutletContext;
 

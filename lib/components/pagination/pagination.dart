@@ -19,13 +19,13 @@ import 'pager.dart';
       'totalPagesChange',
       'currentPageChange'
     ])
-class Pagination extends Pager implements OnInit {
+class BsPaginationComponent extends BsPagerComponent implements OnInit {
   /// Constructor to create a new Pagination component
   /// in which [elementRef] is injected.
-  Pagination(ElementRef elementRef) : super(elementRef);
+  BsPaginationComponent(ElementRef elementRef) : super(elementRef);
 
-  /// css classes
-  @Input('class') String classes = "";
+//  /// css classes
+//  @Input('class') String classes = "";
 
   /// limit number for page links in pager
   @Input() num maxSize;

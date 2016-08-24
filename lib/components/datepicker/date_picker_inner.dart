@@ -1,4 +1,4 @@
-part of n2s_date_picker;
+part of bs_date_picker;
 
 const String FORMAT_DAY = "dd";
 
@@ -31,10 +31,10 @@ const DateTime MAX_DATE = null;
 const bool SHORTCUT_PROPAGATION = false;
 
 /// Component that will be inside a [NgBsDatePicker], this component serve as container for
-/// [NgBsDayPicker] [NgBsMonthPicker] and [NgBsYearPicker]
+/// [NgBsDayPicker] [BsMonthPickerComponent] and [BsYearPickerComponent]
 @Component (selector: "bs-datepicker-inner",
     templateUrl: 'date_picker_inner.html')
-class NgBsDatePickerInner extends NgBsDatePickerBase implements OnInit {
+class BsDatePickerInnerComponent extends BsDatePickerBase implements OnInit {
 
   /// provides the number of steps needed to change from other views to day view
   Map stepDay = {};

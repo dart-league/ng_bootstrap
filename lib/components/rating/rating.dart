@@ -10,8 +10,8 @@ import 'package:node_shims/js.dart';
 /// [demo](http://luisvt.github.io/ng2_strap/#accordion)
 @Component (selector: "bs-rating",
     templateUrl: 'rating.html')
-class Rating extends DefaultValueAccessor implements OnInit {
-  Rating(this.cd, Renderer renderer, ElementRef elementRef)
+class BsRatingComponent extends DefaultValueAccessor implements OnInit {
+  BsRatingComponent(this.cd, Renderer renderer, ElementRef elementRef)
       : super (renderer, elementRef) {
     cd.valueAccessor = this;
   }

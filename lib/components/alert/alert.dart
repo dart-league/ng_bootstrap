@@ -17,7 +17,7 @@ import "package:angular2/angular2.dart";
       'class': 'alert',
       'role': 'alert'
     })
-class Alert implements OnInit {
+class BsAlertComponent implements OnInit {
   /// provides the element reference to get native element
   ElementRef _elementRef;
 
@@ -52,7 +52,7 @@ class Alert implements OnInit {
 
   bool get hasTimeout => timeout != null;
 
-  Alert(this._elementRef);
+  BsAlertComponent(this._elementRef);
 
   ngOnInit() {
     if (hasTimeout) {

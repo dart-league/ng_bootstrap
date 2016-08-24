@@ -11,4 +11,4 @@ part "toggle.dart";
 //part "keyboard_nav.dart";
 part "service.dart";
 
-const NG_BOOTSTRAP_DROPDOWN_DIRECTIVES = const [Dropdown, DropdownMenu, DropdownToggle];
+const NG_BOOTSTRAP_DROPDOWN_DIRECTIVES = const [BsDropdownDirective, BsDropdownMenuDirective, BsDropdownToggleDirective];

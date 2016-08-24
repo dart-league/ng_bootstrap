@@ -6,7 +6,7 @@ import 'table_data.dart';
 
 @Component (selector: 'table-demo',
     templateUrl: 'table_demo.html',
-    directives: const [NG_BOOTSTRAP_TABLE_DIRECTIVES, Pagination])
+    directives: const [NG_BOOTSTRAP_TABLE_DIRECTIVES, BsPaginationComponent])
 class TableDemoComponent implements OnInit {
   List rows = [];
 

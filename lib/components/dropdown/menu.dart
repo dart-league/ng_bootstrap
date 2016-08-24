@@ -1,14 +1,14 @@
 part of bs_dropdown;
 
 /// Creates a dropdown-menu component that will be showed
-/// every time that a [Dropdown] is open
+/// every time that a [BsDropdownDirective] is open
 @Directive (selector: "bs-dropdown-menu, .dropdown-menu")
-class DropdownMenu implements OnInit {
-  Dropdown dropdown;
+class BsDropdownMenuDirective implements OnInit {
+  BsDropdownDirective dropdown;
 
   ElementRef elementRef;
 
-  DropdownMenu(@Host() this.dropdown, this.elementRef);
+  BsDropdownMenuDirective(@Host() this.dropdown, this.elementRef);
 
   ngOnInit() {
     dropdown.dropDownMenu = this;

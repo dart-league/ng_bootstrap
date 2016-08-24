@@ -6,7 +6,7 @@ import 'package:ng_bootstrap/ng_bootstrap.dart';
 
 @Component (selector: "typeahead-demo",
     templateUrl: 'typeahead_demo.html',
-    directives: const [TypeAhead/*, BsRenderer*/])
+    directives: const [BsTypeAheadComponent/*, BsRenderer*/])
 class TypeaheadDemo {
   String selected = "";
 

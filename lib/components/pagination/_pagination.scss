@@ -1,0 +1,12 @@
+
+bs-pagination {
+  @extend .pagination;
+
+  &.sm {
+    @extend .pagination-sm
+  }
+
+  &.lg {
+    @extend .pagination-lg
+  }
+}

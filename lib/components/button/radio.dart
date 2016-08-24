@@ -2,7 +2,7 @@ import "package:angular2/angular2.dart";
 
 @Directive(
     selector: "bs-radio-button", host: const {"[class.active]": "active"})
-class RadioButton extends DefaultValueAccessor {
+class BsRadioButtonDirective extends DefaultValueAccessor {
   /// handles the selected value of the button
   NgModel ngModel;
 
@@ -19,7 +19,7 @@ class RadioButton extends DefaultValueAccessor {
 
   var _value;
 
-  RadioButton(this.ngModel, Renderer renderer, ElementRef elementRef)
+  BsRadioButtonDirective(this.ngModel, Renderer renderer, ElementRef elementRef)
       : super(renderer, elementRef) {
     ngModel.valueAccessor = this;
   }

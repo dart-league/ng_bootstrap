@@ -1,14 +1,14 @@
-part of n2s_date_picker;
+part of bs_date_picker;
 
 /// Creates an [NgBsDatePickerPopup], this is a date-picker component that is popup when user clicks
 /// on the input box or on the button at the right of the input box.
 @Component (selector: "bs-date-picker-popup",
     templateUrl: 'date_picker_popup.html',
-    directives: const [NG_BOOTSTRAP_DROPDOWN_DIRECTIVES, DatePicker, ToggleButton]
+    directives: const [NG_BOOTSTRAP_DROPDOWN_DIRECTIVES, BsDatePickerComponent, BsToggleButtonDirective]
 )
-class DatePickerPopup extends DefaultValueAccessor {
+class BsDatePickerPopupComponent extends DefaultValueAccessor {
   /// Constructs a DatePickerPopup
-  DatePickerPopup(this.ngModel, Renderer renderer, ElementRef elementRef)
+  BsDatePickerPopupComponent(this.ngModel, Renderer renderer, ElementRef elementRef)
       : super(renderer, elementRef) {
     ngModel.valueAccessor = this;
   }
