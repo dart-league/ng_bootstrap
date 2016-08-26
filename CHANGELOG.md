@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.3.0+1
+
+* use `sass_transformer 0.1.0` instead `dart-sass 0.5.0`
+* remove packages path from `all.scss`
+
 ## v0.3.0
 
 * Rename components to use pattern `Bs<name>Component`
