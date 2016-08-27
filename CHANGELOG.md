@@ -1,4 +1,8 @@
-# Changelog
+## v0.3.1
+
+* upgrade `bootstrap_sass` to `v4.0.0-alpha.3+4`
+* upgrade `sass_transformer` to `v0.1.1`
+* change `sass` to `sass_transformer` in README
 
 ## v0.3.0+1
 

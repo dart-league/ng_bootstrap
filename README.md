@@ -22,10 +22,10 @@ dependencies:
 ```yaml
 dependencies:
     ...
-    sass: any
+    sass_transformer: any
     ...
 transformers:
-- sass
+- sass_transformer
 ```
 
 > you need to [install sass](http://sass-lang.com/install) previously
