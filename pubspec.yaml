@@ -1,5 +1,5 @@
 name: ng_bootstrap
-version: 0.3.1
+version: 0.3.2
 description: Angular 2 and Bootstrap 4
 authors:
   - Luis Vargas <luisvargastijerino@gmail.com>
@@ -50,6 +50,7 @@ transformers:
     entry_points:
     - web/index.dart
     - web/components/typeahead/main.dart
+    - web/components/table/main.dart
 - dart_to_js_script_rewriter
 - $dart2js:
     $include: web/index.dart
