@@ -1,4 +1,4 @@
-part of table_directives;
+part of bs_table_directives;
 
 /// Directive to create columns for [BsTableComponent]
 @Directive(selector: 'bs-column')

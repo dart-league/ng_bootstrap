@@ -1,4 +1,4 @@
-part of table_directives;
+part of bs_table_directives;
 
 /// Creates a table component to handle data
 ///
@@ -120,7 +120,6 @@ class BsTableComponent {
     }
   }
 
-  // Todo: accepts complex-objects
   /// Gets the data from the value of the row with the specified field name.
   /// If the fieldName contains `.` it splits the values and loops over the row
   /// fields until find the matching one. For example if user specifies:
@@ -134,7 +133,12 @@ class BsTableComponent {
   /// ```
   ///
   /// this function should return the value corresponding to `row['address']['street']`
-  /// if the value of row is a [Map]
+  /// if the value of the row is a [Map], or `row.address.street` if the value of the row
+  /// is a complex object.
   String getData(dynamic row, String fieldName) =>
-      fieldName.split('.').fold(row, (prev, String curr) => prev[curr].toString());
+      fieldName.split('.').fold(row, (prev, String curr) =>
+      prev is Map
+          ? prev[curr]
+          : serializable.reflect(prev).invokeGetter(curr)
+      ).toString();
 }

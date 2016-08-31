@@ -1,8 +1,9 @@
-library table_directives;
+library bs_table_directives;
 
 import 'dart:html';
 import 'dart:math';
 import "package:angular2/core.dart";
+import 'package:dson/dson.dart';
 
 part 'column_directive.dart';
 part 'table_component.dart';
