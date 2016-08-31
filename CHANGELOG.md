@@ -1,3 +1,7 @@
+## v0.3.2
+
+* add ability to use complex objects as data input for table component
+
 ## v0.3.1
 
 * upgrade `bootstrap_sass` to `v4.0.0-alpha.3+4`
