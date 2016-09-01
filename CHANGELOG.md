@@ -1,3 +1,7 @@
+## v0.3.3
+
+* correct bug of accordion-panel not opening by default
+
 ## v0.3.2
 
 * add ability to use complex objects as data input for table component

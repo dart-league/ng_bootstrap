@@ -35,9 +35,12 @@ class BsCollapseDirective implements OnInit {
   @HostBinding('class.collapsing')
   bool collapsing = false;
 
+  bool _bsCollapse = false;
+
   /// sets and fires the collapsed state of the component
   @Input() set bsCollapse(bool value) {
-    if (value ?? false) {
+    _bsCollapse = value ?? false;
+    if (_bsCollapse) {
       _hide();
     } else {
       _show();
@@ -64,7 +67,7 @@ class BsCollapseDirective implements OnInit {
     new Future(() {
       height = '0';
       new Timer(const Duration(milliseconds: 350), () {
-        expanded = false;
+        expanded = !_bsCollapse;
         collapsingChange.emit(collapsing = false);
         bsCollapseChange.emit(!expanded);
       });
