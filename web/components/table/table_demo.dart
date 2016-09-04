@@ -19,7 +19,7 @@ class TableDemoComponent implements OnInit {
 
   num maxSize = 5;
 
-  num get numPages => length ~/ itemsPerPage + 1;
+  num totalPages;
 
   num length = 0;
 

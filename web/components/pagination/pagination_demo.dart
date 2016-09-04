@@ -11,8 +11,8 @@ class PaginationDemo {
   int maxSize = 5;
   int bigTotalItems = 175;
   int bigCurrentPage = 1;
-  int smallnumPages = 3;
-  int numPages = 4;
+  int smallnumPages;
+  int numPages;
   void setPage(int pageNo) {
     currentPage = pageNo;
   }
