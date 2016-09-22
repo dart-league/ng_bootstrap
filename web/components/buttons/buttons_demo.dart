@@ -4,7 +4,7 @@ import 'package:ng_bootstrap/ng_bootstrap.dart';
 @Component(
     selector: "buttons-demo",
     templateUrl: "buttons_demo.html",
-    directives: const [NG_BOOTSTRAP_DIRECTIVES])
+    directives: const [BS_DIRECTIVES])
 class ButtonsDemo {
   String singleModel = "1";
   String radioModel = "Middle";

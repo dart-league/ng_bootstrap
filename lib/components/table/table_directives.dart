@@ -9,7 +9,7 @@ part 'column_directive.dart';
 part 'table_component.dart';
 
 /// Directives needed for creating data table components
-const NG_BOOTSTRAP_TABLE_DIRECTIVES = const [
+const BS_TABLE_DIRECTIVES = const [
   BsTableComponent,
   BsColumnDirective
 ];

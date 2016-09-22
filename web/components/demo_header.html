@@ -15,14 +15,14 @@
         <li class="nav-item dropdown">
           <a role="button" class="nav-link dropdown-toggle">Directives <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li *ngFor="let comp of components"><a class="dropdown-item" href="{{prefix}}#{{comp.toLowerCase()}}">{{comp}}</a></li>
+            <li *ngFor="let comp of components"><a class="dropdown-item" href="{{prefix}}#{{toTableName(comp)}}">{{comp}}</a></li>
           </ul>
         </li>
       </ul>
     </nav>
     <nav class="visible-xs hidden-md-up">
       <ul class="nav nav-pills nav-stacked scrollable-navbar-menu" [bsCollapse]="isCollapsed" (click)="isCollapsed = !isCollapsed; true">
-        <li *ngFor="let comp of components" class="nav-item"><a class="dropdown-item nav-link" href="{{prefix}}#{{comp.toLowerCase()}}">{{comp}}</a></li>
+        <li *ngFor="let comp of components" class="nav-item"><a class="dropdown-item nav-link" href="{{prefix}}#{{toTableName(comp)}}">{{comp}}</a></li>
       </ul>
     </nav>
   </div>
