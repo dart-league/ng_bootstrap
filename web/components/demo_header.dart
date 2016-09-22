@@ -1,10 +1,11 @@
 import "package:angular2/angular2.dart";
 import "package:ng_bootstrap/ng_bootstrap.dart";
+import 'package:dev_string_converter/dev_string_converter.dart' as dsc;
 
 @Component(
     selector: "demo-header",
     templateUrl: 'demo_header.html',
-    directives: const [NG_BOOTSTRAP_DIRECTIVES])
+    directives: const [BS_DIRECTIVES])
 class DemoHeader {
   List<String> components = [
     "Accordion",
@@ -14,6 +15,7 @@ class DemoHeader {
     "Collapse",
     "Datepicker",
     "Dropdown",
+    "File Upload",
     "Modal",
     "Pagination",
     "Progress",
@@ -29,6 +31,8 @@ class DemoHeader {
   String prefix;
 
   bool isCollapsed = true;
+
+  Function toTableName = dsc.toTableName;
 
   DemoHeader() {
     this.prefix =  "";

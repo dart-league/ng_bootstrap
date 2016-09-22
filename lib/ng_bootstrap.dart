@@ -6,6 +6,7 @@ import 'package:ng_bootstrap/components/carousel/carousel.dart';
 import 'package:ng_bootstrap/components/collapse/collapse.dart';
 import 'package:ng_bootstrap/components/datepicker/index.dart';
 import 'package:ng_bootstrap/components/dropdown/index.dart';
+import 'package:ng_bootstrap/components/file_upload/file_upload.dart';
 import 'package:ng_bootstrap/components/modal/modal.dart';
 import 'package:ng_bootstrap/components/pagination/pager.dart';
 import 'package:ng_bootstrap/components/pagination/pagination.dart';
@@ -26,6 +27,7 @@ export 'components/carousel/carousel.dart';
 export 'components/collapse/collapse.dart';
 export 'components/datepicker/index.dart';
 export 'components/dropdown/index.dart';
+export 'components/file_upload/file_upload.dart';
 export 'components/modal/modal.dart';
 export 'components/pagination/pager.dart';
 export 'components/pagination/pagination.dart';
@@ -36,7 +38,7 @@ export 'components/tabsx/tabsx.dart';
 export 'components/tooltip/tooltip.dart';
 export 'components/typeahead/typeahead.dart';
 
-const List NG_BOOTSTRAP_DIRECTIVES = const [
+const List BS_DIRECTIVES = const [
   BsAccordionComponent,
   BsAccordionPanelComponent,
   BsAlertComponent,
@@ -45,6 +47,7 @@ const List NG_BOOTSTRAP_DIRECTIVES = const [
   BsDropdownDirective,
   BsDropdownMenuDirective,
   BsDropdownToggleDirective,
+  BS_FILE_UPLOAD_DIRECTIVES,
   BsModalComponent,
   BsPagerComponent,
   BsPaginationComponent,
@@ -56,10 +59,10 @@ const List NG_BOOTSTRAP_DIRECTIVES = const [
   BsTabsComponent,
   BsTabContentComponent,
   BsTabPanelDirective,
-  NG_BOOTSTRAP_TABSX_DIRECTIVES,
+  BS_TABSX_DIRECTIVES,
   BsTooltipComponent,
   BsDatePickerComponent,
   BsDatePickerPopupComponent,
   BsTypeAheadComponent,
-  NG_BOOTSTRAP_TABLE_DIRECTIVES
+  BS_TABLE_DIRECTIVES
 ];

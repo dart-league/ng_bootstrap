@@ -3,7 +3,7 @@ import 'package:ng_bootstrap/ng_bootstrap.dart';
 
 @Component(selector: "datepicker-demo",
     templateUrl: 'datepicker_demo.html',
-    directives: const [NG_BOOTSTRAP_DIRECTIVES])
+    directives: const [BS_DIRECTIVES])
 class DatepickerDemo {
   String dt = new DateTime.now().toIso8601String();
   String dt2 = new DateTime.now().toIso8601String();

@@ -2,7 +2,7 @@ import "package:angular2/angular2.dart";
 import 'package:node_shims/js.dart';
 
 /// Directives needed to create a tab-set
-const NG_BOOTSTRAP_TABSX_DIRECTIVES = const [BsTabxDirective, BsTabxHeaderDirective, BsTabsxComponents];
+const BS_TABSX_DIRECTIVES = const [BsTabxDirective, BsTabxHeaderDirective, BsTabsxComponents];
 
 // todo: fix? mixing static and dynamic tabs position tabs in order of creation
 /// Add quick, dynamic tab functionality to transition through panes of local content, even via

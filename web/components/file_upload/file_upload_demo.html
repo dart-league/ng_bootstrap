@@ -1,0 +1,104 @@
+<style>
+  bs-file-drop {
+    border: dotted 3px lightgray;
+    display: block;
+  }
+
+  .nv-file-over {
+    border: dotted 3px red;
+  }
+
+  /* Default class applied to drop zones on over */
+  .another-file-over-class {
+    border: dotted 3px green;
+  }
+
+  html, body {
+    height: 100%;
+  }
+</style>
+
+<div class="container">
+
+  <div class="navbar navbar-default">
+    <div class="navbar-header">
+      <a class="navbar-brand" href>Angular2 File Upload</a>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-5">
+
+      <h3>Select files</h3>
+
+      <bs-file-drop
+          [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+          (fileOver)="fileOverBase($event)"
+          class="well"
+          (filesChange)="filesToUpload.addAll($event)">
+        Base drop zone
+      </bs-file-drop>
+
+      <bs-file-drop
+          [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}"
+          (fileOver)="fileOverAnother($event)"
+          class="well"
+          (filesChange)="filesToUpload.addAll($event)">
+        Another drop zone
+      </bs-file-drop>
+
+      Multiple
+      <input type="file"
+             bsFileSelect
+             multiple
+             (filesChange)="filesToUpload.addAll($event)"/><br/>
+
+      Single
+      <input type="file"
+             bsFileSelect
+             (filesChange)="filesToUpload.addAll($event)"/>
+    </div>
+
+    <div class="col-md-7" style="margin-bottom: 40px">
+
+      <h3>Added Files</h3>
+      <table class="table">
+        <thead>
+        <tr>
+          <th width="50%">Name</th>
+          <th>Size</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of filesToUpload">
+          <td><strong>{{ item.name }}</strong></td>
+          <td nowrap>{{ item.size / 1024 / 1024 | number: '.2' }} MB</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div>
+        <div>
+          Upload Progress:
+          <bs-progress [value]="progress"></bs-progress>
+        </div>
+        <button type="button" class="btn btn-success"
+                (click)="save()" [disabled]="filesToUpload.isEmpty">
+          <span class="glyphicon glyphicon-upload"></span> Upload all
+        </button>
+        <button type="button" class="btn btn-warning"
+                (click)="cancel()" [disabled]="!isUploading">
+          <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+        </button>
+        <button type="button" class="btn btn-danger"
+                (click)="filesToUpload.clear()" [disabled]="filesToUpload.isEmpty">
+          <span class="glyphicon glyphicon-trash"></span> Remove all
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
