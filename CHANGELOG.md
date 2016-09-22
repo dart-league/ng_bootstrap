@@ -1,3 +1,10 @@
+## v0.3.4
+
+* correct wrong totalChange value change in pagination
+* correct modal demo button class
+* use `totalPages` value from pagination instead calculating it in `table-demo`
+* correct back `removeTab` as proposed on PR #23
+
 ## v0.3.3
 
 * correct bug of accordion-panel not opening by default

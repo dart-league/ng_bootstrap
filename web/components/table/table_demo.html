@@ -37,14 +37,15 @@
   </bs-tabx>
 </bs-tabsx>
 <bs-pagination *ngIf="config['paging']"
-               class="pagination-sm"
+               class="pagination-sm tag"
                [(currentPage)]="page"
                [totalItems]="length"
                [itemsPerPage]="itemsPerPage"
                [maxSize]="maxSize"
                [boundaryLinks]="true"
-               [rotate]="false">
+               [rotate]="false"
+               [(totalPages)]="totalPages">
 </bs-pagination>
-<pre *ngIf="config['paging']" class="card card-block card-header">Page: {{page}} / {{numPages}}
+<pre *ngIf="config['paging']" class="card card-block card-header">Page: {{page}} / {{totalPages}}
 Total Items: {{length}}
 </pre>

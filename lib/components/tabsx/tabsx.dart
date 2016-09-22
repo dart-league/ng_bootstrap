@@ -43,18 +43,17 @@ class BsTabsxComponents implements OnInit {
   /// removes the specified tab
   removeTab(BsTabxDirective tab) {
     var index = tabs.indexOf(tab);
-    if (identical(index, -1)) {
-      return;
-    }
+    if (index == -1) return;
+
     // Select a new tab if the tab to be removed is selected and not destroyed
     if (tab.active && tabs.length > 1) {
       // If this is the last tab, select the previous tab. else, the next tab.
-      var newActiveIndex = identical(index, tabs.length - 1)
+      var newActiveIndex = index == tabs.length - 1
           ? index - 1
           : index + 1;
-      tabs [ newActiveIndex ].active = true;
+      tabs[newActiveIndex].active = true;
     }
-    slice(tabs, index, 1);
+    tabs.remove(tab);
   }
 }
 

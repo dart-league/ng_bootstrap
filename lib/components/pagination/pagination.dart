@@ -20,9 +20,6 @@ import 'pager.dart';
       'currentPageChange'
     ])
 class BsPaginationComponent extends BsPagerComponent implements OnInit {
-  /// Constructor to create a new Pagination component
-  /// in which [elementRef] is injected.
-  BsPaginationComponent(ElementRef elementRef) : super(elementRef);
 
 //  /// css classes
 //  @Input('class') String classes = "";
@@ -57,11 +54,9 @@ class BsPaginationComponent extends BsPagerComponent implements OnInit {
   }
 
   ngOnInit() {
-//    classes = elementRef.nativeElement.getAttribute("class") ?? "";
     totalPages = calculateTotalPages();
     previousText = 'Previous';
     nextText = 'Next';
-//    currentPageEmitter.emit(currentPage);
   }
 
   /// Create page object used in template

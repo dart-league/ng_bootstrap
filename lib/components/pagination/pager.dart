@@ -2,15 +2,11 @@ import 'dart:html';
 import 'dart:math' as math;
 import "package:angular2/angular2.dart";
 
-/// Quick previous and next links for simple
+/// Quick "previous" and "next" links for simple
 /// pagination implementations with light markup and styles.
-/// It’s great for simple sites like blogs or magazines.
+/// It’s great for simple sites like blog or magazines.
 @Component (selector: "bs-pager", templateUrl: 'pager.html')
 class BsPagerComponent {
-  BsPagerComponent(this.elementRef);
-
-  /// Contains the current dom-element
-  ElementRef elementRef;
 
   /// label of previous text
   @Input() String previousText = "« Previous";
@@ -98,7 +94,7 @@ class BsPagerComponent {
       dynamic target = event.target;
       target.blur();
       currentPage = _page;
-      totalPagesChange.emit(_page);
+      totalPagesChange.emit(totalPages);
     }
   }
 }
