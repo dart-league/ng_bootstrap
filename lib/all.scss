@@ -1,4 +1,7 @@
+$fa-font-path:        "../font_awesome/fonts" !default;
+
 @import "packages/bootstrap_sass/scss/bootstrap";
+@import "packages/font_awesome/scss/font-awesome.scss";
 @import "components/progress/progress";
 @import "components/tooltip/tooltip";
 @import "components/button/button_group";

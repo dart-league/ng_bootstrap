@@ -9,7 +9,7 @@ import 'table_data_complex.dart';
 
 @Component (selector: 'table-demo',
     templateUrl: 'table_demo.html',
-    directives: const [NG_BOOTSTRAP_TABLE_DIRECTIVES, BsPaginationComponent, NG_BOOTSTRAP_TABSX_DIRECTIVES])
+    directives: const [BS_TABLE_DIRECTIVES, BsPaginationComponent, BS_TABSX_DIRECTIVES])
 class TableDemoComponent implements OnInit {
   List rows = [];
 

@@ -1,3 +1,4 @@
+import 'components/file_upload/file_upload_demo.dart';
 import 'components/table/table_demo.dart';
 import "package:angular2/angular2.dart";
 import 'package:angular2/platform/browser.dart';
@@ -34,6 +35,7 @@ import 'components/tabsx/tabsx_demo.dart';
       CollapseDemo,
       DatepickerDemo,
       DropdownDemo,
+      FileUploadDemoComponent,
       ModalDemo,
       PaginationDemo,
       ProgressDemo,

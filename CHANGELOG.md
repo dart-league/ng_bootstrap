@@ -1,3 +1,10 @@
+## v0.4.0
+
+* rename `NG_BOOTSTRAP_TABLE_DIRECTIVES` to `BS_TABLE_DIRECTIVES`
+* rename `NG_BOOTSTRAP_TABSX_DIRECTIVES` to `BS_TABSX_DIRECTIVES`
+* rename `NG_BOOTSTRAP_DIRECTIVES` to `BS_DIRECTIVES`
+* add `file-upload` directives
+
 ## v0.3.4
 
 * correct wrong totalChange value change in pagination
