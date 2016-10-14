@@ -27,9 +27,7 @@ class BsModalComponent {
 
   bool showModal = false;
 
-  BsModalComponent() {
-    print('showModal = $showModal');
-  }
+  BsModalComponent();
 
   /**
    * Shows the modal. There is no method for hiding. This is done using actions of the modal itself.
