@@ -1,5 +1,5 @@
 name: ng_bootstrap
-version: 0.4.0
+version: 0.4.1
 description: Angular 2 and Bootstrap 4
 authors:
   - Luis Vargas <luisvargastijerino@gmail.com>
@@ -8,7 +8,7 @@ homepage: https://github.com/dart-league/ng_bootstrap
 environment:
   sdk: '>=1.12.0 <2.0.0'
 dependencies:
-  angular2: ^2.0.0-beta.21
+  angular2: ^2.0.0-beta.22
   browser: ^0.10.0
   node_shims: ^0.1.3
   intl: ^0.13.0
@@ -28,31 +28,6 @@ transformers:
     - package:angular2/common.dart#COMMON_DIRECTIVES
     platform_pipes:
     - package:angular2/common.dart#COMMON_PIPES
-    entry_points:
-    - web/index.dart
-    - web/components/accordion/main.dart
-    - web/components/alert/main.dart
-    - web/components/buttons/main.dart
-    - web/components/carousel/main.dart
-    - web/components/collapse/main.dart
-    - web/components/datepicker/main.dart
-    - web/components/dropdown/main.dart
-    - web/components/file_upload/main.dart
-    - web/components/modal/main.dart
-    - web/components/pagination/main.dart
-    - web/components/progress/main.dart
-    - web/components/rating/main.dart
-    - web/components/tabs/main.dart
-    - web/components/table/main.dart
-    - web/components/tabsx/main.dart
-    - web/components/timepicker/main.dart
-    - web/components/tooltip/main.dart
-    - web/components/typeahead/main.dart
-- reflectable:
-    entry_points:
-    - web/index.dart
-    - web/components/typeahead/main.dart
-    - web/components/table/main.dart
 - dart_to_js_script_rewriter
 - $dart2js:
     $include: web/index.dart

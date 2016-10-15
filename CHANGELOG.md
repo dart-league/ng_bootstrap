@@ -1,3 +1,10 @@
+## v0.4.1
+
+* increase version of angular2 to `2.0.0-beta.22`
+* change path of fontawesome in `all.scss` to use `packages` directory
+* remove `web` folder. The content is going to be in `gh-pages` branch and it is going to work as separate project.
+* remove print from BsModalComponent constructor
+
 ## v0.4.0
 
 * rename `NG_BOOTSTRAP_TABLE_DIRECTIVES` to `BS_TABLE_DIRECTIVES`
