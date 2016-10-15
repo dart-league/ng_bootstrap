@@ -1,2 +1,14 @@
+/.pub/
+/.packages
+packages
+/pubspec.lock
+_site
+.sass-cache
+.jekyll-metadata
 
-/.idea/
+/build/web/components/
+/build/web/index.ng_summary.json
+/build/web/demo.html
+/build/web/index.ng_meta.json
+
+!/build/web/packages/font_awesome/fonts/

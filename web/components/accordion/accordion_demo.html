@@ -1,0 +1,38 @@
+<p>
+  <button type="button" class="btn btn-primary btn-sm"
+          (click)="status['isLastOpen'] = !status['isLastOpen']">Toggle last panel
+  </button>
+  <button type="button" class="btn btn-primary btn-sm"
+          (click)="status['isFirstDisabled'] = ! status['isFirstDisabled']">Enable / Disable first panel
+  </button>
+</p>
+
+<div class="checkbox">
+  <label>
+    <input type="checkbox" [(ngModel)]="oneAtATime">
+    Open only one at a time
+  </label>
+</div>
+<bs-accordion [closeOthers]="oneAtATime">
+  <bs-accordion-panel heading="Static Header, initially expanded"
+                   [isOpen]="status['isFirstOpen']"
+                   [isDisabled]="status['isFirstDisabled']">
+    This content is straight in the template.
+  </bs-accordion-panel>
+  <bs-accordion-panel heading="{{group['title']}}" *ngFor="let group of groups">
+    {{group['content']}}
+  </bs-accordion-panel>
+  <bs-accordion-panel heading="Dynamic Body Content,">
+    <p>The body of the accordion group grows to fit the contents</p>
+    <button type="button" class="btn btn-primary btn-sm" (click)="addItem()">Add Item</button>
+    <div *ngFor="let item of items">{{item}}</div>
+  </bs-accordion-panel>
+  <bs-accordion-panel [(isOpen)]="status['isLastOpen']">
+    <header>
+      <i>I can have markup, too!</i>
+      <i class="pull-right fa"
+         [ngClass]="{'fa-chevron-down': status['isLastOpen'], 'fa-chevron-right': !status['isLastOpen']}"></i>
+    </header>
+    This is just some content to illustrate fancy headings.
+  </bs-accordion-panel>
+</bs-accordion>

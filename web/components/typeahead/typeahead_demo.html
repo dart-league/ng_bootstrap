@@ -1,0 +1,44 @@
+<div class='container-fluid'>
+  <h4>Static arrays</h4>
+  <pre>Model: {{selected}}
+Selected Item: {{selectedItem}}</pre>
+
+  <bs-typeahead [(ngModel)]="selected"
+                [source]="statesComplex"
+                [(selectedItem)]="selectedItem"
+                (selectedItemChange)="typeaheadOnSelect($event)"
+                optionField="name">
+    <!-- You can also use custom templates -->
+    <!--<template let-item>{{item['name']}}</template>-->
+  </bs-typeahead>
+
+  <h4>Static arrays of Objects</h4>
+  <pre>Model: {{selectedObj}}
+Selected Item: {{selectedItemObj}}</pre>
+
+  <bs-typeahead [(ngModel)]="selectedObj"
+                [source]="statesObj"
+                [(selectedItem)]="selectedItemObj"
+                (selectedItemChange)="typeaheadOnSelect($event)"
+                optionField="name">
+    <!-- You can also use custom templates -->
+    <!--<template let-item>{{item.name}}</template>-->
+  </bs-typeahead>
+
+  <h4>Asynchronous results</h4>
+  <pre>Model: {{selectedAsync}}
+Selected Item: {{selectedItemAsync}}</pre>
+  <bs-typeahead [(ngModel)]="selectedAsync"
+                [source]="getAsyncData"
+                [(selectedItem)]="selectedItemAsync"
+                (loading)="changeTypeaheadLoading($event)"
+                (noResults)="changeTypeaheadNoResults($event)"
+                (select)="typeaheadOnSelect($event)"
+                placeholder="Locations loaded with timeout"></bs-typeahead>
+  <div [hidden]="typeaheadLoading!==true">
+    <i class="fa fa-refresh ng-hide" style=""></i>
+  </div>
+  <div [hidden]="typeaheadNoResults!==true" class="" style="">
+    <i class="fa fa-remove"></i> No Results Found
+  </div>
+</div>

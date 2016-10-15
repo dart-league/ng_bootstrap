@@ -1,0 +1,45 @@
+<div (click)="$event.preventDefault()">
+    <p>Select a tab by setting active binding to true:</p>
+    <p>
+        <button type="button" class="btn btn-primary btn-sm" (click)="tabs[0]['active'] = true">Select second tab</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="tabs[1]['active'] = true">Select third tab</button>
+    </p>
+    <p>
+        <button type="button" class="btn btn-primary btn-sm" (click)="tabs[1]['disabled'] = ! tabs[1]['disabled']">Enable / Disable third tab</button>
+    </p>
+    <hr />
+    <bs-tabsx>
+        <bs-tabx header="Static title">Static content</bs-tabx>
+        <!-- Dynamic Tabs -->
+        <bs-tabx *ngFor="let tab of tabs"
+                [header]="tab['title']"
+                [active]="tab['active'] == true"
+                (deselect)="tab['active'] = false"
+                [disabled]="tab['disabled'] == true">
+            {{tab['content']}}
+        </bs-tabx>
+        <!-- Dynamic Tabs end -->
+        <bs-tabx (select)="alertMe()">
+            <template bs-tabx-header>
+                <i class="fa fa-bell"></i> Alert!
+            </template>
+            I've got an HTML heading, and a select callback. Pretty cool!
+        </bs-tabx>
+    </bs-tabsx>
+
+    <hr />
+
+    <bs-tabsx [vertical]="true" type="pills">
+        <bs-tabx header="Vertical 1">Vertical content 1</bs-tabx>
+        <bs-tabx header="Vertical 2">Vertical content 2</bs-tabx>
+    </bs-tabsx>
+
+    <hr />
+
+    <p><i>Bootstrap 4 doesn't have justified classes</i></p>
+    <bs-tabsx [justified]="true">
+        <bs-tabx header="Justified">Justified content</bs-tabx>
+        <bs-tabx header="SJ">Short Labeled Justified content</bs-tabx>
+        <bs-tabx header="Long Justified">Long Labeled Justified content</bs-tabx>
+    </bs-tabsx>
+</div>

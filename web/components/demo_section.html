@@ -1,0 +1,31 @@
+<section id="{{nameTN}}">
+  <h1>{{name}} <small>(<a href="{{docUrl}}">documentation</a>)</small></h1>
+
+  <hr>
+
+  <div class="col-lg-5">
+    <h2>Example</h2>
+
+    <div class="card card-block panel panel-secondary panel-body" style="overflow-x: auto">
+      <ng-content></ng-content>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="col-lg-7">
+    <bs-tabsx #tabs>
+      <bs-tabx header="Markup">
+        <pre class="prettyprint">
+            <code class="language-html">{{html}}</code>
+        </pre>
+      </bs-tabx>
+      <bs-tabx header="Dart">
+        <pre class="prettyprint">
+          <code class="language-dart">{{dart}}</code>
+        </pre>
+      </bs-tabx>
+    </bs-tabsx>
+  </div>
+
+</section>

@@ -1,0 +1,65 @@
+<div (click)="$event.preventDefault()">
+  <!-- Simple dropdown -->
+  <bs-dropdown (on-toggle)="toggled($event)">
+    <a href id="simple-dropdown" class="dropdown-toggle" >
+      Click me for a dropdown, yo!
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
+      <li *ngFor="let choice of items">
+        <a class="dropdown-item" href="#">{{choice}}</a>
+      </li>
+    </ul>
+  </bs-dropdown>
+
+  <!-- Single button -->
+  <bs-dropdown [isOpen]="status['isopen']">
+    <button id="single-button" type="button" class="btn btn-primary dropdown-toggle" [disabled]="disabled">
+      Button dropdown
+    </button>
+    <bs-dropdown-menu>
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li class="divider dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </bs-dropdown-menu>
+  </bs-dropdown>
+
+  <!-- Split button -->
+  <bs-dropdown class="btn-group">
+    <button id="split-button" type="button" class="btn btn-danger">Action</button>
+    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split">
+      <span class="caret"></span>
+      <span class="sr-only">Split button!</span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="split-button">
+      <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+      <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+      <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+      <li class="divider dropdown-divider"></li>
+      <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+  </bs-dropdown>
+
+  <hr/>
+  <p>
+    <button type="button" class="btn btn-primary btn-sm" (click)="toggleDropdown($event)">Toggle button dropdown
+    </button>
+    <button type="button" class="btn btn-warning btn-sm" (click)="disabled = !disabled">Enable/Disable</button>
+  </p>
+
+  <hr>
+  <!-- Single button with keyboard nav -->
+  <bs-dropdown class="btn-group" [keyboardNav]="true">
+    <button id="simple-btn-keyboard-nav" type="button" class="btn btn-primary dropdown-toggle">
+      Dropdown with keyboard navigation <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="simple-btn-keyboard-nav">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li class="divider dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+  </bs-dropdown>
+</div>

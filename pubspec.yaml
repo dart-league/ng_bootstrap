@@ -1,0 +1,47 @@
+name: ng_bootstrap_gh_page
+version: 0.0.1
+description: ng_bootstrap demo gh-page
+authors:
+  - Luis Vargas <luisvargastijerino@gmail.com>
+  - Adao Jr. <itsjunnior@gmail.com>
+dependencies:
+  angular2: ^2.0.0-beta.22
+  reflectable: ^0.5.4
+  dart_to_js_script_rewriter: ^1.0.1
+  ng_bootstrap: ^0.4.1
+  sass_transformer: ^0.1.1
+transformers:
+- sass_transformer
+- angular2:
+    platform_directives:
+    - package:angular2/common.dart#COMMON_DIRECTIVES
+    platform_pipes:
+    - package:angular2/common.dart#COMMON_PIPES
+    entry_points:
+    - web/index.dart
+    - web/components/accordion/main.dart
+    - web/components/alert/main.dart
+    - web/components/buttons/main.dart
+    - web/components/carousel/main.dart
+    - web/components/collapse/main.dart
+    - web/components/datepicker/main.dart
+    - web/components/dropdown/main.dart
+    - web/components/file_upload/main.dart
+    - web/components/modal/main.dart
+    - web/components/pagination/main.dart
+    - web/components/progress/main.dart
+    - web/components/rating/main.dart
+    - web/components/tabs/main.dart
+    - web/components/table/main.dart
+    - web/components/tabsx/main.dart
+    - web/components/timepicker/main.dart
+    - web/components/tooltip/main.dart
+    - web/components/typeahead/main.dart
+- reflectable:
+    entry_points:
+    - web/index.dart
+    - web/components/typeahead/main.dart
+    - web/components/table/main.dart
+- dart_to_js_script_rewriter
+- $dart2js:
+    $include: web/index.dart

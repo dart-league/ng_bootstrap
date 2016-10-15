@@ -1,0 +1,51 @@
+<input *ngIf="config['filtering'] != null"
+       class="form-control"
+       placeholder="Filter"
+       [(ngModel)]="config['filtering']['filterString']"
+       (ngModelChange)="filterRows()"/>
+<br>
+<bs-tabsx>
+  <bs-tabx header="Maps Data">
+    <bs-table [rows]="rows"
+              [(pageNumber)]="page"
+              [itemsPerPage]="itemsPerPage"
+              [sortable]="true"
+              [(totalItems)]="length">
+      <bs-column header="Name" fieldName="name"></bs-column>
+      <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
+      <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
+      <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
+      <bs-column header="Start date" fieldName="startDate"></bs-column>
+      <bs-column header="Salary ($)" fieldName="salary"></bs-column>
+      <bs-column header="Address" fieldName="address.street"></bs-column>
+    </bs-table>
+  </bs-tabx>
+  <bs-tabx header="Complex Objects Data">
+    <bs-table [rows]="rowsComplex"
+              [(pageNumber)]="page"
+              [itemsPerPage]="itemsPerPage"
+              [sortable]="true"
+              [(totalItems)]="length">
+      <bs-column header="Name" fieldName="name"></bs-column>
+      <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
+      <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
+      <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
+      <bs-column header="Start date" fieldName="startDate"></bs-column>
+      <bs-column header="Salary ($)" fieldName="salary"></bs-column>
+      <bs-column header="Address" fieldName="address.street"></bs-column>
+    </bs-table>
+  </bs-tabx>
+</bs-tabsx>
+<bs-pagination *ngIf="config['paging']"
+               class="pagination-sm tag"
+               [(currentPage)]="page"
+               [totalItems]="length"
+               [itemsPerPage]="itemsPerPage"
+               [maxSize]="maxSize"
+               [boundaryLinks]="true"
+               [rotate]="false"
+               [(totalPages)]="totalPages">
+</bs-pagination>
+<pre *ngIf="config['paging']" class="card card-block card-header">Page: {{page}} / {{totalPages}}
+Total Items: {{length}}
+</pre>
