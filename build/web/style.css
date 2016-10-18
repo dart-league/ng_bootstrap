@@ -7349,6 +7349,17 @@ bs-pager {
     background-color: #fff;
     cursor: not-allowed; }
 
+bs-search-clear {
+  position: absolute;
+  right: 3.5rem;
+  top: 0;
+  bottom: 0;
+  height: 14px;
+  margin: auto;
+  cursor: pointer;
+  color: #ccc;
+  z-index: 4; }
+
 /*!
  * Bootstrap Docs (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.

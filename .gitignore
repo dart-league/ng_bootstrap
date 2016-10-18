@@ -1,14 +1,17 @@
 /.pub/
 /.packages
-packages
+/packages
+/web/packages/
+
 /pubspec.lock
-_site
-.sass-cache
-.jekyll-metadata
 
 /build/web/components/
 /build/web/index.ng_summary.json
 /build/web/demo.html
 /build/web/index.ng_meta.json
-
-!/build/web/packages/font_awesome/fonts/
+/build/web/packages/angular2/
+/build/web/packages/browser/
+/build/web/packages/bootstrap_sass/
+/build/web/packages/analyzer/
+/build/web/packages/unittest/
+/build/web/packages/ng_bootstrap/

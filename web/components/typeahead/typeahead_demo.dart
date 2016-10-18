@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'dart:html';
 import "package:angular2/angular2.dart";
 import 'package:dson/dson.dart';
 import 'package:ng_bootstrap/ng_bootstrap.dart';
@@ -182,7 +183,7 @@ class TypeaheadDemo {
     new State()..id = 50..name = "Wisconsin",
     new State()..id = 51..name = "Wyoming"
   ];
-  
+
   TypeaheadDemo get context => this;
 
   Future<Iterable<String>> getAsyncData(String queryStr) =>
@@ -203,6 +204,11 @@ class TypeaheadDemo {
 
   typeaheadOnSelect(e) {
     print('Selected value: ${e}');
+  }
+
+  addState(InputElement target) {
+    statesComplex.add({'id': statesComplex.last['id'] + 1, 'name': target.value});
+    target.value = '';
   }
 }
 

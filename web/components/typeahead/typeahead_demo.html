@@ -1,16 +1,25 @@
 <div class='container-fluid'>
   <h4>Static arrays</h4>
+
+  <div class="form-group">
+    <label for="add-state-inp">Add More States</label>
+    <input id="add-state-inp" class="form-control" type="text" (change)="addState($event.target)">
+  </div>
+
   <pre>Model: {{selected}}
 Selected Item: {{selectedItem}}</pre>
 
-  <bs-typeahead [(ngModel)]="selected"
-                [source]="statesComplex"
-                [(selectedItem)]="selectedItem"
-                (selectedItemChange)="typeaheadOnSelect($event)"
-                optionField="name">
-    <!-- You can also use custom templates -->
-    <!--<template let-item>{{item['name']}}</template>-->
-  </bs-typeahead>
+  <div class="form-group">
+    <label>Select State</label>
+    <bs-typeahead [(ngModel)]="selected"
+                  [source]="statesComplex"
+                  [(selectedItem)]="selectedItem"
+                  (selectedItemChange)="typeaheadOnSelect($event)"
+                  optionField="name">
+      <!-- You can also use custom templates -->
+      <!--<template let-item>{{item['name']}}</template>-->
+    </bs-typeahead>
+  </div>
 
   <h4>Static arrays of Objects</h4>
   <pre>Model: {{selectedObj}}
@@ -28,6 +37,12 @@ Selected Item: {{selectedItemObj}}</pre>
   <h4>Asynchronous results</h4>
   <pre>Model: {{selectedAsync}}
 Selected Item: {{selectedItemAsync}}</pre>
+  <div [hidden]="typeaheadLoading!==true">
+    Loading <i class="fa fa-refresh ng-hide" style=""></i>
+  </div>
+  <div [hidden]="typeaheadNoResults!==true" class="" style="">
+    <i class="fa fa-remove"></i> No Results Found
+  </div>
   <bs-typeahead [(ngModel)]="selectedAsync"
                 [source]="getAsyncData"
                 [(selectedItem)]="selectedItemAsync"
@@ -35,10 +50,4 @@ Selected Item: {{selectedItemAsync}}</pre>
                 (noResults)="changeTypeaheadNoResults($event)"
                 (select)="typeaheadOnSelect($event)"
                 placeholder="Locations loaded with timeout"></bs-typeahead>
-  <div [hidden]="typeaheadLoading!==true">
-    <i class="fa fa-refresh ng-hide" style=""></i>
-  </div>
-  <div [hidden]="typeaheadNoResults!==true" class="" style="">
-    <i class="fa fa-remove"></i> No Results Found
-  </div>
 </div>
