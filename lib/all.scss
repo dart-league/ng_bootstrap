@@ -1,7 +1,7 @@
 $fa-font-path:        "packages/font_awesome/fonts" !default;
 
 @import "packages/bootstrap_sass/scss/bootstrap";
-@import "packages/font_awesome/scss/font-awesome.scss";
+@import "packages/font_awesome/scss/font-awesome";
 @import "components/progress/progress";
 @import "components/tooltip/tooltip";
 @import "components/button/button_group";
@@ -9,3 +9,4 @@ $fa-font-path:        "packages/font_awesome/fonts" !default;
 @import "components/accordion/panels";
 @import "components/pagination/pagination";
 @import "components/pagination/pager";
+@import "components/typeahead/typeahead";

@@ -1,3 +1,11 @@
+## v0.4.2
+
+* Typeahead:
+    * increase the options limit to 200
+    * process matches always user clicks dropdown button, or whenever user change search value
+    * add clear text button
+    * add `_typeahead.scss` which contains the styles for `clear-button`
+
 ## v0.4.1
 
 * increase version of angular2 to `2.0.0-beta.22`

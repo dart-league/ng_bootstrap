@@ -6,8 +6,14 @@
            (ngModelChange)="processMatches()"
            (click)="$event.stopPropagation()"
            (keyup)="onTypeaheadChange($event)">
+    <bs-search-clear
+        *ngIf="ngModel.model.length > 0"
+        class="fa fa-remove"
+        (click)="ngModel.model = ''; processMatches(); $event.stopPropagation()"></bs-search-clear>
     <span class="input-group-btn">
-      <bs-toggle-button type="button" class="btn btn-secondary" [(ngModel)]="isOpen" (click)="$event.stopPropagation()">
+      <bs-toggle-button class="btn btn-secondary"
+                        [(ngModel)]="isOpen"
+                        (click)="processMatchesIfNotOpen(); $event.stopPropagation()">
         <i class="fa fa-caret-down"></i>
       </bs-toggle-button>
     </span>
