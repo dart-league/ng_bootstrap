@@ -16,8 +16,8 @@ part of bs_date_picker;
     ])
 class BsDatePickerComponent extends DefaultValueAccessor with BsDatePickerBase {
   /// Constructs a [NgBsDatePicker] component injecting [NgModel], [Renderer], and [ElementRef]
-  BsDatePickerComponent(this.ngModel, Renderer renderer, ElementRef elementRef)
-      : super(renderer, elementRef) {
+  BsDatePickerComponent(this.ngModel, ElementRef elementRef)
+      : super(elementRef) {
     ngModel.valueAccessor = this;
   }
 

@@ -19,8 +19,8 @@ class BsRadioButtonDirective extends DefaultValueAccessor {
 
   var _value;
 
-  BsRadioButtonDirective(this.ngModel, Renderer renderer, ElementRef elementRef)
-      : super(renderer, elementRef) {
+  BsRadioButtonDirective(this.ngModel, ElementRef elementRef)
+      : super(elementRef) {
     ngModel.valueAccessor = this;
   }
 

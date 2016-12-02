@@ -11,8 +11,8 @@ import 'package:node_shims/js.dart';
 @Component (selector: "bs-rating",
     templateUrl: 'rating.html')
 class BsRatingComponent extends DefaultValueAccessor implements OnInit {
-  BsRatingComponent(this.cd, Renderer renderer, ElementRef elementRef)
-      : super (renderer, elementRef) {
+  BsRatingComponent(this.cd, ElementRef elementRef)
+      : super (elementRef) {
     cd.valueAccessor = this;
   }
 

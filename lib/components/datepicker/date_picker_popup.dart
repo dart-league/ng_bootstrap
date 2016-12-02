@@ -8,8 +8,8 @@ part of bs_date_picker;
 )
 class BsDatePickerPopupComponent extends DefaultValueAccessor {
   /// Constructs a DatePickerPopup
-  BsDatePickerPopupComponent(this.ngModel, Renderer renderer, ElementRef elementRef)
-      : super(renderer, elementRef) {
+  BsDatePickerPopupComponent(this.ngModel, ElementRef elementRef)
+      : super(elementRef) {
     ngModel.valueAccessor = this;
   }
 

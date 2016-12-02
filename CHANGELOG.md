@@ -1,3 +1,8 @@
+## v0.4.3
+
+* Use `grinder` and `dart-sass` instead `sass_transformer` and `ruby-sass`.
+* Upgrade angular to `2.2.0` and remove `Renderer` from files. (fixes #56)
+
 ## v0.4.2
 
 * Typeahead:

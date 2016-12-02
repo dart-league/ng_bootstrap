@@ -95,8 +95,8 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
   var selectedItem;
 
   /// Construct a [BsTypeAheadComponent] component injecting [ngModel], [renderer], [elementRef]
-  BsTypeAheadComponent(this.ngModel, Renderer renderer, ElementRef elementRef)
-      : super(renderer, elementRef) {
+  BsTypeAheadComponent(this.ngModel, ElementRef elementRef)
+      : super(elementRef) {
     ngModel.valueAccessor = this;
 
     _queryStream
