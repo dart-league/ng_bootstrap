@@ -5,16 +5,15 @@ authors:
   - Luis Vargas <luisvargastijerino@gmail.com>
   - Adao Jr. <itsjunnior@gmail.com>
 dependencies:
-  angular2: ^2.0.0-beta.22
+  angular2: ^2.2.0
   reflectable: ^0.5.4
   dart_to_js_script_rewriter: ^1.0.1
-  ng_bootstrap: ^0.4.2
+  ng_bootstrap: ^0.4.3
 #  ng_bootstrap:
 #    path: ../ng_bootstrap
-#    git: https://github.com/dart-league/ng_bootstrap
-  sass_transformer: ^0.1.1
+dev_dependencies:
+  grinder: ^0.8.0+3
 transformers:
-- sass_transformer
 - angular2:
     platform_directives:
     - package:angular2/common.dart#COMMON_DIRECTIVES
