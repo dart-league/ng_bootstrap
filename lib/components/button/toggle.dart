@@ -19,8 +19,8 @@ class BsToggleButtonDirective extends DefaultValueAccessor {
   /// active status of the button
   bool get active => trueValue == _value;
 
-  BsToggleButtonDirective(this.ngModel, Renderer renderer, ElementRef elementRef)
-      : super(renderer, elementRef) {
+  BsToggleButtonDirective(this.ngModel, ElementRef elementRef)
+      : super(elementRef) {
     ngModel.valueAccessor = this;
   }
 

@@ -11,7 +11,7 @@ bool _isStaticPositioned(Element nativeEl) =>
 /// returns the closest, non-statically positioned parentOffset of a given element
 /// @param nativeEl
 _parentOffsetEl(Element nativeEl) {
-  var offsetParent = nativeEl.offsetParent ?? _document;
+  Element offsetParent = nativeEl.offsetParent ?? _document;
   while (offsetParent != null
       && offsetParent != _document
       && _isStaticPositioned(offsetParent)) {

@@ -1,5 +1,4 @@
 import "package:angular2/angular2.dart";
-import 'package:node_shims/js.dart';
 
 /// Directives needed to create a tab-set
 const BS_TABSX_DIRECTIVES = const [BsTabxDirective, BsTabxHeaderDirective, BsTabsxComponents];

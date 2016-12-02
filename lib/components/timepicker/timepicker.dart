@@ -18,8 +18,8 @@ DateTime addMinutes(DateTime time, int minutes) => time.add(new Duration(minutes
     templateUrl: 'timepicker.html')
 class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   ///
-  BsTimePickerComponent(this.cd, Renderer renderer, ElementRef elementRef)
-      : super (renderer, elementRef) {
+  BsTimePickerComponent(this.cd, ElementRef elementRef)
+      : super (elementRef) {
     cd.valueAccessor = this;
   }
 

@@ -48,7 +48,7 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
   @Input() num waitMs = 400;
 
   /// maximum length of options items list
-  @Input() num optionsLimit = 20;
+  @Input() num optionsLimit = 200;
 
   /// (*not implemented*) (`?boolean=true`) - if `false` restrict model values to the ones selected from the popup only will be provided
   // todo: not yet implemented
@@ -95,8 +95,8 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
   var selectedItem;
 
   /// Construct a [BsTypeAheadComponent] component injecting [ngModel], [renderer], [elementRef]
-  BsTypeAheadComponent(this.ngModel, Renderer renderer, ElementRef elementRef)
-      : super(renderer, elementRef) {
+  BsTypeAheadComponent(this.ngModel, ElementRef elementRef)
+      : super(elementRef) {
     ngModel.valueAccessor = this;
 
     _queryStream
@@ -112,7 +112,10 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
   @override
   ngOnInit() async {
     ngModel.model = or(ngModel.model, '');
-    processMatches();
+  }
+
+  void processMatchesIfNotOpen() {
+    if(!isOpen) processMatches();
   }
 
   /// process the elements that matches the entered query

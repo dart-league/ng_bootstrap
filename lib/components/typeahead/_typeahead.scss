@@ -1,0 +1,11 @@
+bs-search-clear {
+  position: absolute;
+  right: $btn-padding-x * 3.5;
+  top: 0;
+  bottom: 0;
+  height: 14px;
+  margin: auto;
+  cursor: pointer;
+  color: #ccc;
+  z-index: 4;
+}

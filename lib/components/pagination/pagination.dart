@@ -25,7 +25,7 @@ class BsPaginationComponent extends BsPagerComponent implements OnInit {
 //  @Input('class') String classes = "";
 
   /// limit number for page links in pager
-  @Input() num maxSize;
+  @Input() int maxSize;
 
   /// if `true` current page will be in the middle of pages list
   @Input() bool rotate = true;
@@ -65,10 +65,10 @@ class BsPaginationComponent extends BsPagerComponent implements OnInit {
   }
 
   /// get the pages to be viewed in dependence of the [currentPage] and [totalPage]
-  getPages(currentPage, totalPages) {
+  getPages(int currentPage, int totalPages) {
     var pages = [];
     // Default page limits
-    var startPage = 1;
+    int startPage = 1;
     var endPage = totalPages;
     var isMaxSized = maxSize != null && maxSize < totalPages;
     // recompute if maxSize

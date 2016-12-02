@@ -17,21 +17,7 @@ dependencies:
     ...
 ```
 
-3\. Add sass transformer:
-
-```yaml
-dependencies:
-    ...
-    sass_transformer: any
-    ...
-transformers:
-- sass_transformer
-```
-
-> you need to [install sass](http://sass-lang.com/install) previously
-
-
-4\. Add css stylesheet link to `index.html`:
+3\. Add css stylesheet link to `index.html`:
 
 ```html
 <head>
@@ -41,12 +27,40 @@ transformers:
 </head>
 ```
 
-5\. Add needed `ng_bootstrap` directives to your components:
+4\. Add needed `ng_bootstrap` directives to your components:
 
 ```dart
 @Component(
-    ...
+    // ...
     directives: const [BS_DIRECTIVES])
+```
+
+## Customize Styles - Create Custom Themes
+
+To customize default styles to create custom themes based on `ng_bootstrap` theme,
+the best option is to create an `scss` file that imports the `package:ng_botstrap/all.scss`
+file, for example:
+
+```scss
+// variables should be set before importing default theme
+$brand-primary: red !important;
+
+// you could also import a custom variables theme if you prefer
+// but it should be done before importing default theme
+@import 'path/to/_my-variables';
+
+@import 'package:ng_bootstrap/all';
+```
+
+Then in your `index.html` file change the `link` tag to point to the new theme.
+
+
+```html
+<head>
+    ...
+    <link rel="stylesheet" href="path/to/my-theme.css">
+    ...
+</head>
 ```
 
 ## Components
@@ -68,8 +82,8 @@ transformers:
 - [x] [Timepicker](http://dart-league.github.io/ng_bootstrap/#timepicker)
 - [x] [Tooltip](http://dart-league.github.io/ng_bootstrap/#tooltip)
 - [x] [Typeahead](http://dart-league.github.io/ng_bootstrap/#typeahead)
-- [x] Grid/Table
-- [ ] FileInput
+- [x] [Grid/Table](http://dart-league.github.io/ng_bootstrap/build/web/index.html#table)
+- [x] [FileInput](http://dart-league.github.io/ng_bootstrap/build/web/index.html#file_upload)
 - [ ] ImageInput
 - [ ] SignItInput
 - [ ] SignInput
@@ -90,5 +104,3 @@ transformers:
 
 ### TODO
 - [ ] support animation  (in progress...)
-- [x] demo page
-- [x] docs
