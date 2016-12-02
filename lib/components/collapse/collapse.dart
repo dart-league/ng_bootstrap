@@ -17,10 +17,14 @@ import 'dart:async';
     })
 class BsCollapseDirective implements OnInit {
   /// Constructs an collapsible component
-  BsCollapseDirective(this.elementRef);
+  BsCollapseDirective(this.elementRef) {
+    _element = elementRef.nativeElement;
+  }
 
   /// Contains the element reference of this component
   ElementRef elementRef;
+
+  Element _element;
 
   /// provides the height style of the component in pixels
   @HostBinding('style.height')
@@ -47,7 +51,7 @@ class BsCollapseDirective implements OnInit {
     }
   }
 
-  String get _scrollHeight => (elementRef.nativeElement as Element).scrollHeight.toString() + 'px';
+  String get _scrollHeight => _element.scrollHeight.toString() + 'px';
 
   /// Emits the Collapse state of the component
   @Output() EventEmitter<bool> bsCollapseChange = new EventEmitter<bool>();
@@ -64,6 +68,7 @@ class BsCollapseDirective implements OnInit {
     if (!expanded && !collapsing) return;
 
     collapsingChange.emit(collapsing = true);
+    _element.style.height = _scrollHeight;
     new Future(() {
       height = '0';
       new Timer(const Duration(milliseconds: 350), () {
@@ -84,6 +89,7 @@ class BsCollapseDirective implements OnInit {
       new Timer(const Duration(milliseconds: 350), () {
         collapsingChange.emit(collapsing = false);
         bsCollapseChange.emit(!expanded);
+        _element.style.removeProperty('height');
       });
     });
   }

@@ -1,3 +1,7 @@
+## v0.4.4
+
+* make accordion panel grow to fit the content (fixes #55)
+
 ## v0.4.3
 
 * Use `grinder` and `dart-sass` instead `sass_transformer` and `ruby-sass`.
