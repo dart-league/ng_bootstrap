@@ -38,7 +38,7 @@ dependencies:
 ## Customize Styles - Create Custom Themes
 
 To customize default styles to create custom themes based on `ng_bootstrap` theme,
-the best option is to create an `scss` file that imports the `package:ng_botstrap/all.scss`
+the best option is to create an `scss` file that imports the `package:ng_bootstrap/all.scss`
 file, for example:
 
 ```scss
