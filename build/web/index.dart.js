@@ -156,7 +156,8 @@ if(d!=="^"&&d!=="$reflectable"&&c!==43&&c!==42&&(a0=g[d])!=null&&a0.constructor=
 g=g.__proto__
 g.$deferredAction()}function mixinDeferredActionHelper(c,d){var g
 if(d.hasOwnProperty("$deferredAction"))g=d.$deferredAction
-return function foo(){var f=this
+return function foo(){if(!supportsDirectProtoAccess)return
+var f=this
 while(!f.hasOwnProperty("$deferredAction"))f=f.__proto__
 if(g)f.$deferredAction=g
 else{delete f.$deferredAction
