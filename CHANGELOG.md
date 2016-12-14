@@ -1,3 +1,7 @@
+## v0.4.5
+
+* correct path to font-awesome (fixes #59)
+
 ## v0.4.4
 
 * make accordion panel grow to fit the content (fixes #55)
