@@ -47,7 +47,7 @@ class BsDatePickerComponent extends DefaultValueAccessor with BsDatePickerBase {
         try {
           value = DateTime.parse(value);
         } catch (e) {
-          return;
+          return; // ignore: return_without_value
         }
       }
       activeDate = value;

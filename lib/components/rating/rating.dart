@@ -64,7 +64,7 @@ class BsRatingComponent extends DefaultValueAccessor implements OnInit {
   }
 
   /// update model to view
-  writeValue(num _value) {
+  writeValue(_value) {
     _value ??= 0;
     if (_value != 0) {
       value = _value.round();
