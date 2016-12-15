@@ -103,11 +103,11 @@ class BsDayPickerComponent implements OnInit {
       yearTitle = new DateFormat(datePickerInner.formatYear).format(datePickerInner.activeDate);
       rows = datePickerInner.split(days, 7);
       if (datePickerInner.showWeeks) {
-        weekNumbers = [];
+        weekNumbers.clear();
         var thursdayIndex = (4 + 7 - datePickerInner.startingDay) % 7,
             numWeeks = rows.length;
         for (var curWeek = 0; curWeek < numWeeks; curWeek ++) {
-          weekNumbers.add(getISO8601WeekNumber(rows[curWeek][thursdayIndex]['date']));
+          weekNumbers.add(getISO8601WeekNumber(rows[curWeek][thursdayIndex]['date']) + 1);
         }
       }
     }, "day");

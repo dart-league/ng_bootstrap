@@ -1,5 +1,8 @@
 part of bs_date_picker;
 
+String defaultFormat = 'yMMMd';
+String _defaultLocale = defaultLocale.replaceAll('-', '_');
+
 /// Creates an [NgBsDatePickerPopup], this is a date-picker component that is popup when user clicks
 /// on the input box or on the button at the right of the input box.
 @Component (selector: "bs-date-picker-popup",
@@ -31,8 +34,21 @@ class BsDatePickerPopupComponent extends DefaultValueAccessor {
   /// if `true` the dropdown-menu will be open, and the date-picker visible
   bool isOpen;
 
-  /// updates the value to the view, is fired when active date changes
-  void update() {
-    ngModel.viewToModelUpdate(ngModel.model);
+  /// format pattern used to show the input value
+  ///
+  /// See [DateFormat] for more information.
+  @Input() String format = defaultFormat;
+
+  /// locale used to localize the output values
+  @Input() String locale = _defaultLocale;
+
+  valueChanged(value) {
+    print(format);
+    var df = new DateFormat(format, locale);
+    try {
+      ngModel.model = df.parse(value);
+    } catch (e) {
+      print(e);
+    }
   }
 }

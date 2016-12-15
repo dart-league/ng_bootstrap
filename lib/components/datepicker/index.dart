@@ -1,6 +1,7 @@
 library bs_date_picker;
 
 import "package:angular2/angular2.dart";
+import 'package:angular2/src/common/pipes/date_pipe.dart';
 import 'package:intl/intl.dart';
 import 'package:node_shims/js.dart';
 import 'package:ng_bootstrap/components/dropdown/index.dart';

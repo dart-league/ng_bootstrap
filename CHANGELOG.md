@@ -1,3 +1,7 @@
+##v0.4.6
+
+* add format and locale to datepicker-popup (fixes #51 and #45)
+
 ## v0.4.5
 
 * correct path to font-awesome (fixes #59)

@@ -37,7 +37,7 @@ class BsDatePickerComponent extends DefaultValueAccessor with BsDatePickerBase {
   /// sets the value of selected date
   @Input() set activeDate(DateTime value) {
     _activeDate = value;
-    ngModel.viewToModelUpdate(value.toString());
+    ngModel.viewToModelUpdate(value);
   }
 
   /// writes value from the view
