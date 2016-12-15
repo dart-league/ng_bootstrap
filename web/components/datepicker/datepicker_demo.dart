@@ -5,18 +5,18 @@ import 'package:ng_bootstrap/ng_bootstrap.dart';
     templateUrl: 'datepicker_demo.html',
     directives: const [BS_DIRECTIVES])
 class DatepickerDemo {
-  String dt = new DateTime.now().toIso8601String();
-  String dt2 = new DateTime.now().toIso8601String();
+  DateTime dt = new DateTime.now();
+  DateTime dt2 = new DateTime.now();
   List<Map> events;
   DateTime tomorrow;
   DateTime afterTomorrow;
   List<String> formats = [
-    "DD-MM-YYYY",
-    "YYYY/MM/DD",
-    "DD.MM.YYYY",
-    "shortDate"
+    "dd-MM-yyyy",
+    "yyyy/MM/dd",
+    "dd.MM.yy",
+    "yMd"
   ];
-  var format;
+  String format;
   dynamic dateOptions = {"formatYear": "YY", "startingDay": 1};
   bool opened = false;
 
@@ -33,11 +33,11 @@ class DatepickerDemo {
     format = formats[0];
   }
   today() {
-    dt = new DateTime.now().toIso8601String();
+    dt = new DateTime.now();
   }
 
   d20090824() {
-    dt = new DateTime(2009, 08, 24).toIso8601String();
+    dt = new DateTime(2009, 08, 24);
   }
 
   // todo: implement custom class cases
@@ -58,15 +58,11 @@ class DatepickerDemo {
     return mode == "day" && (date.day == 0 || date.day == 6);
   }
 
-  open() {
-    opened = !opened;
-  }
-
   clear() {
     dt = null;
   }
 
   toggleMin() {
-    dt = minDate.toIso8601String();
+    dt = minDate;
   }
 }

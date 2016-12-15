@@ -18,7 +18,7 @@
     <bs-date-picker [(ngModel)]="dt" [minDate]="minDate" [showWeeks]="true"></bs-date-picker>
   </div>
 
-  <hr />
+  <hr>
   <button type="button" class="btn btn-sm btn-info" (click)="today()">Today</button>
   <button type="button" class="btn btn-sm btn-default btn-secondary" (click)="d20090824();">2009-08-24</button>
   <button type="button" class="btn btn-sm btn-danger" (click)="clear()">Clear</button>
@@ -26,9 +26,15 @@
 
   <hr>
 
+  <h4>Select Format</h4>
+  <select class="form-control" [(ngModel)]="format">
+    <option *ngFor="let format of formats" [value]="format">{{format}}</option>
+  </select>
+  <br>
+
   <pre>Selected date is: <em>{{dt2}}</em></pre>
   <h4>Popup</h4>
   <div style="display:inline-block; min-height:290px;">
-    <bs-date-picker-popup [(ngModel)]="dt2"></bs-date-picker-popup>
+    <bs-date-picker-popup [(ngModel)]="dt2" [format]="format"></bs-date-picker-popup>
   </div>
 </div>
