@@ -18,3 +18,6 @@
 /build/web/packages/package_resolver/
 /build/web/style.scss
 /web/style.css
+/build/web/packages/font_awesome/less/
+/build/web/packages/font_awesome/scss/
+/build/web/packages/font_awesome/css/

@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:grinder/grinder.dart';
-import 'package:sass/sass_package_resolver.dart';
+import 'package:sass/sass.dart';
 
 main(args) => grind(args);
 
