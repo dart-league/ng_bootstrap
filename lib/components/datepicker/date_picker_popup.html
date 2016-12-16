@@ -2,7 +2,7 @@
   <bs-dropdown-toggle class="input-group">
     <input type="text" class="form-control" (change)="valueChanged($event.target.value)" [value]="ngModel.model | date: format">
     <span class="input-group-btn">
-      <bs-toggle-button type="button" class="btn btn-secondary" [(ngModel)]="isOpen" (click)="$event.stopPropagation()">
+      <bs-toggle-button class="btn btn-secondary" [(ngModel)]="isOpen" (click)="$event.stopPropagation()">
         <i class="fa fa-calendar"></i>
       </bs-toggle-button>
     </span>

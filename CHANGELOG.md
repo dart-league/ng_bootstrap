@@ -1,3 +1,8 @@
+## v0.5.0
+
+* upgrade to `bootstrap_sass v4.0.0-alpha.5`
+* remove unneded code in `date_picker_popup`
+
 ##v0.4.6
 
 * add format and locale to datepicker-popup (fixes #51 and #45)

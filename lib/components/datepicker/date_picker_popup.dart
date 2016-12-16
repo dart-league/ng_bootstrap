@@ -43,7 +43,6 @@ class BsDatePickerPopupComponent extends DefaultValueAccessor {
   @Input() String locale = _defaultLocale;
 
   valueChanged(value) {
-    print(format);
     var df = new DateFormat(format, locale);
     try {
       ngModel.model = df.parse(value);
