@@ -8,7 +8,7 @@ dependencies:
   angular2: ^2.2.0
   reflectable: ^0.5.4
   dart_to_js_script_rewriter: ^1.0.1
-  ng_bootstrap: ^0.4.6
+  ng_bootstrap: ^0.5.1
 #  ng_bootstrap:
 #    path: ../ng_bootstrap
 dev_dependencies:
