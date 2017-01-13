@@ -3108,8 +3108,9 @@ bs-button-group bs-button-group + bs-button-group {
 .btn-toolbar .input-group {
   float: left;
 }
+.btn-toolbar > .btn,
 .btn-toolbar > .btn-group,
-.btn-toolbar > bs-button-group, .btn-toolbar > .btn,
+.btn-toolbar > bs-button-group,
 .btn-toolbar > .input-group {
   margin-left: 0.5rem;
 }
@@ -3192,10 +3193,11 @@ bs-button-group.open .dropdown-toggle {
   border-width: 0 0.3em 0.3em;
 }
 
+.btn-group-vertical > .btn,
 .btn-group-vertical > .btn-group,
 .btn-group-vertical > bs-button-group,
 .btn-group-vertical > .btn-group > .btn,
-.btn-group-vertical > bs-button-group > .btn, .btn-group-vertical > .btn {
+.btn-group-vertical > bs-button-group > .btn {
   display: block;
   float: none;
   width: 100%;
@@ -3209,6 +3211,7 @@ bs-button-group.open .dropdown-toggle {
 .btn-group-vertical > .btn-group > .btn, .btn-group-vertical > bs-button-group > .btn {
   float: none;
 }
+.btn-group-vertical > .btn + .btn,
 .btn-group-vertical > .btn + .btn-group,
 .btn-group-vertical > .btn + bs-button-group,
 .btn-group-vertical > .btn-group + .btn,
@@ -3216,7 +3219,7 @@ bs-button-group.open .dropdown-toggle {
 .btn-group-vertical > .btn-group + .btn-group,
 .btn-group-vertical > bs-button-group + .btn-group,
 .btn-group-vertical > .btn-group + bs-button-group,
-.btn-group-vertical > bs-button-group + bs-button-group, .btn-group-vertical > .btn + .btn {
+.btn-group-vertical > bs-button-group + bs-button-group {
   margin-top: -1px;
   margin-left: 0;
 }
@@ -3249,11 +3252,10 @@ bs-button-group.open .dropdown-toggle {
   border-top-left-radius: 0;
 }
 
+[data-toggle=buttons] > .btn input[type=radio],
+[data-toggle=buttons] > .btn input[type=checkbox],
 [data-toggle=buttons] > .btn-group > .btn input[type=radio],
-[data-toggle=buttons] > bs-button-group > .btn input[type=radio],
-[data-toggle=buttons] > .btn-group > .btn input[type=checkbox],
-[data-toggle=buttons] > bs-button-group > .btn input[type=checkbox], [data-toggle=buttons] > .btn input[type=radio],
-[data-toggle=buttons] > .btn input[type=checkbox] {
+[data-toggle=buttons] > .btn-group > .btn input[type=checkbox] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
@@ -4657,8 +4659,9 @@ a.tag:focus, a.tag:hover {
   border-radius: 0.25rem;
 }
 
+base::-moz-progress-bar,
 .progress[value],
-bs-progress > progress[value], base::-moz-progress-bar {
+bs-progress > progress[value] {
   background-color: #eee;
   border-radius: 0.25rem;
 }
@@ -5516,14 +5519,14 @@ button.close {
 .carousel-control.left {
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="", endColorstr="", GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#80000000", endColorstr="#00000000", GradientType=1);
 }
 .carousel-control.right {
   right: 0;
   left: auto;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="", endColorstr="", GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00000000", endColorstr="#80000000", GradientType=1);
 }
 .carousel-control:focus, .carousel-control:hover {
   color: #fff;
