@@ -1,3 +1,8 @@
+## 0.5.2
+
+* upgrade to `sass 1.0.0-alpha.9`
+* upgrade to `intl 0.14.0`
+
 ## 0.5.1
 
 * correct `date-picker-popup` not updating values correctly
