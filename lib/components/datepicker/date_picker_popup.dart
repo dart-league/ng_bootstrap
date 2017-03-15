@@ -1,7 +1,7 @@
 part of bs_date_picker;
 
 String defaultFormat = 'yMMMd';
-String _defaultLocale = defaultLocale.replaceAll('-', '_');
+String _defaultLocale = 'en_US';
 
 /// Creates an [NgBsDatePickerPopup], this is a date-picker component that is popup when user clicks
 /// on the input box or on the button at the right of the input box.

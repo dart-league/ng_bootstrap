@@ -34,6 +34,9 @@ part of bs_table_directives;
 </table>
 ''')
 class BsTableComponent {
+  BsTableComponent() {
+    pageNumberChange.listen(updatePage);
+  }
   /// Saves the initial values coming from the html attribute
   List _rows;
 
@@ -81,8 +84,8 @@ class BsTableComponent {
   @Output() EventEmitter<num> totalItemsChange = new EventEmitter();
 
   /// Updates the items displayed in the page whenever occurs a [pageNumberChange]
-  @HostListener('pageNumberChange')
-  void updatePage() {
+  @HostListener('pageNumberChange', const ['\$event'])
+  void updatePage(num pageNumber) {
     var startIndex = (pageNumber - 1) * itemsPerPage;
     var endIndex = min(rowsAux.length, startIndex + itemsPerPage);
     rowsPage = rowsAux.getRange(startIndex, endIndex).toList();
@@ -116,7 +119,7 @@ class BsTableComponent {
       columns.forEach((c) {
         if (c.fieldName != column.fieldName && c.sort != 'NO_SORTABLE') c.sort = 'NONE';
       });
-      updatePage();
+      updatePage(pageNumber);
     }
   }
 
@@ -139,6 +142,6 @@ class BsTableComponent {
       fieldName.split('.').fold(row, (prev, String curr) =>
       prev is Map
           ? prev[curr]
-          : serializable.reflect(prev).invokeGetter(curr)
+          : throw new Exception('Type of prev is not supported, please use a Map, SerializableMap or an String')
       ).toString();
 }

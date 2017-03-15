@@ -6,7 +6,6 @@ import 'package:node_shims/js.dart';
 import 'package:stream_transformers/stream_transformers.dart';
 import 'package:ng_bootstrap/components/button/toggle.dart';
 import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart';
-import 'package:dson/dson.dart';
 
 // todo: options loading by http not yet implemented
 /// Creates a type-ahead component
@@ -88,7 +87,7 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
   @Input() bool autocomplete;
 
   /// if `true` the dropdown-menu will be open, and the date-picker visible
-  bool isOpen;
+  bool isOpen = false;
 
   final EventEmitter _queryStream = new EventEmitter();
 
@@ -184,10 +183,10 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
   }
 
   /// Returns the item as string
-  _itemString(item) =>
+  _itemString(/*String | Map*/ item) =>
       item is String ? item :
       item is Map ? item[optionField] :
-      serializable.reflect(item).invokeGetter(optionField);
+      throw new Exception('Type of item is not supported, please use a Map, SerializableMap or an String');
 
   /// highlights the matching part of the matched item. For example if user types "a" and the matched
   /// word is "Alaska" the result will be `<strong>A</strong>l<strong>a</strong>sk<strong>a</strong>`
