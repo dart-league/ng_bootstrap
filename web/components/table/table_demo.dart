@@ -1,11 +1,13 @@
+library table.table_demo;
+
 import 'package:angular2/core.dart';
-import 'package:dson/dson.dart';
 import 'package:ng_bootstrap/components/pagination/pagination.dart';
 import 'package:ng_bootstrap/components/table/table_directives.dart';
 import 'package:ng_bootstrap/components/tabsx/tabsx.dart';
 import 'package:node_shims/js.dart';
 import 'table_data.dart';
 import 'table_data_complex.dart';
+export 'table_data_complex.dart';
 
 @Component (selector: 'table-demo',
     templateUrl: 'table_demo.html',
@@ -25,11 +27,13 @@ class TableDemoComponent implements OnInit {
 
   Map config;
 
+  bool selectable;
+
   List data = tableData;
 
   List rowsComplex = [];
 
-  List dataComplex = tableDataComplex;
+  List<Employee> dataComplex = tableDataComplex;
 
   TableDemoComponent() {
     config = {
@@ -54,7 +58,7 @@ class TableDemoComponent implements OnInit {
               .contains(config['filtering']['filterString'])
       ).toList();
       rowsComplex = dataComplex.where((item) =>
-          (serializable.reflect(item).invokeGetter(config['filtering']['columnName']) as String)
+          (item[config['filtering']['columnName']] as String)
               .contains(config['filtering']['filterString'])
       ).toList();
     }

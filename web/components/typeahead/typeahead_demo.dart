@@ -1,9 +1,13 @@
+library typeahead.typeahead_demo;
+
 import 'dart:async';
 
 import 'dart:html';
 import "package:angular2/angular2.dart";
 import 'package:dson/dson.dart';
 import 'package:ng_bootstrap/ng_bootstrap.dart';
+
+part 'typeahead_demo.g.dart';
 
 @Component (selector: "typeahead-demo",
     templateUrl: 'typeahead_demo.html',
@@ -213,7 +217,7 @@ class TypeaheadDemo {
 }
 
 @serializable
-class State {
+class State extends _$StateSerializable {
   int id;
   String name;
 }

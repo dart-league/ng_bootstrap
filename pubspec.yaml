@@ -5,14 +5,13 @@ authors:
   - Luis Vargas <luisvargastijerino@gmail.com>
   - Adao Jr. <itsjunnior@gmail.com>
 dependencies:
-  angular2: ^2.2.0
-  reflectable: ^0.5.4
+  angular2: ^3.0.0-alpha+1
   dart_to_js_script_rewriter: ^1.0.1
-  ng_bootstrap: ^0.5.1
-#  ng_bootstrap:
-#    path: ../ng_bootstrap
+#  ng_bootstrap: ^0.5.1
+  ng_bootstrap:
+    path: ../ng_bootstrap
 dev_dependencies:
-  grinder: ^0.8.0+3
+  sass_builder: ^0.0.2
 transformers:
 - angular2:
     platform_directives:
@@ -39,11 +38,6 @@ transformers:
     - web/components/timepicker/main.dart
     - web/components/tooltip/main.dart
     - web/components/typeahead/main.dart
-- reflectable:
-    entry_points:
-    - web/index.dart
-    - web/components/typeahead/main.dart
-    - web/components/table/main.dart
 - dart_to_js_script_rewriter
 - $dart2js:
     $include: web/index.dart

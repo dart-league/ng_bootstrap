@@ -1,7 +1,11 @@
+library table.table_data_complex;
+
 import 'package:dson/dson.dart';
 
+part 'table_data_complex.g.dart';
+
 @serializable
-class Employee {
+class Employee extends _$EmployeeSerializable {
   String name;
   String position;
   String office;
@@ -12,7 +16,7 @@ class Employee {
 }
 
 @serializable
-class Address {
+class Address extends _$AddressSerializable {
   String street;
 }
 

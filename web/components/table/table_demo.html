@@ -4,9 +4,16 @@
        [(ngModel)]="config['filtering']['filterString']"
        (ngModelChange)="filterRows()"/>
 <br>
+<div class="form-check col-xs-12">
+  <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" [(ngModel)]="selectable">
+    selectable
+  </label>
+</div>
 <bs-tabsx>
   <bs-tabx header="Maps Data">
     <bs-table [rows]="rows"
+              [selectable]="selectable"
               [(pageNumber)]="page"
               [itemsPerPage]="itemsPerPage"
               [sortable]="true"
@@ -16,12 +23,15 @@
       <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
       <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
       <bs-column header="Start date" fieldName="startDate"></bs-column>
-      <bs-column header="Salary ($)" fieldName="salary"></bs-column>
-      <bs-column header="Address" fieldName="address.street"></bs-column>
+      <bs-column header="Salary ($)" orderBy="salary" [ngStyle]="{width: '120px'}">
+        <template let-row>U$ {{row['salary']}}</template>
+      </bs-column>
+      <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px'}"></bs-column>
     </bs-table>
   </bs-tabx>
   <bs-tabx header="Complex Objects Data">
     <bs-table [rows]="rowsComplex"
+              [selectable]="selectable"
               [(pageNumber)]="page"
               [itemsPerPage]="itemsPerPage"
               [sortable]="true"
@@ -31,8 +41,10 @@
       <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
       <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
       <bs-column header="Start date" fieldName="startDate"></bs-column>
-      <bs-column header="Salary ($)" fieldName="salary"></bs-column>
-      <bs-column header="Address" fieldName="address.street"></bs-column>
+      <bs-column header="Salary ($)" [ngStyle]="{width: '120px'}">
+        <template let-row>U$ {{row.salary}}</template>
+      </bs-column>
+      <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px'}"></bs-column>
     </bs-table>
   </bs-tabx>
 </bs-tabsx>
