@@ -32,7 +32,7 @@ class BsPagerComponent {
   }
 
   /// emits that the current page has changed
-  @Output() EventEmitter currentPageChange = new EventEmitter();
+  @Output() EventEmitter<int> currentPageChange = new EventEmitter<int>();
 
   int _totalPages = 10;
 
@@ -46,7 +46,7 @@ class BsPagerComponent {
   }
 
   /// emits that the total pages value has changed
-  @Output() EventEmitter totalPagesChange = new EventEmitter();
+  @Output() EventEmitter<int> totalPagesChange = new EventEmitter<int>();
 
   int _itemsPerPage = 10;
 

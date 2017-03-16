@@ -21,6 +21,11 @@ import 'pager.dart';
     ])
 class BsPaginationComponent extends BsPagerComponent implements OnInit {
 
+  BsPaginationComponent() {
+    // this line is temporal until `@HostListener` get fixed again
+    currentPageChange.listen(onCurrentPageChange);
+  }
+
 //  /// css classes
 //  @Input('class') String classes = "";
 
@@ -108,7 +113,7 @@ class BsPaginationComponent extends BsPagerComponent implements OnInit {
     return pages;
   }
 
-  @HostListener('currentPageChange', const ['\$event'])
+//  @HostListener('currentPageChange', const ['\$event'])
   onCurrentPageChange(currentPage) =>
       pages = getPages(currentPage, totalPages);
 }

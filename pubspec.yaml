@@ -8,7 +8,7 @@ homepage: https://github.com/dart-league/ng_bootstrap
 environment:
   sdk: '>=1.12.0 <2.0.0'
 dependencies:
-  angular2: ^2.2.0
+  angular2: ^3.0.0-alpha+1
   browser: ^0.10.0
   node_shims: ^0.1.3
   intl: ^0.14.0
@@ -20,11 +20,9 @@ dependencies:
 #    path: ../bootstrap_sass
   stream_transformers: ^0.3.0+3
   font_awesome: ^4.6.3
-  dson: ^0.3.4
-  reflectable: ^0.5.4
   dev_string_converter: ^0.1.0
 dev_dependencies:
-  grinder: ^0.8.0+3
+  sass_builder: ^0.0.2
 transformers:
 - angular2:
     platform_directives:
