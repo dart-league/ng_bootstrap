@@ -1,3 +1,9 @@
+## 0.5.3
+
+* use `sass_builder 0.0.2`
+* use `angular2 3.0.0-alpha+1`
+* `bs-table` allows row selection and cell templates
+
 ## 0.5.2
 
 * upgrade to `sass 1.0.0-alpha.9`

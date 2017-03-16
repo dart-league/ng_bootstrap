@@ -6,37 +6,22 @@ part of bs_table_directives;
 ///
 /// ```html
 /// <bs-table rows="persons">
-///   <bs-column header="Name" fieldName="name">
-///   <bs-column header="Age" fieldName="age">
+///   <template bs-column header="id" orderBy="age" let-row>{{row.id}}</template>
+///   <template bs-column header="Name" orderBy="fullNameSorter" let-row>{{row.firstName}} {{row.lastName}}</template>
+///   <template bs-column header="Age" orderBy="age" let-row>{{row.age}}</template>
 /// <bs-table>
 /// ```
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#table)
 @Component(
     selector: 'bs-table',
-    template: '''
-<table class="table table-striped table-bordered dataTable"
-       role="grid" style="width: 100%;">
-  <thead>
-  <tr role="row">
-    <th *ngFor="let column of columns" (click)="toggleSort(column, \$event)">
-      {{column.header}}
-      <i *ngIf="sortable && column.sort != null" class="pull-right fa"
-        [ngClass]="{\'fa-chevron-down\': column.sort == \'DES\', \'fa-chevron-up\': column.sort == \'ASC\'}"></i>
-    </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let row of rowsPage">
-    <td *ngFor="let column of columns">{{getData(row, column.fieldName)}}</td>
-  </tr>
-  </tbody>
-</table>
-''')
+    templateUrl: 'table_component.html',
+    directives: const [BsTemplateOutletDirective])
 class BsTableComponent {
   BsTableComponent() {
     pageNumberChange.listen(updatePage);
   }
+
   /// Saves the initial values coming from the html attribute
   List _rows;
 
@@ -57,7 +42,8 @@ class BsTableComponent {
   @Output() EventEmitter tableChanged = new EventEmitter();
 
   /// Handles the columns of the table
-  List<BsColumnDirective> columns = [];
+  @ContentChildren(BsColumnDirective)
+  QueryList<BsColumnDirective> columns;
 
   /// Sets if the table-columns are sortable or not
   @Input() bool sortable = true;
@@ -83,6 +69,30 @@ class BsTableComponent {
   /// Emits when the total items has changed
   @Output() EventEmitter<num> totalItemsChange = new EventEmitter();
 
+  @Input() bool selectable = false;
+
+  Set selectedRows = new Set();
+
+  bool get isSelectedAll => rowsPage != null && selectedRows != null && rowsPage.length == selectedRows.length;
+
+  selectAll() {
+    if (isSelectedAll)
+      selectedRows.clear();
+    else
+      selectedRows.addAll(rowsPage);
+  }
+
+  bool isSelected(row) => selectedRows.contains(row);
+
+  selectRow(MouseEvent event, row) {
+    if(!selectable) return;
+    if (!isSelected(row))
+      selectedRows.add(row);
+    else
+      selectedRows.remove(row);
+    event.stopPropagation();
+  }
+
   /// Updates the items displayed in the page whenever occurs a [pageNumberChange]
   @HostListener('pageNumberChange', const ['\$event'])
   void updatePage(num pageNumber) {
@@ -90,6 +100,7 @@ class BsTableComponent {
     var endIndex = min(rowsAux.length, startIndex + itemsPerPage);
     rowsPage = rowsAux.getRange(startIndex, endIndex).toList();
     totalItemsChange.emit(rowsAux.length);
+    selectedRows.clear();
   }
 
   /// toggles the sort direction of the column
@@ -110,7 +121,18 @@ class BsTableComponent {
       }
       if (column.sort != 'NONE') {
         rowsAux.sort((r1, r2) {
-          var comparison = getData(r1, column.fieldName).compareTo(getData(r2, column.fieldName));
+          var orderBy = column.orderBy ?? column.fieldName;
+          var comparison;
+          if (orderBy is String) {
+            comparison = getData(r1, column.fieldName)
+                .compareTo(getData(r2, column.fieldName));
+          } else if (orderBy is Function) {
+            comparison = orderBy;
+          } else {
+            throw new Exception('The type of `orderBy` or `fieldName` is incorrect.'
+                'Please use `String` or `Function` for `orderBy`'
+                'and `String` for fieldName');
+          }
           return column.sort == 'ASC' ? comparison : -comparison;
         });
       } else {
