@@ -12,13 +12,20 @@ import 'dart:async';
 /// [demo](http://luisvt.github.io/ng2_strap/#collapse)
 @Directive(selector: '[bsCollapse]',
     host: const {
-      '[class.collapse]' : '!collapsing',
       '[attr.aria-hidden]': '!expanded'
     })
-class BsCollapseDirective implements OnInit {
+class BsCollapseDirective {
   /// Constructs an collapsible component
   BsCollapseDirective(this.elementRef) {
     _element = elementRef.nativeElement;
+
+    bsCollapseChange.listen((bsCollapse) {
+      if (bsCollapse) {
+        _hide();
+      } else {
+        _show();
+      }
+    });
   }
 
   /// Contains the element reference of this component
@@ -28,68 +35,73 @@ class BsCollapseDirective implements OnInit {
 
   /// provides the height style of the component in pixels
   @HostBinding('style.height')
-  String height = '0';
+  String height = '';
 
   /// if `true` the component is shown
-  @HostBinding('class.in')
+  @HostBinding('class.show')
   @HostBinding('attr.aria-expanded')
   bool expanded = true;
 
+  @HostBinding('class.collapse')
+  bool collapsed = false;
+
+  bool _collapsing = false;
+
   /// provides the animation state
   @HostBinding('class.collapsing')
-  bool collapsing = false;
+  bool get collapsing => _collapsing;
+
+  void set collapsing(bool collapsing) {
+    _collapsing = collapsing;
+    _collapsingChangeController.add(collapsing);
+  }
 
   bool _bsCollapse = false;
 
   /// sets and fires the collapsed state of the component
   @Input() set bsCollapse(bool value) {
     _bsCollapse = value ?? false;
-    if (_bsCollapse) {
-      _hide();
-    } else {
-      _show();
-    }
+    _bsCollapseChangeController.add(_bsCollapse);
   }
 
   String get _scrollHeight => _element.scrollHeight.toString() + 'px';
 
+  final _bsCollapseChangeController = new StreamController<bool>.broadcast();
+
   /// Emits the Collapse state of the component
-  @Output() EventEmitter<bool> bsCollapseChange = new EventEmitter<bool>();
+  @Output() Stream<bool> get bsCollapseChange =>
+      _bsCollapseChangeController.stream;
+
+  final _collapsingChangeController = new StreamController<bool>.broadcast();
 
   /// Emits the collapsing state of the component
-  @Output() EventEmitter<bool> collapsingChange = new EventEmitter<bool>();
-
-  /// Initialize the [Collapse] [height] value
-  ngOnInit() {
-    height = _scrollHeight;
-  }
+  @Output() Stream<bool> get collapsingChange =>
+      _collapsingChangeController.stream;
 
   _hide() {
-    if (!expanded && !collapsing) return;
-
-    collapsingChange.emit(collapsing = true);
-    _element.style.height = _scrollHeight;
-    new Future(() {
+    expanded = false;
+    height = _scrollHeight;
+    collapsing = true;
+    new Timer(const Duration(milliseconds: 10), () {
       height = '0';
       new Timer(const Duration(milliseconds: 350), () {
-        expanded = !_bsCollapse;
-        collapsingChange.emit(collapsing = false);
-        bsCollapseChange.emit(!expanded);
+        collapsing = false;
+        collapsed = true;
+        height = '';
       });
     });
   }
 
   _show() {
-    if (expanded && !collapsing) return;
-
-    collapsingChange.emit(collapsing = true);
-    expanded = true;
-    new Future(() {
+    collapsed = false;
+    height = '0';
+    collapsing = true;
+    new Timer(const Duration(milliseconds: 10), () {
       height = _scrollHeight;
       new Timer(const Duration(milliseconds: 350), () {
-        collapsingChange.emit(collapsing = false);
-        bsCollapseChange.emit(!expanded);
-        _element.style.removeProperty('height');
+        collapsing = false;
+        expanded = true;
+        height = '';
       });
     });
   }

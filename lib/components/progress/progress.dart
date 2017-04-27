@@ -1,23 +1,26 @@
 import 'package:angular2/angular2.dart';
+import 'dart:html';
+import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart';
 
-/// Creates a progress component with multiple bars
+/// Creates a progress component
 ///
-/// Base specifications: [bootstrap 3](http://getbootstrap.com/components/#progress) or
-/// [bootstrap 4](http://v4-alpha.getbootstrap.com/components/progress/)
+/// Base specifications: [bootstrap 4](http://v4-alpha.getbootstrap.com/components/progress/)
 ///
-/// [demo](http://luisvt.github.io/ng2_strap/#progress)
+/// [demo](http://dart-league.github.io/ng_bootstrap/build/web/#progress)
 @Component(selector: 'bs-progress',
     template: '''
-    <progress [max]="max" [value]="value"></progress>
-    <label id="label"><ng-content></ng-content></label>
-    ''',
-    host: const {
-      // todo: it looks there is a bug with ngClass and ngContent together, next 4 lines should be deleted if solved
-      '[class.success]': 'type == "success"',
-      '[class.info]': 'type == "info"',
-      '[class.warning]': 'type == "warning"',
-      '[class.danger]': 'type == "danger"'
-    })
+<div class="progress-bar"
+     role="progressbar"
+     aria-valuenow="0"
+     aria-valuemin="0"
+     aria-valuemax="100"
+     [style.width]="percentage">
+  <div [style.width]="elementWidth">
+    <template [bsTemplateOutlet]="labelTemplate" [ngOutletContext]="percentage"></template>
+  </div>
+</div>
+<template [bsTemplateOutlet]="labelTemplate" [ngOutletContext]="percentage"></template>''',
+    directives: const [BsTemplateOutletDirective])
 class BsProgressComponent implements OnInit {
 
   /// if `true` changing `value` of progress bar will be animated (*note*: not supported by Bootstrap 4)
@@ -29,12 +32,27 @@ class BsProgressComponent implements OnInit {
   /// value of the progress bar
   @Input() num value;
 
-  // todo: it looks there is a bug with ngClass and ngContent together, next line should be deleted if solved
-  @Input() String type;
+  String get percentage => (value / max * 100).toString() + '%';
+
+  @ContentChild(TemplateRef)
+  TemplateRef labelTemplate;
+
+  /// Handles the width of the element
+  String elementWidth;
+
+  ElementRef _elementRef;
+
+  BsProgressComponent(this._elementRef);
 
   /// initialize the attributes
   ngOnInit() {
     animate ??= true;
     max = max ??= 100;
+    Element nativeElement = _elementRef.nativeElement;
+    elementWidth = nativeElement.getComputedStyle().width;
+    // TODO: change this event something else
+    window.onResize.listen((e) {
+      elementWidth = nativeElement.getComputedStyle().width;
+    });
   }
 }

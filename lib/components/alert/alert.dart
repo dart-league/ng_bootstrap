@@ -25,10 +25,12 @@ class BsAlertComponent implements OnInit {
   ///  `success`,`info`, `warning`, `danger`
   @Input() String type = 'warning';
 
+  final _onCloseCtrl = new StreamController.broadcast();
+
   /// fired when `alert` closed with inline button or by timeout,
   /// `$event` is an instance of `Alert` component
   @Output('close')
-  EventEmitter onClose = new EventEmitter();
+  Stream<BsAlertComponent> get onClose => _onCloseCtrl.stream;
 
   /// number of milliseconds, if specified sets a timeout duration,
   /// after which the alert will be closed
@@ -61,7 +63,7 @@ class BsAlertComponent implements OnInit {
   }
 
   close() {
-    onClose.add(this);
+    _onCloseCtrl.add(this);
     _elementRef.nativeElement.remove();
   }
 }

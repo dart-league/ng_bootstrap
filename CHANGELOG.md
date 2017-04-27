@@ -1,3 +1,7 @@
+## 0.6.1
+
+* upgrade to `angular 3.0.0-beta+2`
+
 ## 0.5.3
 
 * use `sass_builder 0.0.2`

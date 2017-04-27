@@ -66,7 +66,8 @@ class BsDatePickerInnerComponent extends BsDatePickerBase implements OnInit {
   /// provides a function handler to compare active year
   Function compareHandlerYear;
 
-  @Output() EventEmitter update = new EventEmitter ();
+  final _updateCtrl = new StreamController<DateTime>.broadcast();
+  @Output() Stream<DateTime> get update => _updateCtrl.stream;
 
   /// provides access to active date
   DateTime _activeDate;
@@ -103,7 +104,7 @@ class BsDatePickerInnerComponent extends BsDatePickerBase implements OnInit {
     } else {
       activeDate = new DateTime.now();
     }
-    update.add(activeDate);
+    _updateCtrl.add(activeDate);
     refreshView();
   }
 
@@ -209,7 +210,7 @@ class BsDatePickerInnerComponent extends BsDatePickerBase implements OnInit {
       activeDate = date;
       datePickerMode = modes[modes.indexOf(datePickerMode) - 1];
     }
-    update.add(activeDate);
+    _updateCtrl.add(activeDate);
     refreshView();
   }
 
@@ -229,7 +230,7 @@ class BsDatePickerInnerComponent extends BsDatePickerBase implements OnInit {
       var year = activeDate.year + direction * (expectedStep['years'] ?? 0);
       var month = activeDate.month + direction * (expectedStep['months'] ?? 0);
       activeDate = new DateTime(year, month, 1);
-      update.add(activeDate);
+      _updateCtrl.add(activeDate);
       refreshView();
     }
   }

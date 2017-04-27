@@ -1,37 +1,55 @@
 bs-progress {
+  @extend .progress;
+
+  &.bg-success {
+    background-color: $progress-bg !important;
+
+    > .progress-bar {
+      @extend .bg-success;
+    }
+  }
+
+
+  &.bg-warning {
+    background-color: $progress-bg !important;
+
+    > .progress-bar {
+      @extend .bg-warning;
+    }
+  }
+
+  &.bg-info {
+    background-color: $progress-bg !important;
+
+    > .progress-bar {
+      @extend .bg-info;
+    }
+  }
+
+  &.bg-danger {
+    background-color: $progress-bg !important;
+
+    > .progress-bar {
+      @extend .bg-danger;
+    }
+  }
+
+  &.bg-striped {
+    background-color: $progress-bg !important;
+
+    > .progress-bar {
+      @extend .progress-bar-striped;
+    }
+  }
+
   position: relative;
+  text-align:center;
   display: block;
-  width: 100%;
-  padding-top: 3px;
+  height: $font-size-base;
 
-  & > progress {
-    @extend .progress;
-  }
-
-  &.success > progress {
-    @extend .progress-success;
-  }
-
-  &.warning > progress {
-    @extend .progress-warning;
-  }
-
-  &.info > progress {
-    @extend .progress-info;
-  }
-
-  &.danger > progress {
-    @extend .progress-danger;
-  }
-
-  &.striped > progress {
-    @extend .progress-striped;
-  }
-
-  & > #label {
-    @extend .text-xs-center;
+  > .progress-bar {
     position: absolute;
-    top: 0;
-    width: 100%;
+    overflow: hidden;
   }
+
 }
