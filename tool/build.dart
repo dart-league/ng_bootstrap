@@ -5,7 +5,8 @@ import 'package:sass_builder/phase.dart';
 import 'package:dson/phase.dart';
 
 Future main() async {
-  await build(new PhaseGroup()..addPhase(sassPhase)..addPhase(
-      dsonPhase('ng_bootstrap_gh_page', const ['web/**.dart'])),
+  await build(new PhaseGroup()
+    ..addPhase(sassPhase)
+    ..addPhase(dsonPhase('ng_bootstrap_gh_page', const ['web/**.dart'])),
       deleteFilesByDefault: true);
 }

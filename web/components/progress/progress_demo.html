@@ -4,10 +4,14 @@
     <bs-progress [value]="55"></bs-progress>
   </div>
   <div class="col-sm-4">
-    <bs-progress class="striped warning" [value]="22">22%</bs-progress>
+    <bs-progress class="bg-striped bg-warning" [value]="50">
+      <template let-percentage>{{percentage}}</template>
+    </bs-progress>
   </div>
   <div class="col-sm-4">
-    <bs-progress class="striped danger" [max]="200" [value]="167"><i>166 / 200</i></bs-progress>
+    <bs-progress class="bg-striped bg-danger" [max]="200" [value]="167">
+      <template><i>166 / 200</i></template>
+    </bs-progress>
   </div>
 </div>
 
@@ -19,9 +23,9 @@
 </bs-progress>
 
 <small><em>No animation</em></small>
-<bs-progress [animate]="false" [value]="value" class="success"><b>{{value}}%</b></bs-progress>
+<bs-progress [animate]="false" [value]="value" class="bg-success"><template><b>{{value}}%</b></template></bs-progress>
 
 <small><em>Object (changes type based on value)</em></small>
-<bs-progress class="striped" [value]="value" [type]="type">
-  {{type}} <i [hidden]="!showWarning">!!! Watch out !!!</i>
+<bs-progress class="bg-striped" [value]="value" [ngClass]="'bg-' + type">
+  <template>{{type}} <i [hidden]="!showWarning">!!! Watch out !!!</i></template>
 </bs-progress>
