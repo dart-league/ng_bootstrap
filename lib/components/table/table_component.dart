@@ -38,8 +38,10 @@ class BsTableComponent {
   /// Handles the rows that will be displayed by the current page
   List rowsPage;
 
+  final _tableChanged = new StreamController<dynamic>.broadcast();
+
   /// Emits when occurs a change on the table
-  @Output() EventEmitter tableChanged = new EventEmitter();
+  @Output() Stream get tableChanged => _tableChanged.stream;
 
   /// Handles the columns of the table
   @ContentChildren(BsColumnDirective)
@@ -60,14 +62,18 @@ class BsTableComponent {
   /// Sets the current page number
   @Input() set pageNumber(num pageNumber) {
     _pageNumber = pageNumber ?? 1;
-    pageNumberChange.emit(_pageNumber);
+    _pageNumberChangeCtrl.add(_pageNumber);
   }
 
+  final _pageNumberChangeCtrl = new StreamController<int>.broadcast();
+
   /// Emits when the page number has changed
-  @Output() EventEmitter<num> pageNumberChange = new EventEmitter();
+  @Output() Stream<int> get pageNumberChange => _pageNumberChangeCtrl.stream;
+
+  final _totalItemsChangeCtrl = new StreamController<int>.broadcast();
 
   /// Emits when the total items has changed
-  @Output() EventEmitter<num> totalItemsChange = new EventEmitter();
+  @Output() Stream<int> get totalItemsChange => _totalItemsChangeCtrl.stream;
 
   @Input() bool selectable = false;
 
@@ -99,7 +105,7 @@ class BsTableComponent {
     var startIndex = (pageNumber - 1) * itemsPerPage;
     var endIndex = min(rowsAux.length, startIndex + itemsPerPage);
     rowsPage = rowsAux.getRange(startIndex, endIndex).toList();
-    totalItemsChange.emit(rowsAux.length);
+    _totalItemsChangeCtrl.add(rowsAux.length);
     selectedRows.clear();
   }
 

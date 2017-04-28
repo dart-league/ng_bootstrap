@@ -1,3 +1,4 @@
+import 'dart:async';
 import "package:angular2/angular2.dart";
 
 /// Directives needed to create a tab-set
@@ -9,14 +10,19 @@ const NG_BOOTSTRAP_TABS_DIRECTIVES = const [BsTabComponent, BsTabsComponent, BsT
     selector: "bs-tabs",
     templateUrl: 'tabs.html')
 class BsTabsComponent implements AfterContentInit{
+  /// children tabs
   @ContentChildren(BsTabComponent)
   QueryList<BsTabComponent> tabs;
 
-  @Output()
-  EventEmitter onTabChange = new EventEmitter();
+  final _onTabChangeCtrl = new StreamController<BsTabComponent>.broadcast();
 
+  /// emits when the tab number change
+  @Output() Stream<BsTabComponent> get onTabChange => _onTabChangeCtrl.stream;
+
+  /// handles selected tab
   BsTabComponent _selected;
 
+  /// gets the selected tab
   BsTabComponent get selected => _selected;
 
   void ngAfterContentInit(){
@@ -27,24 +33,30 @@ class BsTabsComponent implements AfterContentInit{
     });
   }
 
+  /// sets the selected tab
   void setSelected(BsTabComponent tab){
     tabs.forEach((BsTabComponent tab) => tab.active = false);
     tab.active = true;
     _selected = tab;
-    onTabChange.add(tab);
+    _onTabChangeCtrl.add(tab);
   }
 
+  /// prepends `#` to the [path]
   String toAnchor(String path) => '#$path';
 }
 
 @Directive(selector: "template[bsTab]")
 class BsTabComponent {
+  /// reference to the template
   TemplateRef templateRef;
 
+  /// handles if the tab is active
   @Input() bool active = false;
 
+  /// handles which panel will be selected
   @Input() String select;
 
+  /// constructs a [BsTabComponent]
   BsTabComponent(this.templateRef);
 }
 
@@ -55,6 +67,7 @@ class BsTabContentComponent implements AfterContentInit {
   /// [BsTabsComponent] target the this content is listening to
   @Input('for') BsTabsComponent target;
 
+  /// displayed panels
   @ContentChildren(BsTabPanelDirective)
   QueryList<BsTabPanelDirective> panels;
 
@@ -73,6 +86,7 @@ class BsTabContentComponent implements AfterContentInit {
   }
 }
 
+/// panel of the tabs component
 @Directive(selector: 'template[bs-tab-panel]')
 class BsTabPanelDirective {
   TemplateRef templateRef;

@@ -1,3 +1,4 @@
+import 'dart:async';
 import "package:angular2/angular2.dart";
 import 'dart:html';
 import 'package:node_shims/js.dart';
@@ -46,11 +47,15 @@ class BsRatingComponent extends DefaultValueAccessor implements OnInit {
   /// array of custom icons classes
   @Input() List ratingStates;
 
-  /// fired when icon selected, `$event:number` equals to selected rating
-  @Output() EventEmitter onHover = new EventEmitter ();
+  final _onHoverCtrl = new StreamController<int>.broadcast();
 
-  /// fired when icon selected, `$event:number` equals to previous rating value
-  @Output() EventEmitter onLeave = new EventEmitter ();
+  /// fired when icon selected, emits the number equals to selected rating
+  @Output() Stream<int> get onHover => _onHoverCtrl.stream;
+
+  final _onLeaveCtrl = new StreamController<int>.broadcast();
+
+  /// fired when icon selected, emits the number equals to previous rating value
+  @Output() Stream<int> get onLeave => _onLeaveCtrl.stream;
 
   /// initialize attributes
   ngOnInit() {
@@ -103,14 +108,14 @@ class BsRatingComponent extends DefaultValueAccessor implements OnInit {
   enter(num _value) {
     if (!readonly) {
       value = _value;
-      onHover.add(_value);
+      _onHoverCtrl.add(_value);
     }
   }
 
   /// fired when the mouse leave the icon, and it resets the [value] of the rating
   reset() {
     value = preValue;
-    onLeave.add(value);
+    _onLeaveCtrl.add(value);
   }
 
   /// listen when the user does a key-down on the elements

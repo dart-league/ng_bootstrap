@@ -1,3 +1,11 @@
+## 0.6.3
+
+* replace `EventEmitter` by `Stream` and `StreamController`
+
+## 0.6.2
+
+* upgrade `markdown` to version `0.11.3`
+
 ## 0.6.1
 
 * upgrade to `angular 3.0.0-beta+2`

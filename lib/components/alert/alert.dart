@@ -25,7 +25,7 @@ class BsAlertComponent implements OnInit {
   ///  `success`,`info`, `warning`, `danger`
   @Input() String type = 'warning';
 
-  final _onCloseCtrl = new StreamController.broadcast();
+  final _onCloseCtrl = new StreamController<BsAlertComponent>.broadcast();
 
   /// fired when `alert` closed with inline button or by timeout,
   /// `$event` is an instance of `Alert` component

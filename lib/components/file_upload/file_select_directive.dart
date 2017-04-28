@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:html';
 
 import "package:angular2/core.dart";
@@ -6,10 +7,11 @@ import "package:angular2/core.dart";
 @Directive(selector: '[bsFileSelect]')
 class BsFileSelectDirective {
 
-  @Output() EventEmitter<List<File>> filesChange = new EventEmitter();
+  final _filesChangeCtrl = new StreamController<List<File>>.broadcast();
+  @Output() Stream<List<File>> get filesChange => _filesChangeCtrl.stream;
 
   @HostListener("change", const ['\$event'])
   onChange(Event event) {
-    filesChange.emit((event.target as InputElement).files);
+    _filesChangeCtrl.add((event.target as InputElement).files);
   }
 }

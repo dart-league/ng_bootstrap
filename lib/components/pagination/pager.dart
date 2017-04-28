@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:html';
 import 'dart:math' as math;
 import "package:angular2/angular2.dart";
@@ -28,11 +29,13 @@ class BsPagerComponent {
   /// sets the index of selected page
   @Input() set currentPage(num value) {
     _currentPage = value ?? 1;
-    currentPageChange.emit(_currentPage);
+    _currentPageChangeCtrl.add(_currentPage);
   }
 
+  final _currentPageChangeCtrl = new StreamController<int>.broadcast();
+
   /// emits that the current page has changed
-  @Output() EventEmitter<int> currentPageChange = new EventEmitter<int>();
+  @Output() Stream<int> get currentPageChange => _currentPageChangeCtrl.stream;
 
   int _totalPages = 10;
 
@@ -42,11 +45,13 @@ class BsPagerComponent {
   /// sets the number of total pages
   set totalPages(int v) {
     _totalPages = v;
-    totalPagesChange.emit(v);
+    _totalPagesChangeCtrl.add(v);
   }
 
+  final _totalPagesChangeCtrl = new StreamController<int>.broadcast();
+
   /// emits that the total pages value has changed
-  @Output() EventEmitter<int> totalPagesChange = new EventEmitter<int>();
+  @Output() Stream<int> get totalPagesChange => _totalPagesChangeCtrl.stream;
 
   int _itemsPerPage = 10;
 
@@ -94,7 +99,7 @@ class BsPagerComponent {
       dynamic target = event.target;
       target.blur();
       currentPage = _page;
-      totalPagesChange.emit(totalPages);
+      _totalPagesChangeCtrl.add(totalPages);
     }
   }
 }
