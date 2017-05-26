@@ -1,3 +1,7 @@
+## 0.6.4
+
+- upgrade `sass_builder` to `^0.1.1`
+
 ## 0.6.3
 
 * replace `EventEmitter` by `Stream` and `StreamController`
