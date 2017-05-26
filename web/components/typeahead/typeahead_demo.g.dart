@@ -35,7 +35,7 @@ abstract class _$StateSerializable extends SerializableMap {
     throwFieldNotFoundException(key, 'State');
   }
 
-  get keys => StateClassMirror.fields.keys;
+  Iterable<String> get keys => StateClassMirror.fields.keys;
 }
 
 _State__Constructor(params) => new State();

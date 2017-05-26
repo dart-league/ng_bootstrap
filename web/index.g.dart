@@ -8,6 +8,10 @@ part of ngbs.index;
 // **************************************************************************
 
 _initMirrors() {
-  initClassMirrors({State: StateClassMirror});
+  initClassMirrors({
+    Employee: EmployeeClassMirror,
+    Address: AddressClassMirror,
+    State: StateClassMirror
+  });
   initFunctionMirrors({});
 }

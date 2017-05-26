@@ -1,8 +1,7 @@
 import "package:angular2/angular2.dart";
 import "package:ng_bootstrap/components/rating/rating.dart";
 
-@Component(selector: "rating-demo")
-@View(
+@Component(selector: "rating-demo",
     templateUrl: "rating_demo.html",
     directives: const [BsRatingComponent])
 class RatingDemo {

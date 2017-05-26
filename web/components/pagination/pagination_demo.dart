@@ -1,8 +1,7 @@
 import "package:angular2/angular2.dart";
 import 'package:ng_bootstrap/ng_bootstrap.dart';
 
-@Component(selector: "pagination-demo")
-@View(
+@Component(selector: "pagination-demo",
     templateUrl: "pagination_demo.html",
     directives: const [BsPaginationComponent, BsPagerComponent])
 class PaginationDemo {
@@ -13,6 +12,7 @@ class PaginationDemo {
   int bigCurrentPage = 1;
   int smallnumPages;
   int numPages;
+
   void setPage(int pageNo) {
     currentPage = pageNo;
   }

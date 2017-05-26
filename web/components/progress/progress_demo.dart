@@ -3,8 +3,8 @@ import 'dart:math';
 import "package:angular2/angular2.dart";
 import 'package:ng_bootstrap/ng_bootstrap.dart';
 
-@Component (selector: "progress-demo")
-@View (templateUrl: "progress_demo.html",
+@Component (selector: "progress-demo",
+    templateUrl: "progress_demo.html",
     directives: const [BsProgressComponent])
 class ProgressDemo {
   num max = 200;

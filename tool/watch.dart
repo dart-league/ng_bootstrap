@@ -6,6 +6,6 @@ import 'package:dson/phase.dart';
 
 Future main() async {
   await watch(new PhaseGroup()..addPhase(sassPhase)..addPhase(
-      dsonPhase('ng_bootstrap_gh_page', const ['web/**.dart'])),
+      dsonPhase(const ['web/**.dart'])),
       deleteFilesByDefault: true);
 }

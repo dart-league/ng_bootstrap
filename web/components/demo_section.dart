@@ -25,7 +25,7 @@ class DemoSection implements OnInit {
     var rawMasterUrl = 'https://raw.githubusercontent.com/dart-league/ng_bootstrap/gh-pages';
     var componentsUrl = '$rawMasterUrl/web/components';
     var _docPath = docPath ?? nameTN;
-    docUrl = 'https://www.dartdocs.org/documentation/ng_bootstrap/0.6.0/$_docPath/$_docPath-library.html';
+    docUrl = 'https://www.dartdocs.org/documentation/ng_bootstrap/0.6.4/$_docPath/$_docPath-library.html';
     dart = await HttpRequest.getString('$componentsUrl/$nameTN/${nameTN}_demo.dart');
     html = await HttpRequest.getString('$componentsUrl/$nameTN/${nameTN}_demo.html');
   }
