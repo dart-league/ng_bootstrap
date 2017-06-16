@@ -1,33 +1,35 @@
-<table [hidden]="datePickerInner.datePickerMode!='year'" role="grid">
+<table [hidden]="datePicker.datePickerMode!='year'" role="grid">
   <thead>
   <tr>
     <th colspan="5">
-      <button type="button"
-              class="btn btn-default btn-sm col-xs-2"
-              (click)="$event.stopPropagation(); datePickerInner.move(-1)"
-              tabindex="-1">
-        <i class="fa fa-chevron-left"></i>
-      </button>
-      <button role="heading"
-              type="button"
-              class="btn btn-default btn-sm col-xs-2"
-              (click)="$event.stopPropagation(); datePickerInner.toggleMode(-2)"
-              tabindex="-1">
-        <strong>{{dayTitle}}</strong>
-      </button>
-      <button role="heading"
-              type="button"
-              class="btn btn-default btn-sm col-xs-6"
-              (click)="$event.stopPropagation(); datePickerInner.toggleMode(-1)"
-              tabindex="-1">
-        <strong>{{monthTitle}}</strong>
-      </button>
-      <button type="button"
-              class="btn btn-default btn-sm col-xs-2"
-              (click)="$event.stopPropagation(); datePickerInner.move(1)"
-              tabindex="-1">
-        <i class="fa fa-chevron-right"></i>
-      </button>
+      <div class="container-fluid row">
+        <button type="button"
+                class="btn btn-secondary btn-sm col-1"
+                (click)="$event.stopPropagation(); datePicker.move(-1)"
+                tabindex="-1">
+          <i class="fa fa-chevron-left"></i>
+        </button>
+        <button role="heading"
+                type="button"
+                class="btn btn-secondary btn-sm col-3"
+                (click)="$event.stopPropagation(); datePicker.toggleMode(-2)"
+                tabindex="-1">
+          <strong>{{dayTitle}}</strong>
+        </button>
+        <button role="heading"
+                type="button"
+                class="btn btn-secondary btn-sm col-7"
+                (click)="$event.stopPropagation(); datePicker.toggleMode(-1)"
+                tabindex="-1">
+          <strong>{{monthTitle}}</strong>
+        </button>
+        <button type="button"
+                class="btn btn-secondary btn-sm col-1"
+                (click)="$event.stopPropagation(); datePicker.move(1)"
+                tabindex="-1">
+          <i class="fa fa-chevron-right"></i>
+        </button>
+      </div>
     </th>
   </tr>
   </thead>
@@ -36,12 +38,11 @@
     <td *ngFor="let dt of row" class="text-center" role="gridcell">
 
       <button type="button"
-              style="min-width:100%;"
-              class="btn btn-default"
-              [ngClass]="{'btn-info': dt['selected'], active: datePickerInner.isActive(dt), disabled: dt['disabled']}"
-              [disabled]="dt['disabled']"
-              (click)="$event.stopPropagation(); datePickerInner.select(dt['date'])" tabindex="-1">
-        <span [ngClass]="{'text-info': dt['current']}">{{dt['label']}}</span>
+              class="btn"
+              [ngClass]="{'btn-primary': dt.selected, 'btn-secondary': !dt.selected, active: dt.current, disabled: dt.disabled}"
+              [disabled]="dt.disabled"
+              (click)="$event.stopPropagation(); datePicker.select(dt.date)" tabindex="-1">
+        <span [ngClass]="{'font-weight-bold': dt.current && !dt.selected}">{{dt.label}}</span>
       </button>
 
     </td>

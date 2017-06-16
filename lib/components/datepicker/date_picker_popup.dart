@@ -7,7 +7,26 @@ String _defaultLocale = 'en_US';
 /// on the input box or on the button at the right of the input box.
 @Component (selector: "bs-date-picker-popup",
     templateUrl: 'date_picker_popup.html',
-    directives: const [NG_BOOTSTRAP_DROPDOWN_DIRECTIVES, BsDatePickerComponent, BsToggleButtonDirective]
+    directives: const [NG_BOOTSTRAP_DROPDOWN_DIRECTIVES, BsDatePickerComponent, BsToggleButtonDirective],
+    inputs: const [
+      'showWeeks',
+      'datePickerMode',
+      'minDate',
+      'maxDate',
+      'minMode',
+      'maxMode',
+      'showWeeks',
+      'formatDay',
+      'formatMonth',
+      'formatYear',
+      'formatDayHeader',
+      'formatDayTitle',
+      'formatMonthTitle',
+      'startingDay',
+      'yearRange',
+      'shortcutPropagation',
+      'dateDisabled'
+    ]
 )
 class BsDatePickerPopupComponent extends DefaultValueAccessor {
   /// Constructs a DatePickerPopup

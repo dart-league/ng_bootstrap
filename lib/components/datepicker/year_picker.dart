@@ -5,11 +5,11 @@ part of bs_date_picker;
 @Component (selector: "bs-year-picker",
     templateUrl: 'year_picker.html')
 class BsYearPickerComponent implements OnInit {
-  /// Constructs a [BsYearPickerComponent] injecting the parent [datePickerInner]
-  BsYearPickerComponent(this.datePickerInner);
+  /// Constructs a [BsYearPickerComponent] injecting the parent [datePicker]
+  BsYearPickerComponent(this.datePicker);
 
   /// container of the date-picker
-  BsDatePickerInnerComponent datePickerInner;
+  BsDatePickerComponent datePicker;
 
   /// label that appears in the day button which selects the day-picker
   String dayTitle;
@@ -22,28 +22,28 @@ class BsYearPickerComponent implements OnInit {
 
   /// gets the value of the starting year of the viewed group
   int getStartingYear(num year) =>
-      ((year - 1) ~/ datePickerInner.yearRange) * datePickerInner.yearRange + 1;
+      ((year - 1) ~/ datePicker.yearRange) * datePicker.yearRange + 1;
 
   /// initialize the attributes
   ngOnInit() {
-    datePickerInner.stepYear = { "years" : datePickerInner.yearRange};
-    datePickerInner.setRefreshViewHandler(() {
-      List years = new List(datePickerInner.yearRange);
+    datePicker.stepYear = { "years" : datePicker.yearRange};
+    datePicker.setRefreshViewHandler(() {
+      List years = new List(datePicker.yearRange);
       var date;
-      for (var i = 0, start = getStartingYear(datePickerInner.activeDate.year); i <
-          datePickerInner.yearRange; i ++) {
+      var initDate = datePicker._initDate;
+      for (var i = 0, start = getStartingYear(initDate.year); i <
+          datePicker.yearRange; i ++) {
         date = new DateTime (start + i, 0, 1);
-        years[i] = datePickerInner.createDateObject(date, datePickerInner.formatYear);
+        years[i] = datePicker.createDateObject(date, datePicker.formatYear);
       }
-      dayTitle = datePickerInner.dateFilter(datePickerInner.activeDate, datePickerInner.formatDay);
+      dayTitle = datePicker.dateFilter(initDate, datePicker.formatDay);
 
       monthTitle =
-          datePickerInner.dateFilter(datePickerInner.activeDate, datePickerInner.formatMonth);
+          datePicker.dateFilter(initDate, datePicker.formatMonth);
 
-      rows = datePickerInner.split(years, 5);
+      rows = datePicker.split(years, 5);
     }, "year");
-    datePickerInner.setCompareHandler((DateTime date1, DateTime date2) => date1.year - date2.year,
+    datePicker.setCompareHandler((DateTime date1, DateTime date2) => date1.year - date2.year,
         "year");
-    datePickerInner.refreshView();
   }
 }

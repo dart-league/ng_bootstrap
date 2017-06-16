@@ -1,51 +1,56 @@
-<table [hidden]="datePickerInner.datePickerMode != 'day'" role="grid">
+<table [hidden]="datePicker.datePickerMode != 'day'" role="grid">
   <thead>
   <tr>
-    <th>
-      <button type="button" class="btn btn-default btn-secondary btn-sm pull-left" (click)="$event.stopPropagation(); datePickerInner.move(-1)" tabindex="-1">
-        <i class="fa fa-chevron-left"></i>
-      </button>
-    </th>
-    <th colspan="5" [hidden]="!datePickerInner.showWeeks">
-      <button type="button"
-              class="btn btn-default btn-secondary btn-sm"
-              (click)="$event.stopPropagation(); datePickerInner.toggleMode()"
-              [disabled]="false"
-              [ngClass]="{disabled: false}" tabindex="-1" style="width:100%;">
-        <strong>{{monthTitle}}</strong>
-      </button>
-    </th>
-    <th colspan="6" [hidden]="!datePickerInner.showWeeks">
-      <button type="button"
-              class="btn btn-default btn-secondary btn-sm"
-              (click)="$event.stopPropagation(); datePickerInner.toggleMode(2)"
-              [disabled]="datePickerInner.datePickerMode == maxMode"
-              [ngClass]="{disabled: datePickerInner.datePickerMode == maxMode}" tabindex="-1" style="width:100%;">
-        <strong>{{yearTitle}}</strong>
-      </button>
-    </th>
-    <th>
-      <button type="button" class="btn btn-default btn-secondary btn-sm pull-right" (click)="$event.stopPropagation(); datePickerInner.move(1)" tabindex="-1">
-        <i class="fa fa-chevron-right"></i>
-      </button>
+    <th colspan="8">
+      <div class="row container-fluid">
+        <button type="button"
+                class="btn btn-secondary btn-sm col-2"
+                (click)="$event.stopPropagation(); datePicker.move(-1)"
+                tabindex="-1">
+          <i class="fa fa-chevron-left"></i>
+        </button>
+        <button type="button"
+                class="btn btn-secondary btn-sm col-4"
+                (click)="$event.stopPropagation(); datePicker.toggleMode()"
+                [disabled]="false"
+                [ngClass]="{disabled: false}" tabindex="-1"
+                [hidden]="!datePicker.showWeeks">
+          <strong>{{monthTitle}}</strong>
+        </button>
+        <button type="button"
+                class="btn btn-secondary btn-sm col-4"
+                (click)="$event.stopPropagation(); datePicker.toggleMode(2)"
+                [disabled]="datePicker.datePickerMode == maxMode"
+                [ngClass]="{disabled: datePicker.datePickerMode == maxMode}"
+                [hidden]="!datePicker.showWeeks"
+                tabindex="-1">
+          <strong>{{yearTitle}}</strong>
+        </button>
+        <button type="button"
+                class="btn btn-secondary btn-sm col-2"
+                (click)="$event.stopPropagation(); datePicker.move(1)"
+                tabindex="-1">
+          <i class="fa fa-chevron-right"></i>
+        </button>
+      </div>
     </th>
   </tr>
   <tr>
-    <th [hidden]="!datePickerInner.showWeeks" class="text-center"></th>
+    <th [hidden]="!datePicker.showWeeks" class="text-center"></th>
     <th *ngFor="let label of labels" class="text-center"><small aria-label="label['full']"><b>{{label['abbr']}}</b></small></th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let row of rows;let index=index">
-    <td [hidden]="!datePickerInner.showWeeks" class="text-center h6"><em>{{ weekNumbers[index] }}</em></td>
+    <td [hidden]="!datePicker.showWeeks" class="text-center h6"><small>{{ weekNumbers[index] }}</small></td>
     <td *ngFor="let dt of row" class="text-center" role="gridcell">
-      <button type="button" style="min-width:100%;"
-              class="btn btn-default btn-sm"
-              [ngClass]="{'btn-info': dt['selected'], active: datePickerInner.isActive(dt), disabled: dt['disabled']}"
-              [disabled]="dt['disabled']"
-              (click)="datePickerInner.select(dt['date'])"
+      <button type="button"
+              class="btn btn-sm"
+              [ngClass]="{'btn-primary': dt.selected, 'btn-secondary': !dt.selected, active: dt.current, disabled: dt.disabled}"
+              [disabled]="dt.disabled"
+              (click)="datePicker.select(dt.date)"
               tabindex="-1">
-        <span [ngClass]="{'text-muted': dt['secondary'], 'text-info': dt['current']}">{{dt['label']}}</span>
+        <span [ngClass]="{'text-muted': dt.secondary, 'font-weight-bold': dt.current && !dt.selected}">{{dt.label}}</span>
       </button>
     </td>
   </tr>

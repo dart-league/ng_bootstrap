@@ -1,3 +1,9 @@
+## 0.6.5
+
+* remove date_picker_inner files and activeDate attribute from date-picker
+* remove `initDate` from date-picker (fixes: #68)
+* enhance layout and styling of date-picker
+
 ## 0.6.4
 
 - upgrade `sass_builder` to `^0.1.1`

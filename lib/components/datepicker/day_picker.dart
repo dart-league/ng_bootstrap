@@ -5,11 +5,11 @@ part of bs_date_picker;
 @Component (selector: "bs-day-picker",
     templateUrl: 'day_picker.html')
 class BsDayPickerComponent implements OnInit {
-  /// Constructs an [BsDayPickerComponent] injecting [datePickerInner]
-  BsDayPickerComponent(this.datePickerInner);
+  /// Constructs an [BsDayPickerComponent] injecting [datePicker]
+  BsDayPickerComponent(this.datePicker);
 
-  /// provides access to [BsDatePickerInnerComponent] parent container
-  BsDatePickerInnerComponent datePickerInner;
+  /// provides access to [BsDatePickerComponent] parent container
+  BsDatePickerComponent datePicker;
 
   /// labels of the days week
   List labels = [];
@@ -21,7 +21,7 @@ class BsDayPickerComponent implements OnInit {
   String yearTitle;
 
   /// provides the rows of days that will be displayed
-  List rows = [];
+  List<List<DisplayedDate>> rows = [];
 
   /// provides the values of the week numbers column
   List<num> weekNumbers = [];
@@ -70,12 +70,13 @@ class BsDayPickerComponent implements OnInit {
 
   ///
   ngOnInit() {
-    datePickerInner.stepDay = { "months" : 1};
-    datePickerInner.setRefreshViewHandler(() {
-      var year = datePickerInner.activeDate.year;
-      var month = datePickerInner.activeDate.month;
+    datePicker.stepDay = { "months" : 1};
+    datePicker.setRefreshViewHandler(() {
+      var initDate = datePicker._initDate;
+      var year = initDate.year;
+      var month = initDate.month;
       var firstDayOfMonth = new DateTime (year, month, 1 - new DateTime(year, month, 1, 12).weekday, 12);
-      var difference = datePickerInner.startingDay - firstDayOfMonth.day;
+      var difference = datePicker.startingDay - firstDayOfMonth.day;
       var numDisplayedFromPreviousMonth = (difference > 0)
           ? 7 - difference
           : -difference;
@@ -86,36 +87,35 @@ class BsDayPickerComponent implements OnInit {
       }
       // 42 is the number of days on a six-week calendar
       List<DateTime> _days = getDates(firstDate, 42);
-      List days = [];
+      List<DisplayedDate> days = [];
       for (var i = 0; i < 42; i++) {
-        var _dateObject = datePickerInner.createDateObject(_days[i], datePickerInner.formatDay);
-        _dateObject['secondary'] = _days[i].month != month;
+        var _dateObject = datePicker.createDateObject(_days[i], datePicker.formatDay);
+        _dateObject.secondary = _days[i].month != month;
         days.add(_dateObject);
       }
       labels = [];
       for (var j = 0; j < 7; j ++) {
         labels.add({
-          'abbr': datePickerInner.dateFilter(days[j]['date'], datePickerInner.formatDayHeader),
-          'full': datePickerInner.dateFilter(days[j]['date'], "EEEE")
+          'abbr': datePicker.dateFilter(days[j].date, datePicker.formatDayHeader),
+          'full': datePicker.dateFilter(days[j].date, "EEEE")
         });
       }
-      monthTitle = new DateFormat(datePickerInner.formatMonthTitle).format(datePickerInner.activeDate);
-      yearTitle = new DateFormat(datePickerInner.formatYear).format(datePickerInner.activeDate);
-      rows = datePickerInner.split(days, 7);
-      if (datePickerInner.showWeeks) {
+      monthTitle = new DateFormat(datePicker.formatMonthTitle).format(initDate);
+      yearTitle = new DateFormat(datePicker.formatYear).format(initDate);
+      rows = datePicker.split(days, 7);
+      if (datePicker.showWeeks) {
         weekNumbers.clear();
-        var thursdayIndex = (4 + 7 - datePickerInner.startingDay) % 7,
+        var thursdayIndex = (4 + 7 - datePicker.startingDay) % 7,
             numWeeks = rows.length;
         for (var curWeek = 0; curWeek < numWeeks; curWeek ++) {
-          weekNumbers.add(getISO8601WeekNumber(rows[curWeek][thursdayIndex]['date']) + 1);
+          weekNumbers.add(getISO8601WeekNumber(rows[curWeek][thursdayIndex].date) + 1);
         }
       }
     }, "day");
-    datePickerInner.setCompareHandler((date1, date2) {
+    datePicker.setCompareHandler((date1, date2) {
       var d1 = new DateTime (date1.year, date1.month, date1.day);
       var d2 = new DateTime (date2.year, date2.month, date2.day);
       return d1.millisecondsSinceEpoch - d2.millisecondsSinceEpoch;
     }, "day");
-    datePickerInner.refreshView();
   }
 }

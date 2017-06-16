@@ -11523,3 +11523,7 @@ bs-search-clear {
   color: #ccc;
   z-index: 4;
 }
+
+bs-date-picker .btn {
+  border: none;
+}
