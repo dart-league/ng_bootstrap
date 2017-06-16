@@ -1,6 +1,6 @@
-import "package:angular2/angular2.dart";
-import "package:node_shims/js.dart";
 import 'dart:html';
+
+import "package:node_shims/js.dart";
 
 Document get _document => window.document;
 

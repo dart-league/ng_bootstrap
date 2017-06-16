@@ -1,4 +1,4 @@
-$fa-font-path:        "packages/font_awesome/fonts" !default;
+$fa-font-path:        "../../packages/font_awesome/fonts" !default;
 
 //noinspection CssUnknownTarget
 @import "package:bootstrap_sass/scss/bootstrap";
@@ -8,7 +8,7 @@ $fa-font-path:        "packages/font_awesome/fonts" !default;
 @import "components/tooltip/tooltip";
 @import "components/button/button_group";
 @import "components/dropdown/dropdown";
-@import "components/accordion/panels";
 @import "components/pagination/pagination";
 @import "components/pagination/pager";
 @import "components/typeahead/typeahead";
+@import "components/datepicker/date_picker";

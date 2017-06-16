@@ -1,3 +1,4 @@
+import 'dart:async';
 import "package:angular2/angular2.dart";
 
 /// Directives needed to create a tab-set
@@ -77,11 +78,15 @@ class BsTabxDirective implements OnInit, OnDestroy {
   /// Template reference to the heading template
   TemplateRef headerRef;
 
+  final _selectCtrl = new StreamController<BsTabxDirective>.broadcast();
+
   /// emits the selected element change
-  @Output() EventEmitter select = new EventEmitter ();
+  @Output() Stream<BsTabxDirective> get select => _selectCtrl.stream;
+
+  final _deselectCtrl = new StreamController<BsTabxDirective>.broadcast();
 
   /// emits the deselected element change
-  @Output() EventEmitter deselect = new EventEmitter ();
+  @Output() Stream get deselect => _deselectCtrl.stream;
 
   bool _active = true;
 
@@ -98,11 +103,11 @@ class BsTabxDirective implements OnInit, OnDestroy {
       if (!active) {
         _active = active;
       }
-      deselect.add(this);
+      _deselectCtrl.add(this);
       return;
     }
     _active = active;
-    select.add(this);
+    _selectCtrl.add(this);
     tabsx.tabs.forEach((BsTabxDirective tab) {
       if (!identical(tab, this)) {
         tab.active = false;

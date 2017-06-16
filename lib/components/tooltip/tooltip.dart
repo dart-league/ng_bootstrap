@@ -6,10 +6,15 @@ import 'dart:html';
 @Component(
     selector: 'bs-tooltip',
     template: '''
-    <div class="tooltip-arrow"></div>
-      <div class="tooltip-inner">
-      <ng-content></ng-content>
-    </div>''')
+<div class="tooltip-inner">
+  <ng-content></ng-content>
+</div>''',
+host: const {
+      '[class.tooltip-top]': 'placement == "top"',
+      '[class.tooltip-left]': 'placement == "left"',
+      '[class.tooltip-right]': 'placement == "right"',
+      '[class.tooltip-bottom]': 'placement == "bottom"'
+})
 class BsTooltipComponent implements OnInit {
   ChangeDetectorRef cdr;
 
@@ -57,7 +62,7 @@ class BsTooltipComponent implements OnInit {
   @Input()
   String hideEvent = 'mouseleave';
 
-  @HostBinding('class.in')
+  @HostBinding('class.show')
   bool classIn = false;
 
   bool _enable = true;

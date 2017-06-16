@@ -2,12 +2,11 @@
 
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
+import 'dart:async';
 import 'package:angular2/angular2.dart';
 
-/**
- * Shows a bootstrap modal dialog.
- * Set the body of the dialog by adding content to the modal tag: <modal>content here</modal>.
- */
+/// Shows a bootstrap modal dialog.
+/// Set the body of the dialog by adding content to the modal tag: <modal>content here</modal>.
 @Component(
     selector: 'bs-modal',
     templateUrl: 'modal.html')
@@ -19,43 +18,39 @@ class BsModalComponent {
   @Input() String negativeLabel = 'NO';
   @Input() List<String> actions = ['POSITIVE', 'CANCEL'];
 
-  /**
-   * Fires an event when the modal is closed. The argument indicated how it was closed.
-   * @type {EventEmitter<ModalResult>}
-   */
-  @Output() EventEmitter<ModalAction> close = new EventEmitter<ModalAction> ();
+  /// Fires an event when the modal is closed. The argument indicated how it was closed.
+  /// @type {EventEmitter<ModalResult>}
+  @Output() Stream<ModalAction> get close => _closeCtrl.stream;
+
+  final _closeCtrl = new StreamController<ModalAction>.broadcast();
 
   bool showModal = false;
 
   BsModalComponent();
 
-  /**
-   * Shows the modal. There is no method for hiding. This is done using actions of the modal itself.
-   */
+  /// Shows the modal. There is no method for hiding. This is done using actions of the modal itself.
   show() {
     showModal = true;
   }
 
   positiveAction() {
     showModal = false;
-    close.emit(ModalAction.POSITIVE);
+    _closeCtrl.add(ModalAction.POSITIVE);
     return false;
   }
 
   negativeAction() {
     showModal = false;
-    close.emit(ModalAction.NEGATIVE);
+    _closeCtrl.add(ModalAction.NEGATIVE);
     return false;
   }
 
   cancelAction() {
     showModal = false;
-    close.emit(ModalAction.CANCEL);
+    _closeCtrl.add(ModalAction.CANCEL);
     return false;
   }
 }
 
-/**
- * The possible reasons a modal has been closed.
- */
+/// The possible reasons a modal has been closed.
 enum ModalAction { POSITIVE, NEGATIVE, CANCEL }

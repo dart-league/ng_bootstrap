@@ -15,7 +15,7 @@ const NG_BOOTSTRAP_ACCORDION_DIRECTIVES = const [BsAccordionComponent, BsAccordi
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#accordion)
 @Component (selector: 'bs-accordion',
-    host: const { '[class.panel-group]' : 'true'},
+//    host: const { '[class.panel-group]' : 'true'},
     template: '<ng-content></ng-content>')
 class BsAccordionComponent {
   /// if `true` expanding one item will close all others
@@ -79,26 +79,27 @@ class BsAccordionPanelComponent implements OnInit, OnDestroy {
   /// is accordion group open or closed
   bool get isOpen => _isOpen;
 
+  final _isOpenChangeCtrl = new StreamController<bool>.broadcast();
   /// emits if the panel [isOpen]
-  @Output() EventEmitter<bool> isOpenChange = new EventEmitter<bool>();
+  @Output() Stream<bool> get isOpenChange => _isOpenChangeCtrl.stream;
 
   /// if `true` opens the panel
   @Input()
   set isOpen(bool value) {
     // Future.delayed added to avoid error EXCEPTION: Expression has changed after it was checked.
-    new Future.delayed(Duration.ZERO, () {
+    new Future(() {
       _isOpen = value;
       if (truthy(value)) {
         accordion.closeOtherPanels(this);
       }
-      isOpenChange.emit(value);
+      _isOpenChangeCtrl.add(value);
     });
   }
 
   /// initialize the default values of the attributes
   @override
   ngOnInit() {
-    panelClass = or(panelClass, 'panel-secondary');
+    panelClass = or(panelClass, '');
     accordion.addPanel(this);
     _isOpen ??= false;
   }

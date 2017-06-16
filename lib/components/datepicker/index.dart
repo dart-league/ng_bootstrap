@@ -1,5 +1,6 @@
 library bs_date_picker;
 
+import 'dart:async';
 import "package:angular2/angular2.dart";
 import 'package:intl/intl.dart';
 import 'package:node_shims/js.dart';
@@ -7,17 +8,45 @@ import 'package:ng_bootstrap/components/dropdown/index.dart';
 import 'package:ng_bootstrap/components/button/toggle.dart';
 
 part "date_picker.dart";
-part 'date_picker_inner.dart';
 part "date_picker_popup.dart";
 part 'day_picker.dart';
 part 'month_picker.dart';
 part 'year_picker.dart';
 /*
 todo: general:
-1. Popup
-2. Keyboard support
-3. custom-class attribute support
-4. date-disabled attribute support
+1. Keyboard support
+2. custom-class attribute support
+3. date-disabled attribute support
  */
+
+const String FORMAT_DAY = "dd";
+
+const String FORMAT_MONTH = "MMMM";
+
+const String FORMAT_YEAR = "yyyy";
+
+const String FORMAT_DAY_HEADER = "E";
+
+const String FORMAT_DAY_TITLE = "MMMM yyyy";
+
+const String FORMAT_MONTH_TITLE = "MMMM";
+
+const String DATEPICKER_MODE = "day";
+
+const String MIN_MODE = "day";
+
+const String MAX_MODE = "year";
+
+const bool SHOW_WEEKS = true;
+
+const num STARTING_DAY = 0;
+
+const num YEAR_RANGE = 20;
+
+const DateTime MIN_DATE = null;
+
+const DateTime MAX_DATE = null;
+
+const bool SHORTCUT_PROPAGATION = false;
 
 const NG_BOOTSTRAP_DATEPICKER_DIRECTIVES = const [BsDatePickerComponent, BsDatePickerPopupComponent];

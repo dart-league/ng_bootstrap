@@ -2,7 +2,7 @@ part of bs_table_directives;
 
 /// Directive to create columns for [BsTableComponent]
 @Directive(selector: 'bs-column')
-class BsColumnDirective implements OnInit {
+class BsColumnDirective {
   /// Handles the sort of the column. It could have next values:
   ///
   /// * 'ASC': for ascending sorting
@@ -17,15 +17,10 @@ class BsColumnDirective implements OnInit {
   /// Value displayed in the column header
   @Input() String header;
 
-  /// Creates a [BsColumnDirective] and add it to it's parent [_tableComponent]
-  BsColumnDirective(this._tableComponent);
+  @Input() var/*String | Function*/ orderBy;
 
-  /// Parent [_tableComponent]
-  BsTableComponent _tableComponent;
+  @Input() Map<String, String> ngStyle;
 
-  /// Initialize the [BsColumnDirective]
-  @override
-  ngOnInit() {
-    _tableComponent.columns.add(this);
-  }
+  @ContentChild(TemplateRef)
+  TemplateRef templateRef;
 }

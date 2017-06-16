@@ -6,11 +6,11 @@ part of bs_date_picker;
     templateUrl: 'month_picker.html')
 class BsMonthPickerComponent implements OnInit {
 
-  /// Constructs a [BsMonthPickerComponent] injecting [datePickerInner]
-  BsMonthPickerComponent(this.datePickerInner);
+  /// Constructs a [BsMonthPickerComponent] injecting [datePicker]
+  BsMonthPickerComponent(this.datePicker);
 
   /// parent [BsDatePickerInnerComponent]
-  BsDatePickerInnerComponent datePickerInner;
+  BsDatePickerComponent datePicker;
 
   /// label that appears in the year button header
   String yearTitle;
@@ -26,24 +26,24 @@ class BsMonthPickerComponent implements OnInit {
 
   /// initialize the attributes
   ngOnInit() {
-    datePickerInner.stepMonth = {"years" : 1};
-    datePickerInner.setRefreshViewHandler(() {
+    datePicker.stepMonth = {"years" : 1};
+    datePicker.setRefreshViewHandler(() {
       List months = new List(12);
-      num year = datePickerInner.activeDate.year;
+      var initDate = datePicker._initDate;
+      num year = initDate.year;
       var date;
       for (var i = 0; i < 12; i++) {
         date = new DateTime (year, i + 1, 1);
-        months[i] = datePickerInner.createDateObject(date, datePickerInner.formatMonth);
+        months[i] = datePicker.createDateObject(date, datePicker.formatMonth);
       }
-      dayTitle = datePickerInner.dateFilter(datePickerInner.activeDate, datePickerInner.formatDay);
-      yearTitle = datePickerInner.dateFilter(datePickerInner.activeDate, datePickerInner.formatYear);
-      rows = datePickerInner.split(months, 3);
+      dayTitle = datePicker.dateFilter(initDate, datePicker.formatDay);
+      yearTitle = datePicker.dateFilter(initDate, datePicker.formatYear);
+      rows = datePicker.split(months, 3);
     }, "month");
-    datePickerInner.setCompareHandler((DateTime date1, DateTime date2) {
+    datePicker.setCompareHandler((DateTime date1, DateTime date2) {
       var d1 = new DateTime (date1.year, date1.month);
       var d2 = new DateTime (date2.year, date2.month);
       return d1.millisecondsSinceEpoch - d2.millisecondsSinceEpoch;
     }, "month");
-    datePickerInner.refreshView();
   }
 }

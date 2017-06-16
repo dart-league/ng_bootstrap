@@ -1,7 +1,7 @@
 part of bs_dropdown;
 
 @Directive (selector: "bs-dropdown, .dropdown",
-    host: const {"[class.dropdown]" : "true", "[class.open]" : "isOpen"})
+    host: const {"[class.dropdown]" : "true", "[class.show]" : "isOpen"})
 class BsDropdownDirective implements OnInit, OnDestroy {
   ElementRef elementRef;
 
@@ -54,12 +54,14 @@ class BsDropdownDirective implements OnInit, OnDestroy {
       dropdownService.close(this);
       selectedOption = null;
     }
-    isOpenChange.add(isOpen);
+    _isOpenChangeCtrl.add(isOpen);
     // todo: implement call to setIsOpen if set and function
   }
 
+  final _isOpenChangeCtrl = new StreamController<bool>.broadcast();
+
   /// fired when `dropdown` toggles, `$event:boolean` equals dropdown `[isOpen]` state
-  @Output() EventEmitter isOpenChange = new EventEmitter();
+  @Output() Stream<bool> get isOpenChange => _isOpenChangeCtrl.stream;
 
   /// sets the element that will fire the toggle of the dropdown
   set dropDownToggle(BsDropdownToggleDirective dropdownToggle) {

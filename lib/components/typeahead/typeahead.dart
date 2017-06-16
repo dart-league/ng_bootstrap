@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:html';
 
 import "package:angular2/angular2.dart";
@@ -6,7 +7,6 @@ import 'package:node_shims/js.dart';
 import 'package:stream_transformers/stream_transformers.dart';
 import 'package:ng_bootstrap/components/button/toggle.dart';
 import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart';
-import 'package:dson/dson.dart';
 
 // todo: options loading by http not yet implemented
 /// Creates a type-ahead component
@@ -27,18 +27,24 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
   /// local value to handle loading value
   bool loadingVal = false;
 
+  final _loadingCtrl = new StreamController<bool>.broadcast();
+
   /// fires 'busy' state of this component was changed, fired on `async` mode only, returns
   /// `boolean`
-  @Output() EventEmitter loading = new EventEmitter();
+  @Output() Stream get loading => _loadingCtrl.stream;
 
   /// local value to handle noResults value
   bool noResultsVal = false;
 
+  final _noResultsCtrl = new StreamController<bool>.broadcast();
+
   /// fires `true` in case of matches are not detected when any user key event occurs
-  @Output() EventEmitter noResults = new EventEmitter();
+  @Output() Stream<bool> get noResults => _noResultsCtrl.stream;
+
+  final _selectedItemChangeCtrl = new StreamController<dynamic>.broadcast();
 
   /// fired when option was selected, return object with data of this option
-  @Output() EventEmitter selectedItemChange = new EventEmitter();
+  @Output() Stream get selectedItemChange => _selectedItemChangeCtrl.stream;
 
   /// minimal no of characters that needs to be entered before typeahead kicks-in. Must be greater
   /// than or equal to 1.
@@ -88,9 +94,10 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
   @Input() bool autocomplete;
 
   /// if `true` the dropdown-menu will be open, and the date-picker visible
-  bool isOpen;
+  bool isOpen = false;
 
-  final EventEmitter _queryStream = new EventEmitter();
+  final _queryStreamCtrl = new StreamController<dynamic>.broadcast();
+  Stream get _queryStream => _queryStreamCtrl.stream;
 
   var selectedItem;
 
@@ -104,8 +111,8 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
         .transform(new FlatMapLatest((term) => source(term).asStream()))
         .forEach((matchesAux) {
       matches = matchesAux.take(optionsLimit).toList();
-      loading.emit(loadingVal = false);
-      if (matches.isEmpty) noResults.emit(noResultsVal = true);
+      _loadingCtrl.add(loadingVal = false);
+      if (matches.isEmpty) _noResultsCtrl.add(noResultsVal = true);
     });
   }
 
@@ -121,13 +128,13 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
   /// process the elements that matches the entered query
   void processMatches() {
     isOpen = true;
-    noResults.emit(noResultsVal = false);
+    _noResultsCtrl.add(noResultsVal = false);
     if (ngModel.model.length >= minLength) {
       // if source is function we should retrieve the results asynchronously
       if (source is Function) {
-        loading.emit(loadingVal = true);
+        _loadingCtrl.add(loadingVal = true);
         matches.clear();
-        _queryStream.add(ngModel.model);
+        _queryStreamCtrl.add(ngModel.model);
       } else if (source is Iterable) {
         var query = new RegExp(ngModel.model, caseSensitive: false);
         matches = source.where((item) => query.hasMatch(_itemString(item))).take(optionsLimit).toList();
@@ -179,15 +186,15 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
 
     ngModel.viewToModelUpdate(_itemString(value));
     isOpen = false;
-    selectedItemChange.emit(selectedItem = value);
+    _selectedItemChangeCtrl.add(selectedItem = value);
     return false;
   }
 
   /// Returns the item as string
-  _itemString(item) =>
+  _itemString(/*String | Map*/ item) =>
       item is String ? item :
       item is Map ? item[optionField] :
-      serializable.reflect(item).invokeGetter(optionField);
+      throw new Exception('Type of item is not supported, please use a Map, SerializableMap or an String');
 
   /// highlights the matching part of the matched item. For example if user types "a" and the matched
   /// word is "Alaska" the result will be `<strong>A</strong>l<strong>a</strong>sk<strong>a</strong>`

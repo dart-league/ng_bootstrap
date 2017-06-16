@@ -1,19 +1,22 @@
+import 'dart:async';
 import 'dart:html';
 
 import 'package:angular2/core.dart';
 
 @Directive(selector: 'bs-file-drop, [bsFileDrop]')
 class BsFileDropDirective {
-  @Output() EventEmitter<bool> fileOver = new EventEmitter();
+  final _fileOverCtrl = new StreamController<bool>.broadcast();
+  @Output() Stream<bool> get fileOver => _fileOverCtrl.stream;
 
-  @Output() EventEmitter<List<File>> filesChange = new EventEmitter();
+  final _filesChangeCtrl = new StreamController<List<File>>.broadcast();
+  @Output() Stream<List<File>> get filesChange => _filesChangeCtrl.stream;
 
   @HostListener('drop', const ['\$event'])
   void onDrop(MouseEvent event) {
     _preventAndStop(event);
     var transfer = event.dataTransfer;
-    fileOver.emit(false);
-    filesChange.emit(transfer.files);
+    _fileOverCtrl.add(false);
+    _filesChangeCtrl.add(transfer.files);
   }
 
   @HostListener ('dragover', const ['\$event'])
@@ -23,13 +26,13 @@ class BsFileDropDirective {
     if (!transfer.types.contains('Files')) return;
 
     transfer.dropEffect = 'copy';
-    fileOver.emit(true);
+    _fileOverCtrl.add(true);
   }
 
   @HostListener ('dragleave', const ['\$event'])
   onDragLeave(Event event) {
     _preventAndStop(event);
-    fileOver.emit(false);
+    _fileOverCtrl.add(false);
   }
 
   _preventAndStop(Event event) {

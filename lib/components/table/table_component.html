@@ -1,0 +1,25 @@
+<table class="table table-striped table-bordered table-hover table-responsive"
+       role="grid" style="width: 100%;">
+  <thead>
+  <tr role="row">
+    <th *ngIf="selectable"><input type="checkbox" [checked]="isSelectedAll" (click)="selectAll()"></th>
+    <th *ngFor="let column of columns" (click)="toggleSort(column, $event)" [ngStyle]="column.ngStyle">
+      {{column.header}}
+      <i *ngIf="sortable && column.sort != null" class="pull-right fa"
+         [ngClass]="{'fa-chevron-down': column.sort == 'DES', 'fa-chevron-up': column.sort == 'ASC'}"></i>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let row of rowsPage" (click)="selectRow($event, row)" [class.table-active]="isSelected(row)">
+    <td *ngIf="selectable">
+      <input type="checkbox" [checked]="isSelected(row)" (click)="selectRow($event, row)">
+    </td>
+    <td *ngFor="let column of columns">
+      <template [ngIf]="column.templateRef == null">{{getData(row, column.fieldName)}}</template>
+      <template [bsTemplateOutlet]="column.templateRef"
+                [ngOutletContext]="row"></template>
+    </td>
+  </tr>
+  </tbody>
+</table>

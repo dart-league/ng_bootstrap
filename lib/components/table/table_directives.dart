@@ -1,9 +1,12 @@
 library bs_table_directives;
 
+import 'dart:async';
 import 'dart:html';
 import 'dart:math';
+
 import "package:angular2/core.dart";
-import 'package:dson/dson.dart';
+
+import '../template_outlet/bs_template_outlet.dart';
 
 part 'column_directive.dart';
 part 'table_component.dart';
