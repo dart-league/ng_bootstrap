@@ -11524,6 +11524,10 @@ bs-search-clear {
   z-index: 4;
 }
 
+bs-date-picker .btn {
+  border: none;
+}
+
 /*!
  * Bootstrap Docs (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.

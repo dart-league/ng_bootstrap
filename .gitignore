@@ -22,3 +22,5 @@
 /build/web/packages/font_awesome/scss/
 /build/web/packages/font_awesome/css/
 /.dart_tool/
+/build/web/packages/front_end/
+/build/web/packages/kernel/
