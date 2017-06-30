@@ -30,9 +30,11 @@ dependencies:
 4\. Add needed `ng_bootstrap` directives to your components:
 
 ```dart
+import 'packages:ng_bootstrap/ng_bootstrap.dart'
+
 @Component(
     // ...
-    directives: const [BS_DIRECTIVES])
+    directives: const [NG_BOOTSTRAP_DIRECTIVES])
 ```
 
 ## Customize Styles - Create Custom Themes
