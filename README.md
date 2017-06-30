@@ -30,7 +30,7 @@ dependencies:
 4\. Add needed `ng_bootstrap` directives to your components:
 
 ```dart
-include 'packages:ng_bootstrap/ng_bootstrap.dart'
+import 'packages:ng_bootstrap/ng_bootstrap.dart'
 
 @Component(
     // ...
