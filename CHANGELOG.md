@@ -1,3 +1,9 @@
+## 0.6.6
+
+* enhance BsInput component
+* add BsMinLength Directive
+* add BsMaxLength Directive
+
 ## 0.6.5
 
 * remove date_picker_inner files and activeDate attribute from date-picker
