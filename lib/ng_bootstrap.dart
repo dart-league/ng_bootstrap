@@ -16,6 +16,8 @@ import 'package:ng_bootstrap/components/tabs/tabs.dart';
 import 'package:ng_bootstrap/components/tabsx/tabsx.dart';
 import 'package:ng_bootstrap/components/tooltip/tooltip.dart';
 import 'package:ng_bootstrap/components/typeahead/typeahead.dart';
+import 'components/validators/min_length_validator.dart';
+import 'components/validators/max_length_validator.dart';
 
 export 'package:ng_bootstrap/core/position.dart';
 
@@ -37,6 +39,8 @@ export 'components/tabs/tabs.dart';
 export 'components/tabsx/tabsx.dart';
 export 'components/tooltip/tooltip.dart';
 export 'components/typeahead/typeahead.dart';
+export 'components/validators/min_length_validator.dart';
+export 'components/validators/max_length_validator.dart';
 
 const List BS_DIRECTIVES = const [
   BsAccordionComponent,
@@ -64,5 +68,7 @@ const List BS_DIRECTIVES = const [
   BsDatePickerComponent,
   BsDatePickerPopupComponent,
   BsTypeAheadComponent,
-  BS_TABLE_DIRECTIVES
+  BS_TABLE_DIRECTIVES,
+  BsMinLengthValidator,
+  BsMaxLengthValidator
 ];

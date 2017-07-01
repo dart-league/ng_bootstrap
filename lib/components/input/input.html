@@ -1,0 +1,26 @@
+<div class="form-group" [class.has-danger]="!inputBox.valid">
+  <label *ngIf="label != null && label.isNotEmpty"
+         [attr.for]="eId"
+         class="form-control-label"
+  >{{label}}</label>
+  <input [id]="eId"
+         class="form-control"
+         type="text"
+         [(ngModel)]="value"
+         #inputBox="ngForm"
+         [ngControl]="ngControl"
+         [required]="required"
+         [minLength]="minLength"
+         [maxLength]="maxLength"
+         [attr.minlength]="minLength"
+         [attr.maxlength]="maxLength"
+         [class.form-control-danger]="!inputBox.valid"
+         [placeholder]="placeholder"
+  />
+  <small *ngIf="!inputBox.valid" class="text-danger small">
+    <!-- TODO: add translations-->
+    <span *ngIf="inputBox.errors['required']">This field is Required</span>
+    <span *ngIf="inputBox.errors['minLength'] != null">The minimum length of this field should be {{minLength}}</span>
+    <span *ngIf="inputBox.errors['maxLength'] != null">The maximum length of this field should be {{maxLength}}</span>
+  </small>
+</div>
