@@ -34,7 +34,7 @@ import 'packages:ng_bootstrap/ng_bootstrap.dart'
 
 @Component(
     // ...
-    directives: const [NG_BOOTSTRAP_DIRECTIVES])
+    directives: const [BS_DIRECTIVES])
 ```
 
 ## Customize Styles - Create Custom Themes
