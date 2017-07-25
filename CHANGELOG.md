@@ -1,3 +1,7 @@
+## 0.6.7
+
+* add BsInput to BS_DIRECTIVES list
+
 ## 0.6.6
 
 * enhance BsInput component

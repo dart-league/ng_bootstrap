@@ -7,6 +7,7 @@ import 'package:ng_bootstrap/components/collapse/collapse.dart';
 import 'package:ng_bootstrap/components/datepicker/index.dart';
 import 'package:ng_bootstrap/components/dropdown/index.dart';
 import 'package:ng_bootstrap/components/file_upload/file_upload.dart';
+import 'package:ng_bootstrap/components/input/input.dart';
 import 'package:ng_bootstrap/components/modal/modal.dart';
 import 'package:ng_bootstrap/components/pagination/pager.dart';
 import 'package:ng_bootstrap/components/pagination/pagination.dart';
@@ -30,6 +31,7 @@ export 'components/collapse/collapse.dart';
 export 'components/datepicker/index.dart';
 export 'components/dropdown/index.dart';
 export 'components/file_upload/file_upload.dart';
+export 'components/input/input.dart';
 export 'components/modal/modal.dart';
 export 'components/pagination/pager.dart';
 export 'components/pagination/pagination.dart';
@@ -52,6 +54,7 @@ const List BS_DIRECTIVES = const [
   BsDropdownMenuDirective,
   BsDropdownToggleDirective,
   BS_FILE_UPLOAD_DIRECTIVES,
+  BsInput,
   BsModalComponent,
   BsPagerComponent,
   BsPaginationComponent,
