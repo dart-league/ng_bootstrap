@@ -1,5 +1,5 @@
 import 'dart:math' as math;
-import "package:angular2/angular2.dart";
+import "package:angular/angular.dart";
 import 'pager.dart';
 
 /// Provide pagination links for your site or app with
@@ -18,7 +18,8 @@ import 'pager.dart';
     outputs: const [
       'totalPagesChange',
       'currentPageChange'
-    ])
+    ],
+    directives: const [CORE_DIRECTIVES])
 class BsPaginationComponent extends BsPagerComponent implements OnInit {
 
   BsPaginationComponent() {

@@ -3,7 +3,8 @@ part of bs_date_picker;
 /// Creates an [BsYearPickerComponent], this will be the view showed in the [NgBsDatePicker] when user clicks
 /// year header button
 @Component (selector: "bs-year-picker",
-    templateUrl: 'year_picker.html')
+    templateUrl: 'year_picker.html',
+    directives: const [CORE_DIRECTIVES])
 class BsYearPickerComponent implements OnInit {
   /// Constructs a [BsYearPickerComponent] injecting the parent [datePicker]
   BsYearPickerComponent(this.datePicker);

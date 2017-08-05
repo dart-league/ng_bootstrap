@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:html';
 import 'dart:math';
 
-import "package:angular2/core.dart";
+import "package:angular/angular.dart";
 
 import '../template_outlet/bs_template_outlet.dart';
 

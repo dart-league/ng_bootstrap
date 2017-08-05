@@ -1,5 +1,5 @@
 import 'dart:async';
-import "package:angular2/angular2.dart";
+import "package:angular/angular.dart";
 
 /// Provide contextual feedback messages for typical user actions
 /// with the handful of available and flexible alert messages.
@@ -16,7 +16,8 @@ import "package:angular2/angular2.dart";
     host: const {
       'class': 'alert',
       'role': 'alert'
-    })
+    },
+    directives: const [CORE_DIRECTIVES])
 class BsAlertComponent implements OnInit {
   /// provides the element reference to get native element
   ElementRef _elementRef;

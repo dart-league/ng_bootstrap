@@ -16,7 +16,7 @@ part of bs_table_directives;
 @Component(
     selector: 'bs-table',
     templateUrl: 'table_component.html',
-    directives: const [BsTemplateOutletDirective])
+    directives: const [BsTemplateOutletDirective, CORE_DIRECTIVES])
 class BsTableComponent {
   BsTableComponent() {
     pageNumberChange.listen(updatePage);

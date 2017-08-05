@@ -3,7 +3,8 @@ part of bs_date_picker;
 /// Creates a [BsMonthPickerComponent], this will be the view showed in the [NgBsDatePicker] when user clicks
 /// month header button
 @Component (selector: "bs-month-picker",
-    templateUrl: 'month_picker.html')
+    templateUrl: 'month_picker.html',
+    directives: const [CORE_DIRECTIVES])
 class BsMonthPickerComponent implements OnInit {
 
   /// Constructs a [BsMonthPickerComponent] injecting [datePicker]

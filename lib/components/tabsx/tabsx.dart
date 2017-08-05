@@ -1,5 +1,5 @@
 import 'dart:async';
-import "package:angular2/angular2.dart";
+import "package:angular/angular.dart";
 
 /// Directives needed to create a tab-set
 const BS_TABSX_DIRECTIVES = const [BsTabxDirective, BsTabxHeaderDirective, BsTabsxComponents];
@@ -14,7 +14,8 @@ const BS_TABSX_DIRECTIVES = const [BsTabxDirective, BsTabxHeaderDirective, BsTab
 /// [demo](http://luisvt.github.io/ng2_strap/#tabs)
 @Component (
     selector: "bs-tabsx",
-    templateUrl: 'tabsx.html')
+    templateUrl: 'tabsx.html',
+    directives: const [CORE_DIRECTIVES])
 class BsTabsxComponents implements OnInit {
 
   /// if `true` tabs will be placed vertically

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import "package:angular2/angular2.dart";
+import "package:angular/angular.dart";
 import 'package:ng_bootstrap/components/dropdown/index.dart';
 import 'package:node_shims/js.dart';
 import 'package:stream_transformers/stream_transformers.dart';
@@ -15,7 +15,13 @@ import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart'
 @Component(
     selector: "bs-typeahead",
     templateUrl: 'typeahead.html',
-    directives: const [NG_BOOTSTRAP_DROPDOWN_DIRECTIVES, BsToggleButtonDirective, BsTemplateOutletDirective])
+    directives: const [
+      NG_BOOTSTRAP_DROPDOWN_DIRECTIVES,
+      BsToggleButtonDirective,
+      BsTemplateOutletDirective,
+      CORE_DIRECTIVES,
+      FORM_DIRECTIVES
+    ])
 class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
 
   /// binds to string user's input
@@ -97,6 +103,7 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
   bool isOpen = false;
 
   final _queryStreamCtrl = new StreamController<dynamic>.broadcast();
+
   Stream get _queryStream => _queryStreamCtrl.stream;
 
   var selectedItem;
@@ -122,7 +129,7 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
   }
 
   void processMatchesIfNotOpen() {
-    if(!isOpen) processMatches();
+    if (!isOpen) processMatches();
   }
 
   /// process the elements that matches the entered query

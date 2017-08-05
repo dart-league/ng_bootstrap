@@ -3,13 +3,14 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
-import 'package:angular2/angular2.dart';
+import 'package:angular/angular.dart';
 
 /// Shows a bootstrap modal dialog.
 /// Set the body of the dialog by adding content to the modal tag: <modal>content here</modal>.
 @Component(
     selector: 'bs-modal',
-    templateUrl: 'modal.html')
+    templateUrl: 'modal.html',
+    directives: const [CORE_DIRECTIVES])
 class BsModalComponent {
 
   @Input() String header;

@@ -1,4 +1,4 @@
-import 'package:angular2/angular2.dart';
+import 'package:angular/angular.dart';
 import 'package:node_shims/js.dart';
 import 'dart:html';
 import 'dart:async';
@@ -16,7 +16,8 @@ const NG_BOOTSTRAP_ACCORDION_DIRECTIVES = const [BsAccordionComponent, BsAccordi
 /// [demo](http://luisvt.github.io/ng2_strap/#accordion)
 @Component (selector: 'bs-accordion',
 //    host: const { '[class.panel-group]' : 'true'},
-    template: '<ng-content></ng-content>')
+    template: '<ng-content></ng-content>',
+    directives: const [CORE_DIRECTIVES])
 class BsAccordionComponent {
   /// if `true` expanding one item will close all others
   @Input() bool closeOthers;
@@ -53,7 +54,7 @@ class BsAccordionComponent {
 @Component(selector: 'bs-accordion-panel',
     host: const { '[class.panel-open]' : 'isOpen'},
     templateUrl: 'accordion_panel.html',
-    directives: const [BsCollapseDirective])
+    directives: const [BsCollapseDirective, CORE_DIRECTIVES])
 class BsAccordionPanelComponent implements OnInit, OnDestroy {
   /// Constructs a new [BsAccordionPanelComponent] injecting the parent [BsAccordionComponent]
   BsAccordionPanelComponent(this.accordion);

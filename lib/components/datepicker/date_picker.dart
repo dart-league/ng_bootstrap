@@ -11,7 +11,9 @@ part of bs_date_picker;
     directives: const [
       BsDayPickerComponent,
       BsMonthPickerComponent,
-      BsYearPickerComponent
+      BsYearPickerComponent,
+      CORE_DIRECTIVES,
+      FORM_DIRECTIVES
     ],
     inputs: const [
       'showWeeks',

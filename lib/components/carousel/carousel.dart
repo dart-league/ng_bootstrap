@@ -1,4 +1,4 @@
-import "package:angular2/angular2.dart";
+import "package:angular/angular.dart";
 
 import "package:node_shims/js.dart";
 import 'dart:async';
@@ -17,7 +17,8 @@ enum Direction { UNKNOWN, NEXT, PREV }
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#carousel)
 @Component(selector: "bs-carousel",
-    templateUrl: 'carousel.html')
+    templateUrl: 'carousel.html',
+    directives: const [CORE_DIRECTIVES])
 class BsCarouselComponent implements OnDestroy {
 
   /// if `true` will disable pausing on carousel mouse hover

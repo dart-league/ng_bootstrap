@@ -1,3 +1,7 @@
+## 0.7.0
+
+* Upgrade to `angular@4.0.0-alpha+1`
+
 ## 0.6.7
 
 * add BsInput to BS_DIRECTIVES list

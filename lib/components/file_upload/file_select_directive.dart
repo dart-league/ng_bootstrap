@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import "package:angular2/core.dart";
+import "package:angular/core.dart";
 
 // todo: filters
 @Directive(selector: '[bsFileSelect]')

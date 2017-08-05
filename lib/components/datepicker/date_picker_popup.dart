@@ -7,7 +7,14 @@ String _defaultLocale = 'en_US';
 /// on the input box or on the button at the right of the input box.
 @Component (selector: "bs-date-picker-popup",
     templateUrl: 'date_picker_popup.html',
-    directives: const [NG_BOOTSTRAP_DROPDOWN_DIRECTIVES, BsDatePickerComponent, BsToggleButtonDirective],
+    directives: const [
+      NG_BOOTSTRAP_DROPDOWN_DIRECTIVES,
+      BsDatePickerComponent,
+      BsToggleButtonDirective,
+      CORE_DIRECTIVES,
+      FORM_DIRECTIVES
+    ],
+    pipes: const [COMMON_PIPES],
     inputs: const [
       'showWeeks',
       'datePickerMode',

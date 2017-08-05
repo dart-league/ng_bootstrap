@@ -1,5 +1,5 @@
 import 'dart:async';
-import "package:angular2/angular2.dart";
+import "package:angular/angular.dart";
 import 'dart:html';
 import 'package:node_shims/js.dart';
 
@@ -10,7 +10,8 @@ import 'package:node_shims/js.dart';
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#accordion)
 @Component (selector: "bs-rating",
-    templateUrl: 'rating.html')
+    templateUrl: 'rating.html',
+    directives: const [CORE_DIRECTIVES])
 class BsRatingComponent extends DefaultValueAccessor implements OnInit {
   BsRatingComponent(this.cd, ElementRef elementRef)
       : super (elementRef) {

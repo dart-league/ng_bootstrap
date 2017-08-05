@@ -1,4 +1,4 @@
-import 'package:angular2/angular2.dart';
+import 'package:angular/angular.dart';
 import 'dart:html';
 import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart';
 
@@ -20,7 +20,7 @@ import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart'
   </div>
 </div>
 <template [bsTemplateOutlet]="labelTemplate" [ngOutletContext]="percentage"></template>''',
-    directives: const [BsTemplateOutletDirective])
+    directives: const [BsTemplateOutletDirective, CORE_DIRECTIVES])
 class BsProgressComponent implements OnInit {
 
   /// if `true` changing `value` of progress bar will be animated (*note*: not supported by Bootstrap 4)

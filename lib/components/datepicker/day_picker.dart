@@ -3,7 +3,8 @@ part of bs_date_picker;
 /// Creates an [BsDayPickerComponent], this will be the view showed in the [NgBsDatePicker] when user clicks
 /// day header button
 @Component (selector: "bs-day-picker",
-    templateUrl: 'day_picker.html')
+    templateUrl: 'day_picker.html',
+    directives: const [CORE_DIRECTIVES])
 class BsDayPickerComponent implements OnInit {
   /// Constructs an [BsDayPickerComponent] injecting [datePicker]
   BsDayPickerComponent(this.datePicker);
