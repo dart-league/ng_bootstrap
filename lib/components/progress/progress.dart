@@ -40,7 +40,7 @@ class BsProgressComponent implements OnInit {
   /// Handles the width of the element
   String elementWidth;
 
-  ElementRef _elementRef;
+  HtmlElement _elementRef;
 
   BsProgressComponent(this._elementRef);
 
@@ -48,7 +48,7 @@ class BsProgressComponent implements OnInit {
   ngOnInit() {
     animate ??= true;
     max = max ??= 100;
-    Element nativeElement = _elementRef.nativeElement;
+    Element nativeElement = _elementRef;
     elementWidth = nativeElement.getComputedStyle().width;
     // TODO: change this event something else
     window.onResize.listen((e) {

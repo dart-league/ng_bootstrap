@@ -7,7 +7,7 @@ import 'package:ng_bootstrap/components/validators/min_length_validator.dart';
 @Component(
     selector: 'bs-input',
     templateUrl: 'input.html',
-    directives: const [BsMinLengthValidator, BsMaxLengthValidator, CORE_DIRECTIVES, FORM_DIRECTIVES],
+    directives: const [BsMinLengthValidator, BsMaxLengthValidator, CORE_DIRECTIVES, formDirectives],
     providers: const [const Provider(NG_VALUE_ACCESSOR, useExisting: BsInput, multi: true)]
 )
 class BsInput extends DefaultValueAccessor {

@@ -44,12 +44,12 @@ class DropdownService {
     }
     if (event != null
         && openScope.toggleEl != null
-        && openScope.toggleEl.nativeElement == event.target) {
+        && openScope.toggleEl == event.target) {
       return;
     }
     if (event != null && openScope.autoClose == OUTSIDECLICK &&
         openScope.menuEl != null &&
-        openScope.menuEl.nativeElement == event.target) {
+        openScope.menuEl == event.target) {
       return;
     }
     openScope.isOpen = false;

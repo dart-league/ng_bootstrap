@@ -20,7 +20,7 @@ class BsTooltipComponent implements OnInit {
   ChangeDetectorRef cdr;
 
   /// Current element DOM reference
-  ElementRef elementRef;
+  HtmlElement elementRef;
 
   /// map of css classes values
   Map<String, dynamic> classMap = {};
@@ -87,7 +87,7 @@ class BsTooltipComponent implements OnInit {
   /// positions its DOM element next to the parent in the desired position
   @override
   ngOnInit() {
-    hostEl ??= (elementRef.nativeElement as Element).parent;
+    hostEl ??= (elementRef).parent;
     hostEl.on[showEvent].listen((_) => show());
     hostEl.on[hideEvent].listen((_) => hide());
   }
@@ -98,7 +98,7 @@ class BsTooltipComponent implements OnInit {
     display = 'block';
     new Timer(new Duration(milliseconds: 100 + popupDelay), () {
       var p = positionElements(
-          hostEl, elementRef.nativeElement, placement, false);
+          hostEl, elementRef, placement, false);
       top = '${p.top}px';
       left = '${p.left}px';
       classIn = true;

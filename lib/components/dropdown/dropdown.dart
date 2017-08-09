@@ -3,7 +3,7 @@ part of bs_dropdown;
 @Directive (selector: "bs-dropdown, .dropdown",
     host: const {"[class.dropdown]" : "true", "[class.show]" : "isOpen"})
 class BsDropdownDirective implements OnInit, OnDestroy {
-  ElementRef elementRef;
+  HtmlElement elementRef;
 
   BsDropdownDirective(this.elementRef);
 
@@ -28,10 +28,10 @@ class BsDropdownDirective implements OnInit, OnDestroy {
   num selectedOption;
 
   /// drop menu html
-  ElementRef menuEl;
+  HtmlElement menuEl;
 
   /// drop down toggle element
-  ElementRef toggleEl;
+  HtmlElement toggleEl;
 
   /// if `true` dropdown will be opened
   bool _isOpen = false;
@@ -80,7 +80,7 @@ class BsDropdownDirective implements OnInit, OnDestroy {
   /// removes the dropdown from the DOM
   ngOnDestroy() {
     if (dropdownAppendToBody && truthy(menuEl)) {
-      menuEl.nativeElement.remove();
+      menuEl.remove();
     }
   }
 
@@ -89,7 +89,7 @@ class BsDropdownDirective implements OnInit, OnDestroy {
     // init drop down menu
     menuEl = dropdownMenu.elementRef;
     if (dropdownAppendToBody) {
-      window.document.documentElement.children.add(menuEl.nativeElement);
+      window.document.documentElement.children.add(menuEl);
     }
   }
 
@@ -101,7 +101,7 @@ class BsDropdownDirective implements OnInit, OnDestroy {
   /// focus the specified entry of dropdown in dependence of the [keyCode]
   focusDropdownEntry(num keyCode) {
     // If append to body is used.
-    Element hostEl = menuEl?.nativeElement ?? elementRef.nativeElement.querySelectorAll("ul")[0];
+    Element hostEl = menuEl ?? elementRef.querySelectorAll("ul")[0];
     if (hostEl == null) {
       // todo: throw exception?
       return;
@@ -139,7 +139,7 @@ class BsDropdownDirective implements OnInit, OnDestroy {
   /// focus toggle element
   focusToggleElement() {
     if (toggleEl != null) {
-      toggleEl.nativeElement.focus();
+      toggleEl.focus();
     }
   }
 }

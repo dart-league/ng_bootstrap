@@ -1,3 +1,4 @@
+import 'dart:html';
 import "package:angular/angular.dart";
 
 @Directive(
@@ -19,7 +20,7 @@ class BsToggleButtonDirective extends DefaultValueAccessor {
   /// active status of the button
   bool get active => trueValue == _value;
 
-  BsToggleButtonDirective(this.ngModel, ElementRef elementRef)
+  BsToggleButtonDirective(this.ngModel, HtmlElement elementRef)
       : super(elementRef) {
     ngModel.valueAccessor = this;
   }

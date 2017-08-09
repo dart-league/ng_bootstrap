@@ -16,10 +16,10 @@ DateTime addMinutes(DateTime time, int minutes) => time.add(new Duration(minutes
 /// [demo](http://luisvt.github.io/ng2_strap/#timepicker)
 @Component (selector: "bs-time-picker",
     templateUrl: 'timepicker.html',
-    directives: const [CORE_DIRECTIVES, FORM_DIRECTIVES])
+    directives: const [CORE_DIRECTIVES, formDirectives])
 class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   ///
-  BsTimePickerComponent(this.cd, ElementRef elementRef)
+  BsTimePickerComponent(this.cd, HtmlElement elementRef)
       : super (elementRef) {
     cd.valueAccessor = this;
   }

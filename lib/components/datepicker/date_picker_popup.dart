@@ -12,7 +12,7 @@ String _defaultLocale = 'en_US';
       BsDatePickerComponent,
       BsToggleButtonDirective,
       CORE_DIRECTIVES,
-      FORM_DIRECTIVES
+      formDirectives
     ],
     pipes: const [COMMON_PIPES],
     inputs: const [
@@ -37,7 +37,7 @@ String _defaultLocale = 'en_US';
 )
 class BsDatePickerPopupComponent extends DefaultValueAccessor {
   /// Constructs a DatePickerPopup
-  BsDatePickerPopupComponent(this.ngModel, ElementRef elementRef)
+  BsDatePickerPopupComponent(this.ngModel, HtmlElement elementRef)
       : super(elementRef) {
     ngModel.valueAccessor = this;
   }
