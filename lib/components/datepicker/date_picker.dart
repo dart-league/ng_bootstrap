@@ -13,7 +13,7 @@ part of bs_date_picker;
       BsMonthPickerComponent,
       BsYearPickerComponent,
       CORE_DIRECTIVES,
-      FORM_DIRECTIVES
+      formDirectives
     ],
     inputs: const [
       'showWeeks',
@@ -35,8 +35,8 @@ part of bs_date_picker;
       'dateDisabled'
     ])
 class BsDatePickerComponent extends DefaultValueAccessor with BsDatePickerBase implements OnInit {
-  /// Constructs a [NgBsDatePicker] component injecting [NgModel], [Renderer], and [ElementRef]
-  BsDatePickerComponent(this.ngModel, ElementRef elementRef)
+  /// Constructs a [NgBsDatePicker] component injecting [NgModel], [Renderer], and [HtmlElement]
+  BsDatePickerComponent(this.ngModel, HtmlElement elementRef)
       : super(elementRef) {
     ngModel.valueAccessor = this;
     ngModel.update.listen((_) => refreshView());

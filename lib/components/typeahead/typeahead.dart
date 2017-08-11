@@ -20,7 +20,7 @@ import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart'
       BsToggleButtonDirective,
       BsTemplateOutletDirective,
       CORE_DIRECTIVES,
-      FORM_DIRECTIVES
+      formDirectives
     ])
 class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
 
@@ -109,7 +109,7 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
   var selectedItem;
 
   /// Construct a [BsTypeAheadComponent] component injecting [ngModel], [renderer], [elementRef]
-  BsTypeAheadComponent(this.ngModel, ElementRef elementRef)
+  BsTypeAheadComponent(this.ngModel, HtmlElement elementRef)
       : super(elementRef) {
     ngModel.valueAccessor = this;
 

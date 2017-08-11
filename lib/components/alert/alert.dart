@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:html';
 import "package:angular/angular.dart";
 
 /// Provide contextual feedback messages for typical user actions
@@ -20,7 +21,7 @@ import "package:angular/angular.dart";
     directives: const [CORE_DIRECTIVES])
 class BsAlertComponent implements OnInit {
   /// provides the element reference to get native element
-  ElementRef _elementRef;
+  HtmlElement _elementRef;
 
   ///  provide one of the four supported contextual classes:
   ///  `success`,`info`, `warning`, `danger`
@@ -65,6 +66,6 @@ class BsAlertComponent implements OnInit {
 
   close() {
     _onCloseCtrl.add(this);
-    _elementRef.nativeElement.remove();
+    _elementRef.remove();
   }
 }

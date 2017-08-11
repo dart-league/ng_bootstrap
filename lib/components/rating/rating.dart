@@ -13,7 +13,7 @@ import 'package:node_shims/js.dart';
     templateUrl: 'rating.html',
     directives: const [CORE_DIRECTIVES])
 class BsRatingComponent extends DefaultValueAccessor implements OnInit {
-  BsRatingComponent(this.cd, ElementRef elementRef)
+  BsRatingComponent(this.cd, HtmlElement elementRef)
       : super (elementRef) {
     cd.valueAccessor = this;
   }

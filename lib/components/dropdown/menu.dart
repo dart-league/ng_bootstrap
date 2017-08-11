@@ -6,7 +6,7 @@ part of bs_dropdown;
 class BsDropdownMenuDirective implements OnInit {
   BsDropdownDirective dropdown;
 
-  ElementRef elementRef;
+  HtmlElement elementRef;
 
   BsDropdownMenuDirective(@Host() this.dropdown, this.elementRef);
 

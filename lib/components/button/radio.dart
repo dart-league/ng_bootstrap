@@ -1,3 +1,4 @@
+import 'dart:html';
 import "package:angular/angular.dart";
 
 @Directive(
@@ -19,7 +20,7 @@ class BsRadioButtonDirective extends DefaultValueAccessor {
 
   var _value;
 
-  BsRadioButtonDirective(this.ngModel, ElementRef elementRef)
+  BsRadioButtonDirective(this.ngModel, HtmlElement elementRef)
       : super(elementRef) {
     ngModel.valueAccessor = this;
   }

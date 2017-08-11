@@ -17,7 +17,7 @@ import 'dart:async';
 class BsCollapseDirective {
   /// Constructs an collapsible component
   BsCollapseDirective(this.elementRef) {
-    _element = elementRef.nativeElement;
+    _element = elementRef;
 
     bsCollapseChange.listen((bsCollapse) {
       if (bsCollapse) {
@@ -29,7 +29,7 @@ class BsCollapseDirective {
   }
 
   /// Contains the element reference of this component
-  ElementRef elementRef;
+  HtmlElement elementRef;
 
   Element _element;
 

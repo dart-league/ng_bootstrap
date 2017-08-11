@@ -1,5 +1,6 @@
 library bs_date_picker;
 
+import 'dart:html';
 import "package:angular/angular.dart";
 import 'package:intl/intl.dart';
 import 'package:node_shims/js.dart';

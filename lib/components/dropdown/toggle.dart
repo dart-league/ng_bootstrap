@@ -11,7 +11,7 @@ part of bs_dropdown;
 class BsDropdownToggleDirective implements OnInit {
   BsDropdownDirective dropdown;
   /// Reference to this HTML element
-  ElementRef elementRef;
+  HtmlElement elementRef;
 
   BsDropdownToggleDirective(@Host() this.dropdown, this.elementRef);
 
