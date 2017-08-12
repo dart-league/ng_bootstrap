@@ -1,3 +1,8 @@
+## 0.7.1
+
+* Upgrade to `angular@4.0.0-alpha+2`
+* add `bsPrompt`
+
 ## 0.7.0
 
 * Upgrade to `angular@4.0.0-alpha+1`

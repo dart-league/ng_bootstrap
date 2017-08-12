@@ -107,7 +107,7 @@ class BsDatePickerComponent extends DefaultValueAccessor with BsDatePickerBase i
           return; // ignore: return_without_value
         }
       }
-      ngModel.update.add(value);
+      ngModel.viewToModelUpdate(value);
     }
   }
 
@@ -183,7 +183,7 @@ class BsDatePickerComponent extends DefaultValueAccessor with BsDatePickerBase i
       new DisplayedDate(
           date,
           dateFilter(date, format),
-          compare(date, ngModel.value) == 0,
+          compare(date, ngModel.viewModel) == 0,
           isDisabled(date),
           compare(date, new DateTime.now()) == 0
       );
@@ -207,11 +207,11 @@ class BsDatePickerComponent extends DefaultValueAccessor with BsDatePickerBase i
   select(DateTime date) {
     if (datePickerMode == minMode) {
       if (ngModel.value == null) {
-        ngModel.update.add(new DateTime(0));
+        ngModel.viewToModelUpdate(new DateTime(0));
       }
-      ngModel.update.add(new DateTime(date.year, date.month, date.day));
+      ngModel.viewToModelUpdate(new DateTime(date.year, date.month, date.day));
     } else {
-      ngModel.update.add(date);
+      ngModel.viewToModelUpdate(date);
       datePickerMode = modes[modes.indexOf(datePickerMode) - 1];
     }
   }
@@ -231,7 +231,7 @@ class BsDatePickerComponent extends DefaultValueAccessor with BsDatePickerBase i
     if (expectedStep != null) {
       var year = _initDate.year + direction * (expectedStep['years'] ?? 0);
       var month = _initDate.month + direction * (expectedStep['months'] ?? 0);
-      ngModel.update.add(new DateTime(year, month, 1));
+      ngModel.viewToModelUpdate(new DateTime(year, month, 1));
     }
   }
 
