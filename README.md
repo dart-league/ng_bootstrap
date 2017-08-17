@@ -79,6 +79,7 @@ Then in your `index.html` file change the `link` tag to point to the new theme.
 - [x] [Pagination](http://dart-league.github.io/ng_bootstrap/#pagination)
 - [ ] Popover
 - [x] [Progressbar](http://dart-league.github.io/ng_bootstrap/#progressbar)
+- [x] [PromptService](http://dart-league.github.io/ng_bootstrap/#prompt)
 - [x] [Rating](http://dart-league.github.io/ng_bootstrap/#rating)
 - [x] [Tabs](http://dart-league.github.io/ng_bootstrap/#tabs)
 - [x] [Timepicker](http://dart-league.github.io/ng_bootstrap/#timepicker)

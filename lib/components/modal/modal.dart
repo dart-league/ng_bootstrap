@@ -14,44 +14,53 @@ import 'package:angular/angular.dart';
 class BsModalComponent {
 
   @Input() String header;
-  @Input() String cancelLabel = 'Cancel';
-  @Input() String positiveLabel = 'OK';
-  @Input() String negativeLabel = 'NO';
-  @Input() List<String> actions = ['POSITIVE', 'CANCEL'];
+  String content;
+  List<BsModalButton> _buttons;
+
+  List<BsModalButton> get buttons => _buttons;
+
+  bool loading = false;
+
+  @Input() void set buttons(List/* <BsModalButton | Map> */ buttons) {
+    _buttons = buttons.map((button) =>
+      button is Map
+        ? new BsModalButton(
+            button['label'],
+            id: button['id'],
+            cssClasses: button['cssClasses'] ?? 'btn-primary',
+            onClick: button['onClick'])
+        : button
+    ).toList();
+  }
 
   /// Fires an event when the modal is closed. The argument indicated how it was closed.
   /// @type {EventEmitter<ModalResult>}
-  @Output() Stream<ModalAction> get close => _closeCtrl.stream;
+  @Output() Stream<String> get close => _closeCtrl.stream;
 
-  final _closeCtrl = new StreamController<ModalAction>.broadcast();
+  final _closeCtrl = new StreamController<String>.broadcast();
 
   bool showModal = false;
-
-  BsModalComponent();
 
   /// Shows the modal. There is no method for hiding. This is done using actions of the modal itself.
   show() {
     showModal = true;
   }
 
-  positiveAction() {
+  hide([BsModalButton button]) async {
+    loading = true;
+    _closeCtrl.add(await button?.onClick?.call());
     showModal = false;
-    _closeCtrl.add(ModalAction.POSITIVE);
-    return false;
-  }
-
-  negativeAction() {
-    showModal = false;
-    _closeCtrl.add(ModalAction.NEGATIVE);
-    return false;
-  }
-
-  cancelAction() {
-    showModal = false;
-    _closeCtrl.add(ModalAction.CANCEL);
+    loading = false;
     return false;
   }
 }
 
-/// The possible reasons a modal has been closed.
-enum ModalAction { POSITIVE, NEGATIVE, CANCEL }
+/// Simple class to save all the modal button variables
+class BsModalButton {
+  final String label;
+  final String id;
+  final String cssClasses;
+  final Function/* () => Future<String> | String */ onClick;
+
+  const BsModalButton(this.label, {this.id, this.cssClasses = 'btn-primary', this.onClick});
+}

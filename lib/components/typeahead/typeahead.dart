@@ -7,6 +7,7 @@ import 'package:node_shims/js.dart';
 import 'package:stream_transformers/stream_transformers.dart';
 import 'package:ng_bootstrap/components/button/toggle.dart';
 import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart';
+import 'package:angular_forms/angular_forms.dart';
 
 // todo: options loading by http not yet implemented
 /// Creates a type-ahead component

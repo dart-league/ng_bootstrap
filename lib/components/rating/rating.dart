@@ -2,6 +2,7 @@ import 'dart:async';
 import "package:angular/angular.dart";
 import 'dart:html';
 import 'package:node_shims/js.dart';
+import 'package:angular_forms/angular_forms.dart';
 
 /// Rating component that will take care of visualising a star rating bar
 ///

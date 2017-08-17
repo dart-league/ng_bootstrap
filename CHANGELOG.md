@@ -1,3 +1,9 @@
+## 0.8.0
+
+* Upgrade to `angular@4.0.0-alpha+3`
+* Change `bs-modal` logic to pass buttons instead actions
+* Add `BsPromptService` to create a modal from a function
+
 ## 0.7.1
 
 * Upgrade to `angular@4.0.0-alpha+2`

@@ -1,5 +1,6 @@
 import "package:angular/angular.dart";
 import 'dart:html';
+import 'package:angular_forms/angular_forms.dart';
 
 // todo: implement global configuration via DI
 

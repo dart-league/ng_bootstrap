@@ -2,6 +2,7 @@ import 'package:angular/angular.dart';
 import 'package:angular/core.dart';
 import 'package:ng_bootstrap/components/validators/max_length_validator.dart';
 import 'package:ng_bootstrap/components/validators/min_length_validator.dart';
+import 'package:angular_forms/angular_forms.dart';
 
 /// Provides an easy way to create an input element with built-in validation
 @Component(
