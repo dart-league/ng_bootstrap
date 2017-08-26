@@ -1,3 +1,7 @@
+## 0.8.1
+
+* Upgrade to `angular@4.0.0-beta` (fixes: #78)
+
 ## 0.8.0
 
 * Upgrade to `angular@4.0.0-alpha+3`
