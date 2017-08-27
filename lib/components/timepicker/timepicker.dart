@@ -99,13 +99,6 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
       updateTemplate();
       return;
     }
-    // Evaluate from template
-//    var hours = getHoursFromTemplate();
-//    var minutes = getMinutesFromTemplate();
-//    if (hours != null && minutes != null) {
-//      selected;
-//      refresh();
-//    }
   }
 
   /// binds to Date object
@@ -157,7 +150,7 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
 
   /// get the value of hours from template
   getHoursFromTemplate() {
-    var hours = int.parse(this.hours);
+    var hours = int.parse(this.hours, onError: (_) => 0);
     var valid = showMeridian ? (hours > 0 && hours < 13) : (hours >= 0 &&
         hours < 24);
     if (!valid) {
@@ -176,7 +169,7 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
 
   /// parse the minutes string from the template
   getMinutesFromTemplate() {
-    var _minutes = int.parse(minutes);
+    var _minutes = int.parse(minutes, onError: (_) => 0);
     return (_minutes >= 0 && _minutes < 60) ? _minutes : null;
   }
 
@@ -332,5 +325,13 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
       var sign = selected.hour < 12 ? 1 : -1;
       addMinutesToSelected(12 * 60 * sign);
     }
+  }
+
+  @HostListener('input', const ['\$event'])
+  bool onInput(Event $event) {
+//    print('event: ${$event.target}');
+//
+//    onChange(($event.target as InputElement).value);
+    return true;
   }
 }

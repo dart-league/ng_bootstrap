@@ -14,28 +14,9 @@ String _defaultLocale = 'en_US';
       CORE_DIRECTIVES,
       formDirectives
     ],
-    pipes: const [COMMON_PIPES],
-    inputs: const [
-      'showWeeks',
-      'datePickerMode',
-      'minDate',
-      'maxDate',
-      'minMode',
-      'maxMode',
-      'showWeeks',
-      'formatDay',
-      'formatMonth',
-      'formatYear',
-      'formatDayHeader',
-      'formatDayTitle',
-      'formatMonthTitle',
-      'startingDay',
-      'yearRange',
-      'shortcutPropagation',
-      'dateDisabled'
-    ]
+    pipes: const [COMMON_PIPES]
 )
-class BsDatePickerPopupComponent extends DefaultValueAccessor {
+class BsDatePickerPopupComponent extends BsDatePickerBase {
   /// Constructs a DatePickerPopup
   BsDatePickerPopupComponent(this.ngModel, HtmlElement elementRef)
       : super(elementRef) {

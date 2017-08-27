@@ -1,3 +1,9 @@
+## 0.8.2
+
+- support `DDC` (fixes: #71)
+- change `stream_transformers` library by `stream_transform`
+- add input listener to components that extends `DefaultValueAccessor`
+
 ## 0.8.1
 
 * Upgrade to `angular@4.0.0-beta` (fixes: #78)

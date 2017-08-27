@@ -14,27 +14,8 @@ part of bs_date_picker;
       BsYearPickerComponent,
       CORE_DIRECTIVES,
       formDirectives
-    ],
-    inputs: const [
-      'showWeeks',
-      'datePickerMode',
-      'minDate',
-      'maxDate',
-      'minMode',
-      'maxMode',
-      'showWeeks',
-      'formatDay',
-      'formatMonth',
-      'formatYear',
-      'formatDayHeader',
-      'formatDayTitle',
-      'formatMonthTitle',
-      'startingDay',
-      'yearRange',
-      'shortcutPropagation',
-      'dateDisabled'
     ])
-class BsDatePickerComponent extends DefaultValueAccessor with BsDatePickerBase implements OnInit {
+class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   /// Constructs a [NgBsDatePicker] component injecting [NgModel], [Renderer], and [HtmlElement]
   BsDatePickerComponent(this.ngModel, HtmlElement elementRef)
       : super(elementRef) {
@@ -249,7 +230,7 @@ class BsDatePickerComponent extends DefaultValueAccessor with BsDatePickerBase i
   }
 }
 
-abstract class BsDatePickerBase {
+abstract class BsDatePickerBase extends DefaultValueAccessor {
 
   /// sets date-picker mode, supports: `day`, `month`, `year`
   @Input() String datePickerMode;
@@ -303,6 +284,14 @@ abstract class BsDatePickerBase {
   // todo: change type during implementation
   /// array of disabled dates if `mode` is `day`, or years, etc.
   @Input() dynamic dateDisabled;
+
+  BsDatePickerBase(HtmlElement elementRef) : super(elementRef);
+
+  @HostListener('input', const ['\$event'])
+  bool onInput($event) {
+    onChange($event);
+    return true;
+  }
 }
 
 class DisplayedDate {

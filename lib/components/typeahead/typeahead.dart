@@ -4,7 +4,7 @@ import 'dart:html';
 import "package:angular/angular.dart";
 import 'package:ng_bootstrap/components/dropdown/index.dart';
 import 'package:node_shims/js.dart';
-import 'package:stream_transformers/stream_transformers.dart';
+import 'package:stream_transform/stream_transform.dart';
 import 'package:ng_bootstrap/components/button/toggle.dart';
 import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart';
 import 'package:angular_forms/angular_forms.dart';
@@ -115,13 +115,13 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
     ngModel.valueAccessor = this;
 
     _queryStream
-        .transform(new Debounce(new Duration(milliseconds: waitMs)))
-        .transform(new FlatMapLatest((term) => source(term).asStream()))
+        .transform(debounce(new Duration(milliseconds: waitMs)))
+        .transform(switchMap((term) => source(term).asStream()))
         .forEach((matchesAux) {
-      matches = matchesAux.take(optionsLimit).toList();
-      _loadingCtrl.add(loadingVal = false);
-      if (matches.isEmpty) _noResultsCtrl.add(noResultsVal = true);
-    });
+          matches = matchesAux.take(optionsLimit).toList();
+          _loadingCtrl.add(loadingVal = false);
+          if (matches.isEmpty) _noResultsCtrl.add(noResultsVal = true);
+        });
   }
 
   @override
@@ -234,5 +234,11 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
   /// makes the active/highlited item the matched item
   void _selectActiveMatch() {
     selectMatch(selectedItem);
+  }
+
+  @HostListener('input', const ['\$event'])
+  bool onInput($event) {
+    onChange($event);
+    return true;
   }
 }

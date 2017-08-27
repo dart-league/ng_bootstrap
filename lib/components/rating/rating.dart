@@ -12,15 +12,10 @@ import 'package:angular_forms/angular_forms.dart';
 /// [demo](http://luisvt.github.io/ng2_strap/#accordion)
 @Component (selector: "bs-rating",
     templateUrl: 'rating.html',
-    directives: const [CORE_DIRECTIVES])
+    directives: const [CORE_DIRECTIVES, formDirectives],
+    providers: const [const Provider(NG_VALUE_ACCESSOR, useExisting: BsRatingComponent, multi: true)])
 class BsRatingComponent extends DefaultValueAccessor implements OnInit {
-  BsRatingComponent(this.cd, HtmlElement elementRef)
-      : super (elementRef) {
-    cd.valueAccessor = this;
-  }
-
-  ///
-  NgModel cd;
+  BsRatingComponent(HtmlElement elementRef) : super(elementRef);
 
   /// maximum number of icons
   @Input() num max;
@@ -65,7 +60,7 @@ class BsRatingComponent extends DefaultValueAccessor implements OnInit {
     readonly = readonly == true;
     stateOn ??= "fa-star";
     stateOff ??= "fa-star-o";
-    titles = titles != null && titles.length > 0  ? titles : ["one", "two", "three", "four", "five"];
+    titles = titles != null && titles.length > 0 ? titles : ["one", "two", "three", "four", "five"];
     ratingStates ??= [];
     range = _buildTemplateObjects();
   }
@@ -80,20 +75,20 @@ class BsRatingComponent extends DefaultValueAccessor implements OnInit {
     }
     preValue = _value;
     value = _value;
-
   }
 
   /// build the template of the objects that will be rendered
-  _buildTemplateObjects() {
-    var count = or(ratingStates.length, max) ;
+  List _buildTemplateObjects() {
+    var count = or(ratingStates.length, max);
     var result = [];
     for (var i = 0; i < count; i++) {
       result.add({
-        "index" : i,
-        "stateOn" : stateOn,
-        "stateOff" : stateOff,
-        "title" : titles.length > i ? titles[i] : i + 1,
-      }..addAll(ratingStates.length > i ? ratingStates[i] : {}));
+        "index": i,
+        "stateOn": stateOn,
+        "stateOff": stateOff,
+        "title": titles.length > i ? titles[i] : i + 1,
+      }
+        ..addAll(ratingStates.length > i ? ratingStates[i] : {}));
     }
     return result;
   }
@@ -102,7 +97,6 @@ class BsRatingComponent extends DefaultValueAccessor implements OnInit {
   rate(num value) {
     if (!readonly && value >= 0 && value <= range.length) {
       writeValue(value);
-      cd.viewToModelUpdate(value);
     }
   }
 
@@ -132,5 +126,11 @@ class BsRatingComponent extends DefaultValueAccessor implements OnInit {
         ? 1
         : -1;
     rate(value + sign);
+  }
+
+  @HostListener('input', const ['\$event'])
+  bool onInput($event) {
+    onChange($event);
+    return true;
   }
 }
