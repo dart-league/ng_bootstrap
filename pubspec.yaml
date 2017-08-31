@@ -1,5 +1,5 @@
 name: ng_bootstrap
-version: 0.8.3+1
+version: 0.8.4
 description: Angular 2 and Bootstrap 4
 authors:
   - Luis Vargas <luisvargastijerino@gmail.com>
@@ -20,7 +20,7 @@ dependencies:
   stream_transform: ^0.0.9
   font_awesome: ^4.6.3
   dev_string_converter: ^0.1.0
-  angular_forms: ^0.1.0
+  angular_forms: ^1.0.0
 dev_dependencies:
   build_runner: ^0.4.0
   sass_builder: ^0.2.0

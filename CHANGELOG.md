@@ -1,3 +1,7 @@
+## 0.8.4
+
+- Upgrade to `angular_forms@^1.0.0` (fixes: #80)
+
 ## 0.8.3
 
 - Upgrade to `angular@4.0.0`
