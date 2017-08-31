@@ -6,19 +6,6 @@ import 'pager.dart';
 /// the multi-page pagination component
 @Component(selector: "bs-pagination",
     templateUrl: 'pagination.html',
-    inputs: const [
-      'previousText',
-      'nextText',
-      'align',
-      'disabled',
-      'currentPage',
-      'itemsPerPage',
-      'totalItems'
-    ],
-    outputs: const [
-      'totalPagesChange',
-      'currentPageChange'
-    ],
     directives: const [CORE_DIRECTIVES])
 class BsPaginationComponent extends BsPagerComponent implements OnInit {
 
