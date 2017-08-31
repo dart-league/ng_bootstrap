@@ -1,3 +1,7 @@
+## 0.8.3
+
+- Upgrade to `angular@4.0.0`
+
 ## 0.8.2
 
 - support `DDC` (fixes: #71)
