@@ -2,6 +2,7 @@ import 'package:angular/angular.dart';
 import 'package:ng_bootstrap/core/position.dart';
 import 'dart:async';
 import 'dart:html';
+import 'package:stream_transform/stream_transform.dart';
 
 @Component(
     selector: 'bs-tooltip',
@@ -68,6 +69,10 @@ class BsTooltipComponent implements OnInit {
 
   bool _enable = true;
 
+  Timer showTimer;
+
+  Timer hideTimer;
+
   /// if `false` tooltip is disabled and will not be shown
   @Input()
   set enable(bool enable) {
@@ -87,7 +92,7 @@ class BsTooltipComponent implements OnInit {
   /// positions its DOM element next to the parent in the desired position
   @override
   ngOnInit() {
-    hostEl ??= (elementRef).parent;
+    hostEl ??= elementRef.parent;
     hostEl.on[showEvent].listen((_) => show());
     hostEl.on[hideEvent].listen((_) => hide());
   }
@@ -96,7 +101,8 @@ class BsTooltipComponent implements OnInit {
     if (!_enable) return;
 
     display = 'block';
-    new Timer(new Duration(milliseconds: 100 + popupDelay), () {
+    hideTimer?.cancel();
+    showTimer = new Timer(new Duration(milliseconds: popupDelay), () {
       var p = positionElements(
           hostEl, elementRef, placement, false);
       top = '${p.top}px';
@@ -106,7 +112,10 @@ class BsTooltipComponent implements OnInit {
   }
 
   void hide() {
-    display = 'none';
-    classIn = false;
+    showTimer?.cancel();
+    hideTimer = new Timer(new Duration(milliseconds: 100), () {
+      display = 'none';
+      classIn = false;
+    });
   }
 }

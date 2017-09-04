@@ -75,7 +75,7 @@ class BsAccordionPanelComponent implements OnInit, OnDestroy {
   /// if `true` disables accordion group
   @Input() bool isDisabled = false;
 
-  bool _isOpen;
+  bool _isOpen = false;
 
   /// is accordion group open or closed
   bool get isOpen => _isOpen;
@@ -87,22 +87,27 @@ class BsAccordionPanelComponent implements OnInit, OnDestroy {
   /// if `true` opens the panel
   @Input()
   set isOpen(bool value) {
-    // Future.delayed added to avoid error EXCEPTION: Expression has changed after it was checked.
-    new Future(() {
+    print('isOpen.value: $value');
+    isOpenTimer?.cancel();
+    isOpenTimer = new Timer(const Duration(milliseconds: 250), () {
       _isOpen = value;
       if (truthy(value)) {
         accordion.closeOtherPanels(this);
       }
       _isOpenChangeCtrl.add(value);
+
+      print('isOpen.valueAT: $value');
     });
   }
+
+  Timer isOpenTimer;
 
   /// initialize the default values of the attributes
   @override
   ngOnInit() {
     panelClass = or(panelClass, '');
     accordion.addPanel(this);
-    _isOpen ??= false;
+//    _isOpen ??= false;
   }
 
   /// destroys the panel

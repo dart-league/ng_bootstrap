@@ -1,3 +1,9 @@
+## 0.8.5
+
+- correct tooltip placement inside table element (fixes: #76)
+- correct tooltip placement after fast hide and show
+- correct accordion expand/collapse timing
+
 ## 0.8.4
 
 - Upgrade to `angular_forms@^1.0.0` (fixes: #80)
