@@ -1,7 +1,7 @@
 part of bs_dropdown;
 
 @Directive (selector: "bs-dropdown, .dropdown",
-    host: const {"[class.dropdown]" : "true", "[class.show]" : "isOpen"})
+    host: const {"[class.show]" : "isOpen"})
 class BsDropdownDirective implements OnInit, OnDestroy {
   HtmlElement elementRef;
 

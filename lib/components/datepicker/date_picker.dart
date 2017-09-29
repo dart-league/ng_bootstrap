@@ -288,10 +288,7 @@ abstract class BsDatePickerBase extends DefaultValueAccessor {
   BsDatePickerBase(HtmlElement elementRef) : super(elementRef);
 
   @HostListener('input', const ['\$event'])
-  bool onInput($event) {
-    onChange($event);
-    return true;
-  }
+  bool onInput($event) => true;
 }
 
 class DisplayedDate {

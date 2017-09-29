@@ -1,3 +1,7 @@
+## 0.8.6
+
+- upgrade to `bootstrap@^4.0.0-beta`
+
 ## 0.8.5
 
 - correct tooltip placement inside table element (fixes: #76)

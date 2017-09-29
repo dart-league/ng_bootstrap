@@ -59,8 +59,5 @@ class BsInput extends DefaultValueAccessor {
   }
 
   @HostListener('input', const ['\$event'])
-  bool onInput($event) {
-    onChange($event);
-    return true;
-  }
+  bool onInput($event) => true;
 }

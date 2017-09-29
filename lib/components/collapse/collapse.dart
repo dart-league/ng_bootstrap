@@ -60,7 +60,6 @@ class BsCollapseDirective {
 
   /// sets and fires the collapsed state of the component
   @Input() set bsCollapse(bool value) {
-    print('bsCollapse.value: $value');
     _bsCollapse = value ?? false;
     _bsCollapseChangeController.add(_bsCollapse);
   }

@@ -1,6 +1,10 @@
+.dropdown.show .dropdown-menu {
+  display: block;
+}
 
 bs-dropdown {
   display: inline-block;
+  @extend .dropdown;
 }
 
 bs-dropdown-menu {

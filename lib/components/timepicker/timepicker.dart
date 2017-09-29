@@ -328,10 +328,5 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   }
 
   @HostListener('input', const ['\$event'])
-  bool onInput(Event $event) {
-//    print('event: ${$event.target}');
-//
-//    onChange(($event.target as InputElement).value);
-    return true;
-  }
+  bool onInput(Event $event) => true;
 }

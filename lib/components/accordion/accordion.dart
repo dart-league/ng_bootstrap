@@ -96,7 +96,6 @@ class BsAccordionPanelComponent implements OnInit, OnDestroy {
       }
       _isOpenChangeCtrl.add(value);
 
-      print('isOpen.valueAT: $value');
     });
   }
 
