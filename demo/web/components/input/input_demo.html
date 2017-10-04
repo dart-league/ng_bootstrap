@@ -1,0 +1,36 @@
+<form #personForm="ngForm">
+  <bs-input eId="firstName"
+            label="First Name"
+            [(ngModel)]="person.firstName"
+            #firstName="ngForm"
+            ngControl="firstName"
+            [required]="true"
+            [minLength]="2"
+            [maxLength]="5"
+  ></bs-input>
+
+  <!-- Next Element is created without using "bs-input" to show an equivalent using pure html elements\
+       and bootstrap classes -->
+  <div class="form-group" [class.has-danger]="!lastName.valid">
+    <label for="lastName" class="form-control-label">Last Name</label>
+    <input id="lastName"
+           class="form-control"
+           type="text"
+           [(ngModel)]="person.lastName"
+           #lastName="ngForm"
+           ngControl="lastName"
+           required
+           minlength="2"
+           maxlength="5"
+           [class.form-control-danger]="!lastName.valid"
+    >
+    <small *ngIf="!lastName.valid" class="text-danger">
+      <span *ngIf="lastName.errors['required']">Field Required</span>
+      <span *ngIf="lastName.errors['minlength'] != null">Min Length should be 2</span>
+      <span *ngIf="lastName.errors['maxlength'] != null">Min Length should be 2</span>
+    </small>
+  </div>
+</form>
+<pre>personForm.valid: {{personForm.form.valid}}</pre>
+<pre>firstName.errors: {{firstName.errors}}</pre>
+<pre>lastName.errors: {{lastName.errors}}</pre>

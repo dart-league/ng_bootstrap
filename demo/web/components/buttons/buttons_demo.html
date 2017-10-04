@@ -1,0 +1,31 @@
+<h4>Single toggle</h4>
+<pre class="card card-block card-header">{{singleModel}}</pre>
+<bs-toggle-button class="btn btn-primary"
+        [(ngModel)]="singleModel"
+        trueValue="0" falseValue="1">
+  Single Toggle
+</bs-toggle-button>
+
+<h4>Checkbox</h4>
+<pre class="card card-block card-header">
+  Left: {{checkModel['left']}},
+  Middle: {{checkModel['middle']}},
+  Right: {{checkModel['right']}}
+</pre>
+<bs-button-group>
+  <bs-toggle-button class="btn btn-primary" [(ngModel)]="checkModel['left']" >Left</bs-toggle-button>
+  <bs-toggle-button class="btn btn-primary" [(ngModel)]="checkModel['middle']">Middle</bs-toggle-button>
+  <bs-toggle-button class="btn btn-primary" [(ngModel)]="checkModel['right']" >Right</bs-toggle-button>
+</bs-button-group>
+<h4>Radio &amp; Uncheckable Radio</h4>
+<pre class="card card-block card-header">{{radioModel}}</pre>
+<bs-button-group>
+  <bs-radio-button class="btn btn-primary" [(ngModel)]="radioModel" option="Left">Left</bs-radio-button>
+  <bs-radio-button class="btn btn-primary" [(ngModel)]="radioModel" option="Middle">Middle</bs-radio-button>
+  <bs-radio-button class="btn btn-primary" [(ngModel)]="radioModel" option="Right">Right</bs-radio-button>
+</bs-button-group>
+<bs-button-group>
+  <bs-radio-button class="btn btn-success" [(ngModel)]="radioModel" option="Left" [uncheckable]="false">Left</bs-radio-button>
+  <bs-radio-button class="btn btn-success" [(ngModel)]="radioModel" option="Middle" [uncheckable]="false">Middle</bs-radio-button>
+  <bs-radio-button class="btn btn-success" [(ngModel)]="radioModel" option="Right" [uncheckable]="false">Right</bs-radio-button>
+</bs-button-group>

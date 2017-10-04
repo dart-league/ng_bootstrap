@@ -1,0 +1,23 @@
+<header class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+  <button class="navbar-toggler navbar-toggler-right"
+          type="button" data-toggle="collapse"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          (click)="isCollapsed = !isCollapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a href="{{prefix}}#" role="button" class="navbar-brand">ng_bootstrap</a>
+  <nav class="collapse navbar-collapse" [bsCollapse]="isCollapsed">
+    <ul class="navbar-nav">
+      <bs-dropdown class="nav-item">
+        <a role="button" class="nav-link dropdown-toggle">Directives <b class="caret"></b></a>
+        <bs-dropdown-menu>
+          <li *ngFor="let comp of components">
+            <a class="dropdown-item" href="{{prefix}}#{{toTableName(comp)}}">{{comp}}</a>
+          </li>
+        </bs-dropdown-menu>
+      </bs-dropdown>
+    </ul>
+  </nav>
+</header>
