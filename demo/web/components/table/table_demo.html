@@ -1,63 +1,65 @@
-<input *ngIf="config['filtering'] != null"
-       class="form-control"
-       placeholder="Filter"
-       [(ngModel)]="config['filtering']['filterString']"
-       (ngModelChange)="filterRows()"/>
-<br>
-<div class="form-check col-xs-12">
-  <label class="form-check-label">
-    <input class="form-check-input" type="checkbox" [(ngModel)]="selectable">
-    selectable
-  </label>
-</div>
-<bs-tabsx>
-  <bs-tabx header="Maps Data">
-    <bs-table [rows]="rows"
-              [selectable]="selectable"
-              [(pageNumber)]="page"
-              [itemsPerPage]="itemsPerPage"
-              [sortable]="true"
-              [(totalItems)]="length">
-      <bs-column header="Name" fieldName="name"></bs-column>
-      <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
-      <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
-      <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
-      <bs-column header="Start date" fieldName="startDate"></bs-column>
-      <bs-column header="Salary ($)" orderBy="salary" [ngStyle]="{width: '120px'}">
-        <template let-row>U$ {{row['salary']}}</template>
-      </bs-column>
-      <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px'}"></bs-column>
-    </bs-table>
-  </bs-tabx>
-  <bs-tabx header="Complex Objects Data">
-    <bs-table [rows]="rowsComplex"
-              [selectable]="selectable"
-              [(pageNumber)]="page"
-              [itemsPerPage]="itemsPerPage"
-              [sortable]="true"
-              [(totalItems)]="length">
-      <bs-column header="Name" fieldName="name"></bs-column>
-      <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
-      <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
-      <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
-      <bs-column header="Start date" fieldName="startDate"></bs-column>
-      <bs-column header="Salary ($)" [ngStyle]="{width: '120px'}">
-        <template let-row>U$ {{row.salary}}</template>
-      </bs-column>
-      <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px'}"></bs-column>
-    </bs-table>
-  </bs-tabx>
-</bs-tabsx>
-<bs-pagination *ngIf="config['paging']"
-               class="pagination-sm tag"
-               [(currentPage)]="page"
-               [totalItems]="length"
-               [itemsPerPage]="itemsPerPage"
-               [maxSize]="maxSize"
-               [boundaryLinks]="true"
-               [rotate]="false"
-               [(totalPages)]="totalPages">
-</bs-pagination>
-<pre *ngIf="config['paging']" class="card card-block card-header">Page: {{page}} / {{totalPages}}
+<div style="overflow-x: auto;">
+  <input *ngIf="config['filtering'] != null"
+         class="form-control"
+         placeholder="Filter"
+         [(ngModel)]="config['filtering']['filterString']"
+         (ngModelChange)="filterRows()"/>
+  <br>
+  <div class="form-check col-xs-12">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" [(ngModel)]="selectable">
+      selectable
+    </label>
+  </div>
+  <bs-tabsx>
+    <bs-tabx header="Maps Data">
+      <bs-table [rows]="rows"
+                [selectable]="selectable"
+                [(pageNumber)]="page"
+                [itemsPerPage]="itemsPerPage"
+                [sortable]="true"
+                [(totalItems)]="length">
+        <bs-column header="Name" fieldName="name"></bs-column>
+        <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
+        <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
+        <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
+        <bs-column header="Start date" fieldName="startDate"></bs-column>
+        <bs-column header="Salary ($)" orderBy="salary" [ngStyle]="{width: '120px'}">
+          <template let-row>U$ {{row['salary']}}</template>
+        </bs-column>
+        <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px'}"></bs-column>
+      </bs-table>
+    </bs-tabx>
+    <bs-tabx header="Complex Objects Data">
+      <bs-table [rows]="rowsComplex"
+                [selectable]="selectable"
+                [(pageNumber)]="page"
+                [itemsPerPage]="itemsPerPage"
+                [sortable]="true"
+                [(totalItems)]="length">
+        <bs-column header="Name" fieldName="name"></bs-column>
+        <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
+        <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
+        <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
+        <bs-column header="Start date" fieldName="startDate"></bs-column>
+        <bs-column header="Salary ($)" [ngStyle]="{width: '120px'}">
+          <template let-row>U$ {{row.salary}}</template>
+        </bs-column>
+        <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px'}"></bs-column>
+      </bs-table>
+    </bs-tabx>
+  </bs-tabsx>
+  <bs-pagination *ngIf="config['paging']"
+                 class="pagination-sm tag"
+                 [(currentPage)]="page"
+                 [totalItems]="length"
+                 [itemsPerPage]="itemsPerPage"
+                 [maxSize]="maxSize"
+                 [boundaryLinks]="true"
+                 [rotate]="false"
+                 [(totalPages)]="totalPages">
+  </bs-pagination>
+  <pre *ngIf="config['paging']" class="card card-block card-header">Page: {{page}} / {{totalPages}}
 Total Items: {{length}}
 </pre>
+</div>

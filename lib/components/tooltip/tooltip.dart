@@ -2,19 +2,19 @@ import 'package:angular/angular.dart';
 import 'package:ng_bootstrap/core/position.dart';
 import 'dart:async';
 import 'dart:html';
-import 'package:stream_transform/stream_transform.dart';
 
 @Component(
     selector: 'bs-tooltip',
     template: '''
+<div class="arrow"></div>
 <div class="tooltip-inner">
   <ng-content></ng-content>
 </div>''',
     host: const {
-      '[class.tooltip-top]': 'placement == "top"',
-      '[class.tooltip-left]': 'placement == "left"',
-      '[class.tooltip-right]': 'placement == "right"',
-      '[class.tooltip-bottom]': 'placement == "bottom"'
+      '[class.bs-tooltip-top]': 'placement == "top"',
+      '[class.bs-tooltip-left]': 'placement == "left"',
+      '[class.bs-tooltip-right]': 'placement == "right"',
+      '[class.bs-tooltip-bottom]': 'placement == "bottom"'
     },
     directives: const [CORE_DIRECTIVES])
 class BsTooltipComponent implements OnInit {
@@ -22,9 +22,6 @@ class BsTooltipComponent implements OnInit {
 
   /// Current element DOM reference
   HtmlElement elementRef;
-
-  /// map of css classes values
-  Map<String, dynamic> classMap = {};
 
   /// value in pixels of the top style
   @HostBinding('style.top')

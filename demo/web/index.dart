@@ -16,6 +16,7 @@ import 'components/file_upload/file_upload_demo.dart';
 import 'components/input/input_demo.dart';
 import 'components/modal/modal_demo.dart';
 import 'components/pagination/pagination_demo.dart';
+import 'components/popover/popover_demo.dart';
 import 'components/progress/progress_demo.dart';
 import 'components/prompt/prompt_demo.dart';
 import 'components/rating/rating_demo.dart';
@@ -45,6 +46,7 @@ part 'index.g.dart';
       InputDemo,
       ModalDemo,
       PaginationDemo,
+      PopoverDemo,
       ProgressDemo,
       PromptDemo,
       RatingDemo,

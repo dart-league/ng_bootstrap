@@ -3,26 +3,6 @@ $fa-font-path:        "packages/font_awesome/fonts" !default;
 //noinspection CssUnknownTarget
 @import "package:ng_bootstrap/all";
 
-/*!
- * Bootstrap Docs (http://getbootstrap.com)
- * Copyright 2011-2014 Twitter, Inc.
- * Licensed under the Creative Commons Attribution 3.0 Unported License. For
- * details, see http://creativecommons.org/licenses/by/3.0/.
- */
-
-.h1, .h2, .h3, h1, h2, h3 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-.h1, h1 {
-    font-size: 36px;
-}
-
-.btn-group-lg > .btn, .btn-lg {
-    font-size: 18px;
-}
-
 section {
     padding-top: 30px;
 }
@@ -36,52 +16,6 @@ section {
     margin: 40px 0 20px;
     border-bottom: 1px solid #eee;
 }
-//
-//.navbar-default .navbar-nav > li > a {
-//    color: #777;
-//}
-//
-//.navbar {
-//    padding: 0;
-//}
-//
-//.navbar-nav .nav-item {
-//    margin-left: 0 !important;
-//}
-//
-//.nav > li > a {
-//    position: relative;
-//    display: block;
-//    padding: 10px 15px;
-//}
-//
-//.nav .navbar-brand {
-//    float: left;
-//    height: 50px;
-//    padding: 15px 15px;
-//    font-size: 18px;
-//    line-height: 20px;
-//    margin-right: 0 !important;
-//}
-//
-//.navbar-brand {
-//    color: #777;
-//    float: left;
-//    height: 50px;
-//    padding: 15px 15px;
-//    font-size: 18px;
-//    line-height: 20px;
-//}
-//
-//.navbar-toggler {
-//    margin-top: 8px;
-//    margin-right: 15px;
-//}
-//
-//.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
-//    color: #333;
-//    background-color: transparent;
-//}
 
 .bd-pageheader, .bs-docs-masthead {
     position: relative;

@@ -14,8 +14,8 @@ import 'package:ng_bootstrap/ng_bootstrap.dart';
         box-shadow: 0 6px 12px rgba(0,0,0,.175);
     }
     /* Hide arrow */
-    bs-tooltip.customClass /deep/ .tooltip-arrow {
-        display: none;
+    bs-tooltip.customClass.bs-tooltip-top /deep/ .arrow::before {
+        border-top-color: #ffff66;
     }
   '''
     ])

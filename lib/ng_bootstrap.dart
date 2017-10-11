@@ -11,6 +11,7 @@ import 'components/input/input.dart';
 import 'components/modal/modal.dart';
 import 'components/pagination/pager.dart';
 import 'components/pagination/pagination.dart';
+import 'components/popover/popover.dart';
 import 'components/progress/progress.dart';
 import 'components/table/table_directives.dart';
 import 'components/tabs/tabs.dart';
@@ -35,6 +36,7 @@ export 'components/input/input.dart';
 export 'components/modal/modal.dart';
 export 'components/pagination/pager.dart';
 export 'components/pagination/pagination.dart';
+export 'components/popover/popover.dart';
 export 'components/progress/progress.dart';
 export 'components/table/table_directives.dart';
 export 'components/tabs/tabs.dart';
@@ -60,6 +62,7 @@ const List BS_DIRECTIVES = const [
   BsPagerComponent,
   BsPaginationComponent,
   BsPagerComponent,
+  BsPopoverComponent,
   BsProgressComponent,
   BsRadioButtonDirective,
   BsToggleButtonDirective,

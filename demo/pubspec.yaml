@@ -31,6 +31,7 @@ transformers:
     - web/components/input/main.dart
     - web/components/modal/main.dart
     - web/components/pagination/main.dart
+    - web/components/popover/main.dart
     - web/components/progress/main.dart
     - web/components/prompt/main.dart
     - web/components/rating/main.dart

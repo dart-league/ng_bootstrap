@@ -1,3 +1,8 @@
+## 0.9.0
+
+- add popover component (fixes: #82)
+- fix tooltip styles
+
 ## 0.8.6
 
 - upgrade to `bootstrap@^4.0.0-beta`

@@ -4353,7 +4353,7 @@ button.close {
   border-radius: 0.25rem;
 }
 
-.popover {
+.popover, bs-popover {
   position: absolute;
   top: 0;
   left: 0;
@@ -4382,89 +4382,96 @@ button.close {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
 }
-.popover .arrow {
+.popover .arrow, bs-popover .arrow {
   position: absolute;
   display: block;
   width: 10px;
   height: 5px;
 }
-.popover .arrow::before,
-.popover .arrow::after {
+.popover .arrow::before, bs-popover .arrow::before,
+.popover .arrow::after,
+bs-popover .arrow::after {
   position: absolute;
   display: block;
   border-color: transparent;
   border-style: solid;
 }
-.popover .arrow::before {
+.popover .arrow::before, bs-popover .arrow::before {
   content: "";
   border-width: 11px;
 }
-.popover .arrow::after {
+.popover .arrow::after, bs-popover .arrow::after {
   content: "";
   border-width: 11px;
 }
-.popover.bs-popover-top, .popover.bs-popover-auto[x-placement^=top] {
+.popover.bs-popover-top, bs-popover.bs-popover-top, .popover.bs-popover-auto[x-placement^=top], bs-popover.bs-popover-auto[x-placement^=top] {
   margin-bottom: 10px;
 }
-.popover.bs-popover-top .arrow, .popover.bs-popover-auto[x-placement^=top] .arrow {
+.popover.bs-popover-top .arrow, bs-popover.bs-popover-top .arrow, .popover.bs-popover-auto[x-placement^=top] .arrow, bs-popover.bs-popover-auto[x-placement^=top] .arrow {
   bottom: 0;
 }
-.popover.bs-popover-top .arrow::before, .popover.bs-popover-auto[x-placement^=top] .arrow::before,
+.popover.bs-popover-top .arrow::before, bs-popover.bs-popover-top .arrow::before, .popover.bs-popover-auto[x-placement^=top] .arrow::before, bs-popover.bs-popover-auto[x-placement^=top] .arrow::before,
 .popover.bs-popover-top .arrow::after,
-.popover.bs-popover-auto[x-placement^=top] .arrow::after {
+bs-popover.bs-popover-top .arrow::after,
+.popover.bs-popover-auto[x-placement^=top] .arrow::after,
+bs-popover.bs-popover-auto[x-placement^=top] .arrow::after {
   border-bottom-width: 0;
 }
-.popover.bs-popover-top .arrow::before, .popover.bs-popover-auto[x-placement^=top] .arrow::before {
+.popover.bs-popover-top .arrow::before, bs-popover.bs-popover-top .arrow::before, .popover.bs-popover-auto[x-placement^=top] .arrow::before, bs-popover.bs-popover-auto[x-placement^=top] .arrow::before {
   bottom: -11px;
   margin-left: -6px;
   border-top-color: rgba(0, 0, 0, 0.25);
 }
-.popover.bs-popover-top .arrow::after, .popover.bs-popover-auto[x-placement^=top] .arrow::after {
+.popover.bs-popover-top .arrow::after, bs-popover.bs-popover-top .arrow::after, .popover.bs-popover-auto[x-placement^=top] .arrow::after, bs-popover.bs-popover-auto[x-placement^=top] .arrow::after {
   bottom: -10px;
   margin-left: -6px;
   border-top-color: #fff;
 }
-.popover.bs-popover-right, .popover.bs-popover-auto[x-placement^=right] {
+.popover.bs-popover-right, bs-popover.bs-popover-right, .popover.bs-popover-auto[x-placement^=right], bs-popover.bs-popover-auto[x-placement^=right] {
   margin-left: 10px;
 }
-.popover.bs-popover-right .arrow, .popover.bs-popover-auto[x-placement^=right] .arrow {
+.popover.bs-popover-right .arrow, bs-popover.bs-popover-right .arrow, .popover.bs-popover-auto[x-placement^=right] .arrow, bs-popover.bs-popover-auto[x-placement^=right] .arrow {
   left: 0;
 }
-.popover.bs-popover-right .arrow::before, .popover.bs-popover-auto[x-placement^=right] .arrow::before,
+.popover.bs-popover-right .arrow::before, bs-popover.bs-popover-right .arrow::before, .popover.bs-popover-auto[x-placement^=right] .arrow::before, bs-popover.bs-popover-auto[x-placement^=right] .arrow::before,
 .popover.bs-popover-right .arrow::after,
-.popover.bs-popover-auto[x-placement^=right] .arrow::after {
+bs-popover.bs-popover-right .arrow::after,
+.popover.bs-popover-auto[x-placement^=right] .arrow::after,
+bs-popover.bs-popover-auto[x-placement^=right] .arrow::after {
   margin-top: -8px;
   border-left-width: 0;
 }
-.popover.bs-popover-right .arrow::before, .popover.bs-popover-auto[x-placement^=right] .arrow::before {
+.popover.bs-popover-right .arrow::before, bs-popover.bs-popover-right .arrow::before, .popover.bs-popover-auto[x-placement^=right] .arrow::before, bs-popover.bs-popover-auto[x-placement^=right] .arrow::before {
   left: -11px;
   border-right-color: rgba(0, 0, 0, 0.25);
 }
-.popover.bs-popover-right .arrow::after, .popover.bs-popover-auto[x-placement^=right] .arrow::after {
+.popover.bs-popover-right .arrow::after, bs-popover.bs-popover-right .arrow::after, .popover.bs-popover-auto[x-placement^=right] .arrow::after, bs-popover.bs-popover-auto[x-placement^=right] .arrow::after {
   left: -10px;
   border-right-color: #fff;
 }
-.popover.bs-popover-bottom, .popover.bs-popover-auto[x-placement^=bottom] {
+.popover.bs-popover-bottom, bs-popover.bs-popover-bottom, .popover.bs-popover-auto[x-placement^=bottom], bs-popover.bs-popover-auto[x-placement^=bottom] {
   margin-top: 10px;
 }
-.popover.bs-popover-bottom .arrow, .popover.bs-popover-auto[x-placement^=bottom] .arrow {
+.popover.bs-popover-bottom .arrow, bs-popover.bs-popover-bottom .arrow, .popover.bs-popover-auto[x-placement^=bottom] .arrow, bs-popover.bs-popover-auto[x-placement^=bottom] .arrow {
   top: 0;
 }
-.popover.bs-popover-bottom .arrow::before, .popover.bs-popover-auto[x-placement^=bottom] .arrow::before,
+.popover.bs-popover-bottom .arrow::before, bs-popover.bs-popover-bottom .arrow::before, .popover.bs-popover-auto[x-placement^=bottom] .arrow::before, bs-popover.bs-popover-auto[x-placement^=bottom] .arrow::before,
 .popover.bs-popover-bottom .arrow::after,
-.popover.bs-popover-auto[x-placement^=bottom] .arrow::after {
+bs-popover.bs-popover-bottom .arrow::after,
+.popover.bs-popover-auto[x-placement^=bottom] .arrow::after,
+bs-popover.bs-popover-auto[x-placement^=bottom] .arrow::after {
   margin-left: -7px;
   border-top-width: 0;
 }
-.popover.bs-popover-bottom .arrow::before, .popover.bs-popover-auto[x-placement^=bottom] .arrow::before {
+.popover.bs-popover-bottom .arrow::before, bs-popover.bs-popover-bottom .arrow::before, .popover.bs-popover-auto[x-placement^=bottom] .arrow::before, bs-popover.bs-popover-auto[x-placement^=bottom] .arrow::before {
   top: -11px;
   border-bottom-color: rgba(0, 0, 0, 0.25);
 }
-.popover.bs-popover-bottom .arrow::after, .popover.bs-popover-auto[x-placement^=bottom] .arrow::after {
+.popover.bs-popover-bottom .arrow::after, bs-popover.bs-popover-bottom .arrow::after, .popover.bs-popover-auto[x-placement^=bottom] .arrow::after, bs-popover.bs-popover-auto[x-placement^=bottom] .arrow::after {
   top: -10px;
   border-bottom-color: #fff;
 }
-.popover.bs-popover-bottom .popover-header::before, .popover.bs-popover-auto[x-placement^=bottom] .popover-header::before {
+.popover.bs-popover-bottom .popover-header::before, bs-popover.bs-popover-bottom .popover-header::before, .popover.bs-popover-auto[x-placement^=bottom] .popover-header::before, bs-popover.bs-popover-auto[x-placement^=bottom] .popover-header::before {
   position: absolute;
   top: 0;
   left: 50%;
@@ -4474,23 +4481,25 @@ button.close {
   content: "";
   border-bottom: 1px solid #f7f7f7;
 }
-.popover.bs-popover-left, .popover.bs-popover-auto[x-placement^=left] {
+.popover.bs-popover-left, bs-popover.bs-popover-left, .popover.bs-popover-auto[x-placement^=left], bs-popover.bs-popover-auto[x-placement^=left] {
   margin-right: 10px;
 }
-.popover.bs-popover-left .arrow, .popover.bs-popover-auto[x-placement^=left] .arrow {
+.popover.bs-popover-left .arrow, bs-popover.bs-popover-left .arrow, .popover.bs-popover-auto[x-placement^=left] .arrow, bs-popover.bs-popover-auto[x-placement^=left] .arrow {
   right: 0;
 }
-.popover.bs-popover-left .arrow::before, .popover.bs-popover-auto[x-placement^=left] .arrow::before,
+.popover.bs-popover-left .arrow::before, bs-popover.bs-popover-left .arrow::before, .popover.bs-popover-auto[x-placement^=left] .arrow::before, bs-popover.bs-popover-auto[x-placement^=left] .arrow::before,
 .popover.bs-popover-left .arrow::after,
-.popover.bs-popover-auto[x-placement^=left] .arrow::after {
+bs-popover.bs-popover-left .arrow::after,
+.popover.bs-popover-auto[x-placement^=left] .arrow::after,
+bs-popover.bs-popover-auto[x-placement^=left] .arrow::after {
   margin-top: -8px;
   border-right-width: 0;
 }
-.popover.bs-popover-left .arrow::before, .popover.bs-popover-auto[x-placement^=left] .arrow::before {
+.popover.bs-popover-left .arrow::before, bs-popover.bs-popover-left .arrow::before, .popover.bs-popover-auto[x-placement^=left] .arrow::before, bs-popover.bs-popover-auto[x-placement^=left] .arrow::before {
   right: -11px;
   border-left-color: rgba(0, 0, 0, 0.25);
 }
-.popover.bs-popover-left .arrow::after, .popover.bs-popover-auto[x-placement^=left] .arrow::after {
+.popover.bs-popover-left .arrow::after, bs-popover.bs-popover-left .arrow::after, .popover.bs-popover-auto[x-placement^=left] .arrow::after, bs-popover.bs-popover-auto[x-placement^=left] .arrow::after {
   right: -10px;
   border-left-color: #fff;
 }
@@ -10882,6 +10891,27 @@ bs-progress > .progress-bar {
 
 bs-tooltip {
   opacity: 0.01;
+  color: initial;
+}
+bs-tooltip.bs-tooltip-top .arrow, bs-tooltip.bs-tooltip-auto[x-placement^=top] .arrow, bs-tooltip.bs-tooltip-bottom .arrow, bs-tooltip.bs-tooltip-auto[x-placement^=bottom] .arrow {
+  left: 50%;
+}
+bs-tooltip.bs-tooltip-top-left .arrow, bs-tooltip.bs-tooltip-bottom-left .arrow {
+  left: 1em;
+}
+bs-tooltip.bs-tooltip-top-right .arrow, bs-tooltip.bs-tooltip-bottom-right .arrow {
+  left: auto;
+  right: 1em;
+}
+bs-tooltip.bs-tooltip-left .arrow, bs-tooltip.bs-tooltip-auto[x-placement^=left] .arrow, bs-tooltip.bs-tooltip-right .arrow, bs-tooltip.bs-tooltip-auto[x-placement^=right] .arrow {
+  top: 50%;
+}
+bs-tooltip.bs-tooltip-left-top .arrow, bs-tooltip.bs-tooltip-right-top .arrow {
+  top: 0.7em;
+}
+bs-tooltip.bs-tooltip-left-bottom .arrow, bs-tooltip.bs-tooltip-right-bottom .arrow {
+  top: auto;
+  bottom: 0.7em;
 }
 
 .dropdown.show .dropdown-menu, .dropdown.show bs-dropdown-menu, bs-dropdown.show .dropdown-menu, bs-dropdown.show bs-dropdown-menu {
@@ -10961,23 +10991,28 @@ bs-search-clear {
   z-index: 4;
 }
 
-/*!
- * Bootstrap Docs (http://getbootstrap.com)
- * Copyright 2011-2014 Twitter, Inc.
- * Licensed under the Creative Commons Attribution 3.0 Unported License. For
- * details, see http://creativecommons.org/licenses/by/3.0/.
- */
-.h1, .h2, .h3, h1, h2, h3 {
-  margin-top: 20px;
-  margin-bottom: 10px;
+bs-popover {
+  opacity: 0.01;
+  color: initial;
 }
-
-.h1, h1 {
-  font-size: 36px;
+bs-popover.bs-popover-top .arrow, bs-popover.bs-popover-auto[x-placement^=top] .arrow, bs-popover.bs-popover-bottom .arrow, bs-popover.bs-popover-auto[x-placement^=bottom] .arrow {
+  left: 50%;
+  margin-left: -5px;
 }
-
-.btn-group-lg > .btn, .btn-lg {
-  font-size: 18px;
+bs-popover.bs-popover-top-right .arrow, bs-popover.bs-popover-bottom-right .arrow {
+  left: auto;
+  right: 2em;
+}
+bs-popover.bs-popover-left .arrow, bs-popover.bs-popover-auto[x-placement^=left] .arrow, bs-popover.bs-popover-right .arrow, bs-popover.bs-popover-auto[x-placement^=right] .arrow {
+  top: 50%;
+  margin-top: -5px;
+}
+bs-popover.bs-popover-left-top .arrow, bs-popover.bs-popover-right-top .arrow {
+  top: 0.7em;
+}
+bs-popover.bs-popover-left-bottom .arrow, bs-popover.bs-popover-right-bottom .arrow {
+  top: auto;
+  bottom: 0.7em;
 }
 
 section {

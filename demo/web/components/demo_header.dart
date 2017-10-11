@@ -19,6 +19,7 @@ class DemoHeader {
     "Input",
     "Modal",
     "Pagination",
+    "Popover",
     "Progress",
     "Prompt",
     "Rating",
