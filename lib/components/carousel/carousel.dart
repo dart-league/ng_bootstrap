@@ -190,7 +190,6 @@ class BsCarouselComponent implements OnDestroy {
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#carousel)
 @Component (selector: "bs-slide",
-    inputs: const [ "direction", "active", "index"],
     host: const {
       "[class.active]" : "active",
       "[class.item]" : "true",
@@ -209,12 +208,15 @@ class BsSlideComponent implements OnInit, OnDestroy {
   BsCarouselComponent carousel;
 
   /// if `true` the slide is been showed
+  @Input()
   bool active;
 
   /// provides the direction of the slides
+  @Input()
   Direction direction;
 
   /// provides the position of the slide
+  @Input()
   num index;
 
   /// add slide to the parent carousel on init

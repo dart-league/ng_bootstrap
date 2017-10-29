@@ -2,7 +2,7 @@
   <div>
     <bs-carousel [interval]="myIntervalInMs" [noWrap]="noWrapSlides">
       <bs-slide *ngFor="let slide of slides; let index=index"
-             [active]="slide['active'] != null ? slide['active'] : false ">
+             [index]="index" [active]="slide['active'] != null ? slide['active'] : false ">
         <img [src]="slide['image']">
 
         <div class="carousel-caption">
