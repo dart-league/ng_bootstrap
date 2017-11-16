@@ -1,5 +1,5 @@
 name: ng_bootstrap
-version: 0.9.0
+version: 1.0.0-alpha
 description: Angular 2 and Bootstrap 4
 authors:
   - Luis Vargas <luisvargastijerino@gmail.com>
@@ -9,7 +9,7 @@ homepage: https://github.com/dart-league/ng_bootstrap
 environment:
   sdk: '>=1.12.0 <2.0.0'
 dependencies:
-  angular: ^4.0.0
+  angular: ^5.0.0-alpha
   browser: ^0.10.0
   node_shims: ^0.1.3
   intl: ^0.15.0
@@ -18,7 +18,7 @@ dependencies:
 #  bootstrap_sass:
 #    path: ../bootstrap_sass
   stream_transform: ^0.0.9
-  font_awesome: ^4.6.3
+  font_awesome: ^4.7.0
   dev_string_converter: ^0.1.0
   angular_forms: ^1.0.0
 dev_dependencies:
