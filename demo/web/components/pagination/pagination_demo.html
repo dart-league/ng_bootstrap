@@ -9,7 +9,7 @@
                   [(currentPage)]="currentPage" style="min-width: 400px"></bs-pagination>
   <bs-pagination [directionLinks]="false" [totalItems]="totalItems" [(currentPage)]="currentPage"
                   [(totalPages)]="smallnumPages" style="min-width: 400px"></bs-pagination>
-    <pre class="card card-block card-header">
+    <pre class="card card-body card-title">
 Page: {{currentPage}} / {{smallnumPages}}
 Total Items: {{totalItems}}</pre>
   <button class="btn btn-info" (click)="setPage(3)">Set current page to: 3</button>
@@ -23,7 +23,7 @@ Total Items: {{totalItems}}</pre>
                   [boundaryLinks]="true" style="min-width: 530px"></bs-pagination>
   <bs-pagination [totalItems]="bigTotalItems" [(currentPage)]="bigCurrentPage" [maxSize]="maxSize" class="sm"
                   [boundaryLinks]="true" [rotate]="false" [(totalPages)]="numPages" style="min-width: 530px"></bs-pagination>
-  <pre class="card card-block card-header">
+  <pre class="card card-body card-title">
 Page: {{bigCurrentPage}} / {{numPages}}
 Total Items: {{bigTotalItems}}</pre>
 </div>

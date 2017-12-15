@@ -1,5 +1,5 @@
 <div class="card" [ngClass]="panelClass">
-  <div class="card-header" (click)="toggleOpen($event)">
+  <div class="card-title" (click)="toggleOpen($event)">
     <h5 class="mb-0">
       <a href tabindex="0" class="accordion-toggle">
         {{heading}}
@@ -8,7 +8,7 @@
     </h5>
   </div>
   <div [bsCollapse]="!isOpen">
-    <div class="card-block">
+    <div class="card-body">
       <ng-content></ng-content>
     </div>
   </div>
