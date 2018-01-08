@@ -8,6 +8,7 @@
   <bs-pagination [directionLinks]="false" [boundaryLinks]="true" [totalItems]="totalItems"
                   [(currentPage)]="currentPage" style="min-width: 400px"></bs-pagination>
   <bs-pagination [directionLinks]="false" [totalItems]="totalItems" [(currentPage)]="currentPage"
+                 [firstText]="'Primero'" [lastText]="'Ultimo'"
                   [(totalPages)]="smallnumPages" style="min-width: 400px"></bs-pagination>
     <pre class="card card-body card-title">
 Page: {{currentPage}} / {{smallnumPages}}
