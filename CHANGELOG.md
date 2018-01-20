@@ -1,3 +1,8 @@
+## 0.9.2
+   
+   - add `bsPattern` to `bsInput`
+   - add ability to override error messages to `bsInput`
+
 ## 0.9.1
 
 - add example of pagination custom text

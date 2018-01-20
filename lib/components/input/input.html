@@ -1,4 +1,4 @@
-<div class="form-group" [class.has-danger]="!inputBox.valid">
+<div class="form-group">
   <label *ngIf="label != null && label.isNotEmpty"
          [attr.for]="eId"
          class="form-control-label"
@@ -14,13 +14,32 @@
          [maxLength]="maxLength"
          [attr.minlength]="minLength"
          [attr.maxlength]="maxLength"
-         [class.form-control-danger]="!inputBox.valid"
+         [class.is-invalid]="!inputBox.valid"
          [placeholder]="placeholder"
+         [bsPattern]="bsPattern"
+         [attr.pattern]="bsPattern"
   />
-  <small *ngIf="!inputBox.valid" class="text-danger small">
+  <ul *ngIf="!inputBox.valid" class="text-danger small fa-ul">
     <!-- TODO: add translations-->
-    <span *ngIf="inputBox.errors['required']">This field is Required</span>
-    <span *ngIf="inputBox.errors['minLength'] != null">The minimum length of this field should be {{minLength}}</span>
-    <span *ngIf="inputBox.errors['maxLength'] != null">The maximum length of this field should be {{maxLength}}</span>
-  </small>
+    <li *ngIf="inputBox.errors['required']">
+      <i class="fa fa-li fa-times"></i>
+      <template [ngIf]="requiredMessage == null">This field is Required</template>
+      <template [ngIf]="requiredMessage != null">{{requiredMessage}}</template>
+    </li>
+    <li *ngIf="inputBox.errors['minLength'] != null">
+      <i class="fa fa-li fa-times"></i>
+      <template [ngIf]="minLengthMessage == null">The minimum length of this field should be {{minLength}}</template>
+      <template [ngIf]="minLengthMessage != null">{{minLengthMessage}}</template>
+    </li>
+    <li *ngIf="inputBox.errors['maxLength'] != null">
+      <i class="fa fa-li fa-times"></i>
+      <template [ngIf]="maxLengthMessage == null">The maximum length of this field should be {{maxLength}}</template>
+      <template [ngIf]="maxLengthMessage != null">{{maxLengthMessage}}</template>
+    </li>
+    <li *ngIf="inputBox.errors['pattern'] != null">
+      <i class="fa fa-li fa-times"></i>
+      <template [ngIf]="bsPatternMessage == null">The pattern of this field should be {{bsPattern}}</template>
+      <template [ngIf]="bsPatternMessage != null">{{bsPatternMessage}}</template>
+    </li>
+  </ul>
 </div>
