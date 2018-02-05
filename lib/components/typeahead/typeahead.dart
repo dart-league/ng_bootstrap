@@ -109,6 +109,8 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
 
   var selectedItem;
 
+  String model = "";
+
   /// Construct a [BsTypeAheadComponent] component injecting [ngModel], [renderer], [elementRef]
   BsTypeAheadComponent(this.ngModel, HtmlElement elementRef)
       : super(elementRef) {
@@ -126,7 +128,7 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
 
   @override
   ngOnInit() async {
-    ngModel.model = or(ngModel.model, '');
+    model = or(model, '');
   }
 
   void processMatchesIfNotOpen() {
@@ -137,14 +139,14 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
   void processMatches() {
     isOpen = true;
     _noResultsCtrl.add(noResultsVal = false);
-    if (ngModel.model.length >= minLength) {
+    if (model.length >= minLength) {
       // if source is function we should retrieve the results asynchronously
       if (source is Function) {
         _loadingCtrl.add(loadingVal = true);
         matches.clear();
-        _queryStreamCtrl.add(ngModel.model);
+        _queryStreamCtrl.add(model);
       } else if (source is Iterable) {
-        var query = new RegExp(ngModel.model, caseSensitive: false);
+        var query = new RegExp(model, caseSensitive: false);
         matches = source.where((item) => query.hasMatch(_itemString(item))).take(optionsLimit).toList();
       }
     } else {
@@ -193,6 +195,7 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
     }
 
     ngModel.viewToModelUpdate(_itemString(value));
+    model = _itemString(value);
     isOpen = false;
     _selectedItemChangeCtrl.add(selectedItem = value);
     return false;
