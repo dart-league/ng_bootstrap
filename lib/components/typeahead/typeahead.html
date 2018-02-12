@@ -2,14 +2,14 @@
   <bs-dropdown-toggle class="input-group">
     <input type="text"
            class="form-control"
-           [(ngModel)]="ngModel.model"
+           [(ngModel)]="model"
            (ngModelChange)="processMatches()"
            (click)="$event.stopPropagation()"
            (keyup)="onTypeaheadChange($event)">
     <bs-search-clear
-        *ngIf="ngModel.model.length > 0"
+        *ngIf="model.length > 0"
         class="fa fa-remove"
-        (click)="ngModel.model = ''; processMatches(); $event.stopPropagation()"></bs-search-clear>
+        (click)="model = ''; processMatches(); $event.stopPropagation()"></bs-search-clear>
     <span class="input-group-btn">
       <bs-toggle-button class="btn btn-secondary"
                         [(ngModel)]="isOpen"
@@ -31,7 +31,7 @@
         (click)="selectMatch(match, $event)">
       <span *ngIf="itemTemplate == null"
          tabindex="-1"
-         [innerHtml]="highlight(match, ngModel.model)">
+         [innerHtml]="highlight(match, model)">
       </span>
       <span *ngIf="itemTemplate != null"
          tabindex="-1">
