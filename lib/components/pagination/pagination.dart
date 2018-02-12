@@ -35,6 +35,12 @@ class BsPaginationComponent extends BsPagerComponent implements OnInit {
   /// label of last text
   @Input() String lastText = "Last";
 
+  /// label of previous text
+  @Input() String previousText = 'Previous';
+
+  /// label of next text
+  @Input() String nextText = 'Next';
+
   /// visible pages
   List<Map> pages = [];
 
@@ -48,8 +54,6 @@ class BsPaginationComponent extends BsPagerComponent implements OnInit {
 
   ngOnInit() {
     totalPages = calculateTotalPages();
-    previousText = 'Previous';
-    nextText = 'Next';
   }
 
   /// Create page object used in template

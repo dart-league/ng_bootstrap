@@ -18,10 +18,9 @@ import 'components/tabs/tabs.dart';
 import 'components/tabsx/tabsx.dart';
 import 'components/tooltip/tooltip.dart';
 import 'components/typeahead/typeahead.dart';
-import 'components/validators/min_length_validator.dart';
 import 'components/validators/max_length_validator.dart';
-
-export 'core/position.dart';
+import 'components/validators/min_length_validator.dart';
+import 'components/validators/pattern_validator.dart';
 
 export 'components/accordion/accordion.dart';
 export 'components/alert/alert.dart';
@@ -38,14 +37,16 @@ export 'components/pagination/pager.dart';
 export 'components/pagination/pagination.dart';
 export 'components/popover/popover.dart';
 export 'components/progress/progress.dart';
+export 'components/prompt/prompt_service.dart';
 export 'components/table/table_directives.dart';
 export 'components/tabs/tabs.dart';
 export 'components/tabsx/tabsx.dart';
 export 'components/tooltip/tooltip.dart';
 export 'components/typeahead/typeahead.dart';
-export 'components/validators/min_length_validator.dart';
 export 'components/validators/max_length_validator.dart';
-export 'components/prompt/prompt_service.dart';
+export 'components/validators/min_length_validator.dart';
+export 'components/validators/pattern_validator.dart';
+export 'core/position.dart';
 
 const List BS_DIRECTIVES = const [
   BsAccordionComponent,
@@ -77,5 +78,6 @@ const List BS_DIRECTIVES = const [
   BsTypeAheadComponent,
   BS_TABLE_DIRECTIVES,
   BsMinLengthValidator,
-  BsMaxLengthValidator
+  BsMaxLengthValidator,
+  BsPatternValidator
 ];

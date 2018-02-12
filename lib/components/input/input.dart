@@ -2,13 +2,14 @@ import 'package:angular/angular.dart';
 import 'package:angular/core.dart';
 import 'package:ng_bootstrap/components/validators/max_length_validator.dart';
 import 'package:ng_bootstrap/components/validators/min_length_validator.dart';
+import 'package:ng_bootstrap/components/validators/pattern_validator.dart';
 import 'package:angular_forms/angular_forms.dart';
 
 /// Provides an easy way to create an input element with built-in validation
 @Component(
     selector: 'bs-input',
     templateUrl: 'input.html',
-    directives: const [BsMinLengthValidator, BsMaxLengthValidator, CORE_DIRECTIVES, formDirectives],
+    directives: const [BsMinLengthValidator, BsMaxLengthValidator, BsPatternValidator, CORE_DIRECTIVES, formDirectives],
     providers: const [const Provider(NG_VALUE_ACCESSOR, useExisting: BsInput, multi: true)]
 )
 class BsInput extends DefaultValueAccessor {
@@ -25,11 +26,27 @@ class BsInput extends DefaultValueAccessor {
   /// Validates if the value is [required].
   @Input() bool required;
 
+  /// Message used when [required] fails
+  @Input() String requiredMessage;
+
   /// Validates if the value is lower than the [minLength].
   @Input() int minLength;
 
+
+  /// Message used when [minLengthMessage] fails
+  @Input() String minLengthMessage;
+
   /// Validates if the value is greater than the [maxLength].
   @Input() int maxLength;
+
+  /// Message usedbsPattern when [maxLength] fails
+  @Input() String maxLengthMessage;
+
+  /// Validates if the value matches the [bsPattern]
+  @Input() String bsPattern;
+
+  /// Message used when [bsPattern] fails
+  @Input() String bsPatternMessage;
 
   /// Text shown in the input box when the user has not been put any value.
   @Input() String placeholder;

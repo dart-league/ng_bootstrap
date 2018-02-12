@@ -7,11 +7,13 @@
             [required]="true"
             [minLength]="2"
             [maxLength]="5"
+            bsPattern="[a-zA-Z]*"
+            bsPatternMessage="Field should only contains letters"
   ></bs-input>
 
   <!-- Next Element is created without using "bs-input" to show an equivalent using pure html elements\
        and bootstrap classes -->
-  <div class="form-group" [class.has-danger]="!lastName.valid">
+  <div class="form-group">
     <label for="lastName" class="form-control-label">Last Name</label>
     <input id="lastName"
            class="form-control"
@@ -22,13 +24,15 @@
            required
            minlength="2"
            maxlength="5"
-           [class.form-control-danger]="!lastName.valid"
+           pattern="[a-zA-Z]*"
+           [class.is-invalid]="!lastName.valid"
     >
-    <small *ngIf="!lastName.valid" class="text-danger">
-      <span *ngIf="lastName.errors['required']">Field Required</span>
-      <span *ngIf="lastName.errors['minlength'] != null">Min Length should be 2</span>
-      <span *ngIf="lastName.errors['maxlength'] != null">Min Length should be 2</span>
-    </small>
+    <ul *ngIf="!lastName.valid" class="text-danger small fa-ul">
+      <li *ngIf="lastName.errors['required']"><i class="fa fa-li fa-times"></i>Field Required</li>
+      <li *ngIf="lastName.errors['minlength'] != null"><i class="fa fa-li fa-times"></i>Min Length should be 2</li>
+      <li *ngIf="lastName.errors['maxlength'] != null"><i class="fa fa-li fa-times"></i>Min Length should be 2</li>
+      <li *ngIf="lastName.errors['pattern'] != null"><i class="fa fa-li fa-times"></i>Field should only contains letters</li>
+    </ul>
   </div>
 </form>
 <pre>personForm.valid: {{personForm.form.valid}}</pre>

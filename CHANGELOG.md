@@ -1,3 +1,15 @@
+## 0.9.2
+   
+   - add `bsPattern` to `bsInput`
+   - add ability to override error messages to `bsInput`
+
+## 0.9.1
+
+- add example of pagination custom text
+- add card header
+- fix card for bootstrap
+- update tooltip_demo.html
+
 ## 0.9.0
 
 - add popover component (fixes: #82)
