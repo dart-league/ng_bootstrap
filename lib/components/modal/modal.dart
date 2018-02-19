@@ -17,6 +17,8 @@ class BsModalComponent {
   String content;
   List<BsModalButton> _buttons;
 
+  BsModalComponent(this._loader);
+
   List<BsModalButton> get buttons => _buttons;
 
   bool loading = false;
@@ -31,6 +33,27 @@ class BsModalComponent {
             onClick: button['onClick'])
         : button
     ).toList();
+  }
+
+  final ComponentLoader _loader;
+
+  @ViewChild('contentRef', read: ViewContainerRef)
+  ViewContainerRef contentRef;
+
+  ComponentRef _component;
+
+  /// Adds a component to the modal
+  ///
+  /// Creates a modal with the reference [contentRef], if a [_component] already
+  /// exist it will be destroyed to avoid creating components
+  @Input()
+  set component(ComponentFactory component){
+    if(component!=null){
+      if(_component != null){
+        _component.destroy();
+      }
+      _component = _loader.loadNextToLocation(component, contentRef);
+    }
   }
 
   /// Fires an event when the modal is closed. The argument indicated how it was closed.

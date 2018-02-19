@@ -4,37 +4,34 @@ import 'package:angular/angular.dart';
 
 import '../modal/modal.dart';
 import 'prompt.dart';
+// ignore: uri_has_not_been_generated
+import 'prompt.template.dart' as ng_prompt;
 
 /// Service that creates a modal in the DOM
 @Injectable()
 class BsPromptService {
-  final ComponentResolver _cr;
   final ApplicationRef _ar;
 
-  BsPromptService(this._cr, this._ar);
+  BsPromptService(this._ar);
 
   /// Creates a modal with a simple text content
   Future<BsPromptComponent> call(String content, {String header, List<BsModalButton> buttons}) async {
-    // get the component factory from the type
-    final cf = await _cr.resolveComponent(BsPromptComponent);
 
-    return (_ar.bootstrap(cf).instance as BsPromptComponent)
+    return (_ar.bootstrap(ng_prompt.BsPromptComponentNgFactory).instance as BsPromptComponent)
       ..header = header
       ..content = content
       ..buttons = buttons
       ..show();
   }
 
-//  /// Creates a modal with a component as content
-//  BsPromptComponent createComponentModal(ViewContainerRef _location,
-//      ComponentFactory contentComponent,
-//      {String header, bool dismissable: true}) {
-//    ComponentRef componentRef = _loader.loadNextTo(
-//        bs_modal.NgPromptComponentNgFactory);
-//    BsPromptComponent component = componentRef.instance;
-//    component.header = header;
-//    component.dismissable = dismissable;
-//    component.contentComponent = contentComponent;
-//    return component;
-//  }
+  ///Creates a modal with a component as content
+  Future<BsPromptComponent> withComponent(ComponentFactory componentFactory,
+      {String header, List<BsModalButton> buttons}) async {
+
+    return (_ar.bootstrap(ng_prompt.BsPromptComponentNgFactory).instance as BsPromptComponent)
+      ..header = header
+      ..component = componentFactory
+      ..buttons = buttons
+      ..show();
+  }
 }
