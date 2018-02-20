@@ -56,6 +56,8 @@ class BsModalComponent {
     }
   }
 
+  ComponentRef get componentRef => _component;
+
   /// Fires an event when the modal is closed. The argument indicated how it was closed.
   /// @type {EventEmitter<ModalResult>}
   @Output() Stream<String> get close => _closeCtrl.stream;
