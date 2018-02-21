@@ -221,4 +221,6 @@ class TypeaheadDemo {
 class State extends _$StateSerializable {
   int id;
   String name;
+
+  toString() => '{id: $id, name: $name}';
 }

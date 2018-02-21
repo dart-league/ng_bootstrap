@@ -30,43 +30,31 @@ class TableDemoComponent implements OnInit {
 
   num totalPages;
 
-  num length = 0;
-
-  Map config;
+  num totalItems = 0;
 
   bool selectable;
 
-  List data = tableData;
-
   List rowsComplex = [];
 
-  List<Employee> dataComplex = tableDataComplex;
 
-  TableDemoComponent() {
-    config = {
-      'paging': true,
-      'filtering': {
-        'filterString': '',
-        'columnName': 'position'
-      }
-    };
-  }
+  String columnName = 'position';
 
   void ngOnInit() {
     this.filterRows();
   }
 
-  void filterRows() {
-    if (falsey(config['filtering'])) {
-      rows = data.toList();
+  void filterRows([String filterString]) {
+    if (falsey(filterString)) {
+      rows = data;
+      rowsComplex = dataComplex;
     } else {
       rows = data.where((item) =>
-          (item[config['filtering']['columnName']] as String)
-              .contains(config['filtering']['filterString'])
+          (item[columnName] as String)
+              .contains(filterString)
       ).toList();
       rowsComplex = dataComplex.where((item) =>
-          (item[config['filtering']['columnName']] as String)
-              .contains(config['filtering']['filterString'])
+          (item[columnName] as String)
+              .contains(filterString)
       ).toList();
     }
   }

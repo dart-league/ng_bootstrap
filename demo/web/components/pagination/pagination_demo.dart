@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import "package:angular/angular.dart";
 import 'package:ng_bootstrap/ng_bootstrap.dart';
 
@@ -17,7 +19,7 @@ class PaginationDemo {
     currentPage = pageNo;
   }
 
-  void pageChanged() {
-    print("Page changed to: $currentPage");
-  }
+//  void pageChanged() {
+//    print("Page changed to: $currentPage");
+//  }
 }

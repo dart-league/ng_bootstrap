@@ -100,19 +100,26 @@ abstract class _$AddressSerializable extends SerializableMap {
 // Generator: MirrorsGenerator
 // **************************************************************************
 
-_Employee__Constructor(params) => new Employee();
+_Employee__Constructor([positionalParams, namedParams]) => new Employee();
 
-const $$Employee_fields_name = const DeclarationMirror(type: String);
-const $$Employee_fields_position = const DeclarationMirror(type: String);
-const $$Employee_fields_office = const DeclarationMirror(type: String);
-const $$Employee_fields_ext = const DeclarationMirror(type: String);
-const $$Employee_fields_startDate = const DeclarationMirror(type: DateTime);
-const $$Employee_fields_salary = const DeclarationMirror(type: double);
-const $$Employee_fields_address = const DeclarationMirror(type: Address);
+const $$Employee_fields_name =
+    const DeclarationMirror(name: 'name', type: String);
+const $$Employee_fields_position =
+    const DeclarationMirror(name: 'position', type: String);
+const $$Employee_fields_office =
+    const DeclarationMirror(name: 'office', type: String);
+const $$Employee_fields_ext =
+    const DeclarationMirror(name: 'ext', type: String);
+const $$Employee_fields_startDate =
+    const DeclarationMirror(name: 'startDate', type: DateTime);
+const $$Employee_fields_salary =
+    const DeclarationMirror(name: 'salary', type: double);
+const $$Employee_fields_address =
+    const DeclarationMirror(name: 'address', type: Address);
 
 const EmployeeClassMirror =
     const ClassMirror(name: 'Employee', constructors: const {
-  '': const FunctionMirror(parameters: const {}, call: _Employee__Constructor)
+  '': const FunctionMirror(name: '', $call: _Employee__Constructor)
 }, fields: const {
   'name': $$Employee_fields_name,
   'position': $$Employee_fields_position,
@@ -138,17 +145,22 @@ const EmployeeClassMirror =
   'salary',
   'address'
 ]);
-_Address__Constructor(params) => new Address();
+_Address__Constructor([positionalParams, namedParams]) => new Address();
 
-const $$Address_fields_street = const DeclarationMirror(type: String);
+const $$Address_fields_street =
+    const DeclarationMirror(name: 'street', type: String);
 
-const AddressClassMirror =
-    const ClassMirror(name: 'Address', constructors: const {
-  '': const FunctionMirror(parameters: const {}, call: _Address__Constructor)
-}, fields: const {
-  'street': $$Address_fields_street
-}, getters: const [
-  'street'
-], setters: const [
-  'street'
-]);
+const AddressClassMirror = const ClassMirror(
+    name: 'Address',
+    constructors: const {
+      '': const FunctionMirror(name: '', $call: _Address__Constructor)
+    },
+    fields: const {
+      'street': $$Address_fields_street
+    },
+    getters: const [
+      'street'
+    ],
+    setters: const [
+      'street'
+    ]);

@@ -26,8 +26,6 @@ class BsDatePickerPopupComponent extends BsDatePickerBase {
   /// provides access to entered value
   NgModel ngModel;
 
-  var model;
-
   /// if `true` shows the button bar at the bottom of the popup menu
   @Input() bool showButtonBar = true;
 
@@ -54,7 +52,7 @@ class BsDatePickerPopupComponent extends BsDatePickerBase {
   valueChanged(value) {
     var df = new DateFormat(format, locale);
     try {
-      model = df.parse(value);
+      ngModel.viewToModelUpdate(df.parse(value));
     } catch (e) {
       print(e);
     }

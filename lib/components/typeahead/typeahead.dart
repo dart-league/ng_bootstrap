@@ -23,7 +23,7 @@ import 'package:angular_forms/angular_forms.dart';
       CORE_DIRECTIVES,
       formDirectives
     ])
-class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
+class BsTypeAheadComponent extends DefaultValueAccessor {
 
   /// binds to string user's input
   NgModel ngModel;
@@ -109,8 +109,6 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
 
   var selectedItem;
 
-  String model = "";
-
   /// Construct a [BsTypeAheadComponent] component injecting [ngModel], [renderer], [elementRef]
   BsTypeAheadComponent(this.ngModel, HtmlElement elementRef)
       : super(elementRef) {
@@ -126,27 +124,22 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
         });
   }
 
-  @override
-  ngOnInit() async {
-    model = or(model, '');
-  }
-
   void processMatchesIfNotOpen() {
     if (!isOpen) processMatches();
   }
 
   /// process the elements that matches the entered query
-  void processMatches() {
+  void processMatches([String value = '']) {
     isOpen = true;
     _noResultsCtrl.add(noResultsVal = false);
-    if (model.length >= minLength) {
+    if (value.length >= minLength) {
       // if source is function we should retrieve the results asynchronously
       if (source is Function) {
         _loadingCtrl.add(loadingVal = true);
         matches.clear();
-        _queryStreamCtrl.add(model);
+        _queryStreamCtrl.add(value);
       } else if (source is Iterable) {
-        var query = new RegExp(model, caseSensitive: false);
+        var query = new RegExp(value, caseSensitive: false);
         matches = source.where((item) => query.hasMatch(_itemString(item))).take(optionsLimit).toList();
       }
     } else {
@@ -195,7 +188,6 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
     }
 
     ngModel.viewToModelUpdate(_itemString(value));
-    model = _itemString(value);
     isOpen = false;
     _selectedItemChangeCtrl.add(selectedItem = value);
     return false;

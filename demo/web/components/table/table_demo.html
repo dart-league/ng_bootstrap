@@ -1,9 +1,8 @@
 <div style="overflow-x: auto;">
-  <input *ngIf="config['filtering'] != null"
-         class="form-control"
+  <input class="form-control"
          placeholder="Filter"
-         [(ngModel)]="config['filtering']['filterString']"
-         (ngModelChange)="filterRows()"/>
+         ngModel
+         (ngModelChange)="filterRows($event)"/>
   <br>
   <div class="form-check col-xs-12">
     <label class="form-check-label">
@@ -18,7 +17,7 @@
                 [(pageNumber)]="page"
                 [itemsPerPage]="itemsPerPage"
                 [sortable]="true"
-                [(totalItems)]="length">
+                [(totalItems)]="totalItems">
         <bs-column header="Name" fieldName="name"></bs-column>
         <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
         <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
@@ -36,7 +35,7 @@
                 [(pageNumber)]="page"
                 [itemsPerPage]="itemsPerPage"
                 [sortable]="true"
-                [(totalItems)]="length">
+                [(totalItems)]="totalItems">
         <bs-column header="Name" fieldName="name"></bs-column>
         <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
         <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
@@ -49,17 +48,16 @@
       </bs-table>
     </bs-tabx>
   </bs-tabsx>
-  <bs-pagination *ngIf="config['paging']"
-                 class="pagination-sm tag"
+  <bs-pagination class="pagination-sm tag"
                  [(currentPage)]="page"
-                 [totalItems]="length"
+                 [totalItems]="totalItems"
                  [itemsPerPage]="itemsPerPage"
                  [maxSize]="maxSize"
                  [boundaryLinks]="true"
                  [rotate]="false"
                  [(totalPages)]="totalPages">
   </bs-pagination>
-  <pre *ngIf="config['paging']" class="card card-body card-title">Page: {{page}} / {{totalPages}}
-Total Items: {{length}}
+  <pre class="card card-body card-title">Page: {{page}} / {{totalPages}}
+Total Items: {{totalItems}}
 </pre>
 </div>

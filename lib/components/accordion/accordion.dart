@@ -52,7 +52,6 @@ class BsAccordionComponent {
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#accordion)
 @Component(selector: 'bs-accordion-panel',
-    host: const { '[class.panel-open]' : 'isOpen'},
     templateUrl: 'accordion_panel.html',
     directives: const [BsCollapseDirective, CORE_DIRECTIVES])
 class BsAccordionPanelComponent implements OnInit, OnDestroy {
@@ -78,6 +77,7 @@ class BsAccordionPanelComponent implements OnInit, OnDestroy {
   bool _isOpen = false;
 
   /// is accordion group open or closed
+  @HostBinding('class.panel-open')
   bool get isOpen => _isOpen;
 
   final _isOpenChangeCtrl = new StreamController<bool>.broadcast();
@@ -87,7 +87,6 @@ class BsAccordionPanelComponent implements OnInit, OnDestroy {
   /// if `true` opens the panel
   @Input()
   set isOpen(bool value) {
-    print('isOpen.value: $value');
     isOpenTimer?.cancel();
     isOpenTimer = new Timer(const Duration(milliseconds: 250), () {
       _isOpen = value;

@@ -22,11 +22,10 @@
            #lastName="ngForm"
            ngControl="lastName"
            required
-           minlength="2"
-           maxlength="5"
+           [minlength]="2"
+           [maxlength]="5"
            pattern="[a-zA-Z]*"
-           [class.is-invalid]="!lastName.valid"
-    >
+           [class.is-invalid]="!lastName.valid">
     <ul *ngIf="!lastName.valid" class="text-danger small fa-ul">
       <li *ngIf="lastName.errors['required']"><i class="fa fa-li fa-times"></i>Field Required</li>
       <li *ngIf="lastName.errors['minlength'] != null"><i class="fa fa-li fa-times"></i>Min Length should be 2</li>

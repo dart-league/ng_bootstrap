@@ -5,9 +5,8 @@ authors:
   - Luis Vargas <luisvargastijerino@gmail.com>
   - Adao Jr. <itsjunnior@gmail.com>
 dependencies:
-  angular: ^5.0.0-alpha
-  dart_to_js_script_rewriter: ^1.0.1
-  dson: ^0.9.0
+  angular: ^5.0.0-alpha+5
+  dson: ^0.13.0
 #  ng_bootstrap: ^0.6.3
   ng_bootstrap:
     path: ..
@@ -16,38 +15,5 @@ dev_dependencies:
   sass_builder: ^1.0.0
 #  sass_builder:
 #    path: ../sass_builder
-transformers:
-- angular:
-    entry_points:
-    - web/index.dart
-    - web/components/accordion/main.dart
-    - web/components/alert/main.dart
-    - web/components/buttons/main.dart
-    - web/components/carousel/main.dart
-    - web/components/collapse/main.dart
-    - web/components/datepicker/main.dart
-    - web/components/dropdown/main.dart
-    - web/components/file_upload/main.dart
-    - web/components/input/main.dart
-    - web/components/modal/main.dart
-    - web/components/pagination/main.dart
-    - web/components/popover/main.dart
-    - web/components/progress/main.dart
-    - web/components/prompt/main.dart
-    - web/components/rating/main.dart
-    - web/components/tabs/main.dart
-    - web/components/table/main.dart
-    - web/components/tabsx/main.dart
-    - web/components/timepicker/main.dart
-    - web/components/tooltip/main.dart
-    - web/components/typeahead/main.dart
-- dart_to_js_script_rewriter
-- $dart2js:
-    $include:
-    - web/index.dart
-
-# Uncomment the following in sdk 1.24+ to make pub serve
-# use dartdevc (webdev.dartlang.org/tools/dartdevc).
-web:
-  compiler:
-    debug: dartdevc
+  build_runner: ^0.7.10
+  build_web_compilers: ^0.3.0

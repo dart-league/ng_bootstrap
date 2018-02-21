@@ -45,7 +45,7 @@ class BsTableComponent {
 
   /// Handles the columns of the table
   @ContentChildren(BsColumnDirective)
-  QueryList<BsColumnDirective> columns;
+  List<BsColumnDirective> columns;
 
   /// Sets if the table-columns are sortable or not
   @Input() bool sortable = true;

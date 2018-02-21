@@ -13,7 +13,7 @@ const NG_BOOTSTRAP_TABS_DIRECTIVES = const [BsTabComponent, BsTabsComponent, BsT
 class BsTabsComponent implements AfterContentInit{
   /// children tabs
   @ContentChildren(BsTabComponent)
-  QueryList<BsTabComponent> tabs;
+  List<BsTabComponent> tabs;
 
   final _onTabChangeCtrl = new StreamController<BsTabComponent>.broadcast();
 
@@ -71,7 +71,7 @@ class BsTabContentComponent implements AfterContentInit {
 
   /// displayed panels
   @ContentChildren(BsTabPanelDirective)
-  QueryList<BsTabPanelDirective> panels;
+  List<BsTabPanelDirective> panels;
 
   BsTabPanelDirective _current;
 
