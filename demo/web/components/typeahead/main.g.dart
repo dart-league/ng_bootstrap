@@ -8,5 +8,4 @@ part of typeahead.main;
 
 _initMirrors() {
   initClassMirrors({State: StateClassMirror});
-  initFunctionMirrors({});
 }

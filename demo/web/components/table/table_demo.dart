@@ -15,8 +15,8 @@ export 'table_data_complex.dart';
     directives: const [
       BS_TABLE_DIRECTIVES,
       BsPaginationComponent,
-      BS_TABSX_DIRECTIVES,
-      CORE_DIRECTIVES,
+      bsTabsxDirectives,
+      coreDirectives,
       formDirectives
     ])
 class TableDemoComponent implements OnInit {

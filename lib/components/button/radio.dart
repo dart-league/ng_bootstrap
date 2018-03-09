@@ -2,8 +2,7 @@ import 'dart:html';
 import "package:angular/angular.dart";
 import 'package:angular_forms/angular_forms.dart';
 
-@Directive(
-    selector: "bs-radio-button")
+@Directive(selector: "bs-radio-button")
 class BsRadioButtonDirective extends DefaultValueAccessor {
   /// handles the selected value of the button
   NgModel ngModel;

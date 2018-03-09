@@ -8,7 +8,7 @@ import "package:angular/angular.dart";
 /// It’s great for simple sites like blog or magazines.
 @Component (selector: "bs-pager",
     templateUrl: 'pager.html',
-    directives: const [CORE_DIRECTIVES])
+    directives: const [coreDirectives])
 class BsPagerComponent {
 
   /// label of previous text

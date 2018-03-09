@@ -4,7 +4,7 @@ import 'package:ng_bootstrap/ng_bootstrap.dart';
 
 @Component(selector: "tooltip-demo",
     templateUrl: 'tooltip_demo.html',
-    directives: const [BS_DIRECTIVES, CORE_DIRECTIVES, formDirectives],
+    directives: const [BsTooltipComponent, coreDirectives, formDirectives],
     styles: const [
       '''
     /* Specify styling for tooltip contents */

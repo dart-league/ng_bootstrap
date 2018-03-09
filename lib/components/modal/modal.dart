@@ -10,7 +10,7 @@ import 'package:angular/angular.dart';
 @Component(
     selector: 'bs-modal',
     templateUrl: 'modal.html',
-    directives: const [CORE_DIRECTIVES])
+    directives: const [coreDirectives])
 class BsModalComponent {
 
   @Input() String header;

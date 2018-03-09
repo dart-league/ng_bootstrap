@@ -3,7 +3,6 @@ import 'dart:html';
 
 import "package:angular/angular.dart";
 import 'package:ng_bootstrap/components/dropdown/index.dart';
-import 'package:node_shims/js.dart';
 import 'package:stream_transform/stream_transform.dart';
 import 'package:ng_bootstrap/components/button/toggle.dart';
 import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart';
@@ -17,10 +16,10 @@ import 'package:angular_forms/angular_forms.dart';
     selector: "bs-typeahead",
     templateUrl: 'typeahead.html',
     directives: const [
-      NG_BOOTSTRAP_DROPDOWN_DIRECTIVES,
+      bsDropdownDirectives,
       BsToggleButtonDirective,
       BsTemplateOutletDirective,
-      CORE_DIRECTIVES,
+      coreDirectives,
       formDirectives
     ])
 class BsTypeAheadComponent extends DefaultValueAccessor {

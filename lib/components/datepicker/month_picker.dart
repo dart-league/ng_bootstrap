@@ -4,12 +4,9 @@ part of bs_date_picker;
 /// month header button
 @Component (selector: "bs-month-picker",
     templateUrl: 'month_picker.html',
-    directives: const [CORE_DIRECTIVES])
+    directives: const [coreDirectives],
+    providers: [BsDatePickerComponent])
 class BsMonthPickerComponent implements OnInit {
-
-  /// Constructs a [BsMonthPickerComponent] injecting [datePicker]
-  BsMonthPickerComponent(this.datePicker);
-
   /// parent [BsDatePickerInnerComponent]
   BsDatePickerComponent datePicker;
 

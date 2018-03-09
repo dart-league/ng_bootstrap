@@ -2,7 +2,7 @@
 <bs-alert type="info">This alert is info</bs-alert>
 
 <bs-alert *ngFor="let alert of alerts; let i = index" [type]="alert['type']" (close)="closeAlert(i)"
-           [dismissible]="alert['dismissible']">
+           [dismissible]="alert['dismissible']" [timeout]="alert['timeout']">
   {{ alert['msg'] }}
 </bs-alert>
 

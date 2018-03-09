@@ -4,7 +4,7 @@ import 'package:ng_bootstrap/components/input/input.dart';
 
 @Component(selector: "input-demo",
     templateUrl: "input_demo.html",
-    directives: const [BsInput, CORE_DIRECTIVES, formDirectives])
+    directives: const [BsInput, coreDirectives, formDirectives])
 class InputDemo {
   Person person = new Person()
       ..firstName = 'Jhon asdf'

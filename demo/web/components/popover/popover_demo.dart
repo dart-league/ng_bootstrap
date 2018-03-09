@@ -4,7 +4,7 @@ import 'package:ng_bootstrap/ng_bootstrap.dart';
 
 @Component(selector: "popover-demo",
     templateUrl: 'popover_demo.html',
-    directives: const [BS_DIRECTIVES, CORE_DIRECTIVES, formDirectives])
+    directives: const [BS_DIRECTIVES, coreDirectives, formDirectives])
 class PopoverDemo {
   String name = 'Jhon Doe';
 }

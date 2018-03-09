@@ -9,6 +9,8 @@ part "dropdown.dart" ;
 part "menu.dart";
 part "toggle.dart";
 //part "keyboard_nav.dart";
-part "service.dart";
 
-const NG_BOOTSTRAP_DROPDOWN_DIRECTIVES = const [BsDropdownDirective, BsDropdownMenuDirective, BsDropdownToggleDirective];
+const bsDropdownDirectives = const [BsDropdownDirective, BsDropdownMenuDirective, BsDropdownToggleDirective];
+
+@Deprecated('Renamed to "bsDropdownDirectives')
+const NG_BOOTSTRAP_DROPDOWN_DIRECTIVES = bsDropdownDirectives;

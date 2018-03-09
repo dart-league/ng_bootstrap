@@ -18,7 +18,7 @@ import "package:angular/angular.dart";
       'class': 'alert',
       'role': 'alert'
     },
-    directives: const [CORE_DIRECTIVES])
+    directives: const [coreDirectives])
 class BsAlertComponent implements OnInit {
   /// provides the element reference to get native element
   HtmlElement _elementRef;

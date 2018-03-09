@@ -2,21 +2,11 @@ import "package:angular/angular.dart";
 import 'package:ng_bootstrap/components/alert/alert.dart';
 
 @Component(
-    selector: "alert-demo",
-    templateUrl: "alert_demo.html",
-    directives: const [BsAlertComponent, CORE_DIRECTIVES])
+    selector: "alert-demo", templateUrl: "alert_demo.html", directives: const [BsAlertComponent, coreDirectives])
 class AlertDemo {
   List alerts = [
-    {
-      "type": "danger",
-      "msg": "Oh snap! Change a few things up and try submitting again.",
-      'dismissible': false
-    },
-    {
-      "type": "success",
-      "msg": "Well done! You successfully read this important alert message.",
-      "dismissible": true
-    }
+    {"type": "danger", "msg": "Oh snap! Change a few things up and try submitting again.", 'dismissible': false},
+    {"type": "success", "msg": "Well done! You successfully read this important alert message.", "dismissible": true}
   ];
 
   closeAlert(num i) {
@@ -24,6 +14,7 @@ class AlertDemo {
   }
 
   addAlert() {
-    alerts.add({"msg": "Another alert!", 'dismissible': true, "type": "info"});
+    alerts.add(
+        {"msg": "Another alert! This alert will dismiss in 3s", 'dismissible': true, "type": "info", 'timeout': 3000});
   }
 }

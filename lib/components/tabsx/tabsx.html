@@ -7,9 +7,9 @@
         }"
     (click)="$event.preventDefault()">
   <li *ngFor="let tab of tabs" class="nav-item" [ngClass]="{active: tab.active, disabled: tab.disabled}">
-    <a href class="nav-link" [ngClass]="{active: tab.active, disabled: tab.disabled}" (click)="tab.active = true">
+    <a href class="nav-link" [ngClass]="{active: tab.active, disabled: tab.disabled}" (click)="activateTab(tab)">
       {{tab.header}}
-      <template [ngTemplateOutlet]="tab.headerRef"></template>
+      <template [ngTemplateOutlet]="tab.headerTemplate?.templateRef"></template>
     </a>
   </li>
 </ul>

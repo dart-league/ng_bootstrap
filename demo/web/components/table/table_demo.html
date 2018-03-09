@@ -41,7 +41,7 @@
         <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
         <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
         <bs-column header="Start date" fieldName="startDate"></bs-column>
-        <bs-column header="Salary ($)" [ngStyle]="{width: '120px'}">
+        <bs-column header="Salary ($)" orderBy="salary" [ngStyle]="{width: '120px'}">
           <template let-row>U$ {{row.salary}}</template>
         </bs-column>
         <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px'}"></bs-column>

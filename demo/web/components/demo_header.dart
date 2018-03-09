@@ -5,7 +5,7 @@ import 'package:dev_string_converter/dev_string_converter.dart' as dsc;
 @Component(
     selector: "demo-header",
     templateUrl: 'demo_header.html',
-    directives: const [BS_DIRECTIVES, CORE_DIRECTIVES])
+    directives: const [BS_DIRECTIVES, coreDirectives])
 class DemoHeader {
   List<String> components = [
     "Accordion",

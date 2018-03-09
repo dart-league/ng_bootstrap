@@ -8,34 +8,34 @@
 </div>
 <p>
   Pellentesque
-  <button class="btn-link">{{dynamicTooltipText}}
+  <button class="btn btn-link">{{dynamicTooltipText}}
     <bs-tooltip>{{dynamicTooltip}}</bs-tooltip>
   </button>
   ,
   sit amet venenatis urna cursus eget nunc scelerisque viverra mauris, in
   aliquam. Tincidunt lobortis feugiat vivamus at
-  <button class="btn-link">left
+  <button class="btn btn-link">left
     <bs-tooltip placement="left">On the Left!</bs-tooltip>
   </button>
   eget
   arcu dictum varius duis at consectetur lorem. Vitae elementum curabitur
-  <button class="btn-link">right
+  <button class="btn btn-link">right
     <bs-tooltip placement="right">On the Right!</bs-tooltip>
   </button>
   nunc sed velit dignissim sodales ut eu sem integer vitae. Turpis egestas
-  <button class="btn-link">bottom
+  <button class="btn btn-link">bottom
     <bs-tooltip placement="bottom">On the Bottom!</bs-tooltip>
   </button>
   pharetra convallis posuere morbi leo urna,
-  <button class="btn-link">fading
+  <button class="btn btn-link">fading
     <bs-tooltip [animation]="false">I don't fade. :-(</bs-tooltip>
   </button>
   at elementum eu, facilisis sed odio morbi quis commodo odio. In cursus
-  <button class="btn-link">delayed
+  <button class="btn btn-link">delayed
     <bs-tooltip [popupDelay]="1000">appears with delay</bs-tooltip>
   </button>
   turpis massa tincidunt dui ut.
-  <button class="btn-link" style="display: inline-block">Custom content
+  <button class="btn btn-link" style="display: inline-block">Custom content
     <bs-tooltip><b style="color: yellow">Custom</b> content</bs-tooltip>
   </button>
   nunc sed velit dignissim sodales ut eu sem integer vitae. Turpis egestas
@@ -43,14 +43,14 @@
 
 <p>
   I can even contain HTML.
-  <button class="btn-link">Check me out!
+  <button class="btn btn-link">Check me out!
     <bs-tooltip><b style="color: yellow">Html</b> <i style="color: red">tooltip</i></bs-tooltip>
   </button>
 </p>
 
 <p>
   I can have a custom class.
-  <button class="btn-link">Check me out!
+  <button class="btn btn-link">Check me out!
     <bs-tooltip class="customClass" showEvent="focus" hideEvent="blur">I can have a custom class applied to me!
     </bs-tooltip>
   </button>

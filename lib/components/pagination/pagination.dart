@@ -6,7 +6,7 @@ import 'pager.dart';
 /// the multi-page pagination component
 @Component(selector: "bs-pagination",
     templateUrl: 'pagination.html',
-    directives: const [CORE_DIRECTIVES])
+    directives: const [coreDirectives])
 class BsPaginationComponent extends BsPagerComponent implements OnInit {
 
   BsPaginationComponent() {

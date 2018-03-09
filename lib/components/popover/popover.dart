@@ -19,7 +19,7 @@ import 'dart:html';
       '[class.bs-popover-right]': 'placement == "right"',
       '[class.bs-popover-bottom]': 'placement == "bottom"'
     },
-    directives: const [CORE_DIRECTIVES])
+    directives: const [coreDirectives])
 class BsPopoverComponent extends BsTooltipComponent {
   /// Header of the popover
   @Input() String heading;

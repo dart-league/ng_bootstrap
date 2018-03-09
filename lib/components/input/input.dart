@@ -9,7 +9,7 @@ import 'package:angular_forms/angular_forms.dart';
 @Component(
     selector: 'bs-input',
     templateUrl: 'input.html',
-    directives: const [BsMinLengthValidator, BsMaxLengthValidator, BsPatternValidator, CORE_DIRECTIVES, formDirectives],
+    directives: const [BsMinLengthValidator, BsMaxLengthValidator, BsPatternValidator, coreDirectives, formDirectives],
     providers: const [const Provider(NG_VALUE_ACCESSOR, useExisting: BsInput, multi: true)]
 )
 class BsInput extends DefaultValueAccessor {

@@ -12,9 +12,9 @@ import 'package:angular_forms/angular_forms.dart';
 /// [demo](http://luisvt.github.io/ng2_strap/#accordion)
 @Component (selector: "bs-rating",
     templateUrl: 'rating.html',
-    directives: const [CORE_DIRECTIVES, formDirectives],
+    directives: const [coreDirectives, formDirectives],
     providers: const [const Provider(NG_VALUE_ACCESSOR, useExisting: BsRatingComponent, multi: true)])
-class BsRatingComponent extends DefaultValueAccessor implements OnInit {
+class BsRatingComponent extends NumberValueAccessor implements OnInit {
   BsRatingComponent(HtmlElement elementRef) : super(elementRef);
 
   /// maximum number of icons
@@ -67,14 +67,7 @@ class BsRatingComponent extends DefaultValueAccessor implements OnInit {
 
   /// update model to view
   writeValue(_value) {
-    _value ??= 0;
-    if (_value != 0) {
-      value = _value.round();
-      preValue = _value;
-      return;
-    }
-    preValue = _value;
-    value = _value;
+    onChange((value = preValue = _value ??= 0).toString());
   }
 
   /// build the template of the objects that will be rendered

@@ -4,11 +4,9 @@ part of bs_date_picker;
 /// year header button
 @Component (selector: "bs-year-picker",
     templateUrl: 'year_picker.html',
-    directives: const [CORE_DIRECTIVES])
+    directives: const [coreDirectives],
+    providers: [BsDatePickerComponent])
 class BsYearPickerComponent implements OnInit {
-  /// Constructs a [BsYearPickerComponent] injecting the parent [datePicker]
-  BsYearPickerComponent(this.datePicker);
-
   /// container of the date-picker
   BsDatePickerComponent datePicker;
 
@@ -27,6 +25,7 @@ class BsYearPickerComponent implements OnInit {
 
   /// initialize the attributes
   ngOnInit() {
+    print('datePicker: $datePicker');
     datePicker.stepYear = { "years" : datePicker.yearRange};
     datePicker.setRefreshViewHandler(() {
       List years = new List(datePicker.yearRange);

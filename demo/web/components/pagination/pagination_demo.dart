@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import "package:angular/angular.dart";
 import 'package:ng_bootstrap/ng_bootstrap.dart';
 

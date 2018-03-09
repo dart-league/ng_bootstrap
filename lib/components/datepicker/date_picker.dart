@@ -6,21 +6,23 @@ part of bs_date_picker;
 /// Base specifications: [jquery-ui](https://api.jqueryui.com/datepicker/)
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#datepicker)
-@Component (selector: "bs-date-picker",
+@Component(
+    selector: "bs-date-picker",
     templateUrl: 'date_picker.html',
+    visibility: Visibility.local,
     directives: const [
       BsDayPickerComponent,
       BsMonthPickerComponent,
       BsYearPickerComponent,
-      CORE_DIRECTIVES,
+      coreDirectives,
       formDirectives
     ])
 class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   /// Constructs a [NgBsDatePicker] component injecting [NgModel], [Renderer], and [HtmlElement]
-  BsDatePickerComponent(this.ngModel, HtmlElement elementRef)
-      : super(elementRef) {
-    ngModel.valueAccessor = this;
-    ngModel.update.listen((_) => refreshView());
+  BsDatePickerComponent(this.ngModel, HtmlElement elementRef) : super(elementRef) {
+    ngModel
+      ..valueAccessor = this
+      ..update.listen((_) => refreshView());
   }
 
   /// provides access to entered value
@@ -36,7 +38,8 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   Map stepYear = {};
 
   /// provides the modes that can take the date-picker
-  @Input() List<String> modes = ["day", "month", "year"];
+  @Input()
+  List<String> modes = ["day", "month", "year"];
 
   /// provides a function handler to refresh day view
   Function refreshViewHandlerDay;
@@ -60,9 +63,22 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
 
   DateTime get _initDate => ngModel.value ?? _now;
 
+  @ViewChild(BsDayPickerComponent)
+  BsDayPickerComponent bsDayPickerComponent;
+
+  @ViewChild(BsMonthPickerComponent)
+  BsMonthPickerComponent bsMonthPickerComponent;
+
+  @ViewChild(BsYearPickerComponent)
+  BsYearPickerComponent bsYearPickerComponent;
+
   // todo: add formatter value to DateTime object
   /// initializes attributes
   ngOnInit() {
+    bsDayPickerComponent.datePicker = this;
+    bsMonthPickerComponent.datePicker = this;
+    bsYearPickerComponent.datePicker = this;
+
     formatDay = or(formatDay, FORMAT_DAY);
     formatMonth = or(formatMonth, FORMAT_MONTH);
     formatYear = or(formatYear, FORMAT_YEAR);
@@ -152,28 +168,19 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   }
 
   /// gets the part of the date in dependence of the format, ie: MMMM, DDD, yyy
-  String dateFilter(DateTime date, String format) =>
-      new DateFormat(format).format(date);
+  String dateFilter(DateTime date, String format) => new DateFormat(format).format(date);
 
   ///  checks if date map is active
-  bool isActive(DisplayedDate dateObject) =>
-      compare(dateObject.date, ngModel.value) == 0;
+  bool isActive(DisplayedDate dateObject) => compare(dateObject.date, ngModel.value) == 0;
 
   /// Creates a date map containing date, label, selected, disabled and current values
-  DisplayedDate createDateObject(DateTime date, String format) =>
-      new DisplayedDate(
-          date,
-          dateFilter(date, format),
-          compare(date, ngModel.viewModel) == 0,
-          isDisabled(date),
-          compare(date, new DateTime.now()) == 0
-      );
+  DisplayedDate createDateObject(DateTime date, String format) => new DisplayedDate(date, dateFilter(date, format),
+      compare(date, ngModel.viewModel) == 0, isDisabled(date), compare(date, new DateTime.now()) == 0);
 
   // todo: implement dateDisabled attribute
   /// returns `true` if [date] is before [minDate] or after [maxDate]
   bool isDisabled(DateTime date) =>
-      minDate != null && compare(date, minDate) < 0
-          || maxDate != null && compare(date, maxDate) > 0;
+      minDate != null && compare(date, minDate) < 0 || maxDate != null && compare(date, maxDate) > 0;
 
   /// splits the [arr] into a list of array of size [size]
   List split(List arr, num size) {
@@ -204,7 +211,8 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   ///
   /// this is fired when users clicks on arrow buttons
   move(num direction) {
-    var expectedStep = datePickerMode == "day" ? stepDay
+    var expectedStep =
+          datePickerMode == "day" ? stepDay
         : datePickerMode == "month" ? stepMonth
         : datePickerMode == "year" ? stepYear
         : null;
@@ -221,8 +229,7 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   /// this is fired when users clicks on day, month, or year header buttons
   toggleMode([num direction]) {
     direction ??= 1;
-    if ((datePickerMode == maxMode && direction == 1) ||
-        (datePickerMode == minMode && direction == -1)) {
+    if ((datePickerMode == maxMode && direction == 1) || (datePickerMode == minMode && direction == -1)) {
       return;
     }
     datePickerMode = modes[modes.indexOf(datePickerMode) + direction];
@@ -231,51 +238,65 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
 }
 
 abstract class BsDatePickerBase extends DefaultValueAccessor {
-
   /// sets date-picker mode, supports: `day`, `month`, `year`
-  @Input() String datePickerMode;
+  @Input()
+  String datePickerMode;
 
   /// oldest selectable date
-  @Input() DateTime minDate;
+  @Input()
+  DateTime minDate;
 
   /// latest selectable date
-  @Input() DateTime maxDate;
+  @Input()
+  DateTime maxDate;
 
   /// set lower datepicker mode, supports: `day`, `month`, `year`
-  @Input() String minMode;
+  @Input()
+  String minMode;
 
   /// sets upper datepicker mode, supports: `day`, `month`, `year`
-  @Input() String maxMode;
+  @Input()
+  String maxMode;
 
   /// if `false` week numbers will be hidden
-  @Input() bool showWeeks;
+  @Input()
+  bool showWeeks;
 
   /// format of day in month
-  @Input() String formatDay;
+  @Input()
+  String formatDay;
 
   /// format of month in year
-  @Input() String formatMonth;
+  @Input()
+  String formatMonth;
 
   /// format of year in year range
-  @Input() String formatYear;
+  @Input()
+  String formatYear;
 
   /// format of day in week header
-  @Input() String formatDayHeader;
+  @Input()
+  String formatDayHeader;
 
   /// format of title when selecting day
-  @Input() String formatDayTitle;
+  @Input()
+  String formatDayTitle;
 
   /// format of title when selecting month
-  @Input() String formatMonthTitle;
+  @Input()
+  String formatMonthTitle;
 
   /// starting day of the week from 0-6 (0=Sunday, ..., 6=Saturday).
-  @Input() num startingDay;
+  @Input()
+  num startingDay;
 
   /// number of years displayed in year selection
-  @Input() num yearRange;
+  @Input()
+  num yearRange;
 
   /// if `true` shortcut`s event propagation will be disabled
-  @Input() bool shortcutPropagation;
+  @Input()
+  bool shortcutPropagation;
 
   // todo: change type during implementation
   /// array of custom classes to be applied to targeted dates
@@ -283,7 +304,8 @@ abstract class BsDatePickerBase extends DefaultValueAccessor {
 
   // todo: change type during implementation
   /// array of disabled dates if `mode` is `day`, or years, etc.
-  @Input() dynamic dateDisabled;
+  @Input()
+  dynamic dateDisabled;
 
   BsDatePickerBase(HtmlElement elementRef) : super(elementRef);
 

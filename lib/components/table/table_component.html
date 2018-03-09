@@ -17,8 +17,8 @@
     </td>
     <td *ngFor="let column of columns">
       <template [ngIf]="column.templateRef == null">{{getData(row, column.fieldName)}}</template>
-      <template [bsTemplateOutlet]="column.templateRef"
-                [ngOutletContext]="row"></template>
+      <template [ngTemplateOutlet]="column.templateRef"
+                [ngTemplateOutletContext]="{$implicit: row}"></template>
     </td>
   </tr>
   </tbody>

@@ -16,7 +16,7 @@ import 'dart:html';
       '[class.bs-tooltip-right]': 'placement == "right"',
       '[class.bs-tooltip-bottom]': 'placement == "bottom"'
     },
-    directives: const [CORE_DIRECTIVES])
+    directives: const [coreDirectives])
 class BsTooltipComponent implements OnInit {
   ChangeDetectorRef cdr;
 

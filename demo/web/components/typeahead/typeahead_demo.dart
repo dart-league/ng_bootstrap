@@ -12,7 +12,7 @@ part 'typeahead_demo.g.dart';
 
 @Component (selector: "typeahead-demo",
     templateUrl: 'typeahead_demo.html',
-    directives: const [BsTypeAheadComponent, CORE_DIRECTIVES, formDirectives/*, BsRenderer*/])
+    directives: const [BsTypeAheadComponent, coreDirectives, formDirectives/*, BsRenderer*/])
 class TypeaheadDemo {
   String selected = "";
 

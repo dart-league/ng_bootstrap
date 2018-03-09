@@ -48,7 +48,7 @@ export 'components/validators/min_length_validator.dart';
 export 'components/validators/pattern_validator.dart';
 export 'core/position.dart';
 
-const List BS_DIRECTIVES = const [
+const bsDirectives = const [
   BsAccordionComponent,
   BsAccordionPanelComponent,
   BsAlertComponent,
@@ -71,7 +71,7 @@ const List BS_DIRECTIVES = const [
   BsTabsComponent,
   BsTabContentComponent,
   BsTabPanelDirective,
-  BS_TABSX_DIRECTIVES,
+  bsTabsxDirectives,
   BsTooltipComponent,
   BsDatePickerComponent,
   BsDatePickerPopupComponent,
@@ -81,3 +81,6 @@ const List BS_DIRECTIVES = const [
   BsMaxLengthValidator,
   BsPatternValidator
 ];
+
+@Deprecated('Renamed to "bsDirectives"')
+const BS_DIRECTIVES = bsDirectives;

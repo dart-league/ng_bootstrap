@@ -8,7 +8,7 @@ const URL = "https://evening-anchorage-3159.herokuapp.com/api/";
 
 @Component(selector: "file-upload-demo",
     templateUrl: 'file_upload_demo.html',
-    directives: const [BS_FILE_UPLOAD_DIRECTIVES, BsProgressComponent, CORE_DIRECTIVES],
+    directives: const [BS_FILE_UPLOAD_DIRECTIVES, BsProgressComponent, coreDirectives],
     pipes: const [DecimalPipe])
 class FileUploadDemoComponent {
   bool hasBaseDropZoneOver = false;

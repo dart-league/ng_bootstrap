@@ -19,7 +19,8 @@
 <h3>Dynamic
   <button type="button" class="btn btn-sm btn-primary" (click)="random()">Randomize</button>
 </h3>
-<bs-progress [max]="max" [value]="value * 2"><span style="color:white; white-space:nowrap;">{{value * 2}} / {{max}}</span>
+<bs-progress [max]="max" [value]="value * 2">
+  <span style="color:white; white-space:nowrap;">{{value * 2}} / {{max}}</span>
 </bs-progress>
 
 <small><em>No animation</em></small>

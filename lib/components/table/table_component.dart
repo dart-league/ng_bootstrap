@@ -16,7 +16,7 @@ part of bs_table_directives;
 @Component(
     selector: 'bs-table',
     templateUrl: 'table_component.html',
-    directives: const [BsTemplateOutletDirective, CORE_DIRECTIVES])
+    directives: const [BsTemplateOutletDirective, coreDirectives])
 class BsTableComponent {
   BsTableComponent() {
     pageNumberChange.listen(updatePage);
@@ -130,10 +130,10 @@ class BsTableComponent {
           var orderBy = column.orderBy ?? column.fieldName;
           var comparison;
           if (orderBy is String) {
-            comparison = getData(r1, column.fieldName)
-                .compareTo(getData(r2, column.fieldName));
+            comparison = getData(r1, orderBy)
+                .compareTo(getData(r2, orderBy));
           } else if (orderBy is Function) {
-            comparison = orderBy;
+            comparison = orderBy(r1, r2);
           } else {
             throw new Exception('The type of `orderBy` or `fieldName` is incorrect.'
                 'Please use `String` or `Function` for `orderBy`'

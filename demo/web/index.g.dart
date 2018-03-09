@@ -12,5 +12,4 @@ _initMirrors() {
     Employee: EmployeeClassMirror,
     Address: AddressClassMirror
   });
-  initFunctionMirrors({});
 }
