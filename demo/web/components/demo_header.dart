@@ -1,6 +1,6 @@
 import "package:angular/angular.dart";
 import "package:ng_bootstrap/ng_bootstrap.dart";
-import 'package:dev_string_converter/dev_string_converter.dart' as dsc;
+import 'package:string_converters/string_converters.dart' as dsc;
 
 @Component(
     selector: "demo-header",

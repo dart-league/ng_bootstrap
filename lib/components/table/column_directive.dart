@@ -23,4 +23,7 @@ class BsColumnDirective {
 
   @ContentChild(TemplateRef)
   TemplateRef templateRef;
+
+  @ContentChild(BsColumnEditorDirective)
+  BsColumnEditorDirective editor;
 }

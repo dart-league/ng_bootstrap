@@ -5,6 +5,7 @@ authors:
   - Luis Vargas <luisvargastijerino@gmail.com>
   - Adao Jr. <itsjunnior@gmail.com>
 dependencies:
+  string_converters: ^1.0.0
   angular: any
   dson: ^0.15.0
 #  ng_bootstrap: ^0.6.3

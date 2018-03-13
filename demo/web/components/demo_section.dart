@@ -2,7 +2,7 @@ import 'dart:html';
 
 import "package:angular/angular.dart";
 import "package:ng_bootstrap/ng_bootstrap.dart";
-import 'package:dev_string_converter/dev_string_converter.dart';
+import 'package:string_converters/string_converters.dart';
 
 @Component (
     selector: "demo-section",
