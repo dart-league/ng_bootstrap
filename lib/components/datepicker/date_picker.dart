@@ -16,52 +16,31 @@ part of bs_date_picker;
       BsYearPickerComponent,
       coreDirectives,
       formDirectives
-    ])
+    ],
+    providers: const [const Provider(NG_VALUE_ACCESSOR, useExisting: BsDatePickerComponent, multi: true)])
 class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   /// Constructs a [NgBsDatePicker] component injecting [NgModel], [Renderer], and [HtmlElement]
-  BsDatePickerComponent(this.ngModel, HtmlElement elementRef) : super(elementRef) {
-    ngModel
-      ..valueAccessor = this
-      ..update.listen((_) => refreshView());
-  }
+  BsDatePickerComponent(HtmlElement elementRef) : super(elementRef);
 
   /// provides access to entered value
-  NgModel ngModel;
+  var value;
 
   /// provides the number of steps needed to change from other views to day view
-  Map stepDay = {};
+  Map get stepDay => {"months": 1};
 
   /// provides the number of steps needed to change from other views to month view
-  Map stepMonth = {};
+  Map get stepMonth => {"year": 1};
 
   /// provides the number of steps needed to change from other views to year view
-  Map stepYear = {};
+  Map get stepYear => { "years" : yearRange};
 
   /// provides the modes that can take the date-picker
   @Input()
   List<String> modes = ["day", "month", "year"];
 
-  /// provides a function handler to refresh day view
-  Function refreshViewHandlerDay;
-
-  /// provides a function handler to compare active day
-  Function compareHandlerDay;
-
-  /// provides a function handler to refresh month view
-  Function refreshViewHandlerMonth;
-
-  /// provides a function handler to compare active month
-  Function compareHandlerMonth;
-
-  /// provides a function handler to refresh year view
-  Function refreshViewHandlerYear;
-
-  /// provides a function handler to compare active year
-  Function compareHandlerYear;
-
   final _now = new DateTime.now();
 
-  DateTime get _initDate => ngModel.value ?? _now;
+  DateTime get _initDate => value ?? _now;
 
   @ViewChild(BsDayPickerComponent)
   BsDayPickerComponent bsDayPickerComponent;
@@ -104,23 +83,13 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
           return; // ignore: return_without_value
         }
       }
-      ngModel.viewToModelUpdate(value);
+      this.value = value;
+      onChange(value);
+
+      refreshView();
+//      viewToModelUpdate(value);
     }
   }
-
-  /// sets the compare handler to be used in dependence of the view
-  setCompareHandler(Function handler, String type) {
-    if (type == "day") {
-      compareHandlerDay = handler;
-    }
-    if (type == "month") {
-      compareHandlerMonth = handler;
-    }
-    if (type == "year") {
-      compareHandlerYear = handler;
-    }
-  }
-
   /// compares [date1] and [date2] and returns:
   ///
   /// * 0 if equals
@@ -129,41 +98,29 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   num compare(DateTime date1, DateTime date2) {
     if (date2 == null) return null;
 
-    if (datePickerMode == "day" && truthy(compareHandlerDay)) {
-      return compareHandlerDay(date1, date2);
+    if (datePickerMode == "day") {
+      return new DateTime(date1.year, date1.month, date1.day)
+          .compareTo(new DateTime(date2.year, date2.month, date2.day));
     }
-    if (datePickerMode == "month" && truthy(compareHandlerMonth)) {
-      return compareHandlerMonth(date1, date2);
+    if (datePickerMode == "month") {
+      return new DateTime(date1.year, date1.month).compareTo(new DateTime(date2.year, date2.month));
     }
-    if (datePickerMode == "year" && truthy(compareHandlerMonth)) {
-      return compareHandlerYear(date1, date2);
+    if (datePickerMode == "year") {
+      return new DateTime(date1.year).compareTo(new DateTime(date2.year));
     }
     return null;
   }
 
-  /// sets the view handler in dependence with the view type
-  setRefreshViewHandler(Function handler, String type) {
-    if (type == "day") {
-      refreshViewHandlerDay = handler;
-    }
-    if (type == "month") {
-      refreshViewHandlerMonth = handler;
-    }
-    if (type == "year") {
-      refreshViewHandlerYear = handler;
-    }
-  }
-
   /// performs the view refresh
   refreshView() {
-    if (datePickerMode == "day" && truthy(refreshViewHandlerDay)) {
-      refreshViewHandlerDay();
+    if (datePickerMode == "day") {
+      bsDayPickerComponent.refreshViewHandler();
     }
-    if (datePickerMode == "month" && truthy(refreshViewHandlerMonth)) {
-      refreshViewHandlerMonth();
+    if (datePickerMode == "month") {
+      bsMonthPickerComponent.refreshViewHandler();
     }
-    if (datePickerMode == "year" && truthy(refreshViewHandlerYear)) {
-      refreshViewHandlerYear();
+    if (datePickerMode == "year") {
+      bsYearPickerComponent.refreshViewHandler();
     }
   }
 
@@ -171,11 +128,11 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   String dateFilter(DateTime date, String format) => new DateFormat(format).format(date);
 
   ///  checks if date map is active
-  bool isActive(DisplayedDate dateObject) => compare(dateObject.date, ngModel.value) == 0;
+  bool isActive(DisplayedDate dateObject) => compare(dateObject.date, value) == 0;
 
   /// Creates a date map containing date, label, selected, disabled and current values
   DisplayedDate createDateObject(DateTime date, String format) => new DisplayedDate(date, dateFilter(date, format),
-      compare(date, ngModel.viewModel) == 0, isDisabled(date), compare(date, new DateTime.now()) == 0);
+      compare(date, value) == 0, isDisabled(date), compare(date, new DateTime.now()) == 0);
 
   // todo: implement dateDisabled attribute
   /// returns `true` if [date] is before [minDate] or after [maxDate]
@@ -194,12 +151,15 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   /// fired when user clicks one of the date buttons
   select(DateTime date) {
     if (datePickerMode == minMode) {
-      if (ngModel.value == null) {
-        ngModel.viewToModelUpdate(new DateTime(0));
+      if (value == null) {
+        print('value: $value');
+//        viewToModelUpdate(new DateTime(0));
       }
-      ngModel.viewToModelUpdate(new DateTime(date.year, date.month, date.day));
+      print('value: $value');
+      writeValue(new DateTime(date.year, date.month, date.day));
     } else {
-      ngModel.viewToModelUpdate(date);
+      print('value: $value');
+      writeValue(date);
       datePickerMode = modes[modes.indexOf(datePickerMode) - 1];
     }
   }
@@ -220,7 +180,7 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
     if (expectedStep != null) {
       var year = _initDate.year + direction * (expectedStep['years'] ?? 0);
       var month = _initDate.month + direction * (expectedStep['months'] ?? 0);
-      ngModel.viewToModelUpdate(new DateTime(year, month, 1));
+      writeValue(new DateTime(year, month, 1));
     }
   }
 
@@ -311,6 +271,16 @@ abstract class BsDatePickerBase extends DefaultValueAccessor {
 
   @HostListener('input', const ['\$event'])
   bool onInput($event) => true;
+
+  @override
+  void registerOnChange(void fn(dynamic _, {String rawValue})) {
+    onChange = (value) {
+      // TODO(het): also provide rawValue to fn?
+      fn(value == '' ? null : value);
+    };
+  }
+
+
 }
 
 class DisplayedDate {

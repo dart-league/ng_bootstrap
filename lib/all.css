@@ -11168,6 +11168,8 @@ bs-progress.bg-striped {
   background-color: #e9ecef !important;
 }
 bs-progress > .progress-bar {
+  display: block;
+  height: 1rem;
   position: absolute;
   overflow: hidden;
 }

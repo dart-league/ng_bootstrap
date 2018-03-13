@@ -1,6 +1,5 @@
 import 'package:angular/angular.dart';
 import 'dart:html';
-import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart';
 
 /// Creates a progress component
 ///
@@ -16,11 +15,12 @@ import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart'
      aria-valuemax="100"
      [style.width]="percentage">
   <div [style.width]="elementWidth">
-    <template [bsTemplateOutlet]="labelTemplate" [ngOutletContext]="percentage"></template>
+    <template [ngTemplateOutlet]="labelTemplate"
+              [ngTemplateOutletContext]="{\$implicit: percentage, value: value, max: max}"></template>
   </div>
 </div>
-<template [bsTemplateOutlet]="labelTemplate" [ngOutletContext]="percentage"></template>''',
-    directives: const [BsTemplateOutletDirective, coreDirectives])
+<template [ngTemplateOutlet]="labelTemplate" [ngTemplateOutletContext]="{\$implicit: percentage}"></template>''',
+    directives: const [coreDirectives])
 class BsProgressComponent implements OnInit {
 
   /// if `true` changing `value` of progress bar will be animated (*note*: not supported by Bootstrap 4)

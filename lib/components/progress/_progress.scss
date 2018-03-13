@@ -48,6 +48,8 @@ bs-progress {
   height: $font-size-base;
 
   > .progress-bar {
+    display: block;
+    height: 1rem;
     position: absolute;
     overflow: hidden;
   }

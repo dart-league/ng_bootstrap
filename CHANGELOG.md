@@ -1,7 +1,14 @@
+## 1.0.0-alpha
+
+- upgrade `angular` to version `5.0.0-alpha+7`
+- upgrade `build_runner` to version `^0.7.0`
+- fix bug in `bs-rating` component
+- fix bug in `progress` caused by adding `bootstrap@^4.0.0-beta`
+
 ## 0.9.2
    
-   - add `bsPattern` to `bsInput`
-   - add ability to override error messages to `bsInput`
+- add `bsPattern` to `bsInput`
+- add ability to override error messages to `bsInput`
 
 ## 0.9.1
 

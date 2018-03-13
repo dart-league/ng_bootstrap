@@ -7,7 +7,7 @@ import 'package:dev_string_converter/dev_string_converter.dart';
 @Component (
     selector: "demo-section",
     templateUrl: 'demo_section.html',
-    directives: const [BS_DIRECTIVES])
+    directives: const [bsDirectives])
 class DemoSection implements OnInit {
   @Input() String name;
 

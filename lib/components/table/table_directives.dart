@@ -6,8 +6,6 @@ import 'dart:math';
 
 import "package:angular/angular.dart";
 
-import '../template_outlet/bs_template_outlet.dart';
-
 part 'column_directive.dart';
 part 'table_component.dart';
 

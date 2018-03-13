@@ -6,7 +6,7 @@ part of bs_date_picker;
     templateUrl: 'year_picker.html',
     directives: const [coreDirectives],
     providers: [BsDatePickerComponent])
-class BsYearPickerComponent implements OnInit {
+class BsYearPickerComponent {
   /// container of the date-picker
   BsDatePickerComponent datePicker;
 
@@ -23,27 +23,20 @@ class BsYearPickerComponent implements OnInit {
   int getStartingYear(num year) =>
       ((year - 1) ~/ datePicker.yearRange) * datePicker.yearRange + 1;
 
-  /// initialize the attributes
-  ngOnInit() {
-    print('datePicker: $datePicker');
-    datePicker.stepYear = { "years" : datePicker.yearRange};
-    datePicker.setRefreshViewHandler(() {
-      List years = new List(datePicker.yearRange);
-      var date;
-      var initDate = datePicker._initDate;
-      for (var i = 0, start = getStartingYear(initDate.year); i <
-          datePicker.yearRange; i ++) {
-        date = new DateTime (start + i, 0, 1);
-        years[i] = datePicker.createDateObject(date, datePicker.formatYear);
-      }
-      dayTitle = datePicker.dateFilter(initDate, datePicker.formatDay);
+  refreshViewHandler() {
+    List years = new List(datePicker.yearRange);
+    var date;
+    var initDate = datePicker._initDate;
+    for (var i = 0, start = getStartingYear(initDate.year); i <
+        datePicker.yearRange; i ++) {
+      date = new DateTime (start + i, 0, 1);
+      years[i] = datePicker.createDateObject(date, datePicker.formatYear);
+    }
+    dayTitle = datePicker.dateFilter(initDate, datePicker.formatDay);
 
-      monthTitle =
-          datePicker.dateFilter(initDate, datePicker.formatMonth);
+    monthTitle =
+        datePicker.dateFilter(initDate, datePicker.formatMonth);
 
-      rows = datePicker.split(years, 5);
-    }, "year");
-    datePicker.setCompareHandler((DateTime date1, DateTime date2) => date1.year - date2.year,
-        "year");
+    rows = datePicker.split(years, 5);
   }
 }

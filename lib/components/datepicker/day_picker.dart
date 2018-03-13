@@ -3,7 +3,7 @@ part of bs_date_picker;
 /// Creates an [BsDayPickerComponent], this will be the view showed in the [NgBsDatePicker] when user clicks
 /// day header button
 @Component(selector: "bs-day-picker", templateUrl: 'day_picker.html', directives: const [coreDirectives])
-class BsDayPickerComponent implements OnInit {
+class BsDayPickerComponent {
   /// provides access to [BsDatePickerComponent] parent container
   BsDatePickerComponent datePicker;
 
@@ -64,52 +64,42 @@ class BsDayPickerComponent implements OnInit {
     return (thisThursday.difference(firstThursday).inDays / 7).ceil();
   }
 
-  ///
-  ngOnInit() {
-    datePicker
-      ..stepDay = {"months": 1}
-      ..setRefreshViewHandler(() {
-        var initDate = datePicker._initDate;
-        var year = initDate.year;
-        var month = initDate.month;
-        var firstDayOfMonth = new DateTime(year, month, 1 - new DateTime(year, month, 1, 12).weekday, 12);
-        var difference = datePicker.startingDay - firstDayOfMonth.day;
-        var numDisplayedFromPreviousMonth = (difference > 0) ? 7 - difference : -difference;
-        var firstDate = firstDayOfMonth;
-        if (numDisplayedFromPreviousMonth > 0) {
-          //todo luisvt: not sure what to do with next line
+  void refreshViewHandler() {
+    var initDate = datePicker._initDate;
+    var year = initDate.year;
+    var month = initDate.month;
+    var firstDayOfMonth = new DateTime(year, month, 1 - new DateTime(year, month, 1, 12).weekday, 12);
+    var difference = datePicker.startingDay - firstDayOfMonth.day;
+    var numDisplayedFromPreviousMonth = (difference > 0) ? 7 - difference : -difference;
+    var firstDate = firstDayOfMonth;
+    if (numDisplayedFromPreviousMonth > 0) {
+      //todo luisvt: not sure what to do with next line
 //        firstDate.setDate(-numDisplayedFromPreviousMonth + 1);
-        }
-        // 42 is the number of days on a six-week calendar
-        List<DateTime> _days = getDates(firstDate, 42);
-        List<DisplayedDate> days = [];
-        for (var i = 0; i < 42; i++) {
-          var _dateObject = datePicker.createDateObject(_days[i], datePicker.formatDay);
-          _dateObject.secondary = _days[i].month != month;
-          days.add(_dateObject);
-        }
-        labels = [];
-        for (var j = 0; j < 7; j++) {
-          labels.add({
-            'abbr': datePicker.dateFilter(days[j].date, datePicker.formatDayHeader),
-            'full': datePicker.dateFilter(days[j].date, "EEEE")
-          });
-        }
-        monthTitle = new DateFormat(datePicker.formatMonthTitle).format(initDate);
-        yearTitle = new DateFormat(datePicker.formatYear).format(initDate);
-        rows = datePicker.split(days, 7);
-        if (datePicker.showWeeks) {
-          weekNumbers.clear();
-          var thursdayIndex = (4 + 7 - datePicker.startingDay) % 7, numWeeks = rows.length;
-          for (var curWeek = 0; curWeek < numWeeks; curWeek++) {
-            weekNumbers.add(getISO8601WeekNumber(rows[curWeek][thursdayIndex].date) + 1);
-          }
-        }
-      }, "day")
-      ..setCompareHandler((date1, date2) {
-        var d1 = new DateTime(date1.year, date1.month, date1.day);
-        var d2 = new DateTime(date2.year, date2.month, date2.day);
-        return d1.millisecondsSinceEpoch - d2.millisecondsSinceEpoch;
-      }, "day");
+    }
+    // 42 is the number of days on a six-week calendar
+    List<DateTime> _days = getDates(firstDate, 42);
+    List<DisplayedDate> days = [];
+    for (var i = 0; i < 42; i++) {
+      var _dateObject = datePicker.createDateObject(_days[i], datePicker.formatDay);
+      _dateObject.secondary = _days[i].month != month;
+      days.add(_dateObject);
+    }
+    labels = [];
+    for (var j = 0; j < 7; j++) {
+      labels.add({
+        'abbr': datePicker.dateFilter(days[j].date, datePicker.formatDayHeader),
+        'full': datePicker.dateFilter(days[j].date, "EEEE")
+      });
+    }
+    monthTitle = new DateFormat(datePicker.formatMonthTitle).format(initDate);
+    yearTitle = new DateFormat(datePicker.formatYear).format(initDate);
+    rows = datePicker.split(days, 7);
+    if (datePicker.showWeeks) {
+      weekNumbers.clear();
+      var thursdayIndex = (4 + 7 - datePicker.startingDay) % 7, numWeeks = rows.length;
+      for (var curWeek = 0; curWeek < numWeeks; curWeek++) {
+        weekNumbers.add(getISO8601WeekNumber(rows[curWeek][thursdayIndex].date) + 1);
+      }
+    }
   }
 }

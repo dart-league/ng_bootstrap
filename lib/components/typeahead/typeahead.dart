@@ -5,7 +5,6 @@ import "package:angular/angular.dart";
 import 'package:ng_bootstrap/components/dropdown/index.dart';
 import 'package:stream_transform/stream_transform.dart';
 import 'package:ng_bootstrap/components/button/toggle.dart';
-import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart';
 import 'package:angular_forms/angular_forms.dart';
 
 // todo: options loading by http not yet implemented
@@ -18,7 +17,6 @@ import 'package:angular_forms/angular_forms.dart';
     directives: const [
       bsDropdownDirectives,
       BsToggleButtonDirective,
-      BsTemplateOutletDirective,
       coreDirectives,
       formDirectives
     ])
