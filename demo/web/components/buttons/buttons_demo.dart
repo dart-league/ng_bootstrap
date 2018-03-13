@@ -9,5 +9,6 @@ import 'package:ng_bootstrap/ng_bootstrap.dart';
 class ButtonsDemo {
   String singleModel = "1";
   String radioModel = "Middle";
+  String uncheckableRadioModel = "Middle";
   Map checkModel = {"left": false, "middle": true, "right": false};
 }

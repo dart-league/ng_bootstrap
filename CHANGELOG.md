@@ -4,6 +4,7 @@
 - upgrade `build_runner` to version `^0.7.0`
 - fix bug in `bs-rating` component
 - fix bug in `progress` caused by adding `bootstrap@^4.0.0-beta`
+- add ability to create components inside modal
 
 ## 0.9.2
    

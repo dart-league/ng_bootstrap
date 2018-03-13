@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import "package:angular/angular.dart";
 import 'package:ng_bootstrap/components/alert/alert.dart';
 
@@ -14,7 +16,12 @@ class AlertDemo {
   }
 
   addAlert() {
-    alerts.add(
-        {"msg": "Another alert! This alert will dismiss in 3s", 'dismissible': true, "type": "info", 'timeout': 3000});
+    var type = ['info', 'success', 'warning', 'danger'][new Random().nextInt(4)];
+    alerts.add({
+      "msg": "Another alert! This alert will dismiss in 3s",
+      'dismissible': true,
+      "type": type,
+      'timeout': 3000
+    });
   }
 }

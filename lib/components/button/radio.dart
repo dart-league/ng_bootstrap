@@ -38,9 +38,9 @@ class BsRadioButtonDirective extends DefaultValueAccessor {
   onClick() {
     if (uncheckable != false && option == _value) {
       _value = null;
-      return;
+    } else {
+      _value = option;
     }
-    _value = option;
 
     ngModel.viewToModelUpdate(_value);
   }
