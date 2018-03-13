@@ -12,4 +12,5 @@ import '../modal/modal.dart';
     templateUrl: '../modal/modal.html',
     directives: const [coreDirectives])
 class BsPromptComponent extends BsModalComponent {
+  BsPromptComponent(ComponentLoader loader) : super(loader);
 }
