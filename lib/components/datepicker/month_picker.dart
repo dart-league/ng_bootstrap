@@ -5,7 +5,7 @@ part of bs_date_picker;
 @Component (selector: "bs-month-picker",
     templateUrl: 'month_picker.html',
     directives: const [coreDirectives],
-    providers: [BsDatePickerComponent])
+    providers: const [BsDatePickerComponent])
 class BsMonthPickerComponent {
   /// parent [BsDatePickerInnerComponent]
   BsDatePickerComponent datePicker;
