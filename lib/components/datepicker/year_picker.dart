@@ -5,7 +5,7 @@ part of bs_date_picker;
 @Component (selector: "bs-year-picker",
     templateUrl: 'year_picker.html',
     directives: const [coreDirectives],
-    providers: [BsDatePickerComponent])
+    providers: const [BsDatePickerComponent])
 class BsYearPickerComponent {
   /// container of the date-picker
   BsDatePickerComponent datePicker;
