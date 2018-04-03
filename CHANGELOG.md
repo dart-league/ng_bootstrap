@@ -1,3 +1,10 @@
+## 1.0.0-alpha+1
+
+- upgrade `angular` to version `5.0.0-alpha+9`
+- upgrade `bootstrap_sass` to version `4.0.0`
+- add class `modal-open` to `body` when modal is open
+- add `$dropdown-link-hover-bg: #e9ecef !default;` to make background color of dropdown links darker
+
 ## 1.0.0-alpha
 
 - upgrade `angular` to version `5.0.0-alpha+7`

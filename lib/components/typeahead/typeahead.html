@@ -10,7 +10,7 @@
         *ngIf="ngModel.viewModel.length > 0"
         class="fa fa-remove"
         (click)="ngModel.viewToModelUpdate(''); processMatches(); $event.stopPropagation()"></bs-search-clear>
-    <span class="input-group-btn">
+    <span class="input-group-append">
       <bs-toggle-button class="btn btn-secondary"
                         [(ngModel)]="isOpen"
                         (click)="processMatchesIfNotOpen(); $event.stopPropagation()">

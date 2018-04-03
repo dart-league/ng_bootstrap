@@ -1,5 +1,8 @@
 $fa-font-path:        "../../packages/font_awesome/fonts" !default;
 
+// TODO: remove when issue #23329 gets solved
+$dropdown-link-hover-bg: #e9ecef !default;
+
 //noinspection CssUnknownTarget
 @import "package:bootstrap_sass/scss/bootstrap";
 //noinspection CssUnknownTarget

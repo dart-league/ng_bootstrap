@@ -14,7 +14,7 @@ String _defaultLocale = 'en_US';
       coreDirectives,
       formDirectives
     ],
-    pipes: const [COMMON_PIPES]
+    pipes: const [commonPipes]
 )
 class BsDatePickerPopupComponent extends BsDatePickerBase {
   /// Constructs a DatePickerPopup

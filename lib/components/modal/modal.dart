@@ -3,10 +3,14 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:html';
 import 'package:angular/angular.dart';
 
 /// Shows a bootstrap modal dialog.
-/// Set the body of the dialog by adding content to the modal tag: <modal>content here</modal>.
+/// Set the body of the dialog by adding content to the modal tag:
+///
+///     <bs-modal>content here</bs-modal>
+///
 @Component(
     selector: 'bs-modal',
     templateUrl: 'modal.html',
@@ -69,6 +73,7 @@ class BsModalComponent {
   /// Shows the modal. There is no method for hiding. This is done using actions of the modal itself.
   show() {
     showModal = true;
+    document.body.classes.add('modal-open');
   }
 
   hide([BsModalButton button]) async {
@@ -76,6 +81,7 @@ class BsModalComponent {
     _closeCtrl.add(await button?.onClick?.call());
     showModal = false;
     loading = false;
+    document.body.classes.remove('modal-open');
     return false;
   }
 }
