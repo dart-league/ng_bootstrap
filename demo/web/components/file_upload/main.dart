@@ -1,9 +1,8 @@
-import 'file_upload_demo.dart';
 import 'package:angular/angular.dart';
 
 // ignore: uri_has_not_been_generated
-import 'main.template.dart' show initReflector;
+import 'file_upload_demo.template.dart' show FileUploadDemoComponentNgFactory;
 
 main() {
-  bootstrapStatic(FileUploadDemoComponent, [], initReflector);
+  runApp(FileUploadDemoComponentNgFactory);
 }

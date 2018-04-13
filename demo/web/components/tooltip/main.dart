@@ -1,9 +1,8 @@
 import 'package:angular/angular.dart';
-import 'tooltip_demo.dart';
 
 // ignore: uri_has_not_been_generated
-import 'main.template.dart' show initReflector;
+import 'tooltip_demo.template.dart' show TooltipDemoNgFactory;
 
 main() {
-  bootstrapStatic(TooltipDemo, [], initReflector);
+  runApp(TooltipDemoNgFactory);
 }

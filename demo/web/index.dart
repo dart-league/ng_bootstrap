@@ -28,7 +28,7 @@ import 'components/tooltip/tooltip_demo.dart';
 import 'components/typeahead/typeahead_demo.dart';
 
 // ignore: uri_has_not_been_generated
-import 'index.template.dart' as ng_generated;
+import 'index.template.dart' show DemoComponentNgFactory;
 
 part 'index.g.dart';
 
@@ -64,5 +64,5 @@ class DemoComponent {}
 
 main() {
   _initMirrors();
-  bootstrapStatic(DemoComponent, [], ng_generated.initReflector);
+  runApp(DemoComponentNgFactory);
 }

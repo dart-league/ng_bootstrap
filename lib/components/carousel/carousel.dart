@@ -126,10 +126,10 @@ class BsCarouselComponent implements OnDestroy, AfterContentInit {
   restartTimer() {
     resetTimer();
     var intervalAux = interval.toInt();
-    if (intervalAux != double.NAN && intervalAux > 0) {
+    if (intervalAux != double.nan && intervalAux > 0) {
       currentInterval = new Timer(new Duration(milliseconds: intervalAux), () {
         var nInterval = interval;
-        if (isPlaying && intervalAux != double.NAN && nInterval > 0 && truthy(slides.length)) {
+        if (isPlaying && intervalAux != double.nan && nInterval > 0 && truthy(slides.length)) {
           next();
         } else {
           pause();
