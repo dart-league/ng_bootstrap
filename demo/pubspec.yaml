@@ -5,7 +5,7 @@ authors:
   - Luis Vargas <luisvargastijerino@gmail.com>
   - Adao Jr. <itsjunnior@gmail.com>
 dependencies:
-  angular: 5.0.0-alpha+9
+  angular: 5.0.0-alpha+10
   dson: ^0.13.0
 #  ng_bootstrap: ^0.6.3
   ng_bootstrap:

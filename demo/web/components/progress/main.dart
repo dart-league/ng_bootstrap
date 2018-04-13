@@ -1,9 +1,8 @@
 import 'package:angular/angular.dart';
-import 'progress_demo.dart';
 
 // ignore: uri_has_not_been_generated
-import 'main.template.dart' show initReflector;
+import 'progress_demo.template.dart' show ProgressDemoNgFactory;
 
 main() {
-  bootstrapStatic(ProgressDemo, [], initReflector);
+  runApp(ProgressDemoNgFactory);
 }

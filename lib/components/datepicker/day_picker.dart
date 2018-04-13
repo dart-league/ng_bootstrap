@@ -53,10 +53,10 @@ class BsDayPickerComponent {
 
     // Set the target to the first thursday of the year
     // First set the target to january first
-    var firstThursday = new DateTime(checkDate.year, DateTime.JANUARY, 1);
+    var firstThursday = new DateTime(checkDate.year, DateTime.january, 1);
 
-    if (firstThursday.weekday != (DateTime.THURSDAY)) {
-      firstThursday = new DateTime(checkDate.year, DateTime.JANUARY, 1 + ((4 - firstThursday.weekday) + 7) % 7);
+    if (firstThursday.weekday != (DateTime.thursday)) {
+      firstThursday = new DateTime(checkDate.year, DateTime.january, 1 + ((4 - firstThursday.weekday) + 7) % 7);
     }
 
     // The weeknumber is the number of weeks between the

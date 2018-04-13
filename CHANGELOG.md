@@ -1,3 +1,12 @@
+## 1.0.0-alpha+2
+
+- upgrade `angular` to `^5.0.0-alpha+2`
+- upgrade `stream_transform` to `^0.0.11`
+- change `bootstrapStatic` by `runApp`
+- fixes #103
+- fixes #104
+- fixes #105
+
 ## 1.0.0-alpha+1
 
 - upgrade `angular` to version `5.0.0-alpha+9`
