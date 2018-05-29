@@ -75,8 +75,11 @@ class BsTabsxComponents implements OnInit, AfterContentInit {
 /// Creates a tab which will be inside the [BsTabsxComponents]
 ///
 /// [demo](http://luisvt.github.io/ng2_strap/#tab)
-@Directive(selector: "bs-tabx", host: const {"[class.tab-pane]": "true"})
+@Directive(selector: "bs-tabx")
 class BsTabxDirective {
+  @HostBinding("class.tab-pane")
+  bool tabPane = true;
+
   /// provides the injected parent tabset
   BsTabsxComponents tabsx;
 

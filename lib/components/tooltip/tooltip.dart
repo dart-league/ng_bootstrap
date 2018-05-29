@@ -10,18 +10,24 @@ import 'dart:html';
 <div class="tooltip-inner">
   <ng-content></ng-content>
 </div>''',
-    host: const {
-      '[class.bs-tooltip-top]': 'placement == "top"',
-      '[class.bs-tooltip-left]': 'placement == "left"',
-      '[class.bs-tooltip-right]': 'placement == "right"',
-      '[class.bs-tooltip-bottom]': 'placement == "bottom"'
-    },
     directives: const [coreDirectives])
 class BsTooltipComponent implements OnInit {
   ChangeDetectorRef cdr;
 
   /// Current element DOM reference
   HtmlElement elementRef;
+
+  @HostBinding("class.bs-tooltip-top")
+  bool get bsTooltipTop => placement == "top";
+
+  @HostBinding("class.bs-tooltip-left")
+  bool get bsTooltipLeft => placement == "left";
+
+  @HostBinding("class.bs-tooltip-right")
+  bool get bsTooltipRight => placement == "right";
+
+  @HostBinding("class.bs-tooltip-bottom")
+  bool get bsTooltipBottom => placement == "bottom";
 
   /// value in pixels of the top style
   @HostBinding('style.top')
