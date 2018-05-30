@@ -6,37 +6,37 @@
   <input [id]="eId"
          class="form-control"
          type="text"
+         #qwerty="ngForm"
          [(ngModel)]="value"
-         #inputBox="ngForm"
-         [ngControl]="ngControl"
          [required]="required"
          [minLength]="minLength"
          [maxLength]="maxLength"
          [attr.minlength]="minLength"
          [attr.maxlength]="maxLength"
-         [class.is-invalid]="!inputBox.valid"
+         [class.is-invalid]="!bsControl.valid"
          [placeholder]="placeholder"
          [bsPattern]="bsPattern"
          [attr.pattern]="bsPattern"
+         [ngFormControl]="bsControl"
   />
-  <ul *ngIf="!inputBox.valid" class="text-danger small fa-ul">
+  <ul *ngIf="!bsControl.valid" class="text-danger small fa-ul">
     <!-- TODO: add translations-->
-    <li *ngIf="inputBox.errors['required']">
+    <li *ngIf="bsControl.errors['required']">
       <i class="fa fa-li fa-times"></i>
       <template [ngIf]="requiredMessage == null">This field is Required</template>
       <template [ngIf]="requiredMessage != null">{{requiredMessage}}</template>
     </li>
-    <li *ngIf="inputBox.errors['minLength'] != null">
+    <li *ngIf="bsControl.errors['minLength'] != null">
       <i class="fa fa-li fa-times"></i>
       <template [ngIf]="minLengthMessage == null">The minimum length of this field should be {{minLength}}</template>
       <template [ngIf]="minLengthMessage != null">{{minLengthMessage}}</template>
     </li>
-    <li *ngIf="inputBox.errors['maxLength'] != null">
+    <li *ngIf="bsControl.errors['maxLength'] != null">
       <i class="fa fa-li fa-times"></i>
       <template [ngIf]="maxLengthMessage == null">The maximum length of this field should be {{maxLength}}</template>
       <template [ngIf]="maxLengthMessage != null">{{maxLengthMessage}}</template>
     </li>
-    <li *ngIf="inputBox.errors['pattern'] != null">
+    <li *ngIf="bsControl.errors['pattern'] != null">
       <i class="fa fa-li fa-times"></i>
       <template [ngIf]="bsPatternMessage == null">The pattern of this field should be {{bsPattern}}</template>
       <template [ngIf]="bsPatternMessage != null">{{bsPatternMessage}}</template>

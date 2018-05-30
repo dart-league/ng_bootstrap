@@ -1,13 +1,11 @@
 <form #personForm="ngForm">
   <bs-input eId="firstName"
             label="First Name"
-            [(ngModel)]="person.firstName"
-            #firstName="ngForm"
-            ngControl="firstName"
             [required]="true"
             [minLength]="2"
             [maxLength]="5"
             bsPattern="[a-zA-Z]*"
+            [bsControl]="bsControl"
             bsPatternMessage="Field should only contains letters"
   ></bs-input>
 
@@ -35,5 +33,5 @@
   </div>
 </form>
 <pre>personForm.valid: {{personForm.form.valid}}</pre>
-<pre>firstName.errors: {{firstName.errors}}</pre>
+<pre>firstName.errors: {{bsControl.errors}}</pre>
 <pre>lastName.errors: {{lastName.errors}}</pre>

@@ -11,6 +11,8 @@ class InputDemo {
       ..lastName = 'Doe asdf';
 
   String pattern1 = '[a-zA-z]*';
+
+  Control bsControl = new Control();
 }
 
 class Person {
