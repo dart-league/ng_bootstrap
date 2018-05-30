@@ -17,16 +17,16 @@ class BsYearPickerComponent {
   String monthTitle;
 
   /// rows of the years that will appears in the year-picker
-  List rows = [];
+  List<List<DisplayedDate>> rows = List<List<DisplayedDate>>();
 
   /// gets the value of the starting year of the viewed group
   int getStartingYear(num year) =>
       ((year - 1) ~/ datePicker.yearRange) * datePicker.yearRange + 1;
 
   refreshViewHandler() {
-    List years = new List(datePicker.yearRange);
-    var date;
-    var initDate = datePicker._initDate;
+    List<DisplayedDate> years = new List(datePicker.yearRange);
+    DateTime date;
+    DateTime initDate = datePicker._initDate;
     for (var i = 0, start = getStartingYear(initDate.year); i <
         datePicker.yearRange; i ++) {
       date = new DateTime (start + i, 0, 1);

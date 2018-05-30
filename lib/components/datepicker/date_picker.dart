@@ -92,7 +92,6 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
       }
       this.value = value;
       onChange(value);
-
       refreshView();
 //      viewToModelUpdate(value);
     }
@@ -147,8 +146,8 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
       minDate != null && compare(date, minDate) < 0 || maxDate != null && compare(date, maxDate) > 0;
 
   /// splits the [arr] into a list of array of size [size]
-  List split(List arr, num size) {
-    var arrays = [];
+  List<List<DisplayedDate>> split(List arr, num size) {
+    List<List<DisplayedDate>> arrays = List();
     for (var i = 0; arr.length > i * size; i++) {
       arrays.add(arr.getRange(i * size, i * size + size).toList());
     }
@@ -159,13 +158,10 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   select(DateTime date) {
     if (datePickerMode == minMode) {
       if (value == null) {
-        print('value: $value');
 //        viewToModelUpdate(new DateTime(0));
       }
-      print('value: $value');
       writeValue(new DateTime(date.year, date.month, date.day));
     } else {
-      print('value: $value');
       writeValue(date);
       datePickerMode = modes[modes.indexOf(datePickerMode) - 1];
     }

@@ -18,7 +18,7 @@ class DatepickerDemo {
     "yMd"
   ];
   String format;
-  dynamic dateOptions = {"formatYear": "YY", "startingDay": 1};
+  Map<String,dynamic> dateOptions = {"formatYear": "YY", "startingDay": 1};
   bool opened = false;
 
   DateTime minDate = new DateTime.now().add(new Duration(days: -1000));
@@ -44,7 +44,7 @@ class DatepickerDemo {
   // todo: implement custom class cases
   getDayClass(DateTime date, String mode) {
     if (mode == "day") {
-      var dayToCheck = new DateTime(date.year, date.month, date.day);
+      DateTime dayToCheck = new DateTime(date.year, date.month, date.day);
       for (var event in events) {
         var currentDay = event['date'];
         if (dayToCheck == currentDay) {

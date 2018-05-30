@@ -17,16 +17,16 @@ class BsMonthPickerComponent {
   String dayTitle;
 
   /// rows that will be displayed in the month view
-  List rows = [];
+  List<List<DisplayedDate>> rows = List<List<DisplayedDate>>();
 
   /// provides the maximum mode
   String maxMode = 'year';
 
   void refreshViewHandler() {
-    List months = new List(12);
-    var initDate = datePicker._initDate;
+    List<DisplayedDate> months = new List(12);
+    DateTime initDate = datePicker._initDate;
     num year = initDate.year;
-    var date;
+    DateTime date;
     for (var i = 0; i < 12; i++) {
       date = new DateTime (year, i + 1, 1);
       months[i] = datePicker.createDateObject(date, datePicker.formatMonth);

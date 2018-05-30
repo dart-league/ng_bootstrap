@@ -8,7 +8,7 @@ class BsDayPickerComponent {
   BsDatePickerComponent datePicker;
 
   /// labels of the days week
-  List labels = [];
+  List<Map<String,String>> labels = [];
 
   /// provides the label that will appears in the month button of day view
   String monthTitle;
@@ -17,7 +17,7 @@ class BsDayPickerComponent {
   String yearTitle;
 
   /// provides the rows of days that will be displayed
-  List<List<DisplayedDate>> rows = [];
+  List<List<DisplayedDate>> rows = List<List<DisplayedDate>>();
 
   /// provides the values of the week numbers column
   List<num> weekNumbers = [];
@@ -26,7 +26,7 @@ class BsDayPickerComponent {
   String maxMode = 'year';
 
   ///
-  getDates(DateTime startDate, num n) {
+  List<DateTime> getDates(DateTime startDate, num n) {
     List<DateTime> dates = new List(n);
     var current = startDate;
     var i = 0;
@@ -65,27 +65,27 @@ class BsDayPickerComponent {
   }
 
   void refreshViewHandler() {
-    var initDate = datePicker._initDate;
-    var year = initDate.year;
-    var month = initDate.month;
-    var firstDayOfMonth = new DateTime(year, month, 1 - new DateTime(year, month, 1, 12).weekday, 12);
-    var difference = datePicker.startingDay - firstDayOfMonth.day;
-    var numDisplayedFromPreviousMonth = (difference > 0) ? 7 - difference : -difference;
-    var firstDate = firstDayOfMonth;
+    DateTime initDate = datePicker._initDate;
+    num year = initDate.year;
+    num month = initDate.month;
+    DateTime firstDayOfMonth = new DateTime(year, month, 1 - new DateTime(year, month, 1, 12).weekday, 12);
+    num difference = datePicker.startingDay - firstDayOfMonth.day;
+    num numDisplayedFromPreviousMonth = (difference > 0) ? 7 - difference : -difference;
+    DateTime firstDate = firstDayOfMonth;
     if (numDisplayedFromPreviousMonth > 0) {
       //todo luisvt: not sure what to do with next line
 //        firstDate.setDate(-numDisplayedFromPreviousMonth + 1);
     }
     // 42 is the number of days on a six-week calendar
     List<DateTime> _days = getDates(firstDate, 42);
-    List<DisplayedDate> days = [];
-    for (var i = 0; i < 42; i++) {
-      var _dateObject = datePicker.createDateObject(_days[i], datePicker.formatDay);
+    List<DisplayedDate> days = List();
+    for (num i = 0; i < 42; i++) {
+      DisplayedDate _dateObject = datePicker.createDateObject(_days[i], datePicker.formatDay);
       _dateObject.secondary = _days[i].month != month;
       days.add(_dateObject);
     }
     labels = [];
-    for (var j = 0; j < 7; j++) {
+    for (num j = 0; j < 7; j++) {
       labels.add({
         'abbr': datePicker.dateFilter(days[j].date, datePicker.formatDayHeader),
         'full': datePicker.dateFilter(days[j].date, "EEEE")
@@ -96,8 +96,8 @@ class BsDayPickerComponent {
     rows = datePicker.split(days, 7);
     if (datePicker.showWeeks) {
       weekNumbers.clear();
-      var thursdayIndex = (4 + 7 - datePicker.startingDay) % 7, numWeeks = rows.length;
-      for (var curWeek = 0; curWeek < numWeeks; curWeek++) {
+      num thursdayIndex = (4 + 7 - datePicker.startingDay) % 7, numWeeks = rows.length;
+      for (num curWeek = 0; curWeek < numWeeks; curWeek++) {
         weekNumbers.add(getISO8601WeekNumber(rows[curWeek][thursdayIndex].date) + 1);
       }
     }
