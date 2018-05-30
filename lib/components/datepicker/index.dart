@@ -7,6 +7,8 @@ import 'package:node_shims/js.dart';
 import 'package:ng_bootstrap/components/dropdown/index.dart';
 import 'package:ng_bootstrap/components/button/toggle.dart';
 import 'package:angular_forms/angular_forms.dart';
+import 'package:angular_forms/src/directives/shared.dart';
+import 'package:angular_forms/src/directives/control_value_accessor.dart';
 
 part "date_picker.dart";
 part "date_picker_popup.dart";

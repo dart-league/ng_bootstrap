@@ -12,8 +12,8 @@ dependencies:
     path: ..
 #    git: https://github.com/dart-league/ng_bootstrap
 dev_dependencies:
-  sass_builder: ^1.0.0
+  sass_builder: ^2.0.0
 #  sass_builder:
 #    path: ../sass_builder
-  build_runner: ^0.7.10
-  build_web_compilers: ^0.3.0
+  build_runner: ^0.8.9
+  build_web_compilers: ^0.4.0+1

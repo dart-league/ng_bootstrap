@@ -1,5 +1,12 @@
 part of bs_date_picker;
 
+
+const DATE_PICKER_ACCESSOR = const ExistingProvider.forToken(
+  ngValueAccessor,
+  BsDatePickerComponent,
+);
+
+
 /// Highly configurable component that adds datepicker functionality to
 /// your pages. You can customize the date format and language, restrict the selectable date ranges.
 ///
@@ -17,13 +24,13 @@ part of bs_date_picker;
       coreDirectives,
       formDirectives
     ],
-    providers: const [const Provider(NG_VALUE_ACCESSOR, useExisting: BsDatePickerComponent, multi: true)])
+    providers: const [DATE_PICKER_ACCESSOR])
 class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   /// Constructs a [NgBsDatePicker] component injecting [NgModel], [Renderer], and [HtmlElement]
   BsDatePickerComponent(HtmlElement elementRef) : super(elementRef);
 
   /// provides access to entered value
-  var value;
+  DateTime value;
 
   /// provides the number of steps needed to change from other views to day view
   Map get stepDay => {"months": 1};
@@ -197,7 +204,10 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   }
 }
 
-abstract class BsDatePickerBase extends DefaultValueAccessor {
+abstract class BsDatePickerBase extends Object
+    with TouchHandler, ChangeHandler<DateTime>
+    implements ControlValueAccessor {
+  final HtmlElement _element;
   /// sets date-picker mode, supports: `day`, `month`, `year`
   @Input()
   String datePickerMode;
@@ -267,17 +277,22 @@ abstract class BsDatePickerBase extends DefaultValueAccessor {
   @Input()
   dynamic dateDisabled;
 
-  BsDatePickerBase(HtmlElement elementRef) : super(elementRef);
-
-  @HostListener('input', const ['\$event'])
-  bool onInput($event) => true;
+  BsDatePickerBase(this._element);
 
   @override
-  void registerOnChange(void fn(dynamic _, {String rawValue})) {
-    onChange = (value) {
-      // TODO(het): also provide rawValue to fn?
-      fn(value == '' ? null : value);
+  void registerOnChange(ChangeFunction<DateTime> fn) {
+    this.onChange = (DateTime value, {String rawValue}){
+      fn(value == '' ? new DateTime.now() : value);
     };
+  }
+
+  @override
+  void writeValue(value) {
+  }
+
+  @override
+  void onDisabledChanged(bool isDisabled) {
+    setElementDisabled(_element, isDisabled);
   }
 
 

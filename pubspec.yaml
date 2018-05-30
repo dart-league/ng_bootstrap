@@ -20,7 +20,7 @@ dependencies:
   dev_string_converter: ^0.1.0
   angular_forms: ^2.0.0-alpha+5
 dev_dependencies:
-  build_runner: ^0.7.0
-  sass_builder: ^1.1.2
+  build_runner: ^0.8.9
+  sass_builder: ^2.0.0
 #  sass_builder:
 #    path: ../sass_builder
