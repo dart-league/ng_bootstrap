@@ -27,8 +27,16 @@ class BsModalComponent {
 
   bool loading = false;
 
-  @Input() void set buttons(List<BsModalButton> buttons) {
-    _buttons = buttons;
+  @Input() void set buttons(List/* <BsModalButton | Map> */ buttons) {
+    _buttons = buttons.map<BsModalButton>((button) =>
+    button is Map
+        ? new BsModalButton(
+            button['label'],
+            id: button['id'],
+            cssClasses: button['cssClasses'] ?? 'btn-primary',
+            onClick: button['onClick'])
+        : button
+    ).toList();
   }
 
   final ComponentLoader _loader;

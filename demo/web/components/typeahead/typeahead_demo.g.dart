@@ -39,7 +39,6 @@ abstract class _$StateSerializable extends SerializableMap {
 
   Iterable<String> get keys => StateClassMirror.fields.keys;
 }
-
 // **************************************************************************
 // Generator: MirrorsGenerator
 // **************************************************************************

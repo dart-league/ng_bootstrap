@@ -157,13 +157,13 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   /// fired when user clicks one of the date buttons
   select(DateTime date) {
     if (datePickerMode == minMode) {
-      if (value == null) {
-//        viewToModelUpdate(new DateTime(0));
-      }
       writeValue(new DateTime(date.year, date.month, date.day));
     } else {
-      writeValue(date);
+      var year = datePickerMode == 'year' ? date.year : value.year;
+      var month = datePickerMode == 'month' ? date.month : value.month;
+
       datePickerMode = modes[modes.indexOf(datePickerMode) - 1];
+      writeValue(new DateTime(year, month, value.day));
     }
   }
 

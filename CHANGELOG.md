@@ -1,3 +1,8 @@
+## 1.0.0-alpha+3
+
+- upgrade `angular` to `5.0.0-alpha+13`
+- upgrade `angular_forms` to `2.0.0-alpha+5`
+
 ## 1.0.0-alpha+2
 
 - upgrade `angular` to `^5.0.0-alpha+2`

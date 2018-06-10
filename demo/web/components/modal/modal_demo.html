@@ -1,5 +1,8 @@
 <bs-modal #myModal [header]="'Are you sure?'"
-          [buttons]="buttons"
+          [buttons]="[
+            {label: 'Save', onClick: handleSave},
+            {label: 'Cancel', onClick: handleCancel, cssClasses: 'btn-secondary'}
+          ]"
           (close)="onModalClose($event)">
   Do you want to save?
   <footer style="display: inline-block;">

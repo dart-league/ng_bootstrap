@@ -95,7 +95,6 @@ abstract class _$AddressSerializable extends SerializableMap {
 
   Iterable<String> get keys => AddressClassMirror.fields.keys;
 }
-
 // **************************************************************************
 // Generator: MirrorsGenerator
 // **************************************************************************
