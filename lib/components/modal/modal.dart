@@ -27,16 +27,8 @@ class BsModalComponent {
 
   bool loading = false;
 
-  @Input() void set buttons(List/* <BsModalButton | Map> */ buttons) {
-    _buttons = buttons.map((button) =>
-      button is Map
-        ? new BsModalButton(
-            button['label'],
-            id: button['id'],
-            cssClasses: button['cssClasses'] ?? 'btn-primary',
-            onClick: button['onClick'])
-        : button
-    ).toList();
+  @Input() void set buttons(List<BsModalButton> buttons) {
+    _buttons = buttons;
   }
 
   final ComponentLoader _loader;
@@ -71,12 +63,12 @@ class BsModalComponent {
   bool showModal = false;
 
   /// Shows the modal. There is no method for hiding. This is done using actions of the modal itself.
-  show() {
+  void show() {
     showModal = true;
     document.body.classes.add('modal-open');
   }
 
-  hide([BsModalButton button]) async {
+  Future<bool> hide([BsModalButton button]) async {
     loading = true;
     _closeCtrl.add(await button?.onClick?.call());
     showModal = false;

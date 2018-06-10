@@ -15,12 +15,17 @@ class ModalDemo {
     print('modalAction: $modalAction');
   }
 
-  handleSave() {
+  List<BsModalButton> buttons = <BsModalButton>[
+    new BsModalButton("Save",onClick: handleSave),
+    new BsModalButton("Cancel",onClick: handleCancel)
+  ];
+
+  static String handleSave() {
     print('saving');
     return 'SAVE';
   }
 
-  handleCancel() {
+  static Future<String> handleCancel() {
     print('cancelling');
     return new Future.delayed(const Duration(seconds: 2), () => 'CANCEL');
   }

@@ -5,15 +5,15 @@ authors:
   - Luis Vargas <luisvargastijerino@gmail.com>
   - Adao Jr. <itsjunnior@gmail.com>
 dependencies:
-  angular: 5.0.0-alpha+10
+  angular: 5.0.0-alpha+13
   dson: ^0.13.0
 #  ng_bootstrap: ^0.6.3
   ng_bootstrap:
     path: ..
 #    git: https://github.com/dart-league/ng_bootstrap
 dev_dependencies:
-  sass_builder: ^1.0.0
+  sass_builder: ^2.0.0
 #  sass_builder:
 #    path: ../sass_builder
-  build_runner: ^0.7.10
-  build_web_compilers: ^0.3.0
+  build_runner: ^0.8.9
+  build_web_compilers: ^0.4.0+1

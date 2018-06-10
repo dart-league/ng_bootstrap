@@ -10,7 +10,7 @@ import 'package:angular_forms/angular_forms.dart';
     selector: 'bs-input',
     templateUrl: 'input.html',
     directives: const [BsMinLengthValidator, BsMaxLengthValidator, BsPatternValidator, coreDirectives, formDirectives],
-    providers: const [const Provider(NG_VALUE_ACCESSOR, useExisting: BsInput, multi: true)]
+    providers: const [const Provider(ngValueAccessor, useExisting: BsInput, multi: true),formDirectives]
 )
 class BsInput extends DefaultValueAccessor {
   BsInput() : super(null);
@@ -52,7 +52,7 @@ class BsInput extends DefaultValueAccessor {
   @Input() String placeholder;
 
   /// Name of the Validation Control
-  @Input() String ngControl;
+  @Input() Control bsControl = new Control();
 
   var _value;
 
