@@ -12,7 +12,7 @@ class InputDemo {
 
   String pattern1 = '[a-zA-z]*';
 
-  Control bsControl = new Control();
+  String otherName = 'Jane Smith';
 }
 
 class Person {

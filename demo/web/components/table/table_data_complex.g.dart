@@ -3,7 +3,7 @@
 part of table.table_data_complex;
 
 // **************************************************************************
-// Generator: DsonGenerator
+// DsonGenerator
 // **************************************************************************
 
 abstract class _$EmployeeSerializable extends SerializableMap {
@@ -95,8 +95,9 @@ abstract class _$AddressSerializable extends SerializableMap {
 
   Iterable<String> get keys => AddressClassMirror.fields.keys;
 }
+
 // **************************************************************************
-// Generator: MirrorsGenerator
+// MirrorsGenerator
 // **************************************************************************
 
 _Employee__Constructor([positionalParams, namedParams]) => new Employee();

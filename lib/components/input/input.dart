@@ -10,9 +10,9 @@ import 'package:angular_forms/angular_forms.dart';
     selector: 'bs-input',
     templateUrl: 'input.html',
     directives: const [BsMinLengthValidator, BsMaxLengthValidator, BsPatternValidator, coreDirectives, formDirectives],
-    providers: const [const Provider(ngValueAccessor, useExisting: BsInput, multi: true),formDirectives]
+    providers: const [const ExistingProvider.forToken(ngValueAccessor, BsInput),formDirectives]
 )
-class BsInput extends DefaultValueAccessor {
+class BsInput extends DefaultValueAccessor implements OnInit {
   BsInput() : super(null);
 
   /// handles the id that the internal input-box and label elements should have.
@@ -24,36 +24,32 @@ class BsInput extends DefaultValueAccessor {
   @Input() String label;
 
   /// Validates if the value is [required].
-  @Input() bool required;
+  @Input() bool required = false;
 
   /// Message used when [required] fails
   @Input() String requiredMessage;
 
-  /// Validates if the value is lower than the [minLength].
-  @Input() int minLength;
+  /// Validates if the value is lower than the [minlength].
+  @Input() int minlength = 0;
 
 
   /// Message used when [minLengthMessage] fails
   @Input() String minLengthMessage;
 
-  /// Validates if the value is greater than the [maxLength].
-  @Input() int maxLength;
+  /// Validates if the value is greater than the [maxlength].
+  @Input() int maxlength = 9999;
 
   /// Message usedbsPattern when [maxLength] fails
   @Input() String maxLengthMessage;
 
-  /// Validates if the value matches the [bsPattern]
-  @Input() String bsPattern;
+  /// Validates if the value matches the [pattern]
+  @Input() String pattern;
 
   /// Message used when [bsPattern] fails
-  @Input() String bsPatternMessage;
+  @Input() String patternMessage;
 
   /// Text shown in the input box when the user has not been put any value.
   @Input() String placeholder;
-
-  /// Name of the Validation Control
-  @Input() Control bsControl = new Control();
-
   var _value;
 
   /// Gets the value of the element
@@ -77,4 +73,11 @@ class BsInput extends DefaultValueAccessor {
 
   @HostListener('input', const ['\$event'])
   bool onInput($event) => true;
+
+  @override
+  void ngOnInit() {
+    print('pattern: $pattern');
+  }
+
+
 }

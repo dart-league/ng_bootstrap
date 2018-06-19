@@ -1,3 +1,9 @@
+## 1.0.0-alpha+4
+   
+   - upgrade `angular` to `5.0.0-alpha+15`
+   - upgrade `angular_forms` to `2.0.0-alpha+7`
+   - enhance `bs-inputs`
+
 ## 1.0.0-alpha+3
 
 - upgrade `angular` to `5.0.0-alpha+13`

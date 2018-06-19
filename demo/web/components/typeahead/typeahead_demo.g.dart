@@ -3,7 +3,7 @@
 part of typeahead.typeahead_demo;
 
 // **************************************************************************
-// Generator: DsonGenerator
+// DsonGenerator
 // **************************************************************************
 
 abstract class _$StateSerializable extends SerializableMap {
@@ -39,8 +39,9 @@ abstract class _$StateSerializable extends SerializableMap {
 
   Iterable<String> get keys => StateClassMirror.fields.keys;
 }
+
 // **************************************************************************
-// Generator: MirrorsGenerator
+// MirrorsGenerator
 // **************************************************************************
 
 _State__Constructor([positionalParams, namedParams]) => new State();
