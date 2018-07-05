@@ -40,7 +40,7 @@ class BsTabsxComponents implements OnInit, AfterContentInit {
 
   @override
   ngAfterContentInit() {
-    activateTab(tabs[0]);
+    activateTab(tabs.firstWhere((tab) => tab.active == true,orElse: () => tabs[0]));
   }
 
   /// adds a new tab at the end
