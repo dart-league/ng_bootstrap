@@ -122,8 +122,10 @@ class BsTabxDirective {
   @Input()
   set active(bool active) {
     active ??= true;
-    _active = active;
-    _ref.detectChanges();
+    if(_active != active){
+      _active = active;
+      _ref.detectChanges();
+    }
     if (active) {
       _selectCtrl.add(this);
     } else {
