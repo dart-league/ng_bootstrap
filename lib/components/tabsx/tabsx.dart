@@ -77,6 +77,11 @@ class BsTabsxComponents implements OnInit, AfterContentInit {
 /// [demo](http://luisvt.github.io/ng2_strap/#tab)
 @Directive(selector: "bs-tabx")
 class BsTabxDirective {
+
+  BsTabxDirective(this._ref);
+
+  final ChangeDetectorRef _ref;
+
   @HostBinding("class.tab-pane")
   bool tabPane = true;
 
@@ -118,6 +123,7 @@ class BsTabxDirective {
   set active(bool active) {
     active ??= true;
     _active = active;
+    _ref.detectChanges();
     if (active) {
       _selectCtrl.add(this);
     } else {
