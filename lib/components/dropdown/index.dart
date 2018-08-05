@@ -1,7 +1,7 @@
 library bs_dropdown;
 
 import "package:angular/angular.dart";
-import 'package:node_shims/js.dart';
+import 'package:js_shims/js_shims.dart';
 import 'dart:html';
 import 'dart:async';
 

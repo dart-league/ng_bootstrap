@@ -5,7 +5,7 @@ import 'package:angular_forms/angular_forms.dart';
 import 'package:ng_bootstrap/components/pagination/pagination.dart';
 import 'package:ng_bootstrap/components/table/table_directives.dart';
 import 'package:ng_bootstrap/components/tabsx/tabsx.dart';
-import 'package:node_shims/js.dart';
+import 'package:js_shims/js_shims.dart';
 import 'table_data.dart';
 import 'table_data_complex.dart';
 export 'table_data_complex.dart';
@@ -35,7 +35,6 @@ class TableDemoComponent implements OnInit {
   bool selectable;
 
   List rowsComplex = [];
-
 
   String columnName = 'position';
 

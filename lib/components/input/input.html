@@ -2,6 +2,7 @@
   <label *ngIf="label != null && label.isNotEmpty"
          [attr.for]="eId"
          class="form-control-label"
+         [class.is-invalid]="!inputBox.valid"
   >{{label}}</label>
   <input [id]="eId"
          class="form-control"
@@ -13,7 +14,7 @@
          [maxlength]="maxlength"
          [class.is-invalid]="!inputBox.valid"
          [placeholder]="placeholder"
-         [bsPattern]="pattern"
+         [pattern]="pattern"
   />
   <ul *ngIf="!inputBox.valid" class="text-danger small fa-ul">
     <!-- TODO: add translations-->
