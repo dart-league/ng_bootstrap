@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import "package:node_shims/js.dart";
+import "package:js_shims/js_shims.dart";
 
 Document get _document => window.document;
 

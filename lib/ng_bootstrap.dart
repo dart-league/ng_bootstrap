@@ -18,9 +18,6 @@ import 'components/tabs/tabs.dart';
 import 'components/tabsx/tabsx.dart';
 import 'components/tooltip/tooltip.dart';
 import 'components/typeahead/typeahead.dart';
-import 'components/validators/max_length_validator.dart';
-import 'components/validators/min_length_validator.dart';
-import 'components/validators/pattern_validator.dart';
 
 export 'components/accordion/accordion.dart';
 export 'components/alert/alert.dart';
@@ -43,9 +40,6 @@ export 'components/tabs/tabs.dart';
 export 'components/tabsx/tabsx.dart';
 export 'components/tooltip/tooltip.dart';
 export 'components/typeahead/typeahead.dart';
-export 'components/validators/max_length_validator.dart';
-export 'components/validators/min_length_validator.dart';
-export 'components/validators/pattern_validator.dart';
 export 'core/position.dart';
 
 const bsDirectives = const [
@@ -76,10 +70,7 @@ const bsDirectives = const [
   BsDatePickerComponent,
   BsDatePickerPopupComponent,
   BsTypeAheadComponent,
-  BS_TABLE_DIRECTIVES,
-  BsMinLengthValidator,
-  BsMaxLengthValidator,
-  BsPatternValidator
+  BS_TABLE_DIRECTIVES
 ];
 
 @Deprecated('Renamed to "bsDirectives"')

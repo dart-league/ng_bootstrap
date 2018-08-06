@@ -57,13 +57,13 @@ abstract class _$EmployeeSerializable extends SerializableMap {
         ext = __value;
         return;
       case 'startDate':
-        startDate = __value;
+        startDate = fromSerializedDateTime(__value);
         return;
       case 'salary':
         salary = __value;
         return;
       case 'address':
-        address = __value;
+        address = fromSerialized(__value, () => new Address());
         return;
     }
     throwFieldNotFoundException(__key, 'Employee');
@@ -145,6 +145,7 @@ const EmployeeClassMirror =
   'salary',
   'address'
 ]);
+
 _Address__Constructor([positionalParams, namedParams]) => new Address();
 
 const $$Address_fields_street =

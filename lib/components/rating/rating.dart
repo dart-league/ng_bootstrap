@@ -1,7 +1,7 @@
 import 'dart:async';
 import "package:angular/angular.dart";
 import 'dart:html';
-import 'package:node_shims/js.dart';
+import 'package:js_shims/js_shims.dart';
 import 'package:angular_forms/angular_forms.dart';
 
 

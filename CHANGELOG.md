@@ -1,3 +1,8 @@
+## 1.0.0-beta+0
+
+- remove validators since angular ones accomplish the same
+- upgrade to `angular: 5.0.0-beta+3`
+
 ## 1.0.0-alpha+4
    
    - upgrade `angular` to `5.0.0-alpha+15`

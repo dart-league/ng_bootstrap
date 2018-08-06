@@ -1,15 +1,12 @@
 import 'package:angular/angular.dart';
 import 'package:angular/core.dart';
-import 'package:ng_bootstrap/components/validators/max_length_validator.dart';
-import 'package:ng_bootstrap/components/validators/min_length_validator.dart';
-import 'package:ng_bootstrap/components/validators/pattern_validator.dart';
 import 'package:angular_forms/angular_forms.dart';
 
 /// Provides an easy way to create an input element with built-in validation
 @Component(
     selector: 'bs-input',
     templateUrl: 'input.html',
-    directives: const [BsMinLengthValidator, BsMaxLengthValidator, BsPatternValidator, coreDirectives, formDirectives],
+    directives: const [coreDirectives, formDirectives],
     providers: const [const ExistingProvider.forToken(ngValueAccessor, BsInput),formDirectives]
 )
 class BsInput extends DefaultValueAccessor implements OnInit {
@@ -45,11 +42,12 @@ class BsInput extends DefaultValueAccessor implements OnInit {
   /// Validates if the value matches the [pattern]
   @Input() String pattern;
 
-  /// Message used when [bsPattern] fails
+  /// Message used when [pattern] fails
   @Input() String patternMessage;
 
   /// Text shown in the input box when the user has not been put any value.
   @Input() String placeholder;
+
   var _value;
 
   /// Gets the value of the element
@@ -76,7 +74,6 @@ class BsInput extends DefaultValueAccessor implements OnInit {
 
   @override
   void ngOnInit() {
-    print('pattern: $pattern');
   }
 
 

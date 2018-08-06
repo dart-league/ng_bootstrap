@@ -150,7 +150,7 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
 
   /// get the value of hours from template
   getHoursFromTemplate() {
-    var hours = int.parse(this.hours, onError: (_) => 0);
+    var hours = int.tryParse(this.hours) ?? 0;
     var valid = showMeridian ? (hours > 0 && hours < 13) : (hours >= 0 &&
         hours < 24);
     if (!valid) {
@@ -169,7 +169,7 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
 
   /// parse the minutes string from the template
   getMinutesFromTemplate() {
-    var _minutes = int.parse(minutes, onError: (_) => 0);
+    var _minutes = int.tryParse(minutes) ?? 0;
     return (_minutes >= 0 && _minutes < 60) ? _minutes : null;
   }
 
