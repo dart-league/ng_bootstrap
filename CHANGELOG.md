@@ -1,3 +1,9 @@
+## 1.0.0-beta+1
+
+- Add ability to edit table inline
+- upgrade dependencies to support dart-sdk `2.0.0`
+- move css from `file_upload_demo.html` to `file_upload_demo.scss`
+
 ## 1.0.0-beta+0
 
 - remove validators since angular ones accomplish the same

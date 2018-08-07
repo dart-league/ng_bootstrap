@@ -27,7 +27,7 @@
 <h4>Uncheckable Radio</h4>
 <pre class="card card-body card-title">{{uncheckableRadioModel}}</pre>
 <bs-button-group>
-  <bs-radio-button class="btn btn-success" [(ngModel)]="uncheckableRadioModel" option="Left">Left</bs-radio-button>
+  <bs-radio-button class="btn btn-success" [(ngModel)]="uncheckableRadioModel" option="Left" [uncheckable]="false">Left</bs-radio-button>
   <bs-radio-button class="btn btn-success" [(ngModel)]="uncheckableRadioModel" option="Middle" [uncheckable]="false">Middle</bs-radio-button>
   <bs-radio-button class="btn btn-success" [(ngModel)]="uncheckableRadioModel" option="Right" [uncheckable]="false">Right</bs-radio-button>
 </bs-button-group>

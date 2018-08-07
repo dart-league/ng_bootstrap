@@ -16,10 +16,11 @@ part of bs_table_directives;
 @Component(
     selector: 'bs-table',
     templateUrl: 'table_component.html',
-    directives: const [coreDirectives])
+    directives: const [coreDirectives, formDirectives, BsInput])
 class BsTableComponent {
   BsTableComponent() {
     pageNumberChange.listen(updatePage);
+    editing = new List.filled(itemsPerPage, false);
   }
 
   /// Saves the initial values coming from the html attribute
@@ -59,6 +60,8 @@ class BsTableComponent {
   /// Gets the current page number
   num get pageNumber => _pageNumber;
 
+  List<bool> editing;
+
   /// Sets the current page number
   @Input() set pageNumber(num pageNumber) {
     _pageNumber = pageNumber ?? 1;
@@ -80,6 +83,8 @@ class BsTableComponent {
   Set selectedRows = new Set();
 
   bool get isSelectedAll => rowsPage != null && selectedRows != null && rowsPage.length == selectedRows.length;
+
+  var _clonedRow = {};
 
   selectAll() {
     if (isSelectedAll)
@@ -151,6 +156,11 @@ class BsTableComponent {
     }
   }
 
+  _getDataFn(prev, String curr) =>
+      prev is Map
+      ? prev[curr]
+          : throw new Exception('Type of prev is not supported, please use a Map, SerializableMap or an String');
+
   /// Gets the data from the value of the row with the specified field name.
   /// If the fieldName contains `.` it splits the values and loops over the row
   /// fields until find the matching one. For example if user specifies:
@@ -167,9 +177,35 @@ class BsTableComponent {
   /// if the value of the row is a [Map], or `row.address.street` if the value of the row
   /// is a complex object.
   String getData(dynamic row, String fieldName) =>
-      fieldName.split('.').fold(row, (prev, String curr) =>
-      prev is Map
-          ? prev[curr]
-          : throw new Exception('Type of prev is not supported, please use a Map, SerializableMap or an String')
-      ).toString();
+      fieldName.split('.').fold(row, _getDataFn).toString();
+
+  void setData(dynamic row, String fieldName, dynamic value) {
+    if (fieldName.contains('.')) {
+      var names = fieldName.split('.');
+      var lastName = names.removeLast();
+      names.fold(row, _getDataFn)[lastName] = value;
+    } else {
+      row[fieldName] = value;
+    }
+  }
+
+  startEditingRow(dynamic row, int index) {
+    for(var column in columns) {
+      _clonedRow[column.fieldName] = getData(row, column.fieldName);
+    }
+    editing[index] = true;
+  }
+
+  saveRow(dynamic row, int index) {
+    editing[index] = false;
+    print('saving: $row');
+  }
+
+  cancelRow(dynamic row, int index, Event event) {
+    event.preventDefault();
+    for (var column in columns) {
+      setData(row, column.fieldName, _clonedRow[column.fieldName]);
+    }
+    editing[index] = false;
+  }
 }

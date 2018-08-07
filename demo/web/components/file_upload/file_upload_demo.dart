@@ -8,6 +8,7 @@ const URL = "https://evening-anchorage-3159.herokuapp.com/api/";
 
 @Component(selector: "file-upload-demo",
     templateUrl: 'file_upload_demo.html',
+    styleUrls: ['file_upload_demo.css'],
     directives: const [BS_FILE_UPLOAD_DIRECTIVES, BsProgressComponent, coreDirectives],
     pipes: const [DecimalPipe])
 class FileUploadDemoComponent {

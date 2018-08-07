@@ -11,31 +11,41 @@
     </label>
   </div>
   <bs-tabsx>
-    <bs-tabx header="Maps Data">
+    <bs-tabx header="Maps Data" style="overflow-x: auto;">
       <bs-table [rows]="rows"
                 [selectable]="selectable"
                 [(pageNumber)]="page"
                 [itemsPerPage]="itemsPerPage"
                 [sortable]="true"
-                [(totalItems)]="totalItems">
+                [(totalItems)]="totalItems"
+                style="min-width: 800px;">
         <bs-column header="Name" fieldName="name"></bs-column>
         <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
         <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
         <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
         <bs-column header="Start date" fieldName="startDate"></bs-column>
-        <bs-column header="Salary ($)" orderBy="salary" [ngStyle]="{width: '120px'}">
+        <bs-column header="Salary ($)" fieldName="salary" orderBy="salary" [ngStyle]="{width: '120px', flex: 'none'}">
           <template let-row>U$ {{row['salary']}}</template>
+          <template bs-column-editor let-row>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">U$</span>
+              </div>
+              <input class="form-control" type="number" [(ngModel)]="row['salary']">
+            </div>
+          </template>
         </bs-column>
-        <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px'}"></bs-column>
+        <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px', flex: 'none'}"></bs-column>
       </bs-table>
     </bs-tabx>
-    <bs-tabx header="Complex Objects Data">
+    <bs-tabx header="Complex Objects Data" style="overflow-x: auto;">
       <bs-table [rows]="rowsComplex"
                 [selectable]="selectable"
                 [(pageNumber)]="page"
                 [itemsPerPage]="itemsPerPage"
                 [sortable]="true"
-                [(totalItems)]="totalItems">
+                [(totalItems)]="totalItems"
+                style="min-width: 800px;">
         <bs-column header="Name" fieldName="name"></bs-column>
         <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
         <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
@@ -43,6 +53,14 @@
         <bs-column header="Start date" fieldName="startDate"></bs-column>
         <bs-column header="Salary ($)" orderBy="salary" [ngStyle]="{width: '120px'}">
           <template let-row>U$ {{row.salary}}</template>
+          <template bs-column-editor let-row>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">U$</span>
+              </div>
+              <input class="form-control" type="number" [(ngModel)]="row.salary">
+            </div>
+          </template>
         </bs-column>
         <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px'}"></bs-column>
       </bs-table>
