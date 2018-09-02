@@ -40,7 +40,7 @@ class BsTabsxComponents implements OnInit, AfterContentInit {
 
   @override
   ngAfterContentInit() {
-    activateTab(tabs[0]);
+    activateTab(tabs.firstWhere((tab) => tab.active == true,orElse: () => tabs[0]));
   }
 
   /// adds a new tab at the end
@@ -77,6 +77,11 @@ class BsTabsxComponents implements OnInit, AfterContentInit {
 /// [demo](http://luisvt.github.io/ng2_strap/#tab)
 @Directive(selector: "bs-tabx")
 class BsTabxDirective {
+
+  BsTabxDirective(this._ref);
+
+  final ChangeDetectorRef _ref;
+
   @HostBinding("class.tab-pane")
   bool tabPane = true;
 
@@ -117,7 +122,10 @@ class BsTabxDirective {
   @Input()
   set active(bool active) {
     active ??= true;
-    _active = active;
+    if(_active != active){
+      _active = active;
+      _ref.detectChanges();
+    }
     if (active) {
       _selectCtrl.add(this);
     } else {
