@@ -5,7 +5,7 @@ import 'package:angular_forms/angular_forms.dart';
 import 'package:ng_bootstrap/components/pagination/pagination.dart';
 import 'package:ng_bootstrap/components/table/table_directives.dart';
 import 'package:ng_bootstrap/components/tabsx/tabsx.dart';
-import 'package:node_shims/js.dart';
+import 'package:js_shims/js_shims.dart';
 import 'table_data.dart';
 import 'table_data_complex.dart';
 export 'table_data_complex.dart';
@@ -13,10 +13,10 @@ export 'table_data_complex.dart';
 @Component (selector: 'table-demo',
     templateUrl: 'table_demo.html',
     directives: const [
-      BS_TABLE_DIRECTIVES,
+      bsTableDirectives,
       BsPaginationComponent,
-      BS_TABSX_DIRECTIVES,
-      CORE_DIRECTIVES,
+      bsTabsxDirectives,
+      coreDirectives,
       formDirectives
     ])
 class TableDemoComponent implements OnInit {
@@ -30,43 +30,30 @@ class TableDemoComponent implements OnInit {
 
   num totalPages;
 
-  num length = 0;
-
-  Map config;
+  num totalItems = 0;
 
   bool selectable;
 
-  List data = tableData;
-
   List rowsComplex = [];
 
-  List<Employee> dataComplex = tableDataComplex;
-
-  TableDemoComponent() {
-    config = {
-      'paging': true,
-      'filtering': {
-        'filterString': '',
-        'columnName': 'position'
-      }
-    };
-  }
+  String columnName = 'position';
 
   void ngOnInit() {
     this.filterRows();
   }
 
-  void filterRows() {
-    if (falsey(config['filtering'])) {
-      rows = data.toList();
+  void filterRows([String filterString]) {
+    if (falsey(filterString)) {
+      rows = data;
+      rowsComplex = dataComplex;
     } else {
       rows = data.where((item) =>
-          (item[config['filtering']['columnName']] as String)
-              .contains(config['filtering']['filterString'])
+          (item[columnName] as String)
+              .contains(filterString)
       ).toList();
       rowsComplex = dataComplex.where((item) =>
-          (item[config['filtering']['columnName']] as String)
-              .contains(config['filtering']['filterString'])
+          (item[columnName] as String)
+              .contains(filterString)
       ).toList();
     }
   }

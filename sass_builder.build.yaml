@@ -1,0 +1,10 @@
+builders:
+  sass_builder:
+    target: "sass_builder"
+    import: "package:sass_builder/sass_builder.dart"
+    builder_factories: ["sassBuilder"]
+    auto_apply: dependents
+    build_extensions:
+      .scss: [".css"]
+      .sass: [".css"]
+    build_to: source

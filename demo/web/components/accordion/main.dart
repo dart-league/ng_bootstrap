@@ -1,6 +1,8 @@
 import 'package:angular/angular.dart';
-import 'accordion_demo.dart';
+
+// ignore: uri_has_not_been_generated
+import 'accordion_demo.template.dart' show AccordionDemoNgFactory;
 
 main() {
-  bootstrap(AccordionDemo);
+  runApp(AccordionDemoNgFactory);
 }

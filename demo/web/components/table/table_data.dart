@@ -1,4 +1,4 @@
-final List tableData = [
+final List data = [
   {
     'name': 'Victoria Cantrell',
     'position': 'Integer Corporation',

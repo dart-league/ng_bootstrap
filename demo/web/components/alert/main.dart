@@ -1,6 +1,8 @@
 import 'package:angular/angular.dart';
-import 'alert_demo.dart';
+
+// ignore: uri_has_not_been_generated
+import 'alert_demo.template.dart' show AlertDemoNgFactory;
 
 main() {
-  bootstrap(AlertDemo);
+  runApp(AlertDemoNgFactory);
 }

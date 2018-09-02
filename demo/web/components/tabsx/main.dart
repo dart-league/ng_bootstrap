@@ -1,6 +1,8 @@
 import 'package:angular/angular.dart';
-import 'tabsx_demo.dart';
+
+// ignore: uri_has_not_been_generated
+import 'tabsx_demo.template.dart' show TabsxDemoNgFactory;
 
 main() {
-  bootstrap(TabsxDemo);
+  runApp(TabsxDemoNgFactory);
 }

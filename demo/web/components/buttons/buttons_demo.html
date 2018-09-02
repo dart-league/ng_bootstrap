@@ -17,15 +17,17 @@
   <bs-toggle-button class="btn btn-primary" [(ngModel)]="checkModel['middle']">Middle</bs-toggle-button>
   <bs-toggle-button class="btn btn-primary" [(ngModel)]="checkModel['right']" >Right</bs-toggle-button>
 </bs-button-group>
-<h4>Radio &amp; Uncheckable Radio</h4>
+<h4>Radio</h4>
 <pre class="card card-body card-title">{{radioModel}}</pre>
 <bs-button-group>
   <bs-radio-button class="btn btn-primary" [(ngModel)]="radioModel" option="Left">Left</bs-radio-button>
   <bs-radio-button class="btn btn-primary" [(ngModel)]="radioModel" option="Middle">Middle</bs-radio-button>
   <bs-radio-button class="btn btn-primary" [(ngModel)]="radioModel" option="Right">Right</bs-radio-button>
 </bs-button-group>
+<h4>Uncheckable Radio</h4>
+<pre class="card card-body card-title">{{uncheckableRadioModel}}</pre>
 <bs-button-group>
-  <bs-radio-button class="btn btn-success" [(ngModel)]="radioModel" option="Left" [uncheckable]="false">Left</bs-radio-button>
-  <bs-radio-button class="btn btn-success" [(ngModel)]="radioModel" option="Middle" [uncheckable]="false">Middle</bs-radio-button>
-  <bs-radio-button class="btn btn-success" [(ngModel)]="radioModel" option="Right" [uncheckable]="false">Right</bs-radio-button>
+  <bs-radio-button class="btn btn-success" [(ngModel)]="uncheckableRadioModel" option="Left" [uncheckable]="false">Left</bs-radio-button>
+  <bs-radio-button class="btn btn-success" [(ngModel)]="uncheckableRadioModel" option="Middle" [uncheckable]="false">Middle</bs-radio-button>
+  <bs-radio-button class="btn btn-success" [(ngModel)]="uncheckableRadioModel" option="Right" [uncheckable]="false">Right</bs-radio-button>
 </bs-button-group>

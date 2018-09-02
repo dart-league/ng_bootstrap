@@ -14,10 +14,10 @@ DateTime addMinutes(DateTime time, int minutes) => time.add(new Duration(minutes
 
 /// A lightweight & configurable timepicker directive
 ///
-/// [demo](http://luisvt.github.io/ng2_strap/#timepicker)
+/// [demo](http://dart-league.github.io/ng_bootstrap/#timepicker)
 @Component (selector: "bs-time-picker",
     templateUrl: 'timepicker.html',
-    directives: const [CORE_DIRECTIVES, formDirectives])
+    directives: const [coreDirectives, formDirectives])
 class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   ///
   BsTimePickerComponent(this.cd, HtmlElement elementRef)
@@ -150,7 +150,7 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
 
   /// get the value of hours from template
   getHoursFromTemplate() {
-    var hours = int.parse(this.hours, onError: (_) => 0);
+    var hours = int.tryParse(this.hours) ?? 0;
     var valid = showMeridian ? (hours > 0 && hours < 13) : (hours >= 0 &&
         hours < 24);
     if (!valid) {
@@ -169,7 +169,7 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
 
   /// parse the minutes string from the template
   getMinutesFromTemplate() {
-    var _minutes = int.parse(minutes, onError: (_) => 0);
+    var _minutes = int.tryParse(minutes) ?? 0;
     return (_minutes >= 0 && _minutes < 60) ? _minutes : null;
   }
 

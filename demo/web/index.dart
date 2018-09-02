@@ -1,7 +1,7 @@
 library ngbs.index;
 
 import "package:angular/angular.dart";
-import 'package:built_mirrors/built_mirrors.dart';
+import 'package:dson/dson.dart';
 
 import 'components/accordion/accordion_demo.dart';
 import 'components/alert/alert_demo.dart';
@@ -26,6 +26,9 @@ import 'components/tabsx/tabsx_demo.dart';
 import 'components/timepicker/timepicker_demo.dart';
 import 'components/tooltip/tooltip_demo.dart';
 import 'components/typeahead/typeahead_demo.dart';
+
+// ignore: uri_has_not_been_generated
+import 'index.template.dart' show DemoComponentNgFactory;
 
 part 'index.g.dart';
 
@@ -57,9 +60,9 @@ part 'index.g.dart';
       TooltipDemo,
       TypeaheadDemo
     ])
-class Demo {}
+class DemoComponent {}
 
 main() {
   _initMirrors();
-  bootstrap(Demo);
+  runApp(DemoComponentNgFactory);
 }

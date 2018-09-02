@@ -4,7 +4,7 @@ import 'dart:html';
 
 @Component(selector: "dropdown-demo",
     templateUrl: 'dropdown_demo.html',
-    directives: const [BS_DIRECTIVES, CORE_DIRECTIVES])
+    directives: const [bsDropdownDirectives, coreDirectives])
 class DropdownDemo {
   bool disabled = false;
   Map status = {"isopen": false};

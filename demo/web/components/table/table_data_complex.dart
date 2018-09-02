@@ -20,7 +20,7 @@ class Address extends _$AddressSerializable {
   String street;
 }
 
-List<Employee> tableDataComplex = [
+final List<Employee> dataComplex = [
   new Employee()
     ..name = 'Victoria Cantrell'
     ..position = 'Integer Corporation'

@@ -4,7 +4,7 @@ import 'package:ng_bootstrap/components/accordion/accordion.dart';
 
 @Component(selector: "accordion-demo",
     templateUrl: "accordion_demo.html",
-    directives: const [NG_BOOTSTRAP_ACCORDION_DIRECTIVES, CORE_DIRECTIVES, formDirectives])
+    directives: const [bsAccordionDirectives, coreDirectives, formDirectives])
 class AccordionDemo {
   bool oneAtATime = true;
 

@@ -5,7 +5,7 @@ import 'package:ng_bootstrap/ng_bootstrap.dart';
 
 @Component (selector: "prompt-demo",
     templateUrl: "prompt_demo.html",
-    directives: const [BsProgressComponent, CORE_DIRECTIVES],
+    directives: const [BsProgressComponent, coreDirectives],
     providers: const [BsPromptService])
 class PromptDemo {
 

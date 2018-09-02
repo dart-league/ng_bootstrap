@@ -3,11 +3,10 @@
 part of table.main;
 
 // **************************************************************************
-// Generator: InitMirrorsGenerator
+// InitMirrorsGenerator
 // **************************************************************************
 
 _initMirrors() {
   initClassMirrors(
       {Employee: EmployeeClassMirror, Address: AddressClassMirror});
-  initFunctionMirrors({});
 }

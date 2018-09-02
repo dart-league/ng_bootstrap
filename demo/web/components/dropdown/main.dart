@@ -1,6 +1,8 @@
 import 'package:angular/angular.dart';
-import 'dropdown_demo.dart';
+
+// ignore: uri_has_not_been_generated
+import 'dropdown_demo.template.dart' show DropdownDemoNgFactory;
 
 main() {
-  bootstrap(DropdownDemo);
+  runApp(DropdownDemoNgFactory);
 }

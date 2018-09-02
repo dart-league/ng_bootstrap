@@ -14,11 +14,7 @@ import "package:angular/angular.dart";
     </button>
     <ng-content></ng-content>
     ''',
-    host: const {
-      'class': 'alert',
-      'role': 'alert'
-    },
-    directives: const [CORE_DIRECTIVES])
+    directives: const [coreDirectives])
 class BsAlertComponent implements OnInit {
   /// provides the element reference to get native element
   HtmlElement _elementRef;
@@ -51,8 +47,14 @@ class BsAlertComponent implements OnInit {
   @HostBinding('class.alert-warning')
   bool get isWarning => type == 'warning';
 
+  @HostBinding('class.alert')
+  bool get isAlert => true;
+
   @HostBinding('class.alert-danger')
   bool get isDanger => type == 'danger';
+
+  @HostBinding('attr.role')
+  String get role => 'alert';
 
   bool get hasTimeout => timeout != null;
 

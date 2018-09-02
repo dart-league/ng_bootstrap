@@ -1,6 +1,5 @@
 bs-popover {
   @extend .popover;
-  opacity: 0.01;
   color: initial;
 
   &.bs-popover-top .arrow, &.bs-popover-bottom .arrow {

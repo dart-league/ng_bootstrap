@@ -1,10 +1,13 @@
 import "package:angular/angular.dart";
 
-import "package:node_shims/js.dart";
+import "package:js_shims/js_shims.dart";
 import 'dart:async';
 
 /// List of Directives needed to create a carousel
-const NG_BOOTSTRAP_CAROUSEL_DIRECTIVES = const [BsCarouselComponent, BsSlideComponent];
+const bsCarouselComponents = const [BsCarouselComponent, BsSlideComponent];
+
+@Deprecated('Renamed to "bsCarouselComponents"')
+const NG_BOOTSTRAP_CAROUSEL_DIRECTIVES = bsCarouselComponents;
 
 /// Provides the direction of the Carousel
 enum Direction { UNKNOWN, NEXT, PREV }
@@ -15,12 +18,9 @@ enum Direction { UNKNOWN, NEXT, PREV }
 /// Base specifications: [bootstrap 3](http://getbootstrap.com/javascript/#carousel) or
 /// [bootstrap 4](http://v4-alpha.getbootstrap.com/components/carousel/)
 ///
-/// [demo](http://luisvt.github.io/ng2_strap/#carousel)
-@Component(selector: "bs-carousel",
-    templateUrl: 'carousel.html',
-    directives: const [CORE_DIRECTIVES])
-class BsCarouselComponent implements OnDestroy {
-
+/// [demo](http://dart-league.github.io/ng_bootstrap/#carousel)
+@Component(selector: "bs-carousel", templateUrl: 'carousel.html', directives: const [coreDirectives])
+class BsCarouselComponent implements OnDestroy, AfterContentInit {
   /// if `true` will disable pausing on carousel mouse hover
   @Input() bool noPause = false;
 
@@ -31,6 +31,7 @@ class BsCarouselComponent implements OnDestroy {
   @Input() bool noTransition;
 
   /// provides the slides of the carousel
+  @ContentChildren(BsSlideComponent)
   List<BsSlideComponent> slides = [];
 
   /// the interval of time of the current slide
@@ -47,6 +48,11 @@ class BsCarouselComponent implements OnDestroy {
 
   /// amount of time in milliseconds to delay between automatically cycling an item. If `false`, carousel will not automatically cycle
   @Input() num interval;
+
+  @override
+  ngAfterContentInit() {
+    play();
+  }
 
   /// Listen when the Carousel is destroyed
   ngOnDestroy() {
@@ -65,7 +71,7 @@ class BsCarouselComponent implements OnDestroy {
     }
   }
 
-  /// go to next slide after beeing selected
+  /// go to next slide after being selected
   goNext(BsSlideComponent slide, Direction direction) {
     if (destroyed) {
       return;
@@ -85,8 +91,8 @@ class BsCarouselComponent implements OnDestroy {
   getSlideByIndex(num index) {
     var len = slides.length;
     for (var i = 0; i < len; ++i) {
-      if (identical(slides [ i ].index, index)) {
-        return slides [ i ];
+      if (identical(slides[i].index, index)) {
+        return slides[i];
       }
     }
   }
@@ -108,9 +114,7 @@ class BsCarouselComponent implements OnDestroy {
 
   /// listen when a user wants to go to a previous slide
   prev() {
-    var newIndex = getCurrentIndex() - 1 < 0
-        ? slides.length - 1
-        : getCurrentIndex() - 1;
+    var newIndex = getCurrentIndex() - 1 < 0 ? slides.length - 1 : getCurrentIndex() - 1;
     if (noWrap && identical(newIndex, slides.length - 1)) {
       pause();
       return null;
@@ -122,11 +126,10 @@ class BsCarouselComponent implements OnDestroy {
   restartTimer() {
     resetTimer();
     var intervalAux = interval.toInt();
-    if (intervalAux != double.NAN && intervalAux > 0) {
+    if (intervalAux != double.nan && intervalAux > 0) {
       currentInterval = new Timer(new Duration(milliseconds: intervalAux), () {
         var nInterval = interval;
-        if (isPlaying && intervalAux != double.NAN && nInterval > 0 &&
-            truthy(slides.length)) {
+        if (isPlaying && intervalAux != double.nan && nInterval > 0 && truthy(slides.length)) {
           next();
         } else {
           pause();
@@ -162,15 +165,7 @@ class BsCarouselComponent implements OnDestroy {
   /// add an slide to the carousel
   addSlide(BsSlideComponent slide) {
     slide.index = slides.length;
-    push(slides, slide);
-    if (identical(slides.length, 1) || slide.active) {
-      select(slides [ slides.length - 1 ]);
-      if (identical(slides.length, 1)) {
-        play();
-      }
-    } else {
-      slide.active = false;
-    }
+    slides.add(slide);
   }
 
   /// removes an slide to the carousel
@@ -180,36 +175,31 @@ class BsCarouselComponent implements OnDestroy {
       currentSlide = null;
       return;
     }
-    for (var i = 0; i < slides.length; i ++) {
-      slides [ i ].index = i;
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].index = i;
     }
   }
 }
 
 /// Creates the slide element that will be displayed in the carousel
 ///
-/// [demo](http://luisvt.github.io/ng2_strap/#carousel)
-@Component (selector: "bs-slide",
-    host: const {
-      "[class.active]" : "active",
-      "[class.item]" : "true",
-      "[class.carousel-item]" : "true"
-    },
+/// [demo](http://dart-league.github.io/ng_bootstrap/#carousel)
+@Component(
+    selector: "bs-slide",
     template: '''
-  <div [ngClass]="{active: active}" class="item text-center">
+  <div class="text-center">
     <ng-content></ng-content>
   </div>
-  ''', directives: const [NgClass])
-class BsSlideComponent implements OnInit, OnDestroy {
+  ''',
+    directives: const [NgClass])
+class BsSlideComponent {
   /// Constructs a new slide injecting the parent carousel
-  BsSlideComponent(this.carousel);
-
-  /// parent carousel
-  BsCarouselComponent carousel;
+  BsSlideComponent();
 
   /// if `true` the slide is been showed
   @Input()
-  bool active;
+  @HostBinding('class.active')
+  bool active = false;
 
   /// provides the direction of the slides
   @Input()
@@ -218,14 +208,4 @@ class BsSlideComponent implements OnInit, OnDestroy {
   /// provides the position of the slide
   @Input()
   num index;
-
-  /// add slide to the parent carousel on init
-  ngOnInit() {
-    carousel.addSlide(this);
-  }
-
-  /// removes the slide from the parent carousel on destroy
-  ngOnDestroy() {
-    carousel.removeSlide(this);
-  }
 }

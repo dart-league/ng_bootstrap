@@ -6,7 +6,7 @@
           (close)="onModalClose($event)">
   Do you want to save?
   <footer style="display: inline-block;">
-    <button class="btn btn-danger" type="button">Destroy</button>
+    <button class="btn btn-danger" type="button" (click)="myModal.hide()">Destroy</button>
   </footer>
 </bs-modal>
 <button class="btn btn-primary" (click)="myModal.show()">Show Modal</button>

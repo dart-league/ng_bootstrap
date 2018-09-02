@@ -17,7 +17,7 @@ class PaginationDemo {
     currentPage = pageNo;
   }
 
-  void pageChanged() {
-    print("Page changed to: $currentPage");
-  }
+//  void pageChanged() {
+//    print("Page changed to: $currentPage");
+//  }
 }

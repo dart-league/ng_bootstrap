@@ -3,10 +3,9 @@
 part of typeahead.main;
 
 // **************************************************************************
-// Generator: InitMirrorsGenerator
+// InitMirrorsGenerator
 // **************************************************************************
 
 _initMirrors() {
   initClassMirrors({State: StateClassMirror});
-  initFunctionMirrors({});
 }

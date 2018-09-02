@@ -9,11 +9,11 @@ const NG_BOOTSTRAP_TABS_DIRECTIVES = const [BsTabComponent, BsTabsComponent, BsT
 @Component (
     selector: "bs-tabs",
     templateUrl: 'tabs.html',
-    directives: const [CORE_DIRECTIVES])
+    directives: const [coreDirectives])
 class BsTabsComponent implements AfterContentInit{
   /// children tabs
   @ContentChildren(BsTabComponent)
-  QueryList<BsTabComponent> tabs;
+  List<BsTabComponent> tabs;
 
   final _onTabChangeCtrl = new StreamController<BsTabComponent>.broadcast();
 
@@ -64,14 +64,14 @@ class BsTabComponent {
 @Component(
     selector: 'bs-tab-content',
     template: '<template [ngTemplateOutlet]="current.templateRef"></template>',
-    directives: const [CORE_DIRECTIVES])
+    directives: const [coreDirectives])
 class BsTabContentComponent implements AfterContentInit {
   /// [BsTabsComponent] target the this content is listening to
   @Input('for') BsTabsComponent target;
 
   /// displayed panels
   @ContentChildren(BsTabPanelDirective)
-  QueryList<BsTabPanelDirective> panels;
+  List<BsTabPanelDirective> panels;
 
   BsTabPanelDirective _current;
 

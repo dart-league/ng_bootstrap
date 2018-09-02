@@ -3,27 +3,24 @@ import 'dart:html';
 
 import "package:angular/angular.dart";
 import 'package:ng_bootstrap/components/dropdown/index.dart';
-import 'package:node_shims/js.dart';
 import 'package:stream_transform/stream_transform.dart';
 import 'package:ng_bootstrap/components/button/toggle.dart';
-import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart';
 import 'package:angular_forms/angular_forms.dart';
 
 // todo: options loading by http not yet implemented
 /// Creates a type-ahead component
 ///
-/// [demo](http://luisvt.github.io/ng2_strap/#typeahed)
+/// [demo](http://dart-league.github.io/ng_bootstrap/#typeahed)
 @Component(
     selector: "bs-typeahead",
     templateUrl: 'typeahead.html',
     directives: const [
-      NG_BOOTSTRAP_DROPDOWN_DIRECTIVES,
+      bsDropdownDirectives,
       BsToggleButtonDirective,
-      BsTemplateOutletDirective,
-      CORE_DIRECTIVES,
+      coreDirectives,
       formDirectives
     ])
-class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
+class BsTypeAheadComponent extends DefaultValueAccessor {
 
   /// binds to string user's input
   NgModel ngModel;
@@ -124,27 +121,22 @@ class BsTypeAheadComponent extends DefaultValueAccessor implements OnInit {
         });
   }
 
-  @override
-  ngOnInit() async {
-    ngModel.model = or(ngModel.model, '');
-  }
-
   void processMatchesIfNotOpen() {
     if (!isOpen) processMatches();
   }
 
   /// process the elements that matches the entered query
-  void processMatches() {
+  void processMatches([String value = '']) {
     isOpen = true;
     _noResultsCtrl.add(noResultsVal = false);
-    if (ngModel.model.length >= minLength) {
+    if (value.length >= minLength) {
       // if source is function we should retrieve the results asynchronously
       if (source is Function) {
         _loadingCtrl.add(loadingVal = true);
         matches.clear();
-        _queryStreamCtrl.add(ngModel.model);
+        _queryStreamCtrl.add(value);
       } else if (source is Iterable) {
-        var query = new RegExp(ngModel.model, caseSensitive: false);
+        var query = new RegExp(value, caseSensitive: false);
         matches = source.where((item) => query.hasMatch(_itemString(item))).take(optionsLimit).toList();
       }
     } else {

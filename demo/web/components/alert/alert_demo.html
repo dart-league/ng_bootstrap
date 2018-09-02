@@ -2,10 +2,8 @@
 <bs-alert type="info">This alert is info</bs-alert>
 
 <bs-alert *ngFor="let alert of alerts; let i = index" [type]="alert['type']" (close)="closeAlert(i)"
-           [dismissible]="alert['dismissible']">
+           [dismissible]="alert['dismissible']" [timeout]="alert['timeout']">
   {{ alert['msg'] }}
 </bs-alert>
-
-<bs-alert [timeout]="3000">This alert will dismiss in 3s</bs-alert>
 
 <button type="button" class='btn btn-primary' (click)="addAlert()">Add Alert</button>

@@ -1,6 +1,8 @@
 import 'package:angular/angular.dart';
-import 'datepicker_demo.dart';
+
+// ignore: uri_has_not_been_generated
+import 'datepicker_demo.template.dart' show DatepickerDemoNgFactory;
 
 main() {
-  bootstrap(DatepickerDemo);
+  runApp(DatepickerDemoNgFactory);
 }

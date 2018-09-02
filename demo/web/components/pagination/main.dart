@@ -1,6 +1,8 @@
 import 'package:angular/angular.dart';
-import 'pagination_demo.dart';
+
+// ignore: uri_has_not_been_generated
+import 'pagination_demo.template.dart' show PaginationDemoNgFactory;
 
 main() {
-  bootstrap(PaginationDemo);
+  runApp(PaginationDemoNgFactory);
 }

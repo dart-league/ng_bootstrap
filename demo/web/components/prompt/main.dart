@@ -1,6 +1,8 @@
 import 'package:angular/angular.dart';
-import 'prompt_demo.dart';
+
+// ignore: uri_has_not_been_generated
+import 'prompt_demo.template.dart' show PromptDemoNgFactory;
 
 main() {
-  bootstrap(PromptDemo);
+  runApp(PromptDemoNgFactory);
 }

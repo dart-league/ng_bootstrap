@@ -3,27 +3,33 @@
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:html';
 import 'package:angular/angular.dart';
 
 /// Shows a bootstrap modal dialog.
-/// Set the body of the dialog by adding content to the modal tag: <modal>content here</modal>.
+/// Set the body of the dialog by adding content to the modal tag:
+///
+///     <bs-modal>content here</bs-modal>
+///
 @Component(
     selector: 'bs-modal',
     templateUrl: 'modal.html',
-    directives: const [CORE_DIRECTIVES])
+    directives: const [coreDirectives])
 class BsModalComponent {
 
   @Input() String header;
   String content;
   List<BsModalButton> _buttons;
 
+  BsModalComponent(this._loader);
+
   List<BsModalButton> get buttons => _buttons;
 
   bool loading = false;
 
   @Input() void set buttons(List/* <BsModalButton | Map> */ buttons) {
-    _buttons = buttons.map((button) =>
-      button is Map
+    _buttons = buttons.map<BsModalButton>((button) =>
+    button is Map
         ? new BsModalButton(
             button['label'],
             id: button['id'],
@@ -32,6 +38,29 @@ class BsModalComponent {
         : button
     ).toList();
   }
+
+  final ComponentLoader _loader;
+
+  @ViewChild('contentRef', read: ViewContainerRef)
+  ViewContainerRef contentRef;
+
+  ComponentRef _component;
+
+  /// Adds a component to the modal
+  ///
+  /// Creates a modal with the reference [contentRef], if a [_component] already
+  /// exist it will be destroyed to avoid creating components
+  @Input()
+  set component(ComponentFactory component){
+    if(component!=null){
+      if(_component != null){
+        _component.destroy();
+      }
+      _component = _loader.loadNextToLocation(component, contentRef);
+    }
+  }
+
+  ComponentRef get componentRef => _component;
 
   /// Fires an event when the modal is closed. The argument indicated how it was closed.
   /// @type {EventEmitter<ModalResult>}
@@ -42,15 +71,17 @@ class BsModalComponent {
   bool showModal = false;
 
   /// Shows the modal. There is no method for hiding. This is done using actions of the modal itself.
-  show() {
+  void show() {
     showModal = true;
+    document.body.classes.add('modal-open');
   }
 
-  hide([BsModalButton button]) async {
+  Future<bool> hide([BsModalButton button]) async {
     loading = true;
     _closeCtrl.add(await button?.onClick?.call());
     showModal = false;
     loading = false;
+    document.body.classes.remove('modal-open');
     return false;
   }
 }

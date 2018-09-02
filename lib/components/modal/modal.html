@@ -3,8 +3,9 @@
 <div class="modal"
      tabindex="-1"
      role="dialog"
-     [style.display]="showModal ? 'block' : 'none'">
-  <div class="modal-dialog">
+     [style.display]="showModal ? 'block' : 'none'"
+     (click)="hide()">
+  <div class="modal-dialog" (click)="$event.stopPropagation()">
     <div class="modal-content">
       <div class="modal-header" *ngIf="header != null">
         <h4 class="modal-title">
@@ -21,6 +22,7 @@
       <div class="modal-body">
         {{content}}
         <ng-content></ng-content>
+        <template #contentRef></template>
       </div>
       <div class="modal-footer">
         <ng-content select="footer"></ng-content>

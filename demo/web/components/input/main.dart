@@ -1,6 +1,8 @@
 import 'package:angular/angular.dart';
-import 'input_demo.dart';
+
+// ignore: uri_has_not_been_generated
+import 'input_demo.template.dart' show InputDemoNgFactory;
 
 main() {
-  bootstrap(InputDemo);
+  runApp(InputDemoNgFactory);
 }

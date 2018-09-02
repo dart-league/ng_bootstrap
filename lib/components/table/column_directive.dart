@@ -17,10 +17,22 @@ class BsColumnDirective {
   /// Value displayed in the column header
   @Input() String header;
 
+  /// name of field or function used to sort this column
   @Input() var/*String | Function*/ orderBy;
 
+  /// style of the column
+  ///
+  ///     <bs-column ngStyle="{width: '120px', flex: 'none'}"></bs-column>
   @Input() Map<String, String> ngStyle;
+
+  /// class of the column
+  ///
+  ///     <bs-column ngClass="bg-red"></bs-column>
+  @Input() var ngClass;
 
   @ContentChild(TemplateRef)
   TemplateRef templateRef;
+
+  @ContentChild(BsColumnEditorDirective)
+  BsColumnEditorDirective editor;
 }

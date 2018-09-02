@@ -13,8 +13,7 @@ Selected Item: {{selectedItem}}</pre>
     <label>Select State</label>
     <bs-typeahead [(ngModel)]="selected"
                   [source]="statesComplex"
-                  [(selectedItem)]="selectedItem"
-                  (selectedItemChange)="typeaheadOnSelect($event)"
+                  (selectedItemChange)="typeaheadOnSelect(selectedItem = $event)"
                   optionField="name">
       <!-- You can also use custom templates -->
       <!--<template let-item>{{item['name']}}</template>-->
@@ -27,8 +26,7 @@ Selected Item: {{selectedItemObj}}</pre>
 
   <bs-typeahead [(ngModel)]="selectedObj"
                 [source]="statesObj"
-                [(selectedItem)]="selectedItemObj"
-                (selectedItemChange)="typeaheadOnSelect($event)"
+                (selectedItemChange)="typeaheadOnSelect(selectedItemObj = $event)"
                 optionField="name">
     <!-- You can also use custom templates -->
     <!--<template let-item>{{item.name}}</template>-->
@@ -45,9 +43,8 @@ Selected Item: {{selectedItemAsync}}</pre>
   </div>
   <bs-typeahead [(ngModel)]="selectedAsync"
                 [source]="getAsyncData"
-                [(selectedItem)]="selectedItemAsync"
                 (loading)="changeTypeaheadLoading($event)"
                 (noResults)="changeTypeaheadNoResults($event)"
-                (select)="typeaheadOnSelect($event)"
+                (selectedItemChange)="typeaheadOnSelect(selectedItemAsync = $event)"
                 placeholder="Locations loaded with timeout"></bs-typeahead>
 </div>

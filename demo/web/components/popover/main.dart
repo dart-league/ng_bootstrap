@@ -1,6 +1,8 @@
 import 'package:angular/angular.dart';
-import 'popover_demo.dart';
+
+// ignore: uri_has_not_been_generated
+import 'popover_demo.template.dart' show PopoverDemoNgFactory;
 
 main() {
-  bootstrap(PopoverDemo);
+  runApp(PopoverDemoNgFactory);
 }

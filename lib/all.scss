@@ -1,5 +1,8 @@
 $fa-font-path:        "../../packages/font_awesome/fonts" !default;
 
+// TODO: remove when issue #23329 gets solved
+$dropdown-link-hover-bg: #e9ecef !default;
+
 //noinspection CssUnknownTarget
 @import "package:bootstrap_sass/scss/bootstrap";
 //noinspection CssUnknownTarget
@@ -13,3 +16,6 @@ $fa-font-path:        "../../packages/font_awesome/fonts" !default;
 @import "components/typeahead/typeahead";
 @import "components/datepicker/date_picker";
 @import "components/popover/popover";
+@import "components/carousel/carousel";
+@import "components/table/table";
+@import "components/tabsx/tabsx";

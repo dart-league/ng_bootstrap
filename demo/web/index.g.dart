@@ -3,7 +3,7 @@
 part of ngbs.index;
 
 // **************************************************************************
-// Generator: InitMirrorsGenerator
+// InitMirrorsGenerator
 // **************************************************************************
 
 _initMirrors() {
@@ -12,5 +12,4 @@ _initMirrors() {
     Employee: EmployeeClassMirror,
     Address: AddressClassMirror
   });
-  initFunctionMirrors({});
 }

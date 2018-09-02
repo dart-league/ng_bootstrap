@@ -8,13 +8,13 @@ String _defaultLocale = 'en_US';
 @Component (selector: "bs-date-picker-popup",
     templateUrl: 'date_picker_popup.html',
     directives: const [
-      NG_BOOTSTRAP_DROPDOWN_DIRECTIVES,
+      bsDropdownDirectives,
       BsDatePickerComponent,
       BsToggleButtonDirective,
-      CORE_DIRECTIVES,
+      coreDirectives,
       formDirectives
     ],
-    pipes: const [COMMON_PIPES]
+    pipes: const [commonPipes]
 )
 class BsDatePickerPopupComponent extends BsDatePickerBase {
   /// Constructs a DatePickerPopup
@@ -52,7 +52,7 @@ class BsDatePickerPopupComponent extends BsDatePickerBase {
   valueChanged(value) {
     var df = new DateFormat(format, locale);
     try {
-      ngModel.model = df.parse(value);
+      ngModel.viewToModelUpdate(df.parse(value));
     } catch (e) {
       print(e);
     }

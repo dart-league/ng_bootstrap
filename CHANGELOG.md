@@ -1,7 +1,62 @@
+## 1.0.0
+
+- Add `ngClass` to `bs-column`
+- rename `constants` to camelcase
+- fix  `bsTable`
+- add vertical tabs support to `bs-tabsx`
+- `bs-progress` is resizeable
+- fix bug on active tab not set correctly (fix #19)
+
+## 1.0.0-beta+1
+
+- Add ability to edit table inline
+- upgrade dependencies to support dart-sdk `2.0.0`
+- move css from `file_upload_demo.html` to `file_upload_demo.scss`
+
+## 1.0.0-beta+0
+
+- remove validators since angular ones accomplish the same
+- upgrade to `angular: 5.0.0-beta+3`
+
+## 1.0.0-alpha+4
+   
+   - upgrade `angular` to `5.0.0-alpha+15`
+   - upgrade `angular_forms` to `2.0.0-alpha+7`
+   - enhance `bs-inputs`
+
+## 1.0.0-alpha+3
+
+- upgrade `angular` to `5.0.0-alpha+13`
+- upgrade `angular_forms` to `2.0.0-alpha+5`
+
+## 1.0.0-alpha+2
+
+- upgrade `angular` to `^5.0.0-alpha+2`
+- upgrade `stream_transform` to `^0.0.11`
+- change `bootstrapStatic` by `runApp`
+- fixes #103
+- fixes #104
+- fixes #105
+
+## 1.0.0-alpha+1
+
+- upgrade `angular` to version `5.0.0-alpha+9`
+- upgrade `bootstrap_sass` to version `4.0.0`
+- add class `modal-open` to `body` when modal is open
+- add `$dropdown-link-hover-bg: #e9ecef !default;` to make background color of dropdown links darker
+
+## 1.0.0-alpha
+
+- upgrade `angular` to version `5.0.0-alpha+7`
+- upgrade `build_runner` to version `^0.7.0`
+- fix bug in `bs-rating` component
+- fix bug in `progress` caused by adding `bootstrap@^4.0.0-beta`
+- add ability to create components inside modal
+
 ## 0.9.2
    
-   - add `bsPattern` to `bsInput`
-   - add ability to override error messages to `bsInput`
+- add `bsPattern` to `bsInput`
+- add ability to override error messages to `bsInput`
 
 ## 0.9.1
 
