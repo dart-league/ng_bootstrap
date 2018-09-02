@@ -1,12 +1,15 @@
-import 'package:angular/angular.dart';
+import 'dart:async';
 import 'dart:html';
+
+import 'package:angular/angular.dart';
 
 /// Creates a progress component
 ///
 /// Base specifications: [bootstrap 4](http://v4-alpha.getbootstrap.com/components/progress/)
 ///
 /// [demo](http://dart-league.github.io/ng_bootstrap/build/web/#progress)
-@Component(selector: 'bs-progress',
+@Component(
+    selector: 'bs-progress',
     template: '''
 <div class="progress-bar"
      role="progressbar"
@@ -21,16 +24,18 @@ import 'dart:html';
 </div>
 <template [ngTemplateOutlet]="labelTemplate" [ngTemplateOutletContext]="{\$implicit: percentage}"></template>''',
     directives: const [coreDirectives])
-class BsProgressComponent implements OnInit {
-
+class BsProgressComponent implements OnInit, OnDestroy {
   /// if `true` changing `value` of progress bar will be animated (*note*: not supported by Bootstrap 4)
-  @Input() bool animate = true;
+  @Input()
+  bool animate = true;
 
   /// maximum value of the bar
-  @Input() num max;
+  @Input()
+  num max;
 
   /// value of the progress bar
-  @Input() num value;
+  @Input()
+  num value;
 
   String get percentage => (value / max * 100).toString() + '%';
 
@@ -42,6 +47,8 @@ class BsProgressComponent implements OnInit {
 
   HtmlElement _elementRef;
 
+  Timer _resizeTimer;
+
   BsProgressComponent(this._elementRef);
 
   /// initialize the attributes
@@ -51,8 +58,15 @@ class BsProgressComponent implements OnInit {
     Element nativeElement = _elementRef;
     elementWidth = nativeElement.getComputedStyle().width;
     // TODO: change this event something else
-    window.onResize.listen((e) {
-      elementWidth = nativeElement.getComputedStyle().width;
-    });
+//    window.onResize.listen((e) {
+//      elementWidth = nativeElement.getComputedStyle().width;
+//    });
+    _resizeTimer =
+        Timer.periodic(Duration(milliseconds: 100), (_) => elementWidth = nativeElement.getComputedStyle().width);
+  }
+
+  @override
+  void ngOnDestroy() {
+    _resizeTimer.cancel();
   }
 }

@@ -10,7 +10,7 @@ import 'package:angular_forms/angular_forms.dart';
 // todo: options loading by http not yet implemented
 /// Creates a type-ahead component
 ///
-/// [demo](http://luisvt.github.io/ng2_strap/#typeahed)
+/// [demo](http://dart-league.github.io/ng_bootstrap/#typeahed)
 @Component(
     selector: "bs-typeahead",
     templateUrl: 'typeahead.html',

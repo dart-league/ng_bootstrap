@@ -1,5 +1,6 @@
 bs-table {
   display: block;
+  overflow-x: auto;
 
   //
   // Basic Bootstrap table
@@ -22,9 +23,19 @@ bs-table {
     overflow-x: auto;
   }
 
-  .thead .th {
-    vertical-align: bottom;
-    border-bottom: (2 * $table-border-width) solid $table-border-color;
+  .thead {
+    //position: fixed;
+    background-color: $table-head-bg;
+
+   .th {
+     vertical-align: bottom;
+     border-bottom: (2 * $table-border-width) solid $table-border-color;
+   }
+  }
+
+  .tbody {
+    flex-grow: 1;
+    overflow-y: auto;
   }
 
   .tbody + .tbody {

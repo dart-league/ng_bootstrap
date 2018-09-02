@@ -11,15 +11,27 @@ const BS_TABSX_DIRECTIVES = bsTabsxDirectives;
 /// Add quick, dynamic tab functionality to transition through panes of local content, even via
 /// dropdown menus. **Nested tabs are not supported.**
 ///
-/// Base specifications: [bootstrap 3](http://getbootstrap.com/javascript/#tabs) or
+/// Base specifications:
 /// [bootstrap 4](http://v4-alpha.getbootstrap.com/components/navs/)
 ///
-/// [demo](http://luisvt.github.io/ng2_strap/#tabs)
+/// [demo](http://dart-league.github.io/ng_bootstrap/#tabs)
 @Component(selector: "bs-tabsx", templateUrl: 'tabsx.html', directives: const [coreDirectives])
 class BsTabsxComponents implements OnInit, AfterContentInit {
   /// if `true` tabs will be placed vertically
+  bool get vertical => placement == 'left' || placement == 'right';
+
+  @HostBinding('class.flex-row')
+  bool get placementLeft => placement == 'left';
+
+  @HostBinding('class.flex-row-reverse')
+  bool get placementRight => placement == 'right';
+
+  @HostBinding('class.flex-column-reverse')
+  bool get placementBottom => placement == 'bottom';
+
   @Input()
-  bool vertical = false;
+  @HostBinding('attr.placement')
+  String placement;
 
   /// if `true` tabs will be justified
   @Input()
@@ -36,11 +48,12 @@ class BsTabsxComponents implements OnInit, AfterContentInit {
   /// initialize attributes
   ngOnInit() {
     type ??= "tabs";
+    placement ??= 'top';
   }
 
   @override
   ngAfterContentInit() {
-    activateTab(tabs[0]);
+    activateTab(tabs.firstWhere((tab) => tab.active, orElse: () => tabs[0]));
   }
 
   /// adds a new tab at the end
@@ -74,7 +87,7 @@ class BsTabsxComponents implements OnInit, AfterContentInit {
 
 /// Creates a tab which will be inside the [BsTabsxComponents]
 ///
-/// [demo](http://luisvt.github.io/ng2_strap/#tab)
+/// [demo](http://dart-league.github.io/ng_bootstrap/#tab)
 @Directive(selector: "bs-tabx")
 class BsTabxDirective {
   @HostBinding("class.tab-pane")
@@ -107,7 +120,7 @@ class BsTabxDirective {
   @Output()
   Stream get deselect => _deselectCtrl.stream;
 
-  bool _active = true;
+  bool _active = false;
 
   /// if tab is active equals true, or set `true` to activate tab
   @HostBinding('class.active')

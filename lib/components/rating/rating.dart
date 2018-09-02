@@ -15,7 +15,7 @@ const RATING_VALUE_ACCESSOR = const ExistingProvider.forToken(
 /// *Note*: Bootstrap 4 do not include glyphicons anymore, so if you want to continue use this font,
 /// you will need to add a link to [`glyphicons.css`](https://github.com/valor-software/ng2-bootstrap/blob/master/demo/assets/css/glyphicons.css)
 ///
-/// [demo](http://luisvt.github.io/ng2_strap/#accordion)
+/// [demo](http://dart-league.github.io/ng_bootstrap/#accordion)
 @Component (selector: "bs-rating",
     templateUrl: 'rating.html',
     directives: const [coreDirectives, formDirectives],

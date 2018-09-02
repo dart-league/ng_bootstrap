@@ -1,0 +1,79 @@
+bs-tabsx {
+  display: flex;
+  flex-direction: column;
+
+  .nav-tabs {
+    border-bottom: none;
+    z-index: 1;
+  }
+
+  .tab-content {
+    border: $nav-tabs-border-width solid $gray-300;
+  }
+
+  &[placement=left] {
+    .nav-tabs {
+
+      .nav-item {
+        margin-bottom: 0;
+        margin-right: -$nav-tabs-border-width;
+
+        .nav-link {
+          @include border-left-radius($nav-tabs-border-radius);
+          border-top-right-radius: 0;
+
+          @include hover-focus {
+            border-color: $gray-200 transparent $gray-200 $gray-200;
+          }
+
+          &.active {
+            border-right-color: transparent;
+            border-bottom-color: $gray-300;
+          }
+        }
+      }
+    }
+  }
+
+  &[placement=right] .nav-tabs {
+    .nav-item {
+      margin-bottom: 0;
+      margin-left: -$nav-tabs-border-width;
+
+      .nav-link {
+        @include border-right-radius($nav-tabs-border-radius);
+        border-top-left-radius: 0;
+
+        @include hover-focus {
+          border-color: $gray-200 $gray-200 $gray-200 transparent;
+        }
+
+        &.active {
+          border-color: $gray-300 $gray-300 $gray-300 transparent;
+        }
+      }
+    }
+  }
+
+  &[placement=bottom] .nav-tabs {
+    .nav-item {
+      margin-bottom: 0;
+      margin-top: -$nav-tabs-border-width;
+
+      .nav-link {
+        @include border-bottom-radius($nav-tabs-border-radius);
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+
+
+        @include hover-focus {
+          border-color: transparent $gray-200 $gray-200 $gray-200;
+        }
+
+        &.active {
+          border-color: transparent $gray-300 $gray-300 $gray-300;;
+        }
+      }
+    }
+  }
+}

@@ -1,10 +1,10 @@
 <div class="card" [ngClass]="panelClass">
   <div class="card-header" (click)="toggleOpen($event)">
-    <h5 class="card-title">
-      <a href tabindex="0" class="accordion-toggle">
+    <h5 class="mb-0">
+      <button type="button" class="btn btn-link">
         {{heading}}
         <ng-content select="header"></ng-content>
-      </a>
+      </button>
     </h5>
   </div>
   <div [bsCollapse]="!isOpen">

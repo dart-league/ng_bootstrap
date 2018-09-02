@@ -12,7 +12,7 @@ const DATE_PICKER_ACCESSOR = const ExistingProvider.forToken(
 ///
 /// Base specifications: [jquery-ui](https://api.jqueryui.com/datepicker/)
 ///
-/// [demo](http://luisvt.github.io/ng2_strap/#datepicker)
+/// [demo](http://dart-league.github.io/ng_bootstrap/#datepicker)
 @Component(
     selector: "bs-date-picker",
     templateUrl: 'date_picker.html',

@@ -51,7 +51,7 @@ const bsDirectives = const [
   BsDropdownDirective,
   BsDropdownMenuDirective,
   BsDropdownToggleDirective,
-  BS_FILE_UPLOAD_DIRECTIVES,
+  bsFileUploadDirectives,
   BsInput,
   BsModalComponent,
   BsPagerComponent,
@@ -70,7 +70,7 @@ const bsDirectives = const [
   BsDatePickerComponent,
   BsDatePickerPopupComponent,
   BsTypeAheadComponent,
-  BS_TABLE_DIRECTIVES
+  bsTableDirectives
 ];
 
 @Deprecated('Renamed to "bsDirectives"')

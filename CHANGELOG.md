@@ -1,3 +1,12 @@
+## 1.0.0
+
+- Add `ngClass` to `bs-column`
+- rename `constants` to camelcase
+- fix  `bsTable`
+- add vertical tabs support to `bs-tabsx`
+- `bs-progress` is resizeable
+- fix bug on active tab not set correctly (fix #19)
+
 ## 1.0.0-beta+1
 
 - Add ability to edit table inline

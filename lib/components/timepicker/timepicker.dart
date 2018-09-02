@@ -14,7 +14,7 @@ DateTime addMinutes(DateTime time, int minutes) => time.add(new Duration(minutes
 
 /// A lightweight & configurable timepicker directive
 ///
-/// [demo](http://luisvt.github.io/ng2_strap/#timepicker)
+/// [demo](http://dart-league.github.io/ng_bootstrap/#timepicker)
 @Component (selector: "bs-time-picker",
     templateUrl: 'timepicker.html',
     directives: const [coreDirectives, formDirectives])
