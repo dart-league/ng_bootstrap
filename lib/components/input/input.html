@@ -1,0 +1,42 @@
+<div class="form-group">
+  <label *ngIf="label != null && label.isNotEmpty"
+         [attr.for]="eId"
+         class="form-control-label"
+         [class.is-invalid]="!inputBox.valid"
+  >{{label}}</label>
+  <input [id]="eId"
+         class="form-control"
+         type="text"
+         [(ngModel)]="value"
+         #inputBox="ngForm"
+         [required]="required"
+         [minlength]="minlength"
+         [maxlength]="maxlength"
+         [class.is-invalid]="!inputBox.valid"
+         [placeholder]="placeholder"
+         [pattern]="pattern"
+  />
+  <ul *ngIf="!inputBox.valid" class="text-danger small fa-ul">
+    <!-- TODO: add translations-->
+    <li *ngIf="inputBox.errors['required']">
+      <i class="fa fa-li fa-times"></i>
+      <template [ngIf]="requiredMessage == null">This field is Required</template>
+      <template [ngIf]="requiredMessage != null">{{requiredMessage}}</template>
+    </li>
+    <li *ngIf="inputBox.errors['minlength'] != null">
+      <i class="fa fa-li fa-times"></i>
+      <template [ngIf]="minLengthMessage == null">The minimum length of this field should be {{minlength}}</template>
+      <template [ngIf]="minLengthMessage != null">{{minLengthMessage}}</template>
+    </li>
+    <li *ngIf="inputBox.errors['maxlength'] != null">
+      <i class="fa fa-li fa-times"></i>
+      <template [ngIf]="maxLengthMessage == null">The maximum length of this field should be {{maxlength}}</template>
+      <template [ngIf]="maxLengthMessage != null">{{maxLengthMessage}}</template>
+    </li>
+    <li *ngIf="inputBox.errors['pattern'] != null">
+      <i class="fa fa-li fa-times"></i>
+      <template [ngIf]="patternMessage == null">The pattern of this field should be {{pattern}}</template>
+      <template [ngIf]="patternMessage != null">{{patternMessage}}</template>
+    </li>
+  </ul>
+</div>

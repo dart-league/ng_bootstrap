@@ -2,15 +2,15 @@
   <bs-dropdown-toggle class="input-group">
     <input type="text"
            class="form-control"
-           [(ngModel)]="ngModel.model"
-           (ngModelChange)="processMatches()"
+           [ngModel]="ngModel.viewModel"
+           (ngModelChange)="processMatches($event)"
            (click)="$event.stopPropagation()"
            (keyup)="onTypeaheadChange($event)">
     <bs-search-clear
-        *ngIf="ngModel.model.length > 0"
+        *ngIf="ngModel.viewModel.length > 0"
         class="fa fa-remove"
-        (click)="ngModel.model = ''; processMatches(); $event.stopPropagation()"></bs-search-clear>
-    <span class="input-group-btn">
+        (click)="ngModel.viewToModelUpdate(''); processMatches(); $event.stopPropagation()"></bs-search-clear>
+    <span class="input-group-append">
       <bs-toggle-button class="btn btn-secondary"
                         [(ngModel)]="isOpen"
                         (click)="processMatchesIfNotOpen(); $event.stopPropagation()">
@@ -20,7 +20,7 @@
   </bs-dropdown-toggle>
   <bs-dropdown-menu class="scrollable-menu">
     <button *ngIf="loadingVal" class="dropdown-item" disabled>
-      <i class="fa fa-refresh"></i> Loading...
+      <i class="fa fa-refresh fa-spin"></i> Loading...
     </button>
     <button *ngIf="noResultsVal" class="dropdown-item" disabled>
       <i class="fa fa-times"></i> No Results Found
@@ -31,11 +31,11 @@
         (click)="selectMatch(match, $event)">
       <span *ngIf="itemTemplate == null"
          tabindex="-1"
-         [innerHtml]="highlight(match, ngModel.model)">
+         [innerHtml]="highlight(match, ngModel.viewModel)">
       </span>
       <span *ngIf="itemTemplate != null"
          tabindex="-1">
-        <template [bsTemplateOutlet]="itemTemplate" [ngOutletContext]="match"></template>
+        <template [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{$implicit: match}"></template>
       </span>
     </li>
   </bs-dropdown-menu>

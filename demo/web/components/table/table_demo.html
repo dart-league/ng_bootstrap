@@ -1,0 +1,81 @@
+<div>
+  <input class="form-control"
+         placeholder="Filter"
+         ngModel
+         (ngModelChange)="filterRows($event)"/>
+  <br>
+  <div class="form-check col-xs-12">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" [(ngModel)]="selectable">
+      selectable
+    </label>
+  </div>
+  <bs-tabsx>
+    <bs-tabx header="Maps Data">
+      <bs-table [rows]="rows"
+                [selectable]="selectable"
+                [(pageNumber)]="page"
+                [itemsPerPage]="itemsPerPage"
+                [sortable]="true"
+                [(totalItems)]="totalItems"
+                [containerStyle]="{'min-width': '900px', 'max-height': '900px'}">
+        <bs-column header="Name" fieldName="name" ngClass="text-info"></bs-column>
+        <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
+        <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
+        <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
+        <bs-column header="Start date" fieldName="startDate"></bs-column>
+        <bs-column header="Salary ($)" fieldName="salary" orderBy="salary" [ngStyle]="{width: '120px', flex: 'none'}">
+          <template let-row>U$ {{row['salary']}}</template>
+          <template bs-column-editor let-row>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">U$</span>
+              </div>
+              <input class="form-control" type="number" step="0.001" [(ngModel)]="row['salary']">
+            </div>
+          </template>
+        </bs-column>
+        <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px', flex: 'none'}"></bs-column>
+      </bs-table>
+    </bs-tabx>
+    <bs-tabx header="Complex Objects Data">
+      <bs-table [rows]="rowsComplex"
+                [selectable]="selectable"
+                [(pageNumber)]="page"
+                [itemsPerPage]="itemsPerPage"
+                [sortable]="true"
+                [(totalItems)]="totalItems"
+                [containerStyle]="{'min-width': '1000px'}">
+        <bs-column header="Name" fieldName="name"></bs-column>
+        <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
+        <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
+        <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
+        <bs-column header="Start date" fieldName="startDate"></bs-column>
+        <bs-column header="Salary ($)" fieldName="salary" orderBy="salary" [ngStyle]="{width: '120px', flex: 'none'}">
+          <template let-row>U$ {{row.salary}}</template>
+          <template bs-column-editor let-row>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">U$</span>
+              </div>
+              <input class="form-control" type="number" step="0.001" [(ngModel)]="row.salary">
+            </div>
+          </template>
+        </bs-column>
+        <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px', flex: 'none'}"></bs-column>
+      </bs-table>
+    </bs-tabx>
+  </bs-tabsx>
+  <bs-pagination class="pagination-sm tag"
+                 [(currentPage)]="page"
+                 [totalItems]="totalItems"
+                 [itemsPerPage]="itemsPerPage"
+                 [maxSize]="maxSize"
+                 [boundaryLinks]="true"
+                 [rotate]="false"
+                 [(totalPages)]="totalPages">
+  </bs-pagination>
+  <pre class="card card-body card-title">Page: {{page}} / {{totalPages}}
+Total Items: {{totalItems}}
+</pre>
+</div>

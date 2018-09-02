@@ -1,0 +1,75 @@
+<p>
+  <button type="button" class="btn btn-outline-secondary">
+    Popover on top
+    <bs-popover placement="top" heading="Popover on top">
+      Vivamus sagittis lacus vel augue laoreet rutrum faucibus.
+    </bs-popover>
+  </button>
+  <button type="button" class="btn btn-outline-secondary">
+    <bs-popover placement="right" heading="Popover on right">
+      Vivamus sagittis lacus vel augue laoreet rutrum faucibus.
+    </bs-popover>
+    Popover on right
+  </button>
+
+  <button type="button" class="btn btn-outline-secondary">
+    <bs-popover placement="bottom" heading="Popover on bottom">
+      Vivamus sagittis lacus vel augue laoreet rutrum faucibus.
+    </bs-popover>
+    Popover on bottom
+  </button>
+
+  <button type="button" class="btn btn-outline-secondary">
+    <bs-popover placement="left" heading="Popover on left">
+      Vivamus sagittis lacus vel augue laoreet rutrum faucibus.
+    </bs-popover>
+    Popover on left
+  </button>
+</p>
+<p>
+  Popovers can contain any arbitrary HTML, Angular bindings and even directives!
+  Simply enclose desired content in the <code>&lt;bs-popover&gt;</code> element.
+  If you want to add arbitrary HTML to the header use the tag <code>&lt;header&gt;</code>.
+</p>
+
+<p>
+  <button type="button" class="btn btn-outline-secondary">
+    I've got markup and bindings in my popover!
+    <bs-popover>
+      <header><b>Fancy</b> <i>Header!</i></header>
+      Hello, <b>{{name}}</b>!
+    </bs-popover>
+  </button>
+</p>
+<p>
+  To use Popovers with input you will need to pass the <code>#referenceId</code> to the <code>&lt;bs-popover&gt;</code>
+</p>
+<p>
+  <input type="text" class="form-control" placeholder="click me!" #inputEl>
+  <bs-popover heading="Input Popover" [for]="inputEl">
+    Some Content
+  </bs-popover>
+</p>
+<p>
+  You can easily override open and close event triggers by specifying event names
+  using <code>showEvent</code> and <code>hideEvent</code>
+</p>
+<button class="btn btn-outline-secondary">
+  Mouseover/Mouseleave
+  <bs-popover heading="Custom Events" showEvent="mouseover" hideEvent="mouseleave">
+    Using <code>mouseover</code> and <code>mouseleave</code>
+  </bs-popover>
+</button>
+
+<p>
+  Alternatively you can take full manual control over popover opening / closing events.
+</p>
+<p>
+  <button type="button" class="btn btn-outline-secondary">
+    Click me to open a popover
+    <bs-popover #p hideEvent="" heading="Pop title">What a great tip!</bs-popover>
+  </button>
+  <button type="button" class="btn btn-outline-secondary" (click)="p.hide()">
+    Click me to close a popover
+  </button>
+</p>

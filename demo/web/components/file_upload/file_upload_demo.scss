@@ -1,0 +1,17 @@
+bs-file-drop {
+  border: dotted 3px lightgray;
+  display: block;
+}
+
+.nv-file-over {
+  border: dotted 3px red;
+}
+
+/* Default class applied to drop zones on over */
+.another-file-over-class {
+  border: dotted 3px green;
+}
+
+html, body {
+  height: 100%;
+}

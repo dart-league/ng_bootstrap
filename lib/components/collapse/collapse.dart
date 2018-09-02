@@ -1,5 +1,5 @@
 import 'dart:html';
-import 'package:angular2/angular2.dart';
+import 'package:angular/angular.dart';
 import 'dart:async';
 
 /// Collapse component allows you to toggle content on your pages with a bit of JavaScript and some
@@ -9,15 +9,12 @@ import 'dart:async';
 /// Base specifications: [bootstrap 3](http://getbootstrap.com/javascript/#collapse)
 /// or [bootstrap 4](http://v4-alpha.getbootstrap.com/components/collapse/)
 ///
-/// [demo](http://luisvt.github.io/ng2_strap/#collapse)
-@Directive(selector: '[bsCollapse]',
-    host: const {
-      '[attr.aria-hidden]': '!expanded'
-    })
+/// [demo](http://dart-league.github.io/ng_bootstrap/#collapse)
+@Directive(selector: '[bsCollapse]')
 class BsCollapseDirective {
   /// Constructs an collapsible component
   BsCollapseDirective(this.elementRef) {
-    _element = elementRef.nativeElement;
+    _element = elementRef;
 
     bsCollapseChange.listen((bsCollapse) {
       if (bsCollapse) {
@@ -29,7 +26,7 @@ class BsCollapseDirective {
   }
 
   /// Contains the element reference of this component
-  ElementRef elementRef;
+  HtmlElement elementRef;
 
   Element _element;
 
@@ -40,10 +37,11 @@ class BsCollapseDirective {
   /// if `true` the component is shown
   @HostBinding('class.show')
   @HostBinding('attr.aria-expanded')
-  bool expanded = true;
+  bool expanded = false;
 
   @HostBinding('class.collapse')
-  bool collapsed = false;
+  @HostBinding('attr.aria-hidden')
+  bool collapsed = true;
 
   bool _collapsing = false;
 
@@ -74,6 +72,10 @@ class BsCollapseDirective {
 
   final _collapsingChangeController = new StreamController<bool>.broadcast();
 
+  Timer showTimer;
+
+  Timer hideTimer;
+
   /// Emits the collapsing state of the component
   @Output() Stream<bool> get collapsingChange =>
       _collapsingChangeController.stream;
@@ -82,9 +84,10 @@ class BsCollapseDirective {
     expanded = false;
     height = _scrollHeight;
     collapsing = true;
+    showTimer?.cancel();
     new Timer(const Duration(milliseconds: 10), () {
       height = '0';
-      new Timer(const Duration(milliseconds: 350), () {
+      hideTimer = new Timer(const Duration(milliseconds: 350), () {
         collapsing = false;
         collapsed = true;
         height = '';
@@ -96,9 +99,10 @@ class BsCollapseDirective {
     collapsed = false;
     height = '0';
     collapsing = true;
-    new Timer(const Duration(milliseconds: 10), () {
+    hideTimer?.cancel();
+    new Future(() {
       height = _scrollHeight;
-      new Timer(const Duration(milliseconds: 350), () {
+      showTimer = new Timer(const Duration(milliseconds: 350), () {
         collapsing = false;
         expanded = true;
         height = '';

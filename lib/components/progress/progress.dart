@@ -1,13 +1,15 @@
-import 'package:angular2/angular2.dart';
+import 'dart:async';
 import 'dart:html';
-import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart';
+
+import 'package:angular/angular.dart';
 
 /// Creates a progress component
 ///
 /// Base specifications: [bootstrap 4](http://v4-alpha.getbootstrap.com/components/progress/)
 ///
 /// [demo](http://dart-league.github.io/ng_bootstrap/build/web/#progress)
-@Component(selector: 'bs-progress',
+@Component(
+    selector: 'bs-progress',
     template: '''
 <div class="progress-bar"
      role="progressbar"
@@ -16,21 +18,24 @@ import 'package:ng_bootstrap/components/template_outlet/bs_template_outlet.dart'
      aria-valuemax="100"
      [style.width]="percentage">
   <div [style.width]="elementWidth">
-    <template [bsTemplateOutlet]="labelTemplate" [ngOutletContext]="percentage"></template>
+    <template [ngTemplateOutlet]="labelTemplate"
+              [ngTemplateOutletContext]="{\$implicit: percentage, value: value, max: max}"></template>
   </div>
 </div>
-<template [bsTemplateOutlet]="labelTemplate" [ngOutletContext]="percentage"></template>''',
-    directives: const [BsTemplateOutletDirective])
-class BsProgressComponent implements OnInit {
-
+<template [ngTemplateOutlet]="labelTemplate" [ngTemplateOutletContext]="{\$implicit: percentage}"></template>''',
+    directives: const [coreDirectives])
+class BsProgressComponent implements OnInit, OnDestroy {
   /// if `true` changing `value` of progress bar will be animated (*note*: not supported by Bootstrap 4)
-  @Input() bool animate = true;
+  @Input()
+  bool animate = true;
 
   /// maximum value of the bar
-  @Input() num max;
+  @Input()
+  num max;
 
   /// value of the progress bar
-  @Input() num value;
+  @Input()
+  num value;
 
   String get percentage => (value / max * 100).toString() + '%';
 
@@ -40,7 +45,9 @@ class BsProgressComponent implements OnInit {
   /// Handles the width of the element
   String elementWidth;
 
-  ElementRef _elementRef;
+  HtmlElement _elementRef;
+
+  Timer _resizeTimer;
 
   BsProgressComponent(this._elementRef);
 
@@ -48,11 +55,18 @@ class BsProgressComponent implements OnInit {
   ngOnInit() {
     animate ??= true;
     max = max ??= 100;
-    Element nativeElement = _elementRef.nativeElement;
+    Element nativeElement = _elementRef;
     elementWidth = nativeElement.getComputedStyle().width;
     // TODO: change this event something else
-    window.onResize.listen((e) {
-      elementWidth = nativeElement.getComputedStyle().width;
-    });
+//    window.onResize.listen((e) {
+//      elementWidth = nativeElement.getComputedStyle().width;
+//    });
+    _resizeTimer =
+        Timer.periodic(Duration(milliseconds: 100), (_) => elementWidth = nativeElement.getComputedStyle().width);
+  }
+
+  @override
+  void ngOnDestroy() {
+    _resizeTimer.cancel();
   }
 }

@@ -1,0 +1,14 @@
+<bs-modal #myModal [header]="'Are you sure?'"
+          [buttons]="[
+            {label: 'Save', onClick: handleSave},
+            {label: 'Cancel', onClick: handleCancel, cssClasses: 'btn-secondary'}
+          ]"
+          (close)="onModalClose($event)">
+  Do you want to save?
+  <footer style="display: inline-block;">
+    <button class="btn btn-danger" type="button" (click)="myModal.hide()">Destroy</button>
+  </footer>
+</bs-modal>
+<button class="btn btn-primary" (click)="myModal.show()">Show Modal</button>
+<hr>
+<pre>modal action: {{modalAction}}</pre>

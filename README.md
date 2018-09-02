@@ -1,6 +1,6 @@
 # ng_bootstrap
 
-[![Join the chat at https://gitter.im/dart-league/ng_bootstrap](https://badges.gitter.im/dart-league/ng_bootstrap.svg)](https://gitter.im/dart-league/ng_bootstrap?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[Join the chat](https://gitter.im/dart-league/ng_bootstrap)
 
 [Usage & Demo](http://dart-league.github.io/ng_bootstrap/)
 
@@ -30,9 +30,11 @@ dependencies:
 4\. Add needed `ng_bootstrap` directives to your components:
 
 ```dart
+import 'packages:ng_bootstrap/ng_bootstrap.dart'
+
 @Component(
     // ...
-    directives: const [BS_DIRECTIVES])
+    directives: const [bsDirectives])
 ```
 
 ## Customize Styles - Create Custom Themes
@@ -75,8 +77,9 @@ Then in your `index.html` file change the `link` tag to point to the new theme.
 - [x] [Dropdown](http://dart-league.github.io/ng_bootstrap/#dropdown)
 - [x] [Modal](http://dart-league.github.io/ng_bootstrap/#modal)
 - [x] [Pagination](http://dart-league.github.io/ng_bootstrap/#pagination)
-- [ ] Popover
+- [x] [Popover](http://dart-league.github.io/ng_bootstrap/#popover)
 - [x] [Progressbar](http://dart-league.github.io/ng_bootstrap/#progressbar)
+- [x] [PromptService](http://dart-league.github.io/ng_bootstrap/#prompt)
 - [x] [Rating](http://dart-league.github.io/ng_bootstrap/#rating)
 - [x] [Tabs](http://dart-league.github.io/ng_bootstrap/#tabs)
 - [x] [Timepicker](http://dart-league.github.io/ng_bootstrap/#timepicker)
@@ -84,6 +87,7 @@ Then in your `index.html` file change the `link` tag to point to the new theme.
 - [x] [Typeahead](http://dart-league.github.io/ng_bootstrap/#typeahead)
 - [x] [Grid/Table](http://dart-league.github.io/ng_bootstrap/build/web/index.html#table)
 - [x] [FileInput](http://dart-league.github.io/ng_bootstrap/build/web/index.html#file_upload)
+- [x] [TextInput](http://dart-league.github.io/ng_bootstrap/build/web/index.html#text_input)
 - [ ] ImageInput
 - [ ] SignItInput
 - [ ] SignInput

@@ -1,0 +1,48 @@
+<h1>Inside a Form</h1>
+<form #personForm="ngForm">
+  <bs-input eId="firstName"
+            label="First Name"
+            [(ngModel)]="person.firstName"
+            #firstName="ngForm"
+            [required]="true"
+            [minlength]="2"
+            [maxlength]="5"
+            pattern="[a-zA-Z]*"
+            patternMessage="Field should only contains letters"
+  ></bs-input>
+
+  <!-- Next Element is created without using "bs-input" to show an equivalent using pure html elements\
+       and bootstrap classes -->
+  <div class="form-group">
+    <label for="lastName" class="form-control-label">Last Name</label>
+    <input id="lastName"
+           class="form-control"
+           type="text"
+           [(ngModel)]="person.lastName"
+           #lastName="ngForm"
+           required
+           [minlength]="2"
+           [maxlength]="5"
+           pattern="[a-zA-Z]*"
+           [class.is-invalid]="!lastName.valid">
+    <ul *ngIf="!lastName.valid" class="text-danger small fa-ul">
+      <li *ngIf="lastName.errors['required']"><i class="fa fa-li fa-times"></i>Field Required</li>
+      <li *ngIf="lastName.errors['minlength'] != null"><i class="fa fa-li fa-times"></i>Min Length should be 2</li>
+      <li *ngIf="lastName.errors['maxlength'] != null"><i class="fa fa-li fa-times"></i>Max Length should be 5</li>
+      <li *ngIf="lastName.errors['pattern'] != null"><i class="fa fa-li fa-times"></i>Field should only contains letters</li>
+    </ul>
+  </div>
+</form>
+<pre>personForm.valid: {{personForm.form.valid}}</pre>
+<pre>firstName.errors: {{firstName.errors}}</pre>
+<pre>lastName.errors: {{lastName.errors}}</pre>
+
+<h1>Outside a Form</h1>
+<bs-input eId="otherName"
+          label="Other Name"
+          [(ngModel)]="otherName"
+          [required]="true"
+          [minlength]="2"
+          [maxlength]="5"
+          pattern="[a-zA-Z]*"
+></bs-input>

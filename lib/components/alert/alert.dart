@@ -1,5 +1,6 @@
 import 'dart:async';
-import "package:angular2/angular2.dart";
+import 'dart:html';
+import "package:angular/angular.dart";
 
 /// Provide contextual feedback messages for typical user actions
 /// with the handful of available and flexible alert messages.
@@ -13,13 +14,10 @@ import "package:angular2/angular2.dart";
     </button>
     <ng-content></ng-content>
     ''',
-    host: const {
-      'class': 'alert',
-      'role': 'alert'
-    })
+    directives: const [coreDirectives])
 class BsAlertComponent implements OnInit {
   /// provides the element reference to get native element
-  ElementRef _elementRef;
+  HtmlElement _elementRef;
 
   ///  provide one of the four supported contextual classes:
   ///  `success`,`info`, `warning`, `danger`
@@ -49,8 +47,14 @@ class BsAlertComponent implements OnInit {
   @HostBinding('class.alert-warning')
   bool get isWarning => type == 'warning';
 
+  @HostBinding('class.alert')
+  bool get isAlert => true;
+
   @HostBinding('class.alert-danger')
   bool get isDanger => type == 'danger';
+
+  @HostBinding('attr.role')
+  String get role => 'alert';
 
   bool get hasTimeout => timeout != null;
 
@@ -64,6 +68,6 @@ class BsAlertComponent implements OnInit {
 
   close() {
     _onCloseCtrl.add(this);
-    _elementRef.nativeElement.remove();
+    _elementRef.remove();
   }
 }

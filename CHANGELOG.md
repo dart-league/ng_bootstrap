@@ -1,3 +1,128 @@
+## 1.0.0
+
+- Add `ngClass` to `bs-column`
+- rename `constants` to camelcase
+- fix  `bsTable`
+- add vertical tabs support to `bs-tabsx`
+- `bs-progress` is resizeable
+- fix bug on active tab not set correctly (fix #19)
+
+## 1.0.0-beta+1
+
+- Add ability to edit table inline
+- upgrade dependencies to support dart-sdk `2.0.0`
+- move css from `file_upload_demo.html` to `file_upload_demo.scss`
+
+## 1.0.0-beta+0
+
+- remove validators since angular ones accomplish the same
+- upgrade to `angular: 5.0.0-beta+3`
+
+## 1.0.0-alpha+4
+   
+   - upgrade `angular` to `5.0.0-alpha+15`
+   - upgrade `angular_forms` to `2.0.0-alpha+7`
+   - enhance `bs-inputs`
+
+## 1.0.0-alpha+3
+
+- upgrade `angular` to `5.0.0-alpha+13`
+- upgrade `angular_forms` to `2.0.0-alpha+5`
+
+## 1.0.0-alpha+2
+
+- upgrade `angular` to `^5.0.0-alpha+2`
+- upgrade `stream_transform` to `^0.0.11`
+- change `bootstrapStatic` by `runApp`
+- fixes #103
+- fixes #104
+- fixes #105
+
+## 1.0.0-alpha+1
+
+- upgrade `angular` to version `5.0.0-alpha+9`
+- upgrade `bootstrap_sass` to version `4.0.0`
+- add class `modal-open` to `body` when modal is open
+- add `$dropdown-link-hover-bg: #e9ecef !default;` to make background color of dropdown links darker
+
+## 1.0.0-alpha
+
+- upgrade `angular` to version `5.0.0-alpha+7`
+- upgrade `build_runner` to version `^0.7.0`
+- fix bug in `bs-rating` component
+- fix bug in `progress` caused by adding `bootstrap@^4.0.0-beta`
+- add ability to create components inside modal
+
+## 0.9.2
+   
+- add `bsPattern` to `bsInput`
+- add ability to override error messages to `bsInput`
+
+## 0.9.1
+
+- add example of pagination custom text
+- add card header
+- fix card for bootstrap
+- update tooltip_demo.html
+
+## 0.9.0
+
+- add popover component (fixes: #82)
+- fix tooltip styles
+
+## 0.8.6
+
+- upgrade to `bootstrap@^4.0.0-beta`
+
+## 0.8.5
+
+- correct tooltip placement inside table element (fixes: #76)
+- correct tooltip placement after fast hide and show
+- correct accordion expand/collapse timing
+
+## 0.8.4
+
+- Upgrade to `angular_forms@^1.0.0` (fixes: #80)
+
+## 0.8.3
+
+- Upgrade to `angular@4.0.0`
+
+## 0.8.2
+
+- support `DDC` (fixes: #71)
+- change `stream_transformers` library by `stream_transform`
+- add input listener to components that extends `DefaultValueAccessor`
+
+## 0.8.1
+
+* Upgrade to `angular@4.0.0-beta` (fixes: #78)
+
+## 0.8.0
+
+* Upgrade to `angular@4.0.0-alpha+3`
+* Change `bs-modal` logic to pass buttons instead actions
+* Add `BsPromptService` to create a modal from a function
+
+## 0.7.1
+
+* Upgrade to `angular@4.0.0-alpha+2`
+* add `bsPrompt`
+
+## 0.7.0
+
+* Upgrade to `angular@4.0.0-alpha+1`
+
+## 0.6.7
+
+* add BsInput to BS_DIRECTIVES list
+
+## 0.6.6
+
+* enhance BsInput component
+* add BsMinLength Directive
+* add BsMaxLength Directive
+
 ## 0.6.5
 
 * remove date_picker_inner files and activeDate attribute from date-picker

@@ -1,14 +1,10 @@
 <table [hidden]="datePicker.datePickerMode!='month'" role="grid">
   <thead>
   <tr>
-    <th colspan="3">
-      <div class="row container-fluid">
-        <button type="button" class="btn btn-secondary btn-sm col-1"
-                (click)="$event.stopPropagation(); datePicker.move(-1)" tabindex="-1">
-          <i class="fa fa-chevron-left"></i>
-        </button>
+    <th colspan="3" class="container-fluid">
+      <div class="row">
         <button type="button"
-                class="btn btn-secondary btn-sm col-3"
+                class="btn btn-light btn-sm col-4"
                 (click)="$event.stopPropagation(); datePicker.toggleMode(-1)"
                 [disabled]="datePicker.datePickerMode == maxMode"
                 [ngClass]="{disabled: datePicker.datePickerMode == maxMode}"
@@ -16,18 +12,15 @@
           <strong>{{dayTitle}}</strong>
         </button>
         <button type="button"
-                class="btn btn-secondary btn-sm col-7"
+                class="btn btn-light btn-sm col-8"
                 (click)="$event.stopPropagation(); datePicker.toggleMode()"
                 [disabled]="datePicker.datePickerMode == maxMode"
                 [ngClass]="{disabled: datePicker.datePickerMode == maxMode}"
                 tabindex="-1">
           <strong>{{yearTitle}}</strong>
         </button>
-        <button type="button" class="btn btn-secondary btn-sm col-1"
-                (click)="$event.stopPropagation(); datePicker.move(1)" tabindex="-1">
-          <i class="fa fa-chevron-right"></i>
-        </button>
       </div>
+    </th>
   </tr>
   </thead>
   <tbody>
@@ -35,7 +28,7 @@
     <td *ngFor="let dt of row" class="text-center" role="gridcell">
       <button type="button"
               class="btn col"
-              [ngClass]="{'btn-primary': dt.selected, 'btn-secondary': !dt.selected, active: dt.current, disabled: dt.disabled}"
+              [ngClass]="{'btn-primary': dt.selected, 'btn-light': !dt.selected, active: dt.current, disabled: dt.disabled}"
               [disabled]="dt.disabled"
               (click)="$event.stopPropagation(); datePicker.select(dt.date)"
               tabindex="-1">

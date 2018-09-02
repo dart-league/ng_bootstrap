@@ -1,0 +1,37 @@
+<div>
+  <div>
+    <bs-carousel [interval]="myIntervalInMs" [noWrap]="noWrapSlides">
+      <bs-slide *ngFor="let slide of slides; let index=index"
+             [index]="index" [active]="slide['active'] != null ? slide['active'] : false ">
+        <img [src]="slide['image']">
+
+        <div class="carousel-caption">
+          <h4>Slide {{index}}</h4>
+
+          <p>{{slide['text']}}</p>
+        </div>
+      </bs-slide>
+    </bs-carousel>
+  </div>
+  <br>
+  <div>
+    <button type="button" class="btn btn-info"
+            (click)="addSlide()">Add Slide
+    </button>
+    <!-- issue: removing currently active slide should not lead to white screen? -->
+    <!--<button type="button" class="btn btn-info"-->
+            <!--(click)="removeSlide(2)">Remove Slide#3-->
+    <!--</button>-->
+    <br>
+
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" [(ngModel)]="noWrapSlides">
+        Disable Slide Looping
+      </label>
+    </div>
+
+    Interval, in seconds: <input type="number" class="form-control" [(ngModel)]="myIntervalInSeconds">
+    <br/>Enter a negative number or 0 to stop the interval.
+  </div>
+</div>

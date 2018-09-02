@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'dart:html';
 import 'dart:math' as math;
-import "package:angular2/angular2.dart";
+import "package:angular/angular.dart";
 
 /// Quick "previous" and "next" links for simple
 /// pagination implementations with light markup and styles.
 /// It’s great for simple sites like blog or magazines.
-@Component (selector: "bs-pager", templateUrl: 'pager.html')
+@Component (selector: "bs-pager",
+    templateUrl: 'pager.html',
+    directives: const [coreDirectives])
 class BsPagerComponent {
 
   /// label of previous text

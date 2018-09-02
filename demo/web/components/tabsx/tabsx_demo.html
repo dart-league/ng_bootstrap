@@ -1,0 +1,60 @@
+<div (click)="$event.preventDefault()">
+  <p>Select a tab by setting active binding to true:</p>
+  <p>
+    <button type="button" class="btn btn-primary btn-sm" (click)="tabs1.activateTab(tabs1.tabs[1])">Select second tab</button>
+    <button type="button" class="btn btn-primary btn-sm" (click)="tabs1.activateTab(tabs1.tabs[2])">Select third tab</button>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary btn-sm" (click)="tabs[1]['disabled'] = ! tabs[1]['disabled']">Enable /
+      Disable third tab
+    </button>
+  </p>
+  <hr/>
+  <bs-tabsx #tabs1>
+    <bs-tabx header="Static title">Static content</bs-tabx>
+    <!-- Dynamic Tabs -->
+    <bs-tabx *ngFor="let tab of tabs"
+             [header]="tab['title']"
+             [active]="tab['active'] == true"
+             (deselect)="tab['active'] = false"
+             [disabled]="tab['disabled'] == true">
+      {{tab['content']}}
+    </bs-tabx>
+    <!-- Dynamic Tabs end -->
+    <bs-tabx (select)="alertMe()">
+      <template bs-tabx-header>
+        <i class="fa fa-bell"></i> Alert!
+      </template>
+      I've got an HTML heading, and a select callback. Pretty cool!
+    </bs-tabx>
+  </bs-tabsx>
+
+  <hr/>
+
+  <bs-tabsx placement="left">
+    <bs-tabx header="Vertical 1">Left Tabs content 1</bs-tabx>
+    <bs-tabx header="Vertical 2" active>Left Tabs content 2</bs-tabx>
+  </bs-tabsx>
+
+  <hr/>
+
+  <bs-tabsx placement="bottom">
+    <bs-tabx header="Vertical 1">Bottom Tabs content 1</bs-tabx>
+    <bs-tabx header="Vertical 2" active>Bottom Tabs content 2</bs-tabx>
+  </bs-tabsx>
+
+  <hr/>
+
+  <bs-tabsx placement="right">
+    <bs-tabx header="Vertical 1">Right Tabs content 1</bs-tabx>
+    <bs-tabx header="Vertical 2" active>Right Tabs content 2</bs-tabx>
+  </bs-tabsx>
+
+  <hr/>
+
+  <bs-tabsx [justified]="true">
+    <bs-tabx header="Justified">Justified content</bs-tabx>
+    <bs-tabx header="SJ" active>Short Labeled Justified content</bs-tabx>
+    <bs-tabx header="Long Justified">Long Labeled Justified content</bs-tabx>
+  </bs-tabsx>
+</div>

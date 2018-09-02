@@ -1,14 +1,14 @@
 <div class="card" [ngClass]="panelClass">
   <div class="card-header" (click)="toggleOpen($event)">
     <h5 class="mb-0">
-      <a href tabindex="0" class="accordion-toggle">
+      <button type="button" class="btn btn-link">
         {{heading}}
         <ng-content select="header"></ng-content>
-      </a>
+      </button>
     </h5>
   </div>
-  <div class="" [bsCollapse]="!isOpen">
-    <div class="card-block">
+  <div [bsCollapse]="!isOpen">
+    <div class="card-body">
       <ng-content></ng-content>
     </div>
   </div>

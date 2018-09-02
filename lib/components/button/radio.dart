@@ -1,7 +1,8 @@
-import "package:angular2/angular2.dart";
+import 'dart:html';
+import "package:angular/angular.dart";
+import 'package:angular_forms/angular_forms.dart';
 
-@Directive(
-    selector: "bs-radio-button", host: const {"[class.active]": "active"})
+@Directive(selector: "bs-radio-button")
 class BsRadioButtonDirective extends DefaultValueAccessor {
   /// handles the selected value of the button
   NgModel ngModel;
@@ -15,11 +16,12 @@ class BsRadioButtonDirective extends DefaultValueAccessor {
   bool uncheckable = true;
 
   /// provide the state of the button
+  @HostBinding('class.active')
   bool get active => option == _value;
 
   var _value;
 
-  BsRadioButtonDirective(this.ngModel, ElementRef elementRef)
+  BsRadioButtonDirective(this.ngModel, HtmlElement elementRef)
       : super(elementRef) {
     ngModel.valueAccessor = this;
   }
@@ -36,9 +38,9 @@ class BsRadioButtonDirective extends DefaultValueAccessor {
   onClick() {
     if (uncheckable != false && option == _value) {
       _value = null;
-      return;
+    } else {
+      _value = option;
     }
-    _value = option;
 
     ngModel.viewToModelUpdate(_value);
   }

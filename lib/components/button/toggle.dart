@@ -1,8 +1,9 @@
-import "package:angular2/angular2.dart";
+import 'dart:html';
+import "package:angular/angular.dart";
+import 'package:angular_forms/angular_forms.dart';
 
 @Directive(
-    selector: "bs-toggle-button",
-    host: const {"[class.active]": "active"})
+    selector: "bs-toggle-button")
 class BsToggleButtonDirective extends DefaultValueAccessor {
   NgModel ngModel;
 
@@ -17,9 +18,10 @@ class BsToggleButtonDirective extends DefaultValueAccessor {
   var _value;
 
   /// active status of the button
+  @HostBinding('class.active')
   bool get active => trueValue == _value;
 
-  BsToggleButtonDirective(this.ngModel, ElementRef elementRef)
+  BsToggleButtonDirective(this.ngModel, HtmlElement elementRef)
       : super(elementRef) {
     ngModel.valueAccessor = this;
   }

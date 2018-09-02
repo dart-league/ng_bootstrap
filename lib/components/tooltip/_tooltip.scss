@@ -1,3 +1,27 @@
 bs-tooltip {
   @extend .tooltip;
+  opacity: 0.01;
+  color: initial;
+
+  &.bs-tooltip-top .arrow, &.bs-tooltip-bottom .arrow {
+    left: 50%;
+  }
+  &.bs-tooltip-top-left .arrow, &.bs-tooltip-bottom-left .arrow {
+    left: 1em;
+  }
+  &.bs-tooltip-top-right .arrow, &.bs-tooltip-bottom-right .arrow {
+    left: auto;
+    right: 1em;
+  }
+  &.bs-tooltip-left .arrow, &.bs-tooltip-right .arrow {
+    top: 50%;
+  }
+
+  &.bs-tooltip-left-top .arrow, &.bs-tooltip-right-top .arrow {
+    top: 0.7em;
+  }
+  &.bs-tooltip-left-bottom .arrow, &.bs-tooltip-right-bottom .arrow {
+    top: auto;
+    bottom: 0.7em;
+  }
 }

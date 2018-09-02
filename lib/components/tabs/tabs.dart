@@ -1,5 +1,5 @@
 import 'dart:async';
-import "package:angular2/angular2.dart";
+import "package:angular/angular.dart";
 
 /// Directives needed to create a tab-set
 const NG_BOOTSTRAP_TABS_DIRECTIVES = const [BsTabComponent, BsTabsComponent, BsTabContentComponent, BsTabPanelDirective];
@@ -8,11 +8,12 @@ const NG_BOOTSTRAP_TABS_DIRECTIVES = const [BsTabComponent, BsTabsComponent, BsT
 /// https://github.com/angular/angular/issues/8563
 @Component (
     selector: "bs-tabs",
-    templateUrl: 'tabs.html')
+    templateUrl: 'tabs.html',
+    directives: const [coreDirectives])
 class BsTabsComponent implements AfterContentInit{
   /// children tabs
   @ContentChildren(BsTabComponent)
-  QueryList<BsTabComponent> tabs;
+  List<BsTabComponent> tabs;
 
   final _onTabChangeCtrl = new StreamController<BsTabComponent>.broadcast();
 
@@ -62,14 +63,15 @@ class BsTabComponent {
 
 @Component(
     selector: 'bs-tab-content',
-    template: '<template [ngTemplateOutlet]="current.templateRef"></template>')
+    template: '<template [ngTemplateOutlet]="current.templateRef"></template>',
+    directives: const [coreDirectives])
 class BsTabContentComponent implements AfterContentInit {
   /// [BsTabsComponent] target the this content is listening to
   @Input('for') BsTabsComponent target;
 
   /// displayed panels
   @ContentChildren(BsTabPanelDirective)
-  QueryList<BsTabPanelDirective> panels;
+  List<BsTabPanelDirective> panels;
 
   BsTabPanelDirective _current;
 

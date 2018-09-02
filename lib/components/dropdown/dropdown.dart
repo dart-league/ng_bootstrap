@@ -1,16 +1,22 @@
 part of bs_dropdown;
 
-@Directive (selector: "bs-dropdown, .dropdown",
-    host: const {"[class.dropdown]" : "true", "[class.show]" : "isOpen"})
-class BsDropdownDirective implements OnInit, OnDestroy {
-  ElementRef elementRef;
+class AutoClose {
+  static const ALWAYS = "always",
+               DISABLED = 'disabled',
+               OUTSIDE_CLICK = 'outsideClick';
+}
+
+@Directive(selector: "bs-dropdown, .dropdown")
+class BsDropdownDirective implements OnInit, OnDestroy, AfterContentInit {
+  HtmlElement elementRef;
 
   BsDropdownDirective(this.elementRef);
 
   /// if `true` `dropdown-menu` content will be appended to the body. This is useful when
   /// the dropdown button is inside a div with `overflow: hidden`, and the menu would
   /// otherwise be hidden
-  @Input() bool dropdownAppendToBody = false;
+  @Input()
+  bool dropdownAppendToBody = false;
 
   /// behaviour vary:
   ///  * `always` - (default) automatically closes the dropdown when any of its elements is clicked
@@ -19,55 +25,61 @@ class BsDropdownDirective implements OnInit, OnDestroy {
   ///  * `disabled` - disables the auto close. You can then control the open/close status of the
   ///  dropdown manually, by using `is-open`. Please notice that the dropdown will still close
   ///  if the toggle is clicked, the `esc` key is pressed or another dropdown is open
-  @Input() String autoClose = ALWAYS;
+  @Input()
+  String autoClose = AutoClose.ALWAYS;
 
   /// if `true` will enable navigation of dropdown list elements with the arrow keys
-  @Input() bool keyboardNav = false;
+  @Input()
+  bool keyboardNav = false;
 
   /// index of selected element
   num selectedOption;
 
   /// drop menu html
-  ElementRef menuEl;
-
-  /// drop down toggle element
-  ElementRef toggleEl;
+  HtmlElement menuEl;
 
   /// if `true` dropdown will be opened
   bool _isOpen = false;
 
   /// if `true` dropdown will be opened
-  bool get isOpen {
-    return _isOpen;
-  }
+  @HostBinding('class.show')
+  bool get isOpen => _isOpen;
+
+  StreamSubscription _closeDropdownStSub;
+
+  StreamSubscription _keybindFilterStSub;
 
   /// if `true` the dropdown will be visible
-  @Input() set isOpen(value) {
+  @Input()
+  set isOpen(value) {
     _isOpen = value ?? false;
     // todo: implement after porting position
     if (truthy(dropdownAppendToBody) && truthy(menuEl)) {}
     // todo: $animate open<->close transitions, as soon as ng2Animate will be ready
     if (isOpen) {
-      focusToggleElement();
-      dropdownService.open(this);
+      _focusToggleElement();
+
+      _closeDropdownStSub = window.onClick.listen((_) => isOpen = false);
+      _keybindFilterStSub = window.onKeyDown.listen(_keybindFilter);
+//      dropdownService.open(this);
     } else {
-      dropdownService.close(this);
+//      dropdownService.close(this);
       selectedOption = null;
+      _closeDropdownStSub?.cancel();
+      _keybindFilterStSub?.cancel();
     }
-    _isOpenChangeCtrl.add(isOpen);
+    _isOpenChangeCtrl.add(_isOpen);
     // todo: implement call to setIsOpen if set and function
   }
 
   final _isOpenChangeCtrl = new StreamController<bool>.broadcast();
 
   /// fired when `dropdown` toggles, `$event:boolean` equals dropdown `[isOpen]` state
-  @Output() Stream<bool> get isOpenChange => _isOpenChangeCtrl.stream;
+  @Output()
+  Stream<bool> get isOpenChange => _isOpenChangeCtrl.stream;
 
-  /// sets the element that will fire the toggle of the dropdown
-  set dropDownToggle(BsDropdownToggleDirective dropdownToggle) {
-    // init toggle element
-    toggleEl = dropdownToggle.elementRef;
-  }
+  @ContentChild(BsDropdownToggleDirective)
+  BsDropdownToggleDirective dropdownToggle;
 
   /// initializes the dropdown attributes
   ngOnInit() {
@@ -77,10 +89,15 @@ class BsDropdownDirective implements OnInit, OnDestroy {
 //    if (isOpen) {}
   }
 
+  @override
+  ngAfterContentInit() {
+    dropdownToggle.dropdown = this;
+  }
+
   /// removes the dropdown from the DOM
   ngOnDestroy() {
     if (dropdownAppendToBody && truthy(menuEl)) {
-      menuEl.nativeElement.remove();
+      menuEl.remove();
     }
   }
 
@@ -89,19 +106,19 @@ class BsDropdownDirective implements OnInit, OnDestroy {
     // init drop down menu
     menuEl = dropdownMenu.elementRef;
     if (dropdownAppendToBody) {
-      window.document.documentElement.children.add(menuEl.nativeElement);
+      window.document.documentElement.children.add(menuEl);
     }
   }
 
   /// toggles the visibility of the dropdown-menu
-  bool toggle([ bool open ]) {
+  bool toggle([bool open]) {
     return isOpen = open ?? !isOpen;
   }
 
   /// focus the specified entry of dropdown in dependence of the [keyCode]
   focusDropdownEntry(num keyCode) {
     // If append to body is used.
-    Element hostEl = menuEl?.nativeElement ?? elementRef.nativeElement.querySelectorAll("ul")[0];
+    Element hostEl = menuEl ?? elementRef.querySelectorAll("ul")[0];
     if (hostEl == null) {
       // todo: throw exception?
       return;
@@ -112,7 +129,7 @@ class BsDropdownDirective implements OnInit, OnDestroy {
       return;
     }
     switch (keyCode) {
-      case (KeyCode.DOWN) :
+      case (KeyCode.DOWN):
         if (selectedOption is! num) {
           selectedOption = 0;
           break;
@@ -122,7 +139,7 @@ class BsDropdownDirective implements OnInit, OnDestroy {
         }
         selectedOption++;
         break;
-      case (KeyCode.UP) :
+      case (KeyCode.UP):
         if (selectedOption is! num) {
           return;
         }
@@ -137,9 +154,20 @@ class BsDropdownDirective implements OnInit, OnDestroy {
   }
 
   /// focus toggle element
-  focusToggleElement() {
-    if (toggleEl != null) {
-      toggleEl.nativeElement.focus();
+  _focusToggleElement() {
+    dropdownToggle.elementRef.focus();
+  }
+
+  _keybindFilter(KeyboardEvent event) {
+    if (event.which == KeyCode.ESC) {
+      _focusToggleElement();
+      isOpen = false;
+      return;
+    }
+    if (keyboardNav && isOpen && (event.which == KeyCode.UP || event.which == KeyCode.DOWN)) {
+      event.preventDefault();
+      event.stopPropagation();
+      focusDropdownEntry(event.which);
     }
   }
 }

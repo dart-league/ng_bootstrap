@@ -1,24 +1,12 @@
 import 'dart:math' as math;
-import "package:angular2/angular2.dart";
+import "package:angular/angular.dart";
 import 'pager.dart';
 
 /// Provide pagination links for your site or app with
 /// the multi-page pagination component
 @Component(selector: "bs-pagination",
     templateUrl: 'pagination.html',
-    inputs: const [
-      'previousText',
-      'nextText',
-      'align',
-      'disabled',
-      'currentPage',
-      'itemsPerPage',
-      'totalItems'
-    ],
-    outputs: const [
-      'totalPagesChange',
-      'currentPageChange'
-    ])
+    directives: const [coreDirectives])
 class BsPaginationComponent extends BsPagerComponent implements OnInit {
 
   BsPaginationComponent() {
@@ -47,8 +35,14 @@ class BsPaginationComponent extends BsPagerComponent implements OnInit {
   /// label of last text
   @Input() String lastText = "Last";
 
+  /// label of previous text
+  @Input() String previousText = 'Previous';
+
+  /// label of next text
+  @Input() String nextText = 'Next';
+
   /// visible pages
-  List<Map> pages = [];
+  List<Map<String,dynamic>> pages = [];
 
   set totalPages(int v) {
     super.totalPages = v;
@@ -60,22 +54,20 @@ class BsPaginationComponent extends BsPagerComponent implements OnInit {
 
   ngOnInit() {
     totalPages = calculateTotalPages();
-    previousText = 'Previous';
-    nextText = 'Next';
   }
 
   /// Create page object used in template
-  makePage(number, text, isActive) {
+  Map<String,dynamic> makePage(int number, String text, bool isActive) {
     return { "number" : number, "text" : text, "active" : isActive};
   }
 
   /// get the pages to be viewed in dependence of the [currentPage] and [totalPage]
   getPages(int currentPage, int totalPages) {
-    var pages = [];
+    List<Map<String,dynamic>> pages = [];
     // Default page limits
     int startPage = 1;
-    var endPage = totalPages;
-    var isMaxSized = maxSize != null && maxSize < totalPages;
+    int endPage = totalPages;
+    bool isMaxSized = maxSize != null && maxSize < totalPages;
     // recompute if maxSize
     if (isMaxSized) {
       if (rotate) {
@@ -96,24 +88,22 @@ class BsPaginationComponent extends BsPagerComponent implements OnInit {
     }
     // Add page number links
     for (var number = startPage; number <= endPage; number ++) {
-      var page = makePage(number, number, number == currentPage);
+      Map<String,dynamic> page = makePage(number, number.toString(), number == currentPage);
       pages.add(page);
     }
     // Add links to move between page sets
     if (isMaxSized && !rotate) {
       if (startPage > 1) {
-        var previousPageSet = makePage(startPage - 1, "...", false);
-        pages.insert(0, previousPageSet);
+        pages.insert(0, makePage(startPage - 1, "...", false));
       }
       if (endPage < totalPages) {
-        var nextPageSet = makePage(endPage + 1, "...", false);
-        pages.add(nextPageSet);
+        pages.add(makePage(endPage + 1, "...", false));
       }
     }
     return pages;
   }
 
 //  @HostListener('currentPageChange', const ['\$event'])
-  onCurrentPageChange(currentPage) =>
+  onCurrentPageChange(int currentPage) =>
       pages = getPages(currentPage, totalPages);
 }

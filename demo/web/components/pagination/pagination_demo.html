@@ -1,0 +1,30 @@
+<div style="overflow-x: auto">
+  <h4>Default</h4>
+  <bs-pagination [totalItems]="totalItems" [(currentPage)]="currentPage"
+                  #p1 style="min-width: 500px"></bs-pagination>
+  <bs-pagination [boundaryLinks]="true" [totalItems]="totalItems" [(currentPage)]="currentPage" class="sm"
+                  previousText="<" nextText=">" firstText="<<" lastText=">>"
+                 style="min-width: 430px"></bs-pagination>
+  <bs-pagination [directionLinks]="false" [boundaryLinks]="true" [totalItems]="totalItems"
+                  [(currentPage)]="currentPage" style="min-width: 400px"></bs-pagination>
+  <bs-pagination [directionLinks]="false" [totalItems]="totalItems" [(currentPage)]="currentPage"
+                 firstText="Primero" lastText="Ultimo"
+                  [(totalPages)]="smallnumPages" style="min-width: 400px"></bs-pagination>
+    <pre class="card card-body card-title">
+Page: {{currentPage}} / {{smallnumPages}}
+Total Items: {{totalItems}}</pre>
+  <button class="btn btn-info" (click)="setPage(3)">Set current page to: 3</button>
+  <hr>
+  <h4>Pager</h4>
+  <bs-pager [totalItems]="totalItems" [(currentPage)]="currentPage"></bs-pager>
+
+  <hr/>
+  <h4>Limit the maximum visible buttons</h4>
+  <bs-pagination [totalItems]="bigTotalItems" [(currentPage)]="bigCurrentPage" [maxSize]="maxSize" class="sm"
+                  [boundaryLinks]="true" style="min-width: 530px"></bs-pagination>
+  <bs-pagination [totalItems]="bigTotalItems" [(currentPage)]="bigCurrentPage" [maxSize]="maxSize" class="sm"
+                  [boundaryLinks]="true" [rotate]="false" [(totalPages)]="numPages" style="min-width: 530px"></bs-pagination>
+  <pre class="card card-body card-title">
+Page: {{bigCurrentPage}} / {{numPages}}
+Total Items: {{bigTotalItems}}</pre>
+</div>

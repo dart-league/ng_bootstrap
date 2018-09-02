@@ -1,0 +1,27 @@
+<h4>Default</h4>
+<bs-rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly"
+        (onHover)="hoveringOver($event)" (onLeave)="resetStar()"
+        [titles]="['one','two','three']"></bs-rating>
+<span class="label"
+      [ngClass]="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
+      [ngStyle]="{display: (overStar != null && !isReadonly) ? 'inline' : 'none'}">{{percent}}%</span>
+
+<pre class="card card-body card-title" style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar != null ? overStar : "none"}}</b></pre>
+
+<button type="button" class="btn btn-sm btn-danger" (click)="rate = 0"
+        [disabled]="isReadonly">Clear
+</button>
+<button type="button" class="btn btn-sm btn-primary"
+        (click)="isReadonly = !isReadonly">Toggle Readonly
+</button>
+<hr/>
+
+<h4>Custom icons</h4>
+<div>
+  <bs-rating [(ngModel)]="x" [max]="15" stateOn="fa-check-circle" stateOff="fa-check-circle-o"></bs-rating>
+  <b>(<i>Rate:</i> {{x}})</b>
+</div>
+<div>
+  <bs-rating [(ngModel)]="y" [ratingStates]="ratingStates"></bs-rating>
+  <b>(<i>Rate:</i> {{y}})</b>
+</div>

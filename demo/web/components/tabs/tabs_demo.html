@@ -1,0 +1,17 @@
+<bs-tabs #tabs>
+    <template bsTab [active]="true" select="products">
+        Products
+    </template>
+    <template bsTab select="prices">
+        Prices
+    </template>
+</bs-tabs>
+
+<bs-tab-content [for]="tabs">
+    <template bs-tab-panel name="products">
+        <h1>Products</h1>
+    </template>
+    <template bs-tab-panel name="prices">
+        <h1>Prices</h1>
+    </template>
+</bs-tab-content>

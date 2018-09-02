@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular2/core.dart';
+import 'package:angular/core.dart';
 
 @Directive(selector: 'bs-file-drop, [bsFileDrop]')
 class BsFileDropDirective {

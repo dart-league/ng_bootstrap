@@ -1,0 +1,20 @@
+name: ng_bootstrap_demo
+version: 0.0.1
+description: ng_bootstrap demo gh-page
+authors:
+  - Luis Vargas <luisvargastijerino@gmail.com>
+  - Adao Jr. <itsjunnior@gmail.com>
+dependencies:
+  string_converters: ^1.0.0
+  angular: any
+  dson: ^0.15.0
+#  ng_bootstrap: ^0.6.3
+  ng_bootstrap:
+    path: ..
+#    git: https://github.com/dart-league/ng_bootstrap
+dev_dependencies:
+  sass_builder: ^2.1.1
+#  sass_builder:
+#    path: ../sass_builder
+  build_runner: any
+  build_web_compilers: any

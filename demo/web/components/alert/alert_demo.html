@@ -1,0 +1,9 @@
+<bs-alert [dismissible]="true">This alert is dismissible</bs-alert>
+<bs-alert type="info">This alert is info</bs-alert>
+
+<bs-alert *ngFor="let alert of alerts; let i = index" [type]="alert['type']" (close)="closeAlert(i)"
+           [dismissible]="alert['dismissible']" [timeout]="alert['timeout']">
+  {{ alert['msg'] }}
+</bs-alert>
+
+<button type="button" class='btn btn-primary' (click)="addAlert()">Add Alert</button>

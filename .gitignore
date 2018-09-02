@@ -11,11 +11,10 @@ npm-debug.log
 /typings
 
 # ignore build and dist for now
-/build
 /dist
 
 # ignore incline compiling
 .pub
-/**/packages
+/packages
 pubspec.lock
 .packages

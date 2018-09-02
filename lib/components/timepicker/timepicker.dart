@@ -1,5 +1,6 @@
-import "package:angular2/angular2.dart";
+import "package:angular/angular.dart";
 import 'dart:html';
+import 'package:angular_forms/angular_forms.dart';
 
 // todo: implement global configuration via DI
 
@@ -13,12 +14,13 @@ DateTime addMinutes(DateTime time, int minutes) => time.add(new Duration(minutes
 
 /// A lightweight & configurable timepicker directive
 ///
-/// [demo](http://luisvt.github.io/ng2_strap/#timepicker)
+/// [demo](http://dart-league.github.io/ng_bootstrap/#timepicker)
 @Component (selector: "bs-time-picker",
-    templateUrl: 'timepicker.html')
+    templateUrl: 'timepicker.html',
+    directives: const [coreDirectives, formDirectives])
 class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   ///
-  BsTimePickerComponent(this.cd, ElementRef elementRef)
+  BsTimePickerComponent(this.cd, HtmlElement elementRef)
       : super (elementRef) {
     cd.valueAccessor = this;
   }
@@ -97,13 +99,6 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
       updateTemplate();
       return;
     }
-    // Evaluate from template
-//    var hours = getHoursFromTemplate();
-//    var minutes = getMinutesFromTemplate();
-//    if (hours != null && minutes != null) {
-//      selected;
-//      refresh();
-//    }
   }
 
   /// binds to Date object
@@ -155,7 +150,7 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
 
   /// get the value of hours from template
   getHoursFromTemplate() {
-    var hours = int.parse(this.hours);
+    var hours = int.tryParse(this.hours) ?? 0;
     var valid = showMeridian ? (hours > 0 && hours < 13) : (hours >= 0 &&
         hours < 24);
     if (!valid) {
@@ -174,7 +169,7 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
 
   /// parse the minutes string from the template
   getMinutesFromTemplate() {
-    var _minutes = int.parse(minutes);
+    var _minutes = int.tryParse(minutes) ?? 0;
     return (_minutes >= 0 && _minutes < 60) ? _minutes : null;
   }
 
@@ -331,4 +326,7 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
       addMinutesToSelected(12 * 60 * sign);
     }
   }
+
+  @HostListener('input', const ['\$event'])
+  bool onInput(Event $event) => true;
 }

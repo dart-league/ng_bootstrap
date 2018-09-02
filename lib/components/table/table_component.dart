@@ -12,14 +12,15 @@ part of bs_table_directives;
 /// <bs-table>
 /// ```
 ///
-/// [demo](http://luisvt.github.io/ng2_strap/#table)
+/// [demo](http://dart-league.github.io/ng_bootstrap/#table)
 @Component(
     selector: 'bs-table',
     templateUrl: 'table_component.html',
-    directives: const [BsTemplateOutletDirective])
-class BsTableComponent {
+    directives: const [coreDirectives, formDirectives, BsInput])
+class BsTableComponent implements OnInit, OnDestroy {
   BsTableComponent() {
     pageNumberChange.listen(updatePage);
+    editing = new List.filled(itemsPerPage, false);
   }
 
   /// Saves the initial values coming from the html attribute
@@ -38,6 +39,22 @@ class BsTableComponent {
   /// Handles the rows that will be displayed by the current page
   List rowsPage;
 
+  Map<String, String> _containerStyle;
+
+  Map<String, String> get containerStyle => _containerStyle;
+
+  @Input() set containerStyle(Map<String, String> containerStyle) {
+    containerStyle['height'] ??= '600px';
+    _containerStyle = containerStyle;
+  }
+
+  @ViewChild('tbodyInner')
+  Element tbodyInner;
+
+  String tbodyInnerWidth;
+
+  Timer _tbodyInnerWidthTimer;
+
   final _tableChanged = new StreamController<dynamic>.broadcast();
 
   /// Emits when occurs a change on the table
@@ -45,7 +62,7 @@ class BsTableComponent {
 
   /// Handles the columns of the table
   @ContentChildren(BsColumnDirective)
-  QueryList<BsColumnDirective> columns;
+  List<BsColumnDirective> columns;
 
   /// Sets if the table-columns are sortable or not
   @Input() bool sortable = true;
@@ -58,6 +75,8 @@ class BsTableComponent {
 
   /// Gets the current page number
   num get pageNumber => _pageNumber;
+
+  List<bool> editing;
 
   /// Sets the current page number
   @Input() set pageNumber(num pageNumber) {
@@ -80,6 +99,15 @@ class BsTableComponent {
   Set selectedRows = new Set();
 
   bool get isSelectedAll => rowsPage != null && selectedRows != null && rowsPage.length == selectedRows.length;
+
+  Map<int, dynamic> _clonedRows = <int, dynamic>{};
+
+  @override
+  void ngOnInit() {
+    _tbodyInnerWidthTimer =
+        Timer.periodic(Duration(milliseconds: 100),
+                (_) => tbodyInnerWidth = tbodyInner.getComputedStyle().width);
+  }
 
   selectAll() {
     if (isSelectedAll)
@@ -130,10 +158,10 @@ class BsTableComponent {
           var orderBy = column.orderBy ?? column.fieldName;
           var comparison;
           if (orderBy is String) {
-            comparison = getData(r1, column.fieldName)
-                .compareTo(getData(r2, column.fieldName));
+            comparison = getData(r1, orderBy)
+                .compareTo(getData(r2, orderBy));
           } else if (orderBy is Function) {
-            comparison = orderBy;
+            comparison = orderBy(r1, r2);
           } else {
             throw new Exception('The type of `orderBy` or `fieldName` is incorrect.'
                 'Please use `String` or `Function` for `orderBy`'
@@ -151,6 +179,11 @@ class BsTableComponent {
     }
   }
 
+  _getDataFn(prev, String curr) =>
+      prev is Map
+      ? prev[curr]
+          : throw new Exception('Type of prev is not supported, please use a Map, SerializableMap or an String');
+
   /// Gets the data from the value of the row with the specified field name.
   /// If the fieldName contains `.` it splits the values and loops over the row
   /// fields until find the matching one. For example if user specifies:
@@ -167,9 +200,40 @@ class BsTableComponent {
   /// if the value of the row is a [Map], or `row.address.street` if the value of the row
   /// is a complex object.
   String getData(dynamic row, String fieldName) =>
-      fieldName.split('.').fold(row, (prev, String curr) =>
-      prev is Map
-          ? prev[curr]
-          : throw new Exception('Type of prev is not supported, please use a Map, SerializableMap or an String')
-      ).toString();
+      fieldName.split('.').fold(row, _getDataFn).toString();
+
+  void setData(dynamic row, String fieldName, dynamic value) {
+    if (fieldName.contains('.')) {
+      var names = fieldName.split('.');
+      var lastName = names.removeLast();
+      names.fold(row, _getDataFn)[lastName] = value;
+    } else {
+      row[fieldName] = value;
+    }
+  }
+
+  startEditingRow(dynamic row, int index) {
+    _clonedRows[index] = {};
+    for(var column in columns) {
+      _clonedRows[index][column.fieldName] = getData(row, column.fieldName);
+    }
+    editing[index] = true;
+  }
+
+  saveRow(dynamic row, int index) {
+    editing[index] = false;
+  }
+
+  cancelRow(dynamic row, int index, Event event) {
+    event.preventDefault();
+    for (var column in columns) {
+      setData(row, column.fieldName, _clonedRows[index][column.fieldName]);
+    }
+    editing[index] = false;
+  }
+
+  @override
+  void ngOnDestroy() {
+    _tbodyInnerWidthTimer.cancel();
+  }
 }

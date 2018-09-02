@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import "package:node_shims/js.dart";
+import "package:js_shims/js_shims.dart";
 
 Document get _document => window.document;
 
@@ -22,21 +22,14 @@ _parentOffsetEl(Element nativeEl) {
 
 /// Provides read-only equivalent of jQuery's position function:
 /// http://api.jquery.com/position/
-Rectangle _position(Element nativeEl) {
-  var elBCR = nativeEl.offset;
-  var offsetParentBCR = new Position(top: 0, left: 0);
-  var offsetParentEl = _parentOffsetEl(nativeEl);
-  if (offsetParentEl != _document) {
-    offsetParentBCR = offsetParentEl.offset;
-    offsetParentBCR.top += offsetParentEl.clientTop - offsetParentEl.scrollTop;
-    offsetParentBCR.left += offsetParentEl.clientLeft - offsetParentEl.scrollLeft;
-  }
-  var boundingClientRect = nativeEl.getBoundingClientRect();
+Rectangle _position(Element el) {
+  var elOffset = el.offset;
+  var boundingClientRect = el.getBoundingClientRect();
   return new Rectangle(
-      elBCR.left - offsetParentBCR.left,
-      elBCR.top - offsetParentBCR.top,
-      boundingClientRect.width ?? nativeEl.offsetWidth,
-      boundingClientRect.height ?? nativeEl.offsetHeight);
+      elOffset.left,
+      elOffset.top,
+      boundingClientRect.width ?? el.offsetWidth,
+      boundingClientRect.height ?? el.offsetHeight);
 }
 
 /// Provides coordinates for the targetEl in relation to hostEl
