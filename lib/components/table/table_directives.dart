@@ -13,9 +13,12 @@ part 'table_component.dart';
 part 'column_editor_directive.dart';
 
 /// Directives needed for creating data table components
-const BS_TABLE_DIRECTIVES = const [
+const bsTableDirectives = const [
   BsTableComponent,
   BsColumnDirective,
   BsColumnEditorDirective,
   BsInput
 ];
+
+@Deprecated('Renamed to "bsTableDirectives"')
+const BS_TABLE_DIRECTIVES = bsTableDirectives;

@@ -13,7 +13,7 @@ export 'table_data_complex.dart';
 @Component (selector: 'table-demo',
     templateUrl: 'table_demo.html',
     directives: const [
-      BS_TABLE_DIRECTIVES,
+      bsTableDirectives,
       BsPaginationComponent,
       bsTabsxDirectives,
       coreDirectives,

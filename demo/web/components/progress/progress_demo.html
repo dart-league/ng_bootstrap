@@ -19,6 +19,7 @@
 <hr/>
 <h3>Dynamic
   <button type="button" class="btn btn-sm btn-primary" (click)="random()">Randomize</button>
+  <button type="button" class="btn btn-sm btn-primary" (click)="value = 50">Set 50%</button>
 </h3>
 <bs-progress [max]="max" [value]="value * 2">
   <!-- In this case `value` and `max` comes from parent component's values -->
@@ -26,9 +27,22 @@
 </bs-progress>
 
 <small><em>No animation</em></small>
-<bs-progress [animate]="false" [value]="value" class="bg-success"><template><b>{{value}}%</b></template></bs-progress>
+<bs-progress [animate]="false" [value]="value" class="bg-success">
+  <template><b>{{value}}%</b></template>
+</bs-progress>
 
 <small><em>Object (changes type based on value)</em></small>
 <bs-progress [value]="value" [class]="'bg-striped bg-' + type">
   <template>{{type}} <i [hidden]="!showWarning">!!! Watch out !!!</i></template>
 </bs-progress>
+
+<hr>
+
+<bs-toggle-button class="btn btn-primary" [(ngModel)]="showResizeable">Show Resizeable</bs-toggle-button>
+
+<div *ngIf="showResizeable" style="resize: horizontal; width: 300px; border: solid; overflow-x: auto;" class="p-3 mt-3">
+  <h3>Inside Resizeable element</h3>
+  <bs-progress [value]="value">
+    <template let-percentage>{{percentage}}</template>
+  </bs-progress>
+</div>

@@ -12,12 +12,12 @@ part of bs_table_directives;
 /// <bs-table>
 /// ```
 ///
-/// [demo](http://luisvt.github.io/ng2_strap/#table)
+/// [demo](http://dart-league.github.io/ng_bootstrap/#table)
 @Component(
     selector: 'bs-table',
     templateUrl: 'table_component.html',
     directives: const [coreDirectives, formDirectives, BsInput])
-class BsTableComponent {
+class BsTableComponent implements OnInit, OnDestroy {
   BsTableComponent() {
     pageNumberChange.listen(updatePage);
     editing = new List.filled(itemsPerPage, false);
@@ -38,6 +38,22 @@ class BsTableComponent {
 
   /// Handles the rows that will be displayed by the current page
   List rowsPage;
+
+  Map<String, String> _containerStyle;
+
+  Map<String, String> get containerStyle => _containerStyle;
+
+  @Input() set containerStyle(Map<String, String> containerStyle) {
+    containerStyle['height'] ??= '600px';
+    _containerStyle = containerStyle;
+  }
+
+  @ViewChild('tbodyInner')
+  Element tbodyInner;
+
+  String tbodyInnerWidth;
+
+  Timer _tbodyInnerWidthTimer;
 
   final _tableChanged = new StreamController<dynamic>.broadcast();
 
@@ -84,7 +100,14 @@ class BsTableComponent {
 
   bool get isSelectedAll => rowsPage != null && selectedRows != null && rowsPage.length == selectedRows.length;
 
-  var _clonedRow = {};
+  Map<int, dynamic> _clonedRows = <int, dynamic>{};
+
+  @override
+  void ngOnInit() {
+    _tbodyInnerWidthTimer =
+        Timer.periodic(Duration(milliseconds: 100),
+                (_) => tbodyInnerWidth = tbodyInner.getComputedStyle().width);
+  }
 
   selectAll() {
     if (isSelectedAll)
@@ -190,22 +213,27 @@ class BsTableComponent {
   }
 
   startEditingRow(dynamic row, int index) {
+    _clonedRows[index] = {};
     for(var column in columns) {
-      _clonedRow[column.fieldName] = getData(row, column.fieldName);
+      _clonedRows[index][column.fieldName] = getData(row, column.fieldName);
     }
     editing[index] = true;
   }
 
   saveRow(dynamic row, int index) {
     editing[index] = false;
-    print('saving: $row');
   }
 
   cancelRow(dynamic row, int index, Event event) {
     event.preventDefault();
     for (var column in columns) {
-      setData(row, column.fieldName, _clonedRow[column.fieldName]);
+      setData(row, column.fieldName, _clonedRows[index][column.fieldName]);
     }
     editing[index] = false;
+  }
+
+  @override
+  void ngOnDestroy() {
+    _tbodyInnerWidthTimer.cancel();
   }
 }

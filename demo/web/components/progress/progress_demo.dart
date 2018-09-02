@@ -2,10 +2,11 @@ import 'dart:math';
 
 import "package:angular/angular.dart";
 import 'package:ng_bootstrap/ng_bootstrap.dart';
+import 'package:angular_forms/angular_forms.dart';
 
 @Component (selector: "progress-demo",
     templateUrl: "progress_demo.html",
-    directives: const [BsProgressComponent])
+    directives: const [BsProgressComponent, BsToggleButtonDirective, coreDirectives, formDirectives])
 class ProgressDemo {
   num max = 200;
 
@@ -16,6 +17,8 @@ class ProgressDemo {
   String type;
 
   List stacked = [];
+
+  bool showResizeable = true;
 
   ProgressDemo() {
     random();
