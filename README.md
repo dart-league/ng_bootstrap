@@ -85,9 +85,9 @@ Then in your `index.html` file change the `link` tag to point to the new theme.
 - [x] [Timepicker](http://dart-league.github.io/ng_bootstrap/#timepicker)
 - [x] [Tooltip](http://dart-league.github.io/ng_bootstrap/#tooltip)
 - [x] [Typeahead](http://dart-league.github.io/ng_bootstrap/#typeahead)
-- [x] [Grid/Table](http://dart-league.github.io/ng_bootstrap/build/web/index.html#table)
-- [x] [FileInput](http://dart-league.github.io/ng_bootstrap/build/web/index.html#file_upload)
-- [x] [TextInput](http://dart-league.github.io/ng_bootstrap/build/web/index.html#text_input)
+- [x] [Grid/Table](http://dart-league.github.io/ng_bootstrap/index.html#table)
+- [x] [FileInput](http://dart-league.github.io/ng_bootstrap/index.html#file_upload)
+- [x] [TextInput](http://dart-league.github.io/ng_bootstrap/index.html#text_input)
 - [ ] ImageInput
 - [ ] SignItInput
 - [ ] SignInput
