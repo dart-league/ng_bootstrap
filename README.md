@@ -2,7 +2,7 @@
 
 [Join the chat](https://gitter.im/dart-league/ng_bootstrap)
 
-[Usage & Demo](http://dart-league.github.io/ng_bootstrap/)
+[Usage & Demo](https://dart-league.github.io/ng_bootstrap/)
 
 # Getting Started
 
@@ -67,27 +67,27 @@ Then in your `index.html` file change the `link` tag to point to the new theme.
 
 ## Components
 
-- [x] [Accordion](http://dart-league.github.io/ng_bootstrap/#accordion)
-- [x] [Alert](http://dart-league.github.io/ng_bootstrap/#alert)
-- [x] [Buttons](http://dart-league.github.io/ng_bootstrap/#buttons)
-- [x] [Carousel](http://dart-league.github.io/ng_bootstrap/#carousel)
-- [x] [Collapse](http://dart-league.github.io/ng_bootstrap/#collapse)
-- [x] [DatePicker](http://dart-league.github.io/ng_bootstrap/#datepicker)
-- [x] [DatePickerPopup](http://dart-league.github.io/ng_bootstrap/#datepicker)
-- [x] [Dropdown](http://dart-league.github.io/ng_bootstrap/#dropdown)
-- [x] [Modal](http://dart-league.github.io/ng_bootstrap/#modal)
-- [x] [Pagination](http://dart-league.github.io/ng_bootstrap/#pagination)
-- [x] [Popover](http://dart-league.github.io/ng_bootstrap/#popover)
-- [x] [Progressbar](http://dart-league.github.io/ng_bootstrap/#progressbar)
-- [x] [PromptService](http://dart-league.github.io/ng_bootstrap/#prompt)
-- [x] [Rating](http://dart-league.github.io/ng_bootstrap/#rating)
-- [x] [Tabs](http://dart-league.github.io/ng_bootstrap/#tabs)
-- [x] [Timepicker](http://dart-league.github.io/ng_bootstrap/#timepicker)
-- [x] [Tooltip](http://dart-league.github.io/ng_bootstrap/#tooltip)
-- [x] [Typeahead](http://dart-league.github.io/ng_bootstrap/#typeahead)
-- [x] [Grid/Table](http://dart-league.github.io/ng_bootstrap/index.html#table)
-- [x] [FileInput](http://dart-league.github.io/ng_bootstrap/index.html#file_upload)
-- [x] [TextInput](http://dart-league.github.io/ng_bootstrap/index.html#text_input)
+- [x] [Accordion](https://dart-league.github.io/ng_bootstrap/#accordion)
+- [x] [Alert](https://dart-league.github.io/ng_bootstrap/#alert)
+- [x] [Buttons](https://dart-league.github.io/ng_bootstrap/#buttons)
+- [x] [Carousel](https://dart-league.github.io/ng_bootstrap/#carousel)
+- [x] [Collapse](https://dart-league.github.io/ng_bootstrap/#collapse)
+- [x] [DatePicker](https://dart-league.github.io/ng_bootstrap/#datepicker)
+- [x] [DatePickerPopup](https://dart-league.github.io/ng_bootstrap/#datepicker)
+- [x] [Dropdown](https://dart-league.github.io/ng_bootstrap/#dropdown)
+- [x] [Modal](https://dart-league.github.io/ng_bootstrap/#modal)
+- [x] [Pagination](https://dart-league.github.io/ng_bootstrap/#pagination)
+- [x] [Popover](https://dart-league.github.io/ng_bootstrap/#popover)
+- [x] [Progressbar](https://dart-league.github.io/ng_bootstrap/#progressbar)
+- [x] [PromptService](https://dart-league.github.io/ng_bootstrap/#prompt)
+- [x] [Rating](https://dart-league.github.io/ng_bootstrap/#rating)
+- [x] [Tabs](https://dart-league.github.io/ng_bootstrap/#tabs)
+- [x] [Timepicker](https://dart-league.github.io/ng_bootstrap/#timepicker)
+- [x] [Tooltip](https://dart-league.github.io/ng_bootstrap/#tooltip)
+- [x] [Typeahead](https://dart-league.github.io/ng_bootstrap/#typeahead)
+- [x] [Grid/Table](https://dart-league.github.io/ng_bootstrap/index.html#table)
+- [x] [FileInput](https://dart-league.github.io/ng_bootstrap/index.html#file_upload)
+- [x] [TextInput](https://dart-league.github.io/ng_bootstrap/index.html#text_input)
 - [ ] ImageInput
 - [ ] SignItInput
 - [ ] SignInput
