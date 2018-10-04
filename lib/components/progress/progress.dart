@@ -62,11 +62,11 @@ class BsProgressComponent implements OnInit, OnDestroy {
 //      elementWidth = nativeElement.getComputedStyle().width;
 //    });
     _resizeTimer =
-        Timer.periodic(Duration(milliseconds: 100), (_) => elementWidth = nativeElement.getComputedStyle().width);
+        Timer.periodic(Duration(milliseconds: 500), (_) => elementWidth = nativeElement.getComputedStyle().width);
   }
 
   @override
   void ngOnDestroy() {
-    _resizeTimer.cancel();
+//    _resizeTimer.cancel();
   }
 }

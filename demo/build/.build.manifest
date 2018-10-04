@@ -71,7 +71,6 @@ demo.html
 index.dart.js
 index.html
 packages/$sdk/_internal/ddc_sdk.sum
-packages/$sdk/_internal/spec.sum
 packages/$sdk/_internal/strong.sum
 packages/$sdk/dev_compiler/amd/dart_sdk.js
 packages/$sdk/dev_compiler/amd/require.js
@@ -180,6 +179,8 @@ packages/bootstrap_sass/scss/utilities/_text.scss
 packages/bootstrap_sass/scss/utilities/_visibility.scss
 packages/build_modules/src/analysis_options.default.yaml
 packages/build_runner/src/server/README.md
+packages/build_runner/src/server/build_updates_client/hot_reload_client.dart.js
+packages/build_runner/src/server/build_updates_client/live_reload_client.js
 packages/build_runner/src/server/graph_viz.html
 packages/build_runner/src/server/graph_viz.js
 packages/build_runner/src/server/graph_viz_main.dart.js
@@ -484,4 +485,5 @@ packages/ng_bootstrap/svg/down-arrow.svg
 packages/ng_bootstrap/svg/right-chevron.svg
 packages/ng_bootstrap/svg/svg-defs.svg
 packages/package_resolver/src/test_package_config
+packages/pedantic/analysis_options.yaml
 style.css

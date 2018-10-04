@@ -1,3 +1,9 @@
+## 1.0.1
+
+- upgrade `bootstrap_sass` to version `^4.1.3`
+- fix demo links
+- fix `accordion` style
+
 ## 1.0.0
 
 - Add `ngClass` to `bs-column`

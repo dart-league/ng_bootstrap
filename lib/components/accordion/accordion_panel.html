@@ -1,10 +1,10 @@
 <div class="card" [ngClass]="panelClass">
   <div class="card-header" (click)="toggleOpen($event)">
     <h5 class="mb-0">
-      <button type="button" class="btn btn-link">
+      <a href>
         {{heading}}
         <ng-content select="header"></ng-content>
-      </button>
+      </a>
     </h5>
   </div>
   <div [bsCollapse]="!isOpen">
