@@ -1,23 +1,33 @@
 <div>
-  <input class="form-control"
-         placeholder="Filter"
-         ngModel
-         (ngModelChange)="filterRows($event)"/>
-  <br>
-  <div class="form-check col-xs-12">
-    <label class="form-check-label">
-      <input class="form-check-input" type="checkbox" [(ngModel)]="selectable">
-      selectable
-    </label>
-  </div>
   <bs-tabsx>
     <bs-tabx header="Maps Data">
-      <bs-table [rows]="rows"
-                [selectable]="selectable"
-                [(pageNumber)]="page"
-                [itemsPerPage]="itemsPerPage"
+      <input class="form-control"
+             placeholder="Filter"
+             [ngModel]="mapConfig.filterString"
+             (ngModelChange)="mapConfig.filterString = $event; filterRows()"/>
+      <br>
+      <div class="form-group">
+        <label>Page Size / Items Per Page</label>
+        <input class="form-control"
+               type="number"
+               placeholder="Page Size"
+               [ngModel]="mapConfig.itemsPerPage"
+               (ngModelChange)="mapConfig.itemsPerPage = $event; filterRows()">
+      </div>
+      <br>
+      <div class="form-check col-xs-12">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="mapConfig.selectable">
+          selectable
+        </label>
+      </div>
+
+      <bs-table [rows]="mapConfig.rows"
+                [selectable]="mapConfig.selectable"
+                [(pageNumber)]="mapConfig.page"
+                [itemsPerPage]="mapConfig.itemsPerPage"
                 [sortable]="true"
-                [(totalItems)]="totalItems"
+                [(totalItems)]="mapConfig.totalItems"
                 [containerStyle]="{'min-width': '900px', 'max-height': '900px'}">
         <bs-column header="Name" fieldName="name" ngClass="text-info"></bs-column>
         <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
@@ -37,20 +47,56 @@
         </bs-column>
         <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px', flex: 'none'}"></bs-column>
       </bs-table>
+
+      <bs-pagination class="pagination-sm tag"
+                     [(currentPage)]="mapConfig.page"
+                     [totalItems]="mapConfig.totalItems"
+                     [itemsPerPage]="mapConfig.itemsPerPage"
+                     [maxSize]="mapConfig.maxSize"
+                     [boundaryLinks]="true"
+                     [rotate]="false"
+                     [(totalPages)]="mapConfig.totalPages">
+      </bs-pagination>
+
+      <pre class="card card-body card-title">Page: {{mapConfig.page}} / {{mapConfig.totalPages}}
+Total Items: {{mapConfig.totalItems}}</pre>
     </bs-tabx>
     <bs-tabx header="Complex Objects Data">
-      <bs-table [rows]="rowsComplex"
-                [selectable]="selectable"
-                [(pageNumber)]="page"
-                [itemsPerPage]="itemsPerPage"
+      <input class="form-control"
+             placeholder="Filter"
+             [ngModel]="complexConfig.filterString"
+             (ngModelChange)="complexConfig.filterString = $event; filterComplexRows()"/>
+      <br>
+      <div class="form-group">
+        <label>Page Size / Items Per Page</label>
+        <input class="form-control"
+               type="number"
+               placeholder="Page Size"
+               [ngModel]="complexConfig.itemsPerPage"
+               (ngModelChange)="complexConfig.itemsPerPage = $event; filterRows()">
+      </div>
+      <br>
+      <div class="form-check col-xs-12">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="complexConfig.selectable">
+          selectable
+        </label>
+      </div>
+
+      <bs-table [rows]="complexConfig.rows"
+                [selectable]="complexConfig.selectable"
+                [(pageNumber)]="complexConfig.page"
+                [itemsPerPage]="complexConfig.itemsPerPage"
                 [sortable]="true"
-                [(totalItems)]="totalItems"
+                [(totalItems)]="complexConfig.totalItems"
                 [containerStyle]="{'min-width': '1000px'}">
         <bs-column header="Name" fieldName="name"></bs-column>
         <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
         <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
         <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
-        <bs-column header="Start date" fieldName="startDate"></bs-column>
+        <bs-column header="Start date" fieldName="startDate">
+            <template let-row>{{row.startDate | date:'fullDate'}}</template>
+        </bs-column>
         <bs-column header="Salary ($)" fieldName="salary" orderBy="salary" [ngStyle]="{width: '120px', flex: 'none'}">
           <template let-row>U$ {{row.salary}}</template>
           <template bs-column-editor let-row>
@@ -64,18 +110,117 @@
         </bs-column>
         <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px', flex: 'none'}"></bs-column>
       </bs-table>
+
+      <bs-pagination class="pagination-sm tag"
+                     [(currentPage)]="complexConfig.page"
+                     [totalItems]="complexConfig.totalItems"
+                     [itemsPerPage]="complexConfig.itemsPerPage"
+                     [maxSize]="complexConfig.maxSize"
+                     [boundaryLinks]="true"
+                     [rotate]="false"
+                     [(totalPages)]="complexConfig.totalPages">
+      </bs-pagination>
+
+      <pre class="card card-body card-title">Page: {{complexConfig.page}} / {{complexConfig.totalPages}}
+Total Items: {{complexConfig.totalItems}}</pre>
+    </bs-tabx>
+    <bs-tabx header="Remote Maps Data">
+      <input class="form-control"
+             placeholder="Filter"
+             [ngModel]="mapConfig.filterString"
+             (ngModelChange)="remoteMapConfig.filterString = $event; filterRemoteRows()"/>
+      <br>
+      <div class="form-group">
+        <label>Page Size / Items Per Page</label>
+        <input class="form-control"
+               type="number"
+               min="1"
+               placeholder="Page Size"
+               [ngModel]="remoteMapConfig.itemsPerPage"
+               (ngModelChange)="remoteMapConfig.itemsPerPage = $event; filterRemoteRows()">
+      </div>
+      <br>
+      <div class="form-check col-xs-12">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="remoteMapConfig.selectable">
+          selectable
+        </label>
+      </div>
+
+      <bs-table [rows]="remoteMapConfig.rows"
+                [remoteData]="true"
+                [selectable]="remoteMapConfig.selectable"
+                [itemsPerPage]="remoteMapConfig.itemsPerPage"
+                [sortable]="true"
+                (sortChange)="filterRemoteRows(remoteMapConfig.page, $event)"
+                [containerStyle]="{'min-width': '900px', 'max-height': '900px'}">
+        <bs-column header="Id" fieldName="id" [ngStyle]="{width: '50px', flex: 'none'}"></bs-column>
+        <bs-column header="Title" fieldName="title"></bs-column>
+        <bs-column header="Body" fieldName="body" ></bs-column>
+      </bs-table>
+
+      <bs-pagination class="pagination-sm tag"
+                     [currentPage]="remoteMapConfig.page"
+                     (currentPageChange)="filterRemoteRows($event)"
+                     [totalItems]="remoteMapConfig.totalItems"
+                     [itemsPerPage]="remoteMapConfig.itemsPerPage"
+                     [maxSize]="remoteMapConfig.maxSize"
+                     [boundaryLinks]="true"
+                     [rotate]="false"
+                     [(totalPages)]="remoteMapConfig.totalPages">
+      </bs-pagination>
+
+      <pre class="card card-body card-title">Page: {{remoteMapConfig.page}} / {{remoteMapConfig.totalPages}}
+Total Items: {{remoteMapConfig.totalItems}}</pre>
+    </bs-tabx>
+    <bs-tabx header="Remote Complex Objects Data">
+      <input class="form-control"
+             placeholder="Filter"
+             [ngModel]="remoteComplexConfig.filterString"
+             (ngModelChange)="remoteComplexConfig.filterString = $event; filterRemoteComplexRows()"/>
+      <br>
+      <div class="form-group">
+        <label>Page Size / Items Per Page</label>
+        <input class="form-control"
+               type="number"
+               min="1"
+               placeholder="Page Size"
+               [ngModel]="remoteComplexConfig.itemsPerPage"
+               (ngModelChange)="remoteComplexConfig.itemsPerPage = $event ?? 1; filterRemoteComplexRows()">
+      </div>
+      <br>
+      <div class="form-check col-xs-12">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="remoteComplexConfig.selectable">
+          selectable
+        </label>
+      </div>
+
+      <bs-table [rows]="remoteComplexConfig.rows"
+                [remoteData]="true"
+                [selectable]="remoteComplexConfig.selectable"
+                [itemsPerPage]="remoteComplexConfig.itemsPerPage"
+                [sortable]="true"
+                (sortChange)="filterRemoteComplexRows(remoteComplexConfig.page, $event)"
+                [containerStyle]="{'min-width': '900px', 'max-height': '900px'}">
+        <bs-column header="Id" fieldName="id" [ngStyle]="{width: '50px', flex: 'none'}"></bs-column>
+        <bs-column header="Title" fieldName="title"></bs-column>
+        <bs-column header="Body" fieldName="body" ></bs-column>
+      </bs-table>
+
+      <bs-pagination class="pagination-sm tag"
+                     [currentPage]="remoteComplexConfig.page"
+                     (currentPageChange)="filterRemoteComplexRows($event)"
+                     [totalItems]="remoteComplexConfig.totalItems"
+                     [itemsPerPage]="remoteComplexConfig.itemsPerPage"
+                     [maxSize]="remoteComplexConfig.maxSize"
+                     [boundaryLinks]="true"
+                     [rotate]="false"
+                     [(totalPages)]="remoteComplexConfig.totalPages">
+      </bs-pagination>
+
+      <pre class="card card-body card-title">Page: {{remoteMapConfig.page}} / {{remoteMapConfig.totalPages}}
+Total Items: {{remoteMapConfig.totalItems}}</pre>
     </bs-tabx>
   </bs-tabsx>
-  <bs-pagination class="pagination-sm tag"
-                 [(currentPage)]="page"
-                 [totalItems]="totalItems"
-                 [itemsPerPage]="itemsPerPage"
-                 [maxSize]="maxSize"
-                 [boundaryLinks]="true"
-                 [rotate]="false"
-                 [(totalPages)]="totalPages">
-  </bs-pagination>
-  <pre class="card card-body card-title">Page: {{page}} / {{totalPages}}
-Total Items: {{totalItems}}
-</pre>
 </div>

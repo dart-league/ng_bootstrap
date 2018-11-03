@@ -9,7 +9,7 @@ homepage: https://github.com/dart-league/ng_bootstrap
 environment:
   sdk: '>=2.0.0-dev <3.0.0'
 dependencies:
-  angular: ^5.0.0
+  angular: ^5.1.0
 #  angular:
 #    path: ../angular/angular
   js_shims: ^1.0.0

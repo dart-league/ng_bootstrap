@@ -462,7 +462,6 @@ packages/intl/src/data/dates/symbols/zh_CN.json
 packages/intl/src/data/dates/symbols/zh_HK.json
 packages/intl/src/data/dates/symbols/zh_TW.json
 packages/intl/src/data/dates/symbols/zu.json
-packages/kernel/analyzer/readme.md
 packages/kernel/binary/readme.md
 packages/kernel/target/readme.md
 packages/kernel/text/readme.md

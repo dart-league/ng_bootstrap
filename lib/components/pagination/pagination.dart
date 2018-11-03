@@ -46,9 +46,6 @@ class BsPaginationComponent extends BsPagerComponent implements OnInit {
 
   set totalPages(int v) {
     super.totalPages = v;
-    if (currentPage > v) {
-      selectPage(v);
-    }
     onCurrentPageChange(currentPage);
   }
 
