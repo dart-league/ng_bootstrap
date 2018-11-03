@@ -1,7 +1,4 @@
-import 'dart:async';
-import 'dart:html';
-
-import "package:angular/core.dart";
+part of bs_file_upload;
 
 // todo: filters
 @Directive(selector: '[bsFileSelect]')

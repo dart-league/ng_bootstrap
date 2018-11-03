@@ -22,10 +22,11 @@ class DemoSection implements OnInit {
   @override
   ngOnInit() async {
     nameTN = toTableName(name);
+    var docPathNameTN = 'components_$nameTN\_$nameTN';
     var rawMasterUrl = 'https://raw.githubusercontent.com/dart-league/ng_bootstrap/develop/demo';
     var componentsUrl = '$rawMasterUrl/web/components';
-    var _docPath = docPath ?? nameTN;
-    docUrl = 'https://www.dartdocs.org/documentation/ng_bootstrap/0.8.0/$_docPath/$_docPath-library.html';
+    var _docPath = docPath ?? docPathNameTN;
+    docUrl = 'https://www.dartdocs.org/documentation/ng_bootstrap/latest/$_docPath/$_docPath-library.html';
     dart = await HttpRequest.getString('$componentsUrl/$nameTN/${nameTN}_demo.dart');
     html = await HttpRequest.getString('$componentsUrl/$nameTN/${nameTN}_demo.html');
   }

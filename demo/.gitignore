@@ -27,3 +27,4 @@
 /web/style.css
 /.dart_tool/
 /build/**/*.ng_placeholder
+/build/packages/pedantic/analysis_options.yaml

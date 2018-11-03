@@ -105,7 +105,7 @@ class BsTableComponent implements OnInit, OnDestroy {
   @override
   void ngOnInit() {
     _tbodyInnerWidthTimer =
-        Timer.periodic(Duration(milliseconds: 100),
+        Timer.periodic(Duration(milliseconds: 500),
                 (_) => tbodyInnerWidth = tbodyInner.getComputedStyle().width);
   }
 
