@@ -1,12 +1,13 @@
 <div class="d-flex flex-column" [ngStyle]="containerStyle">
   <div #thead class="thead" [style.width]="tbodyInnerWidth">
     <div class="tr" role="row">
-      <div class="col th" *ngIf="selectable"><input type="checkbox" [checked]="isSelectedAll" (click)="selectAll()">
+      <div class="td-select" *ngIf="selectable">
+        <input type="checkbox" [checked]="isSelectedAll" (click)="selectAll()">
       </div>
       <div class="th" *ngFor="let column of columns" (click)="toggleSort(column, $event)" [ngStyle]="column.ngStyle">
         <div class="col p-0">{{column.header}}</div>
         <i *ngIf="sortable && column.sort != null && column.sort != 'NONE'" class="fa"
-           [ngClass]="{'fa-chevron-down': column.sort == 'DES', 'fa-chevron-up': column.sort == 'ASC'}"></i>
+           [ngClass]="{'fa-chevron-down': column.sort == 'DESC', 'fa-chevron-up': column.sort == 'ASC'}"></i>
       </div>
     </div>
   </div>
@@ -16,7 +17,7 @@
     <div class="tr" *ngFor="let row of rowsPage; let i = index" (click)="selectRow($event, row)"
          [class.table-active]="isSelected(row)"
          (dblclick)="startEditingRow(row, i)">
-      <div class="td" *ngIf="selectable">
+      <div class="td-select" *ngIf="selectable">
         <input type="checkbox" [checked]="isSelected(row)" (click)="selectRow($event, row)">
       </div>
 

@@ -10,6 +10,14 @@ bs-table {
     display: flex;
   }
 
+  .td-select {
+    padding: $table-cell-padding;
+    vertical-align: top;
+    display: flex;
+    align-items: center;
+    border-top: $table-border-width solid $table-border-color;
+  }
+
   .th,
   .td {
     padding: $table-cell-padding;

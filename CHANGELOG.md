@@ -1,3 +1,11 @@
+## 1.0.2
+
+- fix sorting by number or date (fix #117)
+- fix pagination greater than 10 (fix #116)
+- add examples to remote data with `bs-table`
+- fix remote sorting for `bs-table`
+- fix column width for select column
+
 ## 1.0.1
 
 - upgrade `bootstrap_sass` to version `^4.1.3`
