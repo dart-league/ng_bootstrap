@@ -20,7 +20,6 @@ part of bs_table_directives;
 class BsTableComponent implements OnInit, OnDestroy {
   BsTableComponent() {
     pageNumberChange.listen(updatePage);
-    editing = new List.filled(itemsPerPage, false);
   }
 
   /// Saves the initial values coming from the html attribute
@@ -68,7 +67,16 @@ class BsTableComponent implements OnInit, OnDestroy {
   @Input() bool sortable = true;
 
   /// Sets the maximum items that will be displayed per page
-  @Input() num itemsPerPage = 10;
+  num _itemsPerPage = 10;
+
+  /// Gets the maximum items that will be displayed per page
+  num get itemsPerPage => _itemsPerPage;
+
+  /// Sets the maximum items that will be displayed per page
+  @Input() set itemsPerPage(num itemsPerPage) {
+    _itemsPerPage = itemsPerPage ?? 10;
+    pageNumber = 1;
+  }
 
   /// Handles the current page number displayed
   num _pageNumber = 1;
@@ -102,6 +110,14 @@ class BsTableComponent implements OnInit, OnDestroy {
 
   Map<int, dynamic> _clonedRows = <int, dynamic>{};
 
+  /// Sets if the data fetch from a remote source
+  @Input() bool remoteData = false;
+
+  final _sortChangeControl = new StreamController<BsColumnDirective>.broadcast();
+
+  /// Emits when the sort has changed
+  @Output() Stream<BsColumnDirective> get sortChange => _sortChangeControl.stream;
+
   @override
   void ngOnInit() {
     _tbodyInnerWidthTimer =
@@ -133,6 +149,7 @@ class BsTableComponent implements OnInit, OnDestroy {
     var startIndex = (pageNumber - 1) * itemsPerPage;
     var endIndex = min(rowsAux.length, startIndex + itemsPerPage);
     rowsPage = rowsAux.getRange(startIndex, endIndex).toList();
+    editing = new List.filled(itemsPerPage, false);
     _totalItemsChangeCtrl.add(rowsAux.length);
     selectedRows.clear();
   }
@@ -144,15 +161,24 @@ class BsTableComponent implements OnInit, OnDestroy {
     if (column.sort != 'NO_SORTABLE') {
       switch (column.sort) {
         case 'ASC':
-          column.sort = 'DES';
+          column.sort = 'DESC';
           break;
-        case 'DES':
+        case 'DESC':
           column.sort = 'NONE';
           break;
         default:
           column.sort = 'ASC';
           break;
       }
+
+      _sortChangeControl.add(column);
+
+      columns.forEach((c) {
+        if (c.fieldName != column.fieldName && c.sort != 'NO_SORTABLE') c.sort = 'NONE';
+      });
+
+      if (remoteData) return;
+
       if (column.sort != 'NONE') {
         rowsAux.sort((r1, r2) {
           var orderBy = column.orderBy ?? column.fieldName;
@@ -172,9 +198,6 @@ class BsTableComponent implements OnInit, OnDestroy {
       } else {
         rowsAux = _rows.toList();
       }
-      columns.forEach((c) {
-        if (c.fieldName != column.fieldName && c.sort != 'NO_SORTABLE') c.sort = 'NONE';
-      });
       updatePage(pageNumber);
     }
   }
@@ -199,8 +222,8 @@ class BsTableComponent implements OnInit, OnDestroy {
   /// this function should return the value corresponding to `row['address']['street']`
   /// if the value of the row is a [Map], or `row.address.street` if the value of the row
   /// is a complex object.
-  String getData(dynamic row, String fieldName) =>
-      fieldName.split('.').fold(row, _getDataFn).toString();
+  getData(dynamic row, String fieldName) =>
+      fieldName.split('.').fold(row, _getDataFn);
 
   void setData(dynamic row, String fieldName, dynamic value) {
     if (fieldName.contains('.')) {

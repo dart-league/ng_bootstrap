@@ -5,26 +5,6 @@
 
 /pubspec.lock
 
-/build/components/
-/build/index.ng_summary.json
-/build/demo.html
-/build/index.ng_meta.json
-/build/packages/$sdk/
-/build/packages/analyzer/
-/build/packages/angular/
-/build/packages/bootstrap_sass/
-/build/packages/build_modules/
-/build/packages/build_runner/
-/build/packages/build_web_compilers/
-/build/packages/font_awesome/less/
-/build/packages/font_awesome/scss/
-/build/packages/font_awesome/css/
-/build/packages/front_end/
-/build/packages/kernel/
-/build/packages/ng_bootstrap/
-/build/packages/package_resolver/
-/build/style.scss
+
 /web/style.css
 /.dart_tool/
-/build/**/*.ng_placeholder
-/build/packages/pedantic/analysis_options.yaml

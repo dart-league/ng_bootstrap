@@ -62,7 +62,7 @@ class BsPagerComponent {
 
   /// sets the maximum number of items per page. If value less than 1 will display all items on one page
   @Input() set itemsPerPage(int v) {
-    _itemsPerPage = v;
+    _itemsPerPage = v ?? 0;
     totalPages = calculateTotalPages();
   }
 
@@ -100,7 +100,7 @@ class BsPagerComponent {
         && _page <= totalPages) {
       dynamic target = event.target;
       target.blur();
-      currentPage = _page;
+      _currentPageChangeCtrl.add(_page);
       _totalPagesChangeCtrl.add(totalPages);
     }
   }
