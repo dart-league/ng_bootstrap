@@ -65,6 +65,9 @@ class BsTableComponent implements OnInit, OnDestroy {
 
   /// Sets if the table-columns are sortable or not
   @Input() bool sortable = true;
+    
+  /// Sets table to be editable
+  @Input() bool isEditable = true;
 
   /// Sets the maximum items that will be displayed per page
   num _itemsPerPage = 10;

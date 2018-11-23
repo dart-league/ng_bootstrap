@@ -21,14 +21,14 @@
         <input type="checkbox" [checked]="isSelected(row)" (click)="selectRow($event, row)">
       </div>
 
-      <template [ngIf]="!editing[i]">
+      <template [ngIf]="!editing[i] || !isEditable">
         <div class="td" *ngFor="let column of columns" [ngClass]="column.ngClass" [ngStyle]="column.ngStyle">
           <template [ngIf]="column.templateRef == null">{{getData(row, column.fieldName)}}</template>
           <template [ngTemplateOutlet]="column.templateRef"
                     [ngTemplateOutletContext]="{$implicit: row}"></template>
         </div>
       </template>
-      <template [ngIf]="editing[i]">
+      <template [ngIf]="editing[i] && isEditable">
         <form class="w-100"
               (submit)="saveRow(row, i)"
               (reset)="cancelRow(row, i, $event)"
