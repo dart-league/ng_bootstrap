@@ -21,21 +21,56 @@
           selectable
         </label>
       </div>
+      <br>
+      <div class="form-check col-xs-12">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="mapConfig.hideSelectColumn">
+          Hide Select Column
+        </label>
+      </div>
+      <br>
+      <div class="form-check col-xs-12">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="mapConfig.editable">
+          editable
+        </label>
+      </div>
+      <br>
+      <div class="form-check col-xs-12">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="mapConfig.searchable">
+          searchable
+        </label>
+      </div>
+      <br>
 
       <bs-table [rows]="mapConfig.rows"
                 [selectable]="mapConfig.selectable"
+                [hideSelectColumn]="mapConfig.hideSelectColumn"
                 [(pageNumber)]="mapConfig.page"
                 [itemsPerPage]="mapConfig.itemsPerPage"
                 [sortable]="true"
+                [editable]="mapConfig.editable"
+                [searchable]="mapConfig.searchable"
                 [(totalItems)]="mapConfig.totalItems"
-                [containerStyle]="{'min-width': '900px', 'max-height': '900px'}">
+                [containerStyle]="{'min-width': '900px', 'max-height': '900px'}"
+                (filterChange)="filterRowsByColumn($event)">
         <bs-column header="Name" fieldName="name" ngClass="text-info"></bs-column>
         <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
         <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
         <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
         <bs-column header="Start date" fieldName="startDate"></bs-column>
-        <bs-column header="Salary ($)" fieldName="salary" orderBy="salary" [ngStyle]="{width: '120px', flex: 'none'}">
+        <bs-column header="Salary ($)" fieldName="salary" orderBy="salary" [ngStyle]="{width: '300px', flex: 'none'}">
           <template let-row>U$ {{row['salary']}}</template>
+          <template bs-column-filterer let-column>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">&lt;=></span>
+              </div>
+              <input type="number" class="form-control" step="0.001" (change)="handleSalaryFiltererChange('>=', $event, column)">
+              <input type="number" class="form-control" step="0.001" (change)="handleSalaryFiltererChange('<=', $event, column)">
+            </div>
+          </template>
           <template bs-column-editor let-row>
             <div class="input-group">
               <div class="input-group-prepend">

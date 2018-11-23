@@ -1,3 +1,9 @@
+## 1.1.0
+
+- add `editable` attribute to `bs_table`
+- add `searchable` attribute and search fields row to `bs_table` (fix #85)
+- add `hideSelectColumn` attribute to `bs_table` (fix #92)
+
 ## 1.0.3
 
 - upgrade dart-sdk version to `>=2.1.0-dev <3.0.0`
