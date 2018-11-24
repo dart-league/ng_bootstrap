@@ -1,3 +1,7 @@
+## 1.1.1
+
+- fix `bs_tabx` not working correctly when it is inside a `ngIf` template element (fix #109)
+
 ## 1.1.0
 
 - add `editable` attribute to `bs_table`
