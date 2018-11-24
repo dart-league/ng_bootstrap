@@ -65,6 +65,12 @@ class BsTableComponent implements OnInit, OnDestroy {
 
   /// Sets if the table-columns are sortable or not
   @Input() bool sortable = true;
+    
+  /// Sets table to be editable
+  @Input() bool editable = true;
+
+  /// Sets table to be searchable
+  @Input() bool searchable = false;
 
   /// Sets the maximum items that will be displayed per page
   num _itemsPerPage = 10;
@@ -102,7 +108,11 @@ class BsTableComponent implements OnInit, OnDestroy {
   /// Emits when the total items has changed
   @Output() Stream<int> get totalItemsChange => _totalItemsChangeCtrl.stream;
 
+  /// Sets if the table rows are selectable
   @Input() bool selectable = false;
+
+  /// Sets if the select column is hidden
+  @Input() bool hideSelectColumn = false;
 
   Set selectedRows = new Set();
 
@@ -118,6 +128,9 @@ class BsTableComponent implements OnInit, OnDestroy {
   /// Emits when the sort has changed
   @Output() Stream<BsColumnDirective> get sortChange => _sortChangeControl.stream;
 
+  final _filterChangeControl = new StreamController<BsColumnDirective>.broadcast();
+
+  @Output() Stream<BsColumnDirective> get filterChange => _filterChangeControl.stream;
   @override
   void ngOnInit() {
     _tbodyInnerWidthTimer =
@@ -205,7 +218,7 @@ class BsTableComponent implements OnInit, OnDestroy {
   _getDataFn(prev, String curr) =>
       prev is Map
       ? prev[curr]
-          : throw new Exception('Type of prev is not supported, please use a Map, SerializableMap or an String');
+          : throw new Exception('Type of value in column is not supported, please use a Map, SerializableMap or an String');
 
   /// Gets the data from the value of the row with the specified field name.
   /// If the fieldName contains `.` it splits the values and loops over the row
@@ -236,6 +249,8 @@ class BsTableComponent implements OnInit, OnDestroy {
   }
 
   startEditingRow(dynamic row, int index) {
+    if (!editable) return;
+
     _clonedRows[index] = {};
     for(var column in columns) {
       _clonedRows[index][column.fieldName] = getData(row, column.fieldName);
@@ -258,5 +273,10 @@ class BsTableComponent implements OnInit, OnDestroy {
   @override
   void ngOnDestroy() {
     _tbodyInnerWidthTimer.cancel();
+  }
+
+  handleFilterChange(Event event, BsColumnDirective column) {
+    column.filterValue = (event.target as InputElement).value;
+    _filterChangeControl.add(column);
   }
 }

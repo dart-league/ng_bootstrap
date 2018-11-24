@@ -1,4 +1,4 @@
-final List data = [
+final List<Map<String, dynamic>> data = [
   {
     'name': 'Victoria Cantrell',
     'position': 'Integer Corporation',

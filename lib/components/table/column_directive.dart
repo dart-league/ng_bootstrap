@@ -35,4 +35,9 @@ class BsColumnDirective {
 
   @ContentChild(BsColumnEditorDirective)
   BsColumnEditorDirective editor;
+
+  dynamic /* String | Map<String, dynamic> */ filterValue;
+
+  @ContentChild(BsColumnFiltererDirective)
+  BsColumnFiltererDirective filterer;
 }

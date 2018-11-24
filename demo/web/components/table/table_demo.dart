@@ -25,6 +25,9 @@ class TableConfig {
   num totalPages;
   num totalItems = 0;
   bool selectable;
+  bool hideSelectColumn = false;
+  bool editable = false;
+  bool searchable = false;
   String filteredColumn = 'position';
   List rows = [];
   String filterString;
@@ -53,6 +56,8 @@ class TableDemoComponent implements OnInit {
 
   Client client;
 
+  Map<String, dynamic> filters = {};
+
   TableDemoComponent(this.client);
 
   void ngOnInit() {
@@ -60,7 +65,44 @@ class TableDemoComponent implements OnInit {
     this.filterComplexRows();
   }
 
-  void filterRows() async {
+  void handleSalaryFiltererChange(String comparer, event, BsColumnDirective column) {
+    Map filterValue = column.filterValue ?? {};
+
+    if (filterValue.containsKey(comparer) && falsey(event.target.value)) {
+      filterValue.remove(comparer);
+    } else {
+      filterValue[comparer] = event.target.valueAsNumber;
+    }
+    column.filterValue = filterValue;
+
+    filterRowsByColumn(column);
+  }
+
+  void filterRowsByColumn(BsColumnDirective column) {
+    if (falsey(column.filterValue)) {
+      filters.remove(column.fieldName);
+    } else {
+      filters[column.fieldName] = column.filterValue;
+    }
+
+    mapConfig.rows = data.where((item) =>
+        filters.keys.every((fieldName) {
+          if (filters[fieldName] is String) {
+            return item[fieldName].contains(filters[fieldName]);
+          } else {
+            bool get = true, let = true;
+            if (filters[fieldName].containsKey('>=')) {
+              get = item[fieldName] >= filters[fieldName]['>='];
+            }
+            if (filters[fieldName].containsKey('<=')) {
+              let = item[fieldName] <= filters[fieldName]['<='];
+            }
+            return get && let;
+          }
+        })).toList();
+  }
+
+  void filterRows() {
     if (falsey(mapConfig.filterString)) {
       mapConfig.rows = data;
     } else {

@@ -1,6 +1,7 @@
 bs-table {
   display: block;
   overflow-x: auto;
+  border: $table-border-width solid $table-border-color;
 
   //
   // Basic Bootstrap table
