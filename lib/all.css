@@ -11851,6 +11851,7 @@ bs-popover.bs-popover-left-bottom .arrow, bs-popover.bs-popover-right-bottom .ar
 bs-table {
   display: block;
   overflow-x: auto;
+  border: 1px solid #dee2e6;
   /*
 
   // Table backgrounds
@@ -11868,6 +11869,13 @@ bs-table {
 }
 bs-table .tr {
   display: flex;
+}
+bs-table .td-select {
+  padding: 0.75rem;
+  vertical-align: top;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #dee2e6;
 }
 bs-table .th,
 bs-table .td {
