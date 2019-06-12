@@ -35,11 +35,11 @@ Selected Item: {{selectedItemObj}}</pre>
   <h4>Asynchronous results</h4>
   <pre>Model: {{selectedAsync}}
 Selected Item: {{selectedItemAsync}}</pre>
-  <div [hidden]="typeaheadLoading!==true">
-    Loading <i class="fa fa-refresh ng-hide" style=""></i>
+  <div [hidden]="typeaheadLoading !== true">
+    Loading <i class="fa fa-sync"></i>
   </div>
-  <div [hidden]="typeaheadNoResults!==true" class="" style="">
-    <i class="fa fa-remove"></i> No Results Found
+  <div [hidden]="typeaheadNoResults !== true">
+    <i class="fa fa-times"></i> No Results Found
   </div>
   <bs-typeahead [(ngModel)]="selectedAsync"
                 [source]="getAsyncData"

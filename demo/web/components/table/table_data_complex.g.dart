@@ -14,13 +14,13 @@ abstract class _$EmployeeSerializable extends SerializableMap {
   DateTime get startDate;
   double get salary;
   Address get address;
-  void set name(String v);
-  void set position(String v);
-  void set office(String v);
-  void set ext(String v);
-  void set startDate(DateTime v);
-  void set salary(double v);
-  void set address(Address v);
+  set name(String v);
+  set position(String v);
+  set office(String v);
+  set ext(String v);
+  set startDate(DateTime v);
+  set salary(double v);
+  set address(Address v);
 
   operator [](Object __key) {
     switch (__key) {
@@ -74,7 +74,7 @@ abstract class _$EmployeeSerializable extends SerializableMap {
 
 abstract class _$AddressSerializable extends SerializableMap {
   String get street;
-  void set street(String v);
+  set street(String v);
 
   operator [](Object __key) {
     switch (__key) {

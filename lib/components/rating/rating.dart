@@ -65,8 +65,8 @@ class BsRatingComponent extends NumberValueAccessor implements OnInit {
   ngOnInit() {
     max ??= 5;
     readonly = readonly == true;
-    stateOn ??= "fa-star";
-    stateOff ??= "fa-star-o";
+    stateOn ??= "fas fa-star";
+    stateOff ??= "far fa-star";
     titles = titles != null && titles.length > 0 ? titles : ["one", "two", "three", "four", "five"];
     ratingStates ??= [];
     range = _buildTemplateObjects();

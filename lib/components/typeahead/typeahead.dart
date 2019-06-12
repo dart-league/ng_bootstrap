@@ -54,6 +54,9 @@ class BsTypeAheadComponent extends DefaultValueAccessor {
   /// than or equal to 1.
   @Input() num minLength = 0;
 
+  /// Text displayed before user clicks and starts editing the field
+  @Input() String placeholder = '';
+
   /// minimal wait time after last character typed before typeahead kicks-in
   @Input() num waitMs = 400;
 
@@ -179,15 +182,10 @@ class BsTypeAheadComponent extends DefaultValueAccessor {
 
   /// selects the matched item
   selectMatch(value, [Event e = null]) {
-    if (e != null) {
-      e.stopPropagation();
-      e.preventDefault();
-    }
-
-    ngModel.viewToModelUpdate(_itemString(value));
+    ngModel.viewToModelUpdate('');
+    Future.delayed(const Duration(milliseconds: 1), () => ngModel.viewToModelUpdate(_itemString(value)));
     isOpen = false;
     _selectedItemChangeCtrl.add(selectedItem = value);
-    return false;
   }
 
   /// Returns the item as string
