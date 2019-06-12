@@ -2,6 +2,7 @@
   <bs-dropdown-toggle class="input-group">
     <input type="text"
            class="form-control"
+           [placeholder]="placeholder"
            [ngModel]="ngModel.viewModel"
            (ngModelChange)="processMatches($event)"
            (click)="$event.stopPropagation()"

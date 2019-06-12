@@ -54,6 +54,9 @@ class BsTypeAheadComponent extends DefaultValueAccessor {
   /// than or equal to 1.
   @Input() num minLength = 0;
 
+  /// Text displayed before user clicks and starts editing the field
+  @Input() String placeholder = '';
+
   /// minimal wait time after last character typed before typeahead kicks-in
   @Input() num waitMs = 400;
 

@@ -1,4 +1,4 @@
-$fa-font-path:        "../../packages/font_awesome/fonts" !default;
+$fa-font-path:        "../../packages/font_awesome/webfonts" !default;
 
 // TODO: remove when issue #23329 gets solved
 $dropdown-link-hover-bg: #e9ecef !default;
@@ -6,7 +6,9 @@ $dropdown-link-hover-bg: #e9ecef !default;
 //noinspection CssUnknownTarget
 @import "package:bootstrap_sass/scss/bootstrap";
 //noinspection CssUnknownTarget
-@import "package:font_awesome/scss/font-awesome";
+@import "package:font_awesome/scss/solid";
+//noinspection CssUnknownTarget
+@import "package:font_awesome/scss/fontawesome";
 @import "components/progress/progress";
 @import "components/tooltip/tooltip";
 @import "components/button/button_group";
