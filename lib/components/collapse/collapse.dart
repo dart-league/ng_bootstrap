@@ -13,7 +13,7 @@ import 'dart:async';
 @Directive(selector: '[bsCollapse]')
 class BsCollapseDirective {
   /// Constructs an collapsible component
-  BsCollapseDirective(this.elementRef) {
+  BsCollapseDirective(this.elementRef, this._changeDetectorRef) {
     _element = elementRef;
 
     bsCollapseChange.listen((bsCollapse) {
@@ -29,6 +29,8 @@ class BsCollapseDirective {
   HtmlElement elementRef;
 
   Element _element;
+
+  final ChangeDetectorRef _changeDetectorRef;
 
   /// provides the height style of the component in pixels
   @HostBinding('style.height')
@@ -52,6 +54,7 @@ class BsCollapseDirective {
   void set collapsing(bool collapsing) {
     _collapsing = collapsing;
     _collapsingChangeController.add(collapsing);
+    _changeDetectorRef.markForCheck();
   }
 
   bool _bsCollapse = false;
@@ -60,6 +63,7 @@ class BsCollapseDirective {
   @Input() set bsCollapse(bool value) {
     _bsCollapse = value ?? false;
     _bsCollapseChangeController.add(_bsCollapse);
+    _changeDetectorRef.markForCheck();
   }
 
   String get _scrollHeight => _element.scrollHeight.toString() + 'px';
@@ -85,12 +89,14 @@ class BsCollapseDirective {
     height = _scrollHeight;
     collapsing = true;
     showTimer?.cancel();
+    _changeDetectorRef.markForCheck();
     new Timer(const Duration(milliseconds: 10), () {
       height = '0';
-      hideTimer = new Timer(const Duration(milliseconds: 350), () {
+      hideTimer = new Timer(const Duration(milliseconds: 50), () {
         collapsing = false;
         collapsed = true;
         height = '';
+        _changeDetectorRef.markForCheck();
       });
     });
   }
@@ -100,12 +106,14 @@ class BsCollapseDirective {
     height = '0';
     collapsing = true;
     hideTimer?.cancel();
+    _changeDetectorRef.markForCheck();
     new Future(() {
       height = _scrollHeight;
-      showTimer = new Timer(const Duration(milliseconds: 350), () {
+      showTimer = new Timer(const Duration(milliseconds: 50), () {
         collapsing = false;
         expanded = true;
         height = '';
+        _changeDetectorRef.markForCheck();
       });
     });
   }
