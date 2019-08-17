@@ -8,13 +8,13 @@ import 'package:ng_bootstrap/ng_bootstrap.dart';
     styles: const [
       '''
     /* Specify styling for tooltip contents */
-    bs-tooltip.customClass /deep/ .tooltip-inner {
+    bs-tooltip.customClass ng-deep .tooltip-inner {
         color: #880000;
         background-color: #ffff66;
         box-shadow: 0 6px 12px rgba(0,0,0,.175);
     }
     /* Hide arrow */
-    bs-tooltip.customClass.bs-tooltip-top /deep/ .arrow::before {
+    bs-tooltip.customClass.bs-tooltip-top ng-deep .arrow::before {
         border-top-color: #ffff66;
     }
   '''

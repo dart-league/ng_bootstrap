@@ -117,9 +117,9 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   }
 
   /// writes value to selected datetime whenever the inputs change
-  writeValue(v) async {
-    selected = DateTime.parse(v ?? '1971-01-01T00:00:00');
-  }
+//  writeValue(v) async {
+////    selected = DateTime.parse(v ?? '1971-01-01T00:00:00');
+//  }
 
   /// refresh the template
   refresh([ String type ]) {
