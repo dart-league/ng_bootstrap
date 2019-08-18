@@ -9,8 +9,8 @@ part of typeahead.typeahead_demo;
 abstract class _$StateSerializable extends SerializableMap {
   int get id;
   String get name;
-  void set id(int v);
-  void set name(String v);
+  set id(int v);
+  set name(String v);
   String toString();
 
   operator [](Object __key) {

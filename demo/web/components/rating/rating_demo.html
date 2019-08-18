@@ -4,7 +4,7 @@
         [titles]="['one','two','three']"></bs-rating>
 <span class="label"
       [ngClass]="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
-      [ngStyle]="{display: (overStar != null && !isReadonly) ? 'inline' : 'none'}">{{percent}}%</span>
+      [ngStyle]="{'display': (overStar != null && !isReadonly) ? 'inline' : 'none'}">{{percent}}%</span>
 
 <pre class="card card-body card-title" style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar != null ? overStar : "none"}}</b></pre>
 
@@ -18,7 +18,7 @@
 
 <h4>Custom icons</h4>
 <div>
-  <bs-rating [(ngModel)]="x" [max]="15" stateOn="fa-check-circle" stateOff="fa-check-circle-o"></bs-rating>
+  <bs-rating [(ngModel)]="x" [max]="15" stateOn="fa fa-check-circle" stateOff="far fa-check-circle"></bs-rating>
   <b>(<i>Rate:</i> {{x}})</b>
 </div>
 <div>

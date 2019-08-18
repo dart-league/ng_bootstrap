@@ -1,3 +1,12 @@
+## 1.2.0-alpha.1
+
+- upgrade `font_awesome` to `5.10.1`
+- upgrade `bootstrap_sass` to `4.3.1` (fixes: #127)
+
+## 1.2.0-alpha
+
+- upgrade `angular` to `^6.0.0-alpha`
+
 ## 1.1.1
 
 - fix `bs_tabx` not working correctly when it is inside a `ngIf` template element (fix #109)

@@ -11,10 +11,10 @@ abstract class _$PostSerializable extends SerializableMap {
   String get title;
   String get body;
   int get userId;
-  void set id(int v);
-  void set title(String v);
-  void set body(String v);
-  void set userId(int v);
+  set id(int v);
+  set title(String v);
+  set body(String v);
+  set userId(int v);
 
   operator [](Object __key) {
     switch (__key) {
