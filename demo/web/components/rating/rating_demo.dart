@@ -14,11 +14,11 @@ class RatingDemo {
   num overStar;
   num percent = 0;
   var ratingStates = [
-    {"stateOn": "fa-check", "stateOff": "fa-circle"},
-    {"stateOn": "fa-star", "stateOff": "fa-star-o"},
-    {"stateOn": "fa-heart", "stateOff": "fa-ban"},
-    {"stateOn": "fa-heart"},
-    {"stateOff": "fa-power-off"}
+    {"stateOn": "fas fa-check", "stateOff": "fa fa-circle"},
+    {"stateOn": "fas fa-star", "stateOff": "far fa-star"},
+    {"stateOn": "fas fa-heart", "stateOff": "fa fa-ban"},
+    {"stateOn": "fas fa-heart"},
+    {"stateOff": "fa fa-power-off"}
   ];
   void hoveringOver(num value) {
     overStar = value;

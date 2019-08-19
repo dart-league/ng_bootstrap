@@ -1,4 +1,4 @@
-<bs-dropdown [(isOpen)]="isOpen">
+<bs-dropdown [(isOpen)]="isOpen" style="width: 100%">
   <bs-dropdown-toggle class="input-group">
     <input type="text"
            class="form-control"
@@ -9,7 +9,7 @@
            (keyup)="onTypeaheadChange($event)">
     <bs-search-clear
         *ngIf="ngModel.viewModel.length > 0"
-        class="fa fa-remove"
+        class="fa fa-times"
         (click)="ngModel.viewToModelUpdate(''); processMatches(); $event.stopPropagation()"></bs-search-clear>
     <span class="input-group-append">
       <bs-toggle-button class="btn btn-secondary"
@@ -21,7 +21,7 @@
   </bs-dropdown-toggle>
   <bs-dropdown-menu class="scrollable-menu">
     <button *ngIf="loadingVal" class="dropdown-item" disabled>
-      <i class="fa fa-refresh fa-spin"></i> Loading...
+      <i class="fa fa-sync fa-spin"></i> Loading...
     </button>
     <button *ngIf="noResultsVal" class="dropdown-item" disabled>
       <i class="fa fa-times"></i> No Results Found
