@@ -19,10 +19,10 @@ import 'package:angular/angular.dart';
      [style.width]="percentage">
   <div [style.width]="elementWidth">
     <template [ngTemplateOutlet]="labelTemplate"
-              [ngTemplateOutletContext]="{\$implicit: percentage, value: value, max: max}"></template>
+              [ngTemplateOutletContext]="completeLabelTemplateOutput(percentage)"></template>
   </div>
 </div>
-<template [ngTemplateOutlet]="labelTemplate" [ngTemplateOutletContext]="{\$implicit: percentage}"></template>''',
+<template [ngTemplateOutlet]="labelTemplate" [ngTemplateOutletContext]="basicLabelTemplateOutput(percentage)"></template>''',
     directives: const [coreDirectives])
 class BsProgressComponent implements OnInit, OnDestroy {
   /// if `true` changing `value` of progress bar will be animated (*note*: not supported by Bootstrap 4)
@@ -69,4 +69,11 @@ class BsProgressComponent implements OnInit, OnDestroy {
   void ngOnDestroy() {
 //    _resizeTimer.cancel();
   }
+
+  basicLabelTemplateOutput(dynamic label) => {r"$implicit": label};
+
+  completeLabelTemplateOutput(dynamic label) =>
+      {r"$implicit": label,
+        "value" : value,
+        "max": max};
 }
