@@ -39,10 +39,13 @@
 
       <button type="button"
               class="btn"
-              [ngClass]="{'btn-primary': dt.selected, 'btn-light': !dt.selected, active: dt.current, disabled: dt.disabled}"
+              [class.btn-primary]="dt.selected"
+              [class.btn-light]="!dt.selected"
+              [class.active]="dt.current"
+              [class.disabled]="dt.disabled"
               [disabled]="dt.disabled"
               (click)="$event.stopPropagation(); datePicker.select(dt.date)" tabindex="-1">
-        <span [ngClass]="{'font-weight-bold': dt.current && !dt.selected}">{{dt.label}}</span>
+        <span [class.font-weight-bold]="dt.current && !dt.selected">{{dt.label}}</span>
       </button>
 
     </td>

@@ -7,7 +7,7 @@
                 class="btn btn-light btn-sm col-4"
                 (click)="$event.stopPropagation(); datePicker.toggleMode(-1)"
                 [disabled]="datePicker.datePickerMode == maxMode"
-                [ngClass]="{disabled: datePicker.datePickerMode == maxMode}"
+                [class.disabled]="datePicker.datePickerMode == maxMode"
                 tabindex="-1">
           <strong>{{dayTitle}}</strong>
         </button>
@@ -15,7 +15,7 @@
                 class="btn btn-light btn-sm col-8"
                 (click)="$event.stopPropagation(); datePicker.toggleMode()"
                 [disabled]="datePicker.datePickerMode == maxMode"
-                [ngClass]="{disabled: datePicker.datePickerMode == maxMode}"
+                [class.disabled]="datePicker.datePickerMode == maxMode"
                 tabindex="-1">
           <strong>{{yearTitle}}</strong>
         </button>
@@ -28,11 +28,14 @@
     <td *ngFor="let dt of row" class="text-center" role="gridcell">
       <button type="button"
               class="btn col"
-              [ngClass]="{'btn-primary': dt.selected, 'btn-light': !dt.selected, active: dt.current, disabled: dt.disabled}"
+              [class.btn-primary]="dt.selected"
+              [class.btn-light]="!dt.selected"
+              [class.active]="dt.current"
+              [class.disabled]="dt.disabled"
               [disabled]="dt.disabled"
               (click)="$event.stopPropagation(); datePicker.select(dt.date)"
               tabindex="-1">
-        <span [ngClass]="{'font-weight-bold': dt.current && !dt.selected}">{{dt.label}}</span>
+        <span [class.font-weight-bold]="dt.current && !dt.selected">{{dt.label}}</span>
       </button>
 
 
