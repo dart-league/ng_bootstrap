@@ -228,4 +228,6 @@ class BsTypeAheadComponent extends DefaultValueAccessor {
 
   @HostListener('input', const ['\$event'])
   bool onInput($event) => true;
+
+  inputMatchTemplateOutlet(dynamic match) => {r"$implicit" : match};
 }
