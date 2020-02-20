@@ -279,4 +279,10 @@ class BsTableComponent implements OnInit, OnDestroy {
     column.filterValue = (event.target as InputElement).value;
     _filterChangeControl.add(column);
   }
+
+  columnTemplateOutlet(dynamic column) => {r"$implicit" : column};
+
+  rowTemplateOutlet(dynamic row) => {r"$implicit" : row};
+
+  editorRowTemplateOutlet(dynamic row) => {r"$implicit" : row};
 }

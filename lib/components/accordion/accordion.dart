@@ -23,6 +23,8 @@ const bsAccordionDirectives = const [BsAccordionComponent, BsAccordionPanelCompo
     template: '<ng-content></ng-content>',
     directives: const [coreDirectives, BsAccordionPanelComponent])
 class BsAccordionComponent implements AfterContentInit {
+  BsAccordionComponent(this._changeDetectorRef);
+
   /// if `true` expanding one item will close all others
   @Input() bool closeOthers;
 
@@ -30,9 +32,12 @@ class BsAccordionComponent implements AfterContentInit {
   @ContentChildren(BsAccordionPanelComponent)
   List<BsAccordionPanelComponent> panels;
 
+  final ChangeDetectorRef _changeDetectorRef;
+
   @override
   ngAfterContentInit() {
     panels.forEach((p) => p.parentAccordion = this);
+    _changeDetectorRef.markForCheck();
   }
 
   /// close other panels
@@ -45,16 +50,19 @@ class BsAccordionComponent implements AfterContentInit {
         panel.isOpen = false;
       }
     });
+    _changeDetectorRef.markForCheck();
   }
 
   /// adds a new [panel] at the bottom
   addPanel(BsAccordionPanelComponent panel) {
     panels.add(panel);
+    _changeDetectorRef.markForCheck();
   }
 
   /// removes specified [panel]
   removePanel(BsAccordionPanelComponent panel) {
     panels.remove(panel);
+    _changeDetectorRef.markForCheck();
   }
 }
 
@@ -65,8 +73,10 @@ class BsAccordionComponent implements AfterContentInit {
     templateUrl: 'accordion_panel.html',
     directives: const [BsCollapseDirective, coreDirectives])
 class BsAccordionPanelComponent implements OnInit {
+
   /// Constructs a new [BsAccordionPanelComponent] injecting the parent [BsAccordionComponent]
-  BsAccordionPanelComponent();
+  BsAccordionPanelComponent(this._changeDetectorRef);
+  final ChangeDetectorRef _changeDetectorRef;
 
   /// instance of the parent [BsAccordionComponent]
   BsAccordionComponent parentAccordion;
@@ -104,7 +114,7 @@ class BsAccordionPanelComponent implements OnInit {
         parentAccordion.closeOtherPanels(this);
       }
       _isOpenChangeCtrl.add(value);
-
+      _changeDetectorRef.markForCheck();
     });
   }
 
@@ -122,5 +132,6 @@ class BsAccordionPanelComponent implements OnInit {
     if (!isDisabled) {
       isOpen = !isOpen;
     }
+    _changeDetectorRef.markForCheck();
   }
 }
