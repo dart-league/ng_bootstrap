@@ -10,11 +10,11 @@
     <bs-search-clear
         *ngIf="ngModel.viewModel.length > 0"
         class="fa fa-times"
-        (click)="ngModel.viewToModelUpdate(''); processMatches(); $event.stopPropagation()"></bs-search-clear>
+        (click)="clear($event)"></bs-search-clear>
     <span class="input-group-append">
       <bs-toggle-button class="btn btn-secondary"
                         [(ngModel)]="isOpen"
-                        (click)="processMatchesIfNotOpen(); $event.stopPropagation()">
+                        (click)="processMatchesIfNotOpen($event)">
         <i class="fa fa-caret-down"></i>
       </bs-toggle-button>
     </span>

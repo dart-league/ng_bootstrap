@@ -1,11 +1,9 @@
 part of bs_date_picker;
 
-
 const DATE_PICKER_ACCESSOR = const ExistingProvider.forToken(
   ngValueAccessor,
   BsDatePickerComponent,
 );
-
 
 /// Highly configurable component that adds datepicker functionality to
 /// your pages. You can customize the date format and language, restrict the selectable date ranges.
@@ -17,13 +15,7 @@ const DATE_PICKER_ACCESSOR = const ExistingProvider.forToken(
     selector: "bs-date-picker",
     templateUrl: 'date_picker.html',
     visibility: Visibility.local,
-    directives: const [
-      BsDayPickerComponent,
-      BsMonthPickerComponent,
-      BsYearPickerComponent,
-      coreDirectives,
-      formDirectives
-    ],
+    directives: const [BsDayPickerComponent, BsMonthPickerComponent, BsYearPickerComponent, coreDirectives, formDirectives],
     providers: const [DATE_PICKER_ACCESSOR])
 class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   /// Constructs a [NgBsDatePicker] component injecting [NgModel], [Renderer], and [HtmlElement]
@@ -39,7 +31,7 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   Map get stepMonth => {"year": 1};
 
   /// provides the number of steps needed to change from other views to year view
-  Map get stepYear => { "years" : yearRange};
+  Map get stepYear => {"years": yearRange};
 
   /// provides the modes that can take the date-picker
   @Input()
@@ -96,6 +88,7 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
 //      viewToModelUpdate(value);
     }
   }
+
   /// compares [date1] and [date2] and returns:
   ///
   /// * 0 if equals
@@ -105,8 +98,7 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
     if (date2 == null) return null;
 
     if (datePickerMode == "day") {
-      return new DateTime(date1.year, date1.month, date1.day)
-          .compareTo(new DateTime(date2.year, date2.month, date2.day));
+      return new DateTime(date1.year, date1.month, date1.day).compareTo(new DateTime(date2.year, date2.month, date2.day));
     }
     if (datePickerMode == "month") {
       return new DateTime(date1.year, date1.month).compareTo(new DateTime(date2.year, date2.month));
@@ -137,13 +129,12 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   bool isActive(DisplayedDate dateObject) => compare(dateObject.date, value) == 0;
 
   /// Creates a date map containing date, label, selected, disabled and current values
-  DisplayedDate createDateObject(DateTime date, String format) => new DisplayedDate(date, dateFilter(date, format),
-      compare(date, value) == 0, isDisabled(date), compare(date, new DateTime.now()) == 0);
+  DisplayedDate createDateObject(DateTime date, String format) =>
+      new DisplayedDate(date, dateFilter(date, format), compare(date, value) == 0, isDisabled(date), compare(date, new DateTime.now()) == 0);
 
   // todo: implement dateDisabled attribute
   /// returns `true` if [date] is before [minDate] or after [maxDate]
-  bool isDisabled(DateTime date) =>
-      minDate != null && compare(date, minDate) < 0 || maxDate != null && compare(date, maxDate) > 0;
+  bool isDisabled(DateTime date) => minDate != null && compare(date, minDate) < 0 || maxDate != null && compare(date, maxDate) > 0;
 
   /// splits the [arr] into a list of array of size [size]
   List<List<DisplayedDate>> split(List arr, num size) {
@@ -173,12 +164,15 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   /// changes the view values in dependence of the [direction]
   ///
   /// this is fired when users clicks on arrow buttons
-  move(num direction) {
-    var expectedStep =
-          datePickerMode == "day" ? stepDay
-        : datePickerMode == "month" ? stepMonth
-        : datePickerMode == "year" ? stepYear
-        : null;
+  move(num direction, [dynamic event]) {
+    if (event) event.stopPropagation();
+    var expectedStep = datePickerMode == "day"
+        ? stepDay
+        : datePickerMode == "month"
+            ? stepMonth
+            : datePickerMode == "year"
+                ? stepYear
+                : null;
 
     if (expectedStep != null) {
       var year = _initDate.year + direction * (expectedStep['years'] ?? 0);
@@ -190,7 +184,8 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   /// toggles the view mode in dependence of the [direction]
   ///
   /// this is fired when users clicks on day, month, or year header buttons
-  toggleMode([num direction]) {
+  toggleMode([num direction, dynamic event]) {
+    event?.stopPropagation();
     direction ??= 1;
     if ((datePickerMode == maxMode && direction == 1) || (datePickerMode == minMode && direction == -1)) {
       return;
@@ -200,10 +195,9 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   }
 }
 
-abstract class BsDatePickerBase extends Object
-    with TouchHandler, ChangeHandler<DateTime>
-    implements ControlValueAccessor {
+abstract class BsDatePickerBase extends Object with TouchHandler, ChangeHandler<DateTime> implements ControlValueAccessor {
   final HtmlElement _element;
+
   /// sets date-picker mode, supports: `day`, `month`, `year`
   @Input()
   String datePickerMode;
@@ -277,21 +271,18 @@ abstract class BsDatePickerBase extends Object
 
   @override
   void registerOnChange(ChangeFunction<DateTime> fn) {
-    this.onChange = (DateTime value, {String rawValue}){
+    this.onChange = (DateTime value, {String rawValue}) {
       fn(value == '' ? new DateTime.now() : value);
     };
   }
 
   @override
-  void writeValue(value) {
-  }
+  void writeValue(value) {}
 
   @override
   void onDisabledChanged(bool isDisabled) {
     setElementDisabled(_element, isDisabled);
   }
-
-
 }
 
 class DisplayedDate {

@@ -1,3 +1,5 @@
+import 'dart:html';
+
 class FileType {
   /*  MS office  */
   static List<String> mime_doc = [
@@ -52,28 +54,28 @@ class FileType {
   ];
   static String getMimeClass(dynamic file) {
     var mimeClass = "application";
-    if (!identical(mime_psd.indexOf(file.type), -1)) {
-      mimeClass = "image";
-    } else if (file.type.match("image.*")) {
-      mimeClass = "image";
-    } else if (file.type.match("video.*")) {
-      mimeClass = "video";
-    } else if (file.type.match("audio.*")) {
-      mimeClass = "audio";
-    } else if (identical(file.type, "application/pdf")) {
-      mimeClass = "pdf";
-    } else if (!identical(mime_compress.indexOf(file.type), -1)) {
-      mimeClass = "compress";
-    } else if (!identical(mime_doc.indexOf(file.type), -1)) {
-      mimeClass = "doc";
-    } else if (!identical(mime_xsl.indexOf(file.type), -1)) {
-      mimeClass = "xls";
-    } else if (!identical(mime_ppt.indexOf(file.type), -1)) {
-      mimeClass = "ppt";
-    }
-    if (identical(mimeClass, "application")) {
-      mimeClass = fileTypeDetection(file.name);
-    }
+    // if (!identical(mime_psd.indexOf(file.type), -1)) {
+    //   mimeClass = "image";
+    // } else if (file.type.match("image.*")) {
+    //   mimeClass = "image";
+    // } else if (file.type.match("video.*")) {
+    //   mimeClass = "video";
+    // } else if (file.type.match("audio.*")) {
+    //   mimeClass = "audio";
+    // } else if (identical(file.type, "application/pdf")) {
+    //   mimeClass = "pdf";
+    // } else if (!identical(mime_compress.indexOf(file.type), -1)) {
+    //   mimeClass = "compress";
+    // } else if (!identical(mime_doc.indexOf(file.type), -1)) {
+    //   mimeClass = "doc";
+    // } else if (!identical(mime_xsl.indexOf(file.type), -1)) {
+    //   mimeClass = "xls";
+    // } else if (!identical(mime_ppt.indexOf(file.type), -1)) {
+    //   mimeClass = "ppt";
+    // }
+    // if (identical(mimeClass, "application")) {
+    //   mimeClass = fileTypeDetection(file.name);
+    // }
     return mimeClass;
   }
 

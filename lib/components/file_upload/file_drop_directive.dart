@@ -20,7 +20,7 @@ class BsFileDropDirective {
   void onDragOver(MouseEvent event) {
     _preventAndStop(event);
     var transfer = event.dataTransfer;
-    if (!transfer.types.contains('Files')) return;
+    //if (!transfer.types.contains('Files')) return;
 
     transfer.dropEffect = 'copy';
     _fileOverCtrl.add(true);
