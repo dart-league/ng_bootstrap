@@ -13,7 +13,7 @@
         </button>
         <button type="button"
                 class="btn btn-light btn-sm col-8"
-                (click)="$datePicker.toggleMode(, event: $event)"
+                (click)="datePicker.toggleMode(event: $event)"
                 [disabled]="datePicker.datePickerMode == maxMode"
                 [class.disabled]="datePicker.datePickerMode == maxMode"
                 tabindex="-1">
