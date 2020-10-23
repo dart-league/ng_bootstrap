@@ -5,7 +5,7 @@
       <div class="row">
         <button type="button"
                 class="btn btn-light btn-sm col-4"
-                (click)="$event.stopPropagation(); datePicker.toggleMode(-1)"
+                (click)="datePicker.toggleMode(-1, event: $event)"
                 [disabled]="datePicker.datePickerMode == maxMode"
                 [class.disabled]="datePicker.datePickerMode == maxMode"
                 tabindex="-1">
@@ -13,7 +13,7 @@
         </button>
         <button type="button"
                 class="btn btn-light btn-sm col-8"
-                (click)="$event.stopPropagation(); datePicker.toggleMode()"
+                (click)="$datePicker.toggleMode(, event: $event)"
                 [disabled]="datePicker.datePickerMode == maxMode"
                 [class.disabled]="datePicker.datePickerMode == maxMode"
                 tabindex="-1">
@@ -33,7 +33,7 @@
               [class.active]="dt.current"
               [class.disabled]="dt.disabled"
               [disabled]="dt.disabled"
-              (click)="$event.stopPropagation(); datePicker.select(dt.date)"
+              (click)="datePicker.select(dt.date, event: $event)"
               tabindex="-1">
         <span [class.font-weight-bold]="dt.current && !dt.selected">{{dt.label}}</span>
       </button>

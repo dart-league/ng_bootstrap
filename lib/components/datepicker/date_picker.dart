@@ -146,7 +146,8 @@ class BsDatePickerComponent extends BsDatePickerBase implements OnInit {
   }
 
   /// fired when user clicks one of the date buttons
-  select(DateTime date) {
+  select(DateTime date, [dynamic event]) {
+    event?.stopPropagation();
     if (datePickerMode == minMode) {
       writeValue(new DateTime(date.year, date.month, date.day));
     } else {
