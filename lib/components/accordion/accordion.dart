@@ -9,7 +9,7 @@ import 'package:ng_bootstrap/components/collapse/collapse.dart';
 const NG_BOOTSTRAP_ACCORDION_DIRECTIVES = bsAccordionDirectives;
 
 /// List of directives needed to create an accordion
-const bsAccordionDirectives = const [BsAccordionComponent, BsAccordionPanelComponent];
+const bsAccordionDirectives = [BsAccordionComponent, BsAccordionPanelComponent];
 
 /// Build on top of the [NgBsCollapse] directive to provide a list of items, with collapsible bodies that
 /// are collapsed or expanded by clicking on the item's header.
@@ -21,8 +21,10 @@ const bsAccordionDirectives = const [BsAccordionComponent, BsAccordionPanelCompo
 @Component (selector: 'bs-accordion',
 //    host: const { '[class.panel-group]' : 'true'},
     template: '<ng-content></ng-content>',
-    directives: const [coreDirectives, BsAccordionPanelComponent])
+    directives: [coreDirectives, BsAccordionPanelComponent])
 class BsAccordionComponent implements AfterContentInit {
+  BsAccordionComponent(this._changeDetectorRef);
+
   /// if `true` expanding one item will close all others
   @Input() bool closeOthers;
 
@@ -30,13 +32,16 @@ class BsAccordionComponent implements AfterContentInit {
   @ContentChildren(BsAccordionPanelComponent)
   List<BsAccordionPanelComponent> panels;
 
+  final ChangeDetectorRef _changeDetectorRef;
+
   @override
-  ngAfterContentInit() {
+  void ngAfterContentInit() {
     panels.forEach((p) => p.parentAccordion = this);
+    _changeDetectorRef.markForCheck();
   }
 
   /// close other panels
-  closeOtherPanels(BsAccordionPanelComponent openGroup) {
+  void closeOtherPanels(BsAccordionPanelComponent openGroup) {
     if (closeOthers == false) {
       return;
     }
@@ -45,16 +50,19 @@ class BsAccordionComponent implements AfterContentInit {
         panel.isOpen = false;
       }
     });
+    _changeDetectorRef.markForCheck();
   }
 
   /// adds a new [panel] at the bottom
-  addPanel(BsAccordionPanelComponent panel) {
+  void addPanel(BsAccordionPanelComponent panel) {
     panels.add(panel);
+    _changeDetectorRef.markForCheck();
   }
 
   /// removes specified [panel]
-  removePanel(BsAccordionPanelComponent panel) {
+  void removePanel(BsAccordionPanelComponent panel) {
     panels.remove(panel);
+    _changeDetectorRef.markForCheck();
   }
 }
 
@@ -63,10 +71,12 @@ class BsAccordionComponent implements AfterContentInit {
 /// [demo](http://dart-league.github.io/ng_bootstrap/#accordion)
 @Component(selector: 'bs-accordion-panel',
     templateUrl: 'accordion_panel.html',
-    directives: const [BsCollapseDirective, coreDirectives])
+    directives: [BsCollapseDirective, coreDirectives])
 class BsAccordionPanelComponent implements OnInit {
+
   /// Constructs a new [BsAccordionPanelComponent] injecting the parent [BsAccordionComponent]
-  BsAccordionPanelComponent();
+  BsAccordionPanelComponent(this._changeDetectorRef);
+  final ChangeDetectorRef _changeDetectorRef;
 
   /// instance of the parent [BsAccordionComponent]
   BsAccordionComponent parentAccordion;
@@ -90,7 +100,7 @@ class BsAccordionPanelComponent implements OnInit {
   @HostBinding('class.panel-open')
   bool get isOpen => _isOpen;
 
-  final _isOpenChangeCtrl = new StreamController<bool>.broadcast();
+  final _isOpenChangeCtrl = StreamController<bool>.broadcast();
   /// emits if the panel [isOpen]
   @Output() Stream<bool> get isOpenChange => _isOpenChangeCtrl.stream;
 
@@ -98,13 +108,13 @@ class BsAccordionPanelComponent implements OnInit {
   @Input()
   set isOpen(bool value) {
     isOpenTimer?.cancel();
-    isOpenTimer = new Timer(const Duration(milliseconds: 250), () {
+    isOpenTimer = Timer(Duration(milliseconds: 250), () {
       _isOpen = value;
       if (truthy(value)) {
         parentAccordion.closeOtherPanels(this);
       }
       _isOpenChangeCtrl.add(value);
-
+      _changeDetectorRef.markForCheck();
     });
   }
 
@@ -112,15 +122,16 @@ class BsAccordionPanelComponent implements OnInit {
 
   /// initialize the default values of the attributes
   @override
-  ngOnInit() {
+  void ngOnInit() {
     panelClass = or(panelClass, '');
   }
 
   /// toggles the [isOpen] state of the panel
-  toggleOpen(MouseEvent event) {
+  void toggleOpen(MouseEvent event) {
     event.preventDefault();
     if (!isDisabled) {
       isOpen = !isOpen;
     }
+    _changeDetectorRef.markForCheck();
   }
 }

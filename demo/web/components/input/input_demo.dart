@@ -1,12 +1,12 @@
-import "package:angular/angular.dart";
+import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:ng_bootstrap/components/input/input.dart';
 
-@Component(selector: "input-demo",
-    templateUrl: "input_demo.html",
-    directives: const [BsInput, coreDirectives, formDirectives])
+@Component(selector: 'input-demo',
+    templateUrl: 'input_demo.html',
+    directives: [BsInput, coreDirectives, formDirectives])
 class InputDemo {
-  Person person = new Person()
+  Person person = Person()
       ..firstName = 'Jhon asdf'
       ..lastName = 'Doe asdf';
 

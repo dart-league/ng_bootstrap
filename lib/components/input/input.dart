@@ -6,8 +6,8 @@ import 'package:angular_forms/angular_forms.dart';
 @Component(
     selector: 'bs-input',
     templateUrl: 'input.html',
-    directives: const [coreDirectives, formDirectives],
-    providers: const [const ExistingProvider.forToken(ngValueAccessor, BsInput),formDirectives]
+    directives: [coreDirectives, formDirectives],
+    providers: [ExistingProvider.forToken(ngValueAccessor, BsInput),formDirectives]
 )
 class BsInput extends DefaultValueAccessor implements OnInit {
   BsInput() : super(null);
@@ -51,10 +51,10 @@ class BsInput extends DefaultValueAccessor implements OnInit {
   var _value;
 
   /// Gets the value of the element
-  get value => _value;
+  dynamic get value => _value;
 
   /// Sets the value of the element
-  void set value(value) {
+  set value(value) {
     if (value != _value) {
       _value = value;
       onChange(_value);
@@ -69,7 +69,7 @@ class BsInput extends DefaultValueAccessor implements OnInit {
     }
   }
 
-  @HostListener('input', const ['\$event'])
+  @HostListener('input', ['\$event'])
   bool onInput($event) => true;
 
   @override

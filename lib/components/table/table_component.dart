@@ -16,7 +16,7 @@ part of bs_table_directives;
 @Component(
     selector: 'bs-table',
     templateUrl: 'table_component.html',
-    directives: const [coreDirectives, formDirectives, BsInput])
+    directives: [coreDirectives, formDirectives, BsInput])
 class BsTableComponent implements OnInit, OnDestroy {
   BsTableComponent() {
     pageNumberChange.listen(updatePage);
@@ -38,12 +38,12 @@ class BsTableComponent implements OnInit, OnDestroy {
   /// Handles the rows that will be displayed by the current page
   List rowsPage;
 
-  Map<String, String> _containerStyle;
+  dynamic/*String | Map<String, String>*/ _containerStyle;
 
-  Map<String, String> get containerStyle => _containerStyle;
+  dynamic/*String | Map<String, String>*/ get containerStyle => _containerStyle;
 
-  @Input() set containerStyle(Map<String, String> containerStyle) {
-    containerStyle['height'] ??= '600px';
+  @Input() set containerStyle(dynamic/*String | Map<String, String>*/ containerStyle) {
+    // containerStyle['height'] ??= '600px';
     _containerStyle = containerStyle;
   }
 
@@ -54,7 +54,7 @@ class BsTableComponent implements OnInit, OnDestroy {
 
   Timer _tbodyInnerWidthTimer;
 
-  final _tableChanged = new StreamController<dynamic>.broadcast();
+  final _tableChanged = StreamController<dynamic>.broadcast();
 
   /// Emits when occurs a change on the table
   @Output() Stream get tableChanged => _tableChanged.stream;
@@ -98,12 +98,12 @@ class BsTableComponent implements OnInit, OnDestroy {
     _pageNumberChangeCtrl.add(_pageNumber);
   }
 
-  final _pageNumberChangeCtrl = new StreamController<int>.broadcast();
+  final _pageNumberChangeCtrl = StreamController<int>.broadcast();
 
   /// Emits when the page number has changed
   @Output() Stream<int> get pageNumberChange => _pageNumberChangeCtrl.stream;
 
-  final _totalItemsChangeCtrl = new StreamController<int>.broadcast();
+  final _totalItemsChangeCtrl = StreamController<int>.broadcast();
 
   /// Emits when the total items has changed
   @Output() Stream<int> get totalItemsChange => _totalItemsChangeCtrl.stream;
@@ -114,21 +114,21 @@ class BsTableComponent implements OnInit, OnDestroy {
   /// Sets if the select column is hidden
   @Input() bool hideSelectColumn = false;
 
-  Set selectedRows = new Set();
+  Set selectedRows = {};
 
   bool get isSelectedAll => rowsPage != null && selectedRows != null && rowsPage.length == selectedRows.length;
 
-  Map<int, dynamic> _clonedRows = <int, dynamic>{};
+  final Map<int, dynamic> _clonedRows = <int, dynamic>{};
 
   /// Sets if the data fetch from a remote source
   @Input() bool remoteData = false;
 
-  final _sortChangeControl = new StreamController<BsColumnDirective>.broadcast();
+  final _sortChangeControl = StreamController<BsColumnDirective>.broadcast();
 
   /// Emits when the sort has changed
   @Output() Stream<BsColumnDirective> get sortChange => _sortChangeControl.stream;
 
-  final _filterChangeControl = new StreamController<BsColumnDirective>.broadcast();
+  final _filterChangeControl = StreamController<BsColumnDirective>.broadcast();
 
   @Output() Stream<BsColumnDirective> get filterChange => _filterChangeControl.stream;
   @override
@@ -138,31 +138,33 @@ class BsTableComponent implements OnInit, OnDestroy {
                 (_) => tbodyInnerWidth = tbodyInner.getComputedStyle().width);
   }
 
-  selectAll() {
-    if (isSelectedAll)
+  void selectAll() {
+    if (isSelectedAll) {
       selectedRows.clear();
-    else
+    } else {
       selectedRows.addAll(rowsPage);
+    }
   }
 
   bool isSelected(row) => selectedRows.contains(row);
 
-  selectRow(MouseEvent event, row) {
+  void selectRow(MouseEvent event, row) {
     if(!selectable) return;
-    if (!isSelected(row))
+    if (!isSelected(row)) {
       selectedRows.add(row);
-    else
+    } else {
       selectedRows.remove(row);
+    }
     event.stopPropagation();
   }
 
   /// Updates the items displayed in the page whenever occurs a [pageNumberChange]
-  @HostListener('pageNumberChange', const ['\$event'])
+  @HostListener('pageNumberChange', ['\$event'])
   void updatePage(num pageNumber) {
     var startIndex = (pageNumber - 1) * itemsPerPage;
     var endIndex = min(rowsAux.length, startIndex + itemsPerPage);
     rowsPage = rowsAux.getRange(startIndex, endIndex).toList();
-    editing = new List.filled(itemsPerPage, false);
+    editing = List.filled(itemsPerPage, false);
     _totalItemsChangeCtrl.add(rowsAux.length);
     selectedRows.clear();
   }
@@ -202,7 +204,7 @@ class BsTableComponent implements OnInit, OnDestroy {
           } else if (orderBy is Function) {
             comparison = orderBy(r1, r2);
           } else {
-            throw new Exception('The type of `orderBy` or `fieldName` is incorrect.'
+            throw Exception('The type of `orderBy` or `fieldName` is incorrect.'
                 'Please use `String` or `Function` for `orderBy`'
                 'and `String` for fieldName');
           }
@@ -215,10 +217,10 @@ class BsTableComponent implements OnInit, OnDestroy {
     }
   }
 
-  _getDataFn(prev, String curr) =>
+  dynamic _getDataFn(prev, String curr) =>
       prev is Map
       ? prev[curr]
-          : throw new Exception('Type of value in column is not supported, please use a Map, SerializableMap or an String');
+          : throw Exception('Type of value in column is not supported, please use a Map, SerializableMap or an String');
 
   /// Gets the data from the value of the row with the specified field name.
   /// If the fieldName contains `.` it splits the values and loops over the row
@@ -235,7 +237,7 @@ class BsTableComponent implements OnInit, OnDestroy {
   /// this function should return the value corresponding to `row['address']['street']`
   /// if the value of the row is a [Map], or `row.address.street` if the value of the row
   /// is a complex object.
-  getData(dynamic row, String fieldName) =>
+  dynamic getData(dynamic row, String fieldName) =>
       fieldName.split('.').fold(row, _getDataFn);
 
   void setData(dynamic row, String fieldName, dynamic value) {
@@ -248,7 +250,7 @@ class BsTableComponent implements OnInit, OnDestroy {
     }
   }
 
-  startEditingRow(dynamic row, int index) {
+  void startEditingRow(dynamic row, int index) {
     if (!editable) return;
 
     _clonedRows[index] = {};
@@ -258,11 +260,10 @@ class BsTableComponent implements OnInit, OnDestroy {
     editing[index] = true;
   }
 
-  saveRow(dynamic row, int index) {
+  void saveRow(dynamic row, int index) =>
     editing[index] = false;
-  }
 
-  cancelRow(dynamic row, int index, Event event) {
+  void cancelRow(dynamic row, int index, Event event) {
     event.preventDefault();
     for (var column in columns) {
       setData(row, column.fieldName, _clonedRows[index][column.fieldName]);
@@ -275,8 +276,14 @@ class BsTableComponent implements OnInit, OnDestroy {
     _tbodyInnerWidthTimer.cancel();
   }
 
-  handleFilterChange(Event event, BsColumnDirective column) {
+  void handleFilterChange(Event event, BsColumnDirective column) {
     column.filterValue = (event.target as InputElement).value;
     _filterChangeControl.add(column);
   }
+
+  Map<String, dynamic> columnTemplateOutlet(dynamic column) => {r'$implicit' : column};
+
+  Map<String, dynamic> rowTemplateOutlet(dynamic row) => {r'$implicit' : row};
+
+  Map<String, dynamic> editorRowTemplateOutlet(dynamic row) => {r'$implicit' : row};
 }

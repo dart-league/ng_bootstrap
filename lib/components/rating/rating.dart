@@ -1,11 +1,11 @@
 import 'dart:async';
-import "package:angular/angular.dart";
+import 'package:angular/angular.dart';
 import 'dart:html';
 import 'package:js_shims/js_shims.dart';
 import 'package:angular_forms/angular_forms.dart';
 
 
-const RATING_VALUE_ACCESSOR = const ExistingProvider.forToken(
+const RATING_VALUE_ACCESSOR = ExistingProvider.forToken(
   ngValueAccessor,
   BsRatingComponent,
 );
@@ -16,10 +16,10 @@ const RATING_VALUE_ACCESSOR = const ExistingProvider.forToken(
 /// you will need to add a link to [`glyphicons.css`](https://github.com/valor-software/ng2-bootstrap/blob/master/demo/assets/css/glyphicons.css)
 ///
 /// [demo](http://dart-league.github.io/ng_bootstrap/#accordion)
-@Component (selector: "bs-rating",
+@Component (selector: 'bs-rating',
     templateUrl: 'rating.html',
-    directives: const [coreDirectives, formDirectives],
-    providers: const [RATING_VALUE_ACCESSOR])
+    directives: [coreDirectives, formDirectives],
+    providers: [RATING_VALUE_ACCESSOR])
 class BsRatingComponent extends NumberValueAccessor implements OnInit {
   final HtmlElement element;
   BsRatingComponent(this.element) : super(null);
@@ -51,28 +51,30 @@ class BsRatingComponent extends NumberValueAccessor implements OnInit {
   /// array of custom icons classes
   @Input() List ratingStates;
 
-  final _onHoverCtrl = new StreamController<int>.broadcast();
+  final _onHoverCtrl = StreamController<int>.broadcast();
 
   /// fired when icon selected, emits the number equals to selected rating
   @Output() Stream<int> get onHover => _onHoverCtrl.stream;
 
-  final _onLeaveCtrl = new StreamController<int>.broadcast();
+  final _onLeaveCtrl = StreamController<int>.broadcast();
 
   /// fired when icon selected, emits the number equals to previous rating value
   @Output() Stream<int> get onLeave => _onLeaveCtrl.stream;
 
   /// initialize attributes
-  ngOnInit() {
+  @override
+  void ngOnInit() {
     max ??= 5;
     readonly = readonly == true;
-    stateOn ??= "fas fa-star";
-    stateOff ??= "far fa-star";
-    titles = titles != null && titles.length > 0 ? titles : ["one", "two", "three", "four", "five"];
+    stateOn ??= 'fas fa-star';
+    stateOff ??= 'far fa-star';
+    titles = titles != null && titles.isNotEmpty ? titles : ['one', 'two', 'three', 'four', 'five'];
     ratingStates ??= [];
     range = _buildTemplateObjects();
   }
 
   /// update model to view
+  @override
   void writeValue(_value) {
     onChange((value = preValue = _value ??= 0));
   }
@@ -83,10 +85,10 @@ class BsRatingComponent extends NumberValueAccessor implements OnInit {
     var result = [];
     for (var i = 0; i < count; i++) {
       result.add({
-        "index": i,
-        "stateOn": stateOn,
-        "stateOff": stateOff,
-        "title": titles.length > i ? titles[i] : i + 1,
+        'index': i,
+        'stateOn': stateOn,
+        'stateOff': stateOff,
+        'title': titles.length > i ? titles[i] : i + 1,
       }
         ..addAll(ratingStates.length > i ? ratingStates[i] : {}));
     }
@@ -115,7 +117,7 @@ class BsRatingComponent extends NumberValueAccessor implements OnInit {
   }
 
   /// listen when the user does a key-down on the elements
-  @HostListener('keydown', const ['\$event'])
+  @HostListener('keydown', ['\$event'])
   void onKeydown(KeyboardEvent event) {
     if (![KeyCode.LEFT, KeyCode.UP, KeyCode.RIGHT, KeyCode.DOWN].contains(event.which)) {
       return;
@@ -128,7 +130,7 @@ class BsRatingComponent extends NumberValueAccessor implements OnInit {
     rate(value + sign);
   }
 
-  @HostListener('change', const ['\$event.target.value'])
-  @HostListener('input', const ['\$event'])
+  @HostListener('change', ['\$event.target.value'])
+  @HostListener('input', ['\$event'])
   bool onInput($event) => true;
 }

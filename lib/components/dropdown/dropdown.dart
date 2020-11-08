@@ -1,12 +1,12 @@
 part of bs_dropdown;
 
 class AutoClose {
-  static const ALWAYS = "always",
+  static const ALWAYS = 'always',
                DISABLED = 'disabled',
                OUTSIDE_CLICK = 'outsideClick';
 }
 
-@Directive(selector: "bs-dropdown, .dropdown")
+@Directive(selector: 'bs-dropdown, .dropdown')
 class BsDropdownDirective implements OnInit, OnDestroy, AfterContentInit {
   HtmlElement elementRef;
 
@@ -47,7 +47,7 @@ class BsDropdownDirective implements OnInit, OnDestroy, AfterContentInit {
 
   StreamSubscription _closeDropdownStSub;
 
-  StreamSubscription _keybindFilterStSub;
+  StreamSubscription _keyBindFilterStSub;
 
   /// if `true` the dropdown will be visible
   @Input()
@@ -60,19 +60,19 @@ class BsDropdownDirective implements OnInit, OnDestroy, AfterContentInit {
       _focusToggleElement();
 
       _closeDropdownStSub = window.onClick.listen((_) => isOpen = false);
-      _keybindFilterStSub = window.onKeyDown.listen(_keybindFilter);
+      _keyBindFilterStSub = window.onKeyDown.listen(_keyBindFilter);
 //      dropdownService.open(this);
     } else {
 //      dropdownService.close(this);
       selectedOption = null;
       _closeDropdownStSub?.cancel();
-      _keybindFilterStSub?.cancel();
+      _keyBindFilterStSub?.cancel();
     }
     _isOpenChangeCtrl.add(_isOpen);
     // todo: implement call to setIsOpen if set and function
   }
 
-  final _isOpenChangeCtrl = new StreamController<bool>.broadcast();
+  final _isOpenChangeCtrl = StreamController<bool>.broadcast();
 
   /// fired when `dropdown` toggles, `$event:boolean` equals dropdown `[isOpen]` state
   @Output()
@@ -82,7 +82,8 @@ class BsDropdownDirective implements OnInit, OnDestroy, AfterContentInit {
   BsDropdownToggleDirective dropdownToggle;
 
   /// initializes the dropdown attributes
-  ngOnInit() {
+  @override
+  void ngOnInit() {
 //    autoClose ?? ALWAYS;
 //    keyboardNav ?? true;
 //    dropdownAppendToBody ?? true;
@@ -90,12 +91,13 @@ class BsDropdownDirective implements OnInit, OnDestroy, AfterContentInit {
   }
 
   @override
-  ngAfterContentInit() {
+  void ngAfterContentInit() {
     dropdownToggle.dropdown = this;
   }
 
   /// removes the dropdown from the DOM
-  ngOnDestroy() {
+  @override
+  void ngOnDestroy() {
     if (dropdownAppendToBody && truthy(menuEl)) {
       menuEl.remove();
     }
@@ -116,15 +118,15 @@ class BsDropdownDirective implements OnInit, OnDestroy, AfterContentInit {
   }
 
   /// focus the specified entry of dropdown in dependence of the [keyCode]
-  focusDropdownEntry(num keyCode) {
+  void focusDropdownEntry(num keyCode) {
     // If append to body is used.
-    Element hostEl = menuEl ?? elementRef.querySelectorAll("ul")[0];
+    var hostEl = menuEl ?? elementRef.querySelectorAll('ul')[0];
     if (hostEl == null) {
       // todo: throw exception?
       return;
     }
-    var elems = hostEl.querySelectorAll("a");
-    if (elems == null || elems.isEmpty) {
+    var elements = hostEl.querySelectorAll('a');
+    if (elements == null || elements.isEmpty) {
       // todo: throw exception?
       return;
     }
@@ -134,7 +136,7 @@ class BsDropdownDirective implements OnInit, OnDestroy, AfterContentInit {
           selectedOption = 0;
           break;
         }
-        if (identical(selectedOption, elems.length - 1)) {
+        if (identical(selectedOption, elements.length - 1)) {
           break;
         }
         selectedOption++;
@@ -150,15 +152,14 @@ class BsDropdownDirective implements OnInit, OnDestroy, AfterContentInit {
         selectedOption--;
         break;
     }
-    elems[selectedOption].focus();
+    elements[selectedOption].focus();
   }
 
   /// focus toggle element
-  _focusToggleElement() {
-    dropdownToggle.elementRef.focus();
-  }
+  void _focusToggleElement() =>
+      dropdownToggle.elementRef.focus();
 
-  _keybindFilter(KeyboardEvent event) {
+  void _keyBindFilter(KeyboardEvent event) {
     if (event.which == KeyCode.ESC) {
       _focusToggleElement();
       isOpen = false;

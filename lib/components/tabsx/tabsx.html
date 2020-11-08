@@ -1,13 +1,12 @@
 <ul class="nav"
-    [ngClass]="{
-          'flex-column': vertical,
-          'nav-justified': justified,
-          'nav-tabs': type == 'tabs',
-          'nav-pills': type == 'pills'
-        }"
+    [class.flex-column]="vertical"
+    [class.nav-justified]="justified"
+    [class.nav-tabs]="type == 'tabs'"
+    [class.nav-pills]="type == 'pills'"
     (click)="$event.preventDefault()">
-  <li *ngFor="let tab of tabs" class="nav-item" [ngClass]="{active: tab.active, disabled: tab.disabled}">
-    <a href class="nav-link" [ngClass]="{active: tab.active, disabled: tab.disabled}" (click)="activateTab(tab)">
+  <li *ngFor="let tab of tabs" class="nav-item"
+      [class.active]="tab.active" [class.disabled]="tab.disabled">
+    <a href class="nav-link" [class.active]="tab.active" [class.disabled]="tab.disabled" (click)="activateTab(tab)">
       {{tab.header}}
       <template [ngTemplateOutlet]="tab.headerTemplate?.templateRef"></template>
     </a>

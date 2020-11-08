@@ -3,7 +3,7 @@
 part of typeahead.typeahead_demo;
 
 // **************************************************************************
-// DsonGenerator
+// SerializableGenerator
 // **************************************************************************
 
 abstract class _$StateSerializable extends SerializableMap {
@@ -44,24 +44,30 @@ abstract class _$StateSerializable extends SerializableMap {
 // MirrorsGenerator
 // **************************************************************************
 
-_State__Constructor([positionalParams, namedParams]) => new State();
+_State__Constructor([positionalParams, namedParams]) => State();
 
-const $$State_fields_id = const DeclarationMirror(name: 'id', type: int);
-const $$State_fields_name = const DeclarationMirror(name: 'name', type: String);
+const $$State_fields_id = DeclarationMirror(
+  name: 'id',
+  type: int,
+);
+const $$State_fields_name = DeclarationMirror(
+  name: 'name',
+  type: String,
+);
 
-const StateClassMirror = const ClassMirror(name: 'State', constructors: const {
-  '': const FunctionMirror(name: '', $call: _State__Constructor)
-}, fields: const {
+const StateClassMirror = ClassMirror(name: 'State', constructors: {
+  '': FunctionMirror(name: '', $call: _State__Constructor)
+}, fields: {
   'id': $$State_fields_id,
   'name': $$State_fields_name
-}, getters: const [
+}, getters: [
   'id',
   'name'
-], setters: const [
+], setters: [
   'id',
   'name'
-], methods: const {
-  'toString': const FunctionMirror(
+], methods: {
+  'toString': FunctionMirror(
     name: 'toString',
     returnType: String,
   )

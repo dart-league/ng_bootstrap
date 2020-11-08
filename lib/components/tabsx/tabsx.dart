@@ -1,8 +1,8 @@
 import 'dart:async';
-import "package:angular/angular.dart";
+import 'package:angular/angular.dart';
 
 /// Directives needed to create a tab-set
-const bsTabsxDirectives = const [BsTabxDirective, BsTabxHeaderDirective, BsTabsxComponents];
+const bsTabsxDirectives = [BsTabxDirective, BsTabxHeaderDirective, BsTabsxComponents];
 
 @Deprecated('Renamed to "bsTabsxDirectives"')
 const BS_TABSX_DIRECTIVES = bsTabsxDirectives;
@@ -15,7 +15,7 @@ const BS_TABSX_DIRECTIVES = bsTabsxDirectives;
 /// [bootstrap 4](http://v4-alpha.getbootstrap.com/components/navs/)
 ///
 /// [demo](http://dart-league.github.io/ng_bootstrap/#tabs)
-@Component(selector: "bs-tabsx", templateUrl: 'tabsx.html', directives: const [coreDirectives])
+@Component(selector: 'bs-tabsx', templateUrl: 'tabsx.html', directives: [coreDirectives])
 class BsTabsxComponents implements OnInit, AfterContentInit {
   /// if `true` tabs will be placed vertically
   bool get vertical => placement == 'left' || placement == 'right';
@@ -46,24 +46,25 @@ class BsTabsxComponents implements OnInit, AfterContentInit {
   List<BsTabxDirective> tabs = [];
 
   /// initialize attributes
-  ngOnInit() {
-    type ??= "tabs";
+  @override
+  void ngOnInit() {
+    type ??= 'tabs';
     placement ??= 'top';
   }
 
   @override
-  ngAfterContentInit() {
+  void ngAfterContentInit() {
     activateTab(tabs.firstWhere((tab) => tab.active, orElse: () => tabs[0]));
   }
 
   /// adds a new tab at the end
-  addTab(BsTabxDirective tab) {
+  void addTab(BsTabxDirective tab) {
     tabs.add(tab);
     tab.active = tabs.length == 1 && tab.active != false;
   }
 
   /// removes the specified tab
-  removeTab(BsTabxDirective tab) {
+  void removeTab(BsTabxDirective tab) {
     var index = tabs.indexOf(tab);
     if (index == -1) return;
 
@@ -76,7 +77,7 @@ class BsTabsxComponents implements OnInit, AfterContentInit {
     tabs.remove(tab);
   }
 
-  activateTab(BsTabxDirective tab) {
+  void activateTab(BsTabxDirective tab) {
     if (tab.disabled) return;
 
     tabs.forEach((t) {
@@ -88,14 +89,14 @@ class BsTabsxComponents implements OnInit, AfterContentInit {
 /// Creates a tab which will be inside the [BsTabsxComponents]
 ///
 /// [demo](http://dart-league.github.io/ng_bootstrap/#tab)
-@Directive(selector: "bs-tabx")
+@Directive(selector: 'bs-tabx')
 class BsTabxDirective {
 
   BsTabxDirective(this._ref);
 
   final ChangeDetectorRef _ref;
 
-  @HostBinding("class.tab-pane")
+  @HostBinding('class.tab-pane')
   bool tabPane = true;
 
   /// provides the injected parent tabset
@@ -113,13 +114,13 @@ class BsTabxDirective {
   @ContentChild(BsTabxHeaderDirective)
   BsTabxHeaderDirective headerTemplate;
 
-  final _selectCtrl = new StreamController<BsTabxDirective>.broadcast();
+  final _selectCtrl = StreamController<BsTabxDirective>.broadcast();
 
   /// emits the selected element change
   @Output()
   Stream<BsTabxDirective> get select => _selectCtrl.stream;
 
-  final _deselectCtrl = new StreamController<BsTabxDirective>.broadcast();
+  final _deselectCtrl = StreamController<BsTabxDirective>.broadcast();
 
   /// emits the deselected element change
   @Output()
@@ -129,7 +130,7 @@ class BsTabxDirective {
 
   /// if tab is active equals true, or set `true` to activate tab
   @HostBinding('class.active')
-  get active => _active;
+  bool get active => _active;
 
   /// if tab is active equals true, or set `true` to activate tab
   @Input()
@@ -148,7 +149,7 @@ class BsTabxDirective {
 }
 
 /// Creates a new tab header template
-@Directive (selector: "template[bs-tabx-header]")
+@Directive (selector: 'template[bs-tabx-header]')
 class BsTabxHeaderDirective {
   /// constructs a [BsTabxHeaderDirective] injecting its own [templateRef] and its parent [tab]
   BsTabxHeaderDirective(this.templateRef);

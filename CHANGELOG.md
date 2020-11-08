@@ -1,3 +1,11 @@
+## 1.2.0
+
+- upgrade `angular` to `^6.0.0` (fixes: #135)
+- upgrade `stream_transformer` to `^1.2.0`
+- upgrade `angular_forms` to `^3.0.0`
+- fix lint warnings
+- fix errors in demo after upgrade
+
 ## 1.2.0-alpha.1
 
 - upgrade `font_awesome` to `5.10.1`

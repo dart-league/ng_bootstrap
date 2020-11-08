@@ -10,24 +10,24 @@ import 'dart:html';
 <div class="tooltip-inner">
   <ng-content></ng-content>
 </div>''',
-    directives: const [coreDirectives])
+    directives: [coreDirectives])
 class BsTooltipComponent implements OnInit {
   ChangeDetectorRef cdr;
 
   /// Current element DOM reference
   HtmlElement elementRef;
 
-  @HostBinding("class.bs-tooltip-top")
-  bool get bsTooltipTop => placement == "top";
+  @HostBinding('class.bs-tooltip-top')
+  bool get bsTooltipTop => placement == 'top';
 
-  @HostBinding("class.bs-tooltip-left")
-  bool get bsTooltipLeft => placement == "left";
+  @HostBinding('class.bs-tooltip-left')
+  bool get bsTooltipLeft => placement == 'left';
 
-  @HostBinding("class.bs-tooltip-right")
-  bool get bsTooltipRight => placement == "right";
+  @HostBinding('class.bs-tooltip-right')
+  bool get bsTooltipRight => placement == 'right';
 
-  @HostBinding("class.bs-tooltip-bottom")
-  bool get bsTooltipBottom => placement == "bottom";
+  @HostBinding('class.bs-tooltip-bottom')
+  bool get bsTooltipBottom => placement == 'bottom';
 
   /// value in pixels of the top style
   @HostBinding('style.top')
@@ -94,7 +94,7 @@ class BsTooltipComponent implements OnInit {
 
   /// positions its DOM element next to the parent in the desired position
   @override
-  ngOnInit() {
+  void ngOnInit() {
     hostEl ??= elementRef.parent;
     hostEl.on[showEvent].listen((_) => show());
     hostEl.on[hideEvent].listen((_) => hide());
@@ -105,7 +105,7 @@ class BsTooltipComponent implements OnInit {
 
     display = 'block';
     hideTimer?.cancel();
-    showTimer = new Timer(new Duration(milliseconds: popupDelay), () {
+    showTimer = Timer(Duration(milliseconds: popupDelay), () {
       var p = positionElements(
           hostEl, elementRef, placement, false);
       top = '${p.top}px';
@@ -116,7 +116,7 @@ class BsTooltipComponent implements OnInit {
 
   void hide() {
     showTimer?.cancel();
-    hideTimer = new Timer(new Duration(milliseconds: 100), () {
+    hideTimer = Timer(Duration(milliseconds: 100), () {
       display = 'none';
       classIn = false;
     });

@@ -6,8 +6,8 @@ authors:
   - Adao Jr. <itsjunnior@gmail.com>
 dependencies:
   string_converters: ^1.0.0
-  angular: any
-  dson: ^0.15.2
+  angular: 6.0.1
+  dson: ^0.18.0
 #  ng_bootstrap: ^0.6.3
   ng_bootstrap:
     path: ..
@@ -16,5 +16,5 @@ dev_dependencies:
   sass_builder: ^2.1.1
 #  sass_builder:
 #    path: ../sass_builder
-  build_runner: any
-  build_web_compilers: any
+  build_runner: ^1.10.3
+  build_web_compilers: ^2.12.0

@@ -1,10 +1,12 @@
 <h4>Default</h4>
 <bs-rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly"
         (onHover)="hoveringOver($event)" (onLeave)="resetStar()"
-        [titles]="['one','two','three']"></bs-rating>
+        [titles]="titles"></bs-rating>
 <span class="label"
-      [ngClass]="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}"
-      [ngStyle]="{'display': (overStar != null && !isReadonly) ? 'inline' : 'none'}">{{percent}}%</span>
+      [class.label-warning]="percent < 30"
+      [class.label-info]="percent >= 30 && percent < 70"
+      [class.label-success]="percent >= 70"
+      [style.display]="overStar != null && !isReadonly ? 'inline' : 'none'">{{percent}}%</span>
 
 <pre class="card card-body card-title" style="margin:15px 0;">Rate: <b>{{rate}}</b> - Readonly is: <i>{{isReadonly}}</i> - Hovering over: <b>{{overStar != null ? overStar : "none"}}</b></pre>
 

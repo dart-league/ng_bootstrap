@@ -1,26 +1,26 @@
-<div class="d-flex flex-column" [ngStyle]="containerStyle">
+<div class="d-flex flex-column" [style]="containerStyle">
   <div #thead class="thead" [style.width]="tbodyInnerWidth">
     <div class="tr" role="row">
       <div class="td-select" *ngIf="selectable && !hideSelectColumn">
         <input type="checkbox" [checked]="isSelectedAll" (click)="selectAll()">
       </div>
-      <div class="th" *ngFor="let column of columns" (click)="toggleSort(column, $event)" [ngStyle]="column.ngStyle">
+      <div class="th" *ngFor="let column of columns" (click)="toggleSort(column, $event)" [style]="column.style">
         <div class="col p-0">{{column.header}}</div>
         <i *ngIf="sortable && column.sort != null && column.sort != 'NONE'" class="fa"
-           [ngClass]="{'fa-chevron-down': column.sort == 'DESC', 'fa-chevron-up': column.sort == 'ASC'}"></i>
+           [class.fa-chevron-down]="column.sort == 'DESC'" [class.fa-chevron-up]="column.sort == 'ASC'"></i>
       </div>
     </div>
     <div class="tr" role="row" *ngIf="searchable">
       <div class="td-select" *ngIf="selectable && !hideSelectColumn">
         <div style="width: 14px"></div>
       </div>
-      <div class="th p-0" *ngFor="let column of columns" [ngStyle]="column.ngStyle">
+      <div class="th p-0" *ngFor="let column of columns" [style]="column.style">
         <template [ngIf]="column.filterer == null">
           <input class="form-control" (change)="handleFilterChange($event, column)">
         </template>
         <template [ngIf]="column.filterer != null">
           <template [ngTemplateOutlet]="column.filterer.templateRef"
-                    [ngTemplateOutletContext]="{$implicit: column}"></template>
+                    [ngTemplateOutletContext]="columnTemplateOutlet(column)"></template>
         </template>
       </div>
     </div>
@@ -36,10 +36,10 @@
       </div>
 
       <template [ngIf]="!editing[i]">
-        <div class="td" *ngFor="let column of columns" [ngClass]="column.ngClass" [ngStyle]="column.ngStyle">
+        <div class="td" *ngFor="let column of columns" [ngClass]="column.ngClass" [style]="column.style">
           <template [ngIf]="column.templateRef == null">{{getData(row, column.fieldName)}}</template>
           <template [ngTemplateOutlet]="column.templateRef"
-                    [ngTemplateOutletContext]="{$implicit: row}"></template>
+                    [ngTemplateOutletContext]="rowTemplateOutlet(row)"></template>
         </div>
       </template>
       <template [ngIf]="editing[i]">
@@ -48,7 +48,7 @@
               (reset)="cancelRow(row, i, $event)"
               (click)="$event.stopPropagation()">
           <div class="d-flex">
-            <div class="td p-0" *ngFor="let column of columns" [ngClass]="column.ngClass" [ngStyle]="column.ngStyle">
+            <div class="td p-0" *ngFor="let column of columns" [ngClass]="column.ngClass" [style]="column.style">
               <template [ngIf]="column.editor == null">
                 <!--<bs-input [ngModel]="getData(row, column.fieldName)"></bs-input>-->
                 <input [name]="column.fieldName"
@@ -59,7 +59,7 @@
               </template>
               <template [ngIf]="column.editor != null">
                 <template [ngTemplateOutlet]="column.editor.templateRef"
-                          [ngTemplateOutletContext]="{$implicit: row}"></template>
+                          [ngTemplateOutletContext]="editorRowTemplateOutlet(row)"></template>
               </template>
             </div>
           </div>

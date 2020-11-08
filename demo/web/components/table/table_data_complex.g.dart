@@ -3,7 +3,7 @@
 part of table.table_data_complex;
 
 // **************************************************************************
-// DsonGenerator
+// SerializableGenerator
 // **************************************************************************
 
 abstract class _$EmployeeSerializable extends SerializableMap {
@@ -63,7 +63,7 @@ abstract class _$EmployeeSerializable extends SerializableMap {
         salary = __value;
         return;
       case 'address':
-        address = fromSerialized(__value, () => new Address());
+        address = fromSerialized(__value, () => Address());
         return;
     }
     throwFieldNotFoundException(__key, 'Employee');
@@ -100,27 +100,40 @@ abstract class _$AddressSerializable extends SerializableMap {
 // MirrorsGenerator
 // **************************************************************************
 
-_Employee__Constructor([positionalParams, namedParams]) => new Employee();
+_Employee__Constructor([positionalParams, namedParams]) => Employee();
 
-const $$Employee_fields_name =
-    const DeclarationMirror(name: 'name', type: String);
-const $$Employee_fields_position =
-    const DeclarationMirror(name: 'position', type: String);
-const $$Employee_fields_office =
-    const DeclarationMirror(name: 'office', type: String);
-const $$Employee_fields_ext =
-    const DeclarationMirror(name: 'ext', type: String);
-const $$Employee_fields_startDate =
-    const DeclarationMirror(name: 'startDate', type: DateTime);
-const $$Employee_fields_salary =
-    const DeclarationMirror(name: 'salary', type: double);
-const $$Employee_fields_address =
-    const DeclarationMirror(name: 'address', type: Address);
+const $$Employee_fields_name = DeclarationMirror(
+  name: 'name',
+  type: String,
+);
+const $$Employee_fields_position = DeclarationMirror(
+  name: 'position',
+  type: String,
+);
+const $$Employee_fields_office = DeclarationMirror(
+  name: 'office',
+  type: String,
+);
+const $$Employee_fields_ext = DeclarationMirror(
+  name: 'ext',
+  type: String,
+);
+const $$Employee_fields_startDate = DeclarationMirror(
+  name: 'startDate',
+  type: DateTime,
+);
+const $$Employee_fields_salary = DeclarationMirror(
+  name: 'salary',
+  type: double,
+);
+const $$Employee_fields_address = DeclarationMirror(
+  name: 'address',
+  type: Address,
+);
 
-const EmployeeClassMirror =
-    const ClassMirror(name: 'Employee', constructors: const {
-  '': const FunctionMirror(name: '', $call: _Employee__Constructor)
-}, fields: const {
+const EmployeeClassMirror = ClassMirror(name: 'Employee', constructors: {
+  '': FunctionMirror(name: '', $call: _Employee__Constructor)
+}, fields: {
   'name': $$Employee_fields_name,
   'position': $$Employee_fields_position,
   'office': $$Employee_fields_office,
@@ -128,7 +141,7 @@ const EmployeeClassMirror =
   'startDate': $$Employee_fields_startDate,
   'salary': $$Employee_fields_salary,
   'address': $$Employee_fields_address
-}, getters: const [
+}, getters: [
   'name',
   'position',
   'office',
@@ -136,7 +149,7 @@ const EmployeeClassMirror =
   'startDate',
   'salary',
   'address'
-], setters: const [
+], setters: [
   'name',
   'position',
   'office',
@@ -146,22 +159,16 @@ const EmployeeClassMirror =
   'address'
 ]);
 
-_Address__Constructor([positionalParams, namedParams]) => new Address();
+_Address__Constructor([positionalParams, namedParams]) => Address();
 
-const $$Address_fields_street =
-    const DeclarationMirror(name: 'street', type: String);
+const $$Address_fields_street = DeclarationMirror(
+  name: 'street',
+  type: String,
+);
 
-const AddressClassMirror = const ClassMirror(
+const AddressClassMirror = ClassMirror(
     name: 'Address',
-    constructors: const {
-      '': const FunctionMirror(name: '', $call: _Address__Constructor)
-    },
-    fields: const {
-      'street': $$Address_fields_street
-    },
-    getters: const [
-      'street'
-    ],
-    setters: const [
-      'street'
-    ]);
+    constructors: {'': FunctionMirror(name: '', $call: _Address__Constructor)},
+    fields: {'street': $$Address_fields_street},
+    getters: ['street'],
+    setters: ['street']);

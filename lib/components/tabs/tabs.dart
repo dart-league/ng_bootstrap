@@ -1,21 +1,21 @@
 import 'dart:async';
-import "package:angular/angular.dart";
+import 'package:angular/angular.dart';
 
 /// Directives needed to create a tab-set
-const NG_BOOTSTRAP_TABS_DIRECTIVES = const [BsTabComponent, BsTabsComponent, BsTabContentComponent, BsTabPanelDirective];
+const NG_BOOTSTRAP_TABS_DIRECTIVES = [BsTabComponent, BsTabsComponent, BsTabContentComponent, BsTabPanelDirective];
 
 /// todo(adaojunior): refactor this component
 /// https://github.com/angular/angular/issues/8563
 @Component (
-    selector: "bs-tabs",
+    selector: 'bs-tabs',
     templateUrl: 'tabs.html',
-    directives: const [coreDirectives])
+    directives: [coreDirectives])
 class BsTabsComponent implements AfterContentInit{
   /// children tabs
   @ContentChildren(BsTabComponent)
   List<BsTabComponent> tabs;
 
-  final _onTabChangeCtrl = new StreamController<BsTabComponent>.broadcast();
+  final _onTabChangeCtrl = StreamController<BsTabComponent>.broadcast();
 
   /// emits when the tab number change
   @Output() Stream<BsTabComponent> get onTabChange => _onTabChangeCtrl.stream;
@@ -26,6 +26,7 @@ class BsTabsComponent implements AfterContentInit{
   /// gets the selected tab
   BsTabComponent get selected => _selected;
 
+  @override
   void ngAfterContentInit(){
     _selected = tabs.firstWhere((BsTabComponent tab) => tab.active, orElse: () {
       final tab = tabs.first;
@@ -46,7 +47,7 @@ class BsTabsComponent implements AfterContentInit{
   String toAnchor(String path) => '#$path';
 }
 
-@Directive(selector: "template[bsTab]")
+@Directive(selector: 'template[bsTab]')
 class BsTabComponent {
   /// reference to the template
   TemplateRef templateRef;
@@ -64,7 +65,7 @@ class BsTabComponent {
 @Component(
     selector: 'bs-tab-content',
     template: '<template [ngTemplateOutlet]="current.templateRef"></template>',
-    directives: const [coreDirectives])
+    directives: [coreDirectives])
 class BsTabContentComponent implements AfterContentInit {
   /// [BsTabsComponent] target the this content is listening to
   @Input('for') BsTabsComponent target;
@@ -78,6 +79,7 @@ class BsTabContentComponent implements AfterContentInit {
   /// Current tab panel
   BsTabPanelDirective get current => _current;
 
+  @override
   void ngAfterContentInit() {
     _setCurrent(target.selected);
     target.onTabChange.listen(_setCurrent);

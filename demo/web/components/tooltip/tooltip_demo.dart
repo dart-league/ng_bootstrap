@@ -1,11 +1,11 @@
-import "package:angular/angular.dart";
+import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:ng_bootstrap/ng_bootstrap.dart';
 
-@Component(selector: "tooltip-demo",
+@Component(selector: 'tooltip-demo',
     templateUrl: 'tooltip_demo.html',
-    directives: const [BsTooltipComponent, coreDirectives, formDirectives],
-    styles: const [
+    directives: [BsTooltipComponent, coreDirectives, formDirectives],
+    styles: [
       '''
     /* Specify styling for tooltip contents */
     bs-tooltip.customClass ng-deep .tooltip-inner {
@@ -20,8 +20,8 @@ import 'package:ng_bootstrap/ng_bootstrap.dart';
   '''
     ])
 class TooltipDemo {
-  String dynamicTooltip = "Hello, World!";
-  String dynamicTooltipText = "dynamic";
+  String dynamicTooltip = 'Hello, World!';
+  String dynamicTooltipText = 'dynamic';
   String htmlTooltip = "I've been made <b>bold</b>!";
   String inputModel;
 }
