@@ -5,27 +5,27 @@
       <div class="row">
         <button type="button"
                 class="btn btn-light btn-sm col-1"
-                (click)="datePicker.move(-1, event: $event)"
+                (click)="datePicker.move(-1, $event)"
                 tabindex="-1">
           <i class="fa fa-chevron-left"></i>
         </button>
         <button role="heading"
                 type="button"
                 class="btn btn-light btn-sm col-3"
-                (click)="datePicker.toggleMode(-2, event: $event)"
+                (click)="datePicker.toggleMode(-2, $event)"
                 tabindex="-1">
           <strong>{{dayTitle}}</strong>
         </button>
         <button role="heading"
                 type="button"
                 class="btn btn-light btn-sm col-7"
-                (click)="datePicker.toggleMode(-1, event: $event)"
+                (click)="datePicker.toggleMode(-1, $event)"
                 tabindex="-1">
           <strong>{{monthTitle}}</strong>
         </button>
         <button type="button"
                 class="btn btn-light btn-sm col-1"
-                (click)="datePicker.move(1, event: $event)"
+                (click)="datePicker.move(1, $event)"
                 tabindex="-1">
           <i class="fa fa-chevron-right"></i>
         </button>
@@ -44,7 +44,7 @@
               [class.active]="dt.current"
               [class.disabled]="dt.disabled"
               [disabled]="dt.disabled"
-              (click)="datePicker.select(dt.date, event: $event)" tabindex="-1">
+              (click)="datePicker.select(dt.date, $event)" tabindex="-1">
         <span [class.font-weight-bold]="dt.current && !dt.selected">{{dt.label}}</span>
       </button>
 

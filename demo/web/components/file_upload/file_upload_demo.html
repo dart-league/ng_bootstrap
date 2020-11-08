@@ -1,7 +1,7 @@
 <h3>Select files</h3>
 
 <bs-file-drop
-    [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+    [class.nv-file-over]="hasBaseDropZoneOver"
     (fileOver)="fileOverBase($event)"
     class="well"
     (filesChange)="filesToUpload.addAll($event)">
@@ -9,7 +9,7 @@
 </bs-file-drop>
 
 <bs-file-drop
-    [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}"
+    [class.another-file-over-class]="hasAnotherDropZoneOver"
     (fileOver)="fileOverAnother($event)"
     class="well"
     (filesChange)="filesToUpload.addAll($event)">

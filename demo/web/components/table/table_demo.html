@@ -1,19 +1,22 @@
 <div>
   <bs-tabsx>
     <bs-tabx header="Maps Data">
-      <input class="form-control"
-             placeholder="Filter"
-             [ngModel]="mapConfig.filterString"
-             (ngModelChange)="mapConfig.filterString = $event; filterRows()"/>
-      <br>
-      <div class="form-group">
-        <label>Page Size / Items Per Page</label>
+      <form (submit)="filterRows()">
         <input class="form-control"
-               type="number"
-               placeholder="Page Size"
-               [ngModel]="mapConfig.itemsPerPage"
-               (ngModelChange)="mapConfig.itemsPerPage = $event; filterRows()">
-      </div>
+               placeholder="Filter"
+               [(ngModel)]="mapConfig.filterString"/>
+        <br>
+        <div class="form-group">
+          <label>Page Size / Items Per Page</label>
+          <input class="form-control"
+                 type="number"
+                 placeholder="Page Size"
+                 [(ngModel)]="mapConfig.itemsPerPage">
+        </div>
+        <div>
+          <button class="btn btn-primary" type="submit">Filter</button>
+        </div>
+      </form>
       <br>
       <div class="form-check col-xs-12">
         <label class="form-check-label">
@@ -52,23 +55,25 @@
                 [sortable]="true"
                 [editable]="mapConfig.editable"
                 [searchable]="mapConfig.searchable"
-                [(totalItems)]="mapConfig.totalItems"
-                [containerStyle]="{'min-width': '900px', 'max-height': '900px'}"
+                (totalItemsChange)="mapConfig.totalItems"
+                containerStyle="min-width: 900px; max-height: 900px"
                 (filterChange)="filterRowsByColumn($event)">
         <bs-column header="Name" fieldName="name" ngClass="text-info"></bs-column>
         <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
         <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
         <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
         <bs-column header="Start date" fieldName="startDate"></bs-column>
-        <bs-column header="Salary ($)" fieldName="salary" orderBy="salary" [ngStyle]="{width: '300px', flex: 'none'}">
+        <bs-column header="Salary ($)" fieldName="salary" orderBy="salary" style="width: 300px; flex: none">
           <template let-row>U$ {{row['salary']}}</template>
           <template bs-column-filterer let-column>
             <div class="input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text">&lt;=></span>
               </div>
-              <input type="number" class="form-control" step="0.001" (change)="handleSalaryFiltererChange('>=', $event, column)">
-              <input type="number" class="form-control" step="0.001" (change)="handleSalaryFiltererChange('<=', $event, column)">
+              <input type="number" class="form-control" step="0.001"
+                     (change)="handleSalaryFiltererChange('>=', $event, column)">
+              <input type="number" class="form-control" step="0.001"
+                     (change)="handleSalaryFiltererChange('<=', $event, column)">
             </div>
           </template>
           <template bs-column-editor let-row>
@@ -80,7 +85,7 @@
             </div>
           </template>
         </bs-column>
-        <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px', flex: 'none'}"></bs-column>
+        <bs-column header="Address" fieldName="address.street" style="width: 120px; flex: none"></bs-column>
       </bs-table>
 
       <bs-pagination class="pagination-sm tag"
@@ -90,26 +95,29 @@
                      [maxSize]="mapConfig.maxSize"
                      [boundaryLinks]="true"
                      [rotate]="false"
-                     [(totalPages)]="mapConfig.totalPages">
+                     (totalPagesChange)="mapConfig.totalPages">
       </bs-pagination>
 
       <pre class="card card-body card-title">Page: {{mapConfig.page}} / {{mapConfig.totalPages}}
 Total Items: {{mapConfig.totalItems}}</pre>
     </bs-tabx>
     <bs-tabx header="Complex Objects Data">
-      <input class="form-control"
-             placeholder="Filter"
-             [ngModel]="complexConfig.filterString"
-             (ngModelChange)="complexConfig.filterString = $event; filterComplexRows()"/>
-      <br>
-      <div class="form-group">
-        <label>Page Size / Items Per Page</label>
+      <form (submit)="filterComplexRows()">
         <input class="form-control"
-               type="number"
-               placeholder="Page Size"
-               [ngModel]="complexConfig.itemsPerPage"
-               (ngModelChange)="complexConfig.itemsPerPage = $event; filterRows()">
-      </div>
+               placeholder="Filter"
+               [(ngModel)]="complexConfig.filterString"/>
+        <br>
+        <div class="form-group">
+          <label>Page Size / Items Per Page</label>
+          <input class="form-control"
+                 type="number"
+                 placeholder="Page Size"
+                 [(ngModel)]="complexConfig.itemsPerPage">
+        </div>
+        <div>
+          <button class="btn btn-primary" type="submit">Filter</button>
+        </div>
+      </form>
       <br>
       <div class="form-check col-xs-12">
         <label class="form-check-label">
@@ -123,16 +131,16 @@ Total Items: {{mapConfig.totalItems}}</pre>
                 [(pageNumber)]="complexConfig.page"
                 [itemsPerPage]="complexConfig.itemsPerPage"
                 [sortable]="true"
-                [(totalItems)]="complexConfig.totalItems"
-                [containerStyle]="{'min-width': '1000px'}">
+                (totalItemsChange)="complexConfig.totalItems"
+                containerStyle="min-width: 1000px">
         <bs-column header="Name" fieldName="name"></bs-column>
         <bs-column header="Position" fieldName="position" sort="NO_SORTABLE"></bs-column>
         <bs-column header="Office" fieldName="office" sort="ASC"></bs-column>
         <bs-column header="Extn." fieldName="ext" sort="NONE"></bs-column>
         <bs-column header="Start date" fieldName="startDate">
-            <template let-row>{{row.startDate | date:'fullDate'}}</template>
+          <template let-row>{{row.startDate | date:'fullDate'}}</template>
         </bs-column>
-        <bs-column header="Salary ($)" fieldName="salary" orderBy="salary" [ngStyle]="{width: '120px', flex: 'none'}">
+        <bs-column header="Salary ($)" fieldName="salary" orderBy="salary" style="width: 120px; flex: none">
           <template let-row>U$ {{row.salary}}</template>
           <template bs-column-editor let-row>
             <div class="input-group">
@@ -143,7 +151,7 @@ Total Items: {{mapConfig.totalItems}}</pre>
             </div>
           </template>
         </bs-column>
-        <bs-column header="Address" fieldName="address.street" [ngStyle]="{width: '120px', flex: 'none'}"></bs-column>
+        <bs-column header="Address" fieldName="address.street" style="width: 120px; flex: none"></bs-column>
       </bs-table>
 
       <bs-pagination class="pagination-sm tag"
@@ -153,27 +161,31 @@ Total Items: {{mapConfig.totalItems}}</pre>
                      [maxSize]="complexConfig.maxSize"
                      [boundaryLinks]="true"
                      [rotate]="false"
-                     [(totalPages)]="complexConfig.totalPages">
+                     (totalPagesChange)="complexConfig.totalPages">
       </bs-pagination>
 
       <pre class="card card-body card-title">Page: {{complexConfig.page}} / {{complexConfig.totalPages}}
 Total Items: {{complexConfig.totalItems}}</pre>
     </bs-tabx>
     <bs-tabx header="Remote Maps Data">
-      <input class="form-control"
-             placeholder="Filter"
-             [ngModel]="mapConfig.filterString"
-             (ngModelChange)="remoteMapConfig.filterString = $event; filterRemoteRows()"/>
-      <br>
-      <div class="form-group">
-        <label>Page Size / Items Per Page</label>
+      <form (submit)="filterRemoteRows()">
         <input class="form-control"
-               type="number"
-               min="1"
-               placeholder="Page Size"
-               [ngModel]="remoteMapConfig.itemsPerPage"
-               (ngModelChange)="remoteMapConfig.itemsPerPage = $event; filterRemoteRows()">
-      </div>
+               placeholder="Filter"
+               [(ngModel)]="mapConfig.filterString"/>
+        <br>
+        <div class="form-group">
+          <label>Page Size / Items Per Page</label>
+          <input class="form-control"
+                 type="number"
+                 min="1"
+                 placeholder="Page Size"
+                 [ngModel]="remoteMapConfig.itemsPerPage"
+                 (ngModelChange)="filterRemoteRows($event)">
+        </div>
+        <div>
+          <button class="btn btn-primary" type="submit">Filter</button>
+        </div>
+      </form>
       <br>
       <div class="form-check col-xs-12">
         <label class="form-check-label">
@@ -188,10 +200,10 @@ Total Items: {{complexConfig.totalItems}}</pre>
                 [itemsPerPage]="remoteMapConfig.itemsPerPage"
                 [sortable]="true"
                 (sortChange)="filterRemoteRows(remoteMapConfig.page, $event)"
-                [containerStyle]="{'min-width': '900px', 'max-height': '900px'}">
-        <bs-column header="Id" fieldName="id" [ngStyle]="{width: '50px', flex: 'none'}"></bs-column>
+                containerStyle="min-width: 900px; max-height: 900px">
+        <bs-column header="Id" fieldName="id" style="width: 50px; flex: none"></bs-column>
         <bs-column header="Title" fieldName="title"></bs-column>
-        <bs-column header="Body" fieldName="body" ></bs-column>
+        <bs-column header="Body" fieldName="body"></bs-column>
       </bs-table>
 
       <bs-pagination class="pagination-sm tag"
@@ -202,27 +214,30 @@ Total Items: {{complexConfig.totalItems}}</pre>
                      [maxSize]="remoteMapConfig.maxSize"
                      [boundaryLinks]="true"
                      [rotate]="false"
-                     [(totalPages)]="remoteMapConfig.totalPages">
+                     (totalPagesChange)="remoteMapConfig.totalPages">
       </bs-pagination>
 
       <pre class="card card-body card-title">Page: {{remoteMapConfig.page}} / {{remoteMapConfig.totalPages}}
 Total Items: {{remoteMapConfig.totalItems}}</pre>
     </bs-tabx>
     <bs-tabx header="Remote Complex Objects Data">
-      <input class="form-control"
-             placeholder="Filter"
-             [ngModel]="remoteComplexConfig.filterString"
-             (ngModelChange)="remoteComplexConfig.filterString = $event; filterRemoteComplexRows()"/>
-      <br>
-      <div class="form-group">
-        <label>Page Size / Items Per Page</label>
+      <form (submit)="filterRemoteComplexRows()">
         <input class="form-control"
-               type="number"
-               min="1"
-               placeholder="Page Size"
-               [ngModel]="remoteComplexConfig.itemsPerPage"
-               (ngModelChange)="remoteComplexConfig.itemsPerPage = $event ?? 1; filterRemoteComplexRows()">
-      </div>
+               placeholder="Filter"
+               [(ngModel)]="remoteComplexConfig.filterString"/>
+        <br>
+        <div class="form-group">
+          <label>Page Size / Items Per Page</label>
+          <input class="form-control"
+                 type="number"
+                 min="1"
+                 placeholder="Page Size"
+                 [(ngModel)]="remoteComplexConfig.itemsPerPage">
+        </div>
+        <div>
+          <button class="btn btn-primary" type="submit">Filter</button>
+        </div>
+      </form>
       <br>
       <div class="form-check col-xs-12">
         <label class="form-check-label">
@@ -237,10 +252,10 @@ Total Items: {{remoteMapConfig.totalItems}}</pre>
                 [itemsPerPage]="remoteComplexConfig.itemsPerPage"
                 [sortable]="true"
                 (sortChange)="filterRemoteComplexRows(remoteComplexConfig.page, $event)"
-                [containerStyle]="{'min-width': '900px', 'max-height': '900px'}">
-        <bs-column header="Id" fieldName="id" [ngStyle]="{width: '50px', flex: 'none'}"></bs-column>
+                containerStyle="min-width: 900px; max-height: 900px">
+        <bs-column header="Id" fieldName="id" style="width: 50px; flex: none"></bs-column>
         <bs-column header="Title" fieldName="title"></bs-column>
-        <bs-column header="Body" fieldName="body" ></bs-column>
+        <bs-column header="Body" fieldName="body"></bs-column>
       </bs-table>
 
       <bs-pagination class="pagination-sm tag"
@@ -251,7 +266,7 @@ Total Items: {{remoteMapConfig.totalItems}}</pre>
                      [maxSize]="remoteComplexConfig.maxSize"
                      [boundaryLinks]="true"
                      [rotate]="false"
-                     [(totalPages)]="remoteComplexConfig.totalPages">
+                     (totalPagesChange)="remoteComplexConfig.totalPages">
       </bs-pagination>
 
       <pre class="card card-body card-title">Page: {{remoteMapConfig.page}} / {{remoteMapConfig.totalPages}}

@@ -31,7 +31,7 @@
     <header>
       <i>I can have markup, too!</i>
       <i class="float-right fa"
-         [ngClass]="{'fa-chevron-down': status['isLastOpen'], 'fa-chevron-right': !status['isLastOpen']}"></i>
+         [class.fa-chevron-down]="status['isLastOpen']" [class.fa-chevron-right]="!status['isLastOpen']"></i>
     </header>
     This is just some content to illustrate fancy headings.
   </bs-accordion-panel>

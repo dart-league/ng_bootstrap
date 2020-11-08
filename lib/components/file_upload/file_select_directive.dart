@@ -4,11 +4,11 @@ part of bs_file_upload;
 @Directive(selector: '[bsFileSelect]')
 class BsFileSelectDirective {
 
-  final _filesChangeCtrl = new StreamController<List<File>>.broadcast();
+  final _filesChangeCtrl = StreamController<List<File>>.broadcast();
   @Output() Stream<List<File>> get filesChange => _filesChangeCtrl.stream;
 
-  @HostListener("change", const ['\$event'])
-  onChange(Event event) {
+  @HostListener('change', ['\$event'])
+  void onChange(Event event) {
     _filesChangeCtrl.add((event.target as InputElement).files);
   }
 }

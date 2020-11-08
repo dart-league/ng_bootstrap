@@ -1,16 +1,16 @@
 import 'dart:html';
-import "package:angular/angular.dart";
+import 'package:angular/angular.dart';
 import 'package:ng_bootstrap/components/file_upload/file_upload.dart';
 import 'package:ng_bootstrap/components/progress/progress.dart';
 
 // const URL = '/api/';
-const URL = "https://evening-anchorage-3159.herokuapp.com/api/";
+const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
-@Component(selector: "file-upload-demo",
+@Component(selector: 'file-upload-demo',
     templateUrl: 'file_upload_demo.html',
     styleUrls: ['file_upload_demo.css'],
-    directives: const [bsFileUploadDirectives, BsProgressComponent, coreDirectives],
-    pipes: const [DecimalPipe])
+    directives: [bsFileUploadDirectives, BsProgressComponent, coreDirectives],
+    pipes: [DecimalPipe])
 class FileUploadDemoComponent {
   bool hasBaseDropZoneOver = false;
   bool hasAnotherDropZoneOver = false;
@@ -22,17 +22,17 @@ class FileUploadDemoComponent {
   List<File> filesToUpload = [];
 
   void fileOverBase(dynamic e) {
-    this.hasBaseDropZoneOver = e;
+    hasBaseDropZoneOver = e;
   }
 
   void fileOverAnother(dynamic e) {
-    this.hasAnotherDropZoneOver = e;
+    hasAnotherDropZoneOver = e;
   }
 
-  HttpRequest _xhr = new HttpRequest();
+  final HttpRequest _xhr = HttpRequest();
 
-  save() {
-    var formData = new FormData();
+  void save() {
+    var formData = FormData();
     formData.append('hello', 'hi');
     for(var file in filesToUpload) {
       formData.appendBlob(file.name, file);
@@ -49,7 +49,7 @@ class FileUploadDemoComponent {
       ..send(formData);
   }
 
-  cancel() {
+  void cancel() {
     _xhr.abort();
   }
 }

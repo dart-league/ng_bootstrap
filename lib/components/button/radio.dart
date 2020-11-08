@@ -1,8 +1,8 @@
 import 'dart:html';
-import "package:angular/angular.dart";
+import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 
-@Directive(selector: "bs-radio-button")
+@Directive(selector: 'bs-radio-button')
 class BsRadioButtonDirective extends DefaultValueAccessor {
   /// handles the selected value of the button
   NgModel ngModel;
@@ -28,14 +28,14 @@ class BsRadioButtonDirective extends DefaultValueAccessor {
 
   /// listen when the value of the button has changed
   @override
-  writeValue(value) async {
+  void writeValue(value) async {
     _value = value;
     super.writeValue(value);
   }
 
   /// listen on the click event of the button
   @HostListener('click')
-  onClick() {
+  void onClick() {
     if (uncheckable != false && option == _value) {
       _value = null;
     } else {

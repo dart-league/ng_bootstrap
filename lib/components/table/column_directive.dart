@@ -22,8 +22,8 @@ class BsColumnDirective {
 
   /// style of the column
   ///
-  ///     <bs-column ngStyle="{width: '120px', flex: 'none'}"></bs-column>
-  @Input() Map<String, String> ngStyle;
+  ///     <bs-column style="width: 120px; flex: none"></bs-column>
+  @Input() String style;
 
   /// class of the column
   ///

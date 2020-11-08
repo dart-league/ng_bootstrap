@@ -14,7 +14,7 @@ import 'package:angular/angular.dart';
 @Component(
     selector: 'bs-modal',
     templateUrl: 'modal.html',
-    directives: const [coreDirectives])
+    directives: [coreDirectives])
 class BsModalComponent {
 
   @Input() String header;
@@ -27,10 +27,10 @@ class BsModalComponent {
 
   bool loading = false;
 
-  @Input() void set buttons(List/* <BsModalButton | Map> */ buttons) {
+  @Input() set buttons(List/* <BsModalButton | Map> */ buttons) {
     _buttons = buttons.map<BsModalButton>((button) =>
     button is Map
-        ? new BsModalButton(
+        ? BsModalButton(
             button['label'],
             id: button['id'],
             cssClasses: button['cssClasses'] ?? 'btn-primary',
@@ -66,7 +66,7 @@ class BsModalComponent {
   /// @type {EventEmitter<ModalResult>}
   @Output() Stream<String> get close => _closeCtrl.stream;
 
-  final _closeCtrl = new StreamController<String>.broadcast();
+  final _closeCtrl = StreamController<String>.broadcast();
 
   bool showModal = false;
 

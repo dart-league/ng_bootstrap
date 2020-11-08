@@ -13,22 +13,26 @@ import 'dart:html';
 <div class="popover-body">
   <ng-content></ng-content>
 </div>''',
-    directives: const [coreDirectives])
+    directives: [coreDirectives])
 class BsPopoverComponent extends BsTooltipComponent {
   /// Header of the popover
   @Input() String heading;
 
-  @HostBinding("class.bs-popover-top")
-  bool get bsTooltipTop => placement == "top";
+  @override
+  @HostBinding('class.bs-popover-top')
+  bool get bsTooltipTop => placement == 'top';
 
-  @HostBinding("class.bs-popover-left")
-  bool get bsTooltipLeft => placement == "left";
+  @override
+  @HostBinding('class.bs-popover-left')
+  bool get bsTooltipLeft => placement == 'left';
 
-  @HostBinding("class.bs-popover-right")
-  bool get bsTooltipRight => placement == "right";
+  @override
+  @HostBinding('class.bs-popover-right')
+  bool get bsTooltipRight => placement == 'right';
 
-  @HostBinding("class.bs-popover-bottom")
-  bool get bsTooltipBottom => placement == "bottom";
+  @override
+  @HostBinding('class.bs-popover-bottom')
+  bool get bsTooltipBottom => placement == 'bottom';
 
   /// Constructs a new [BspopoverComponent]
   /// injecting its [elementRef] and the [options]

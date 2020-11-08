@@ -5,13 +5,13 @@
       <div class="row">
         <button type="button"
                 class="btn btn-light btn-sm col-2"
-                (click)="datePicker.move(-1, event: $event)"
+                (click)="datePicker.move(-1, $event)"
                 tabindex="-1">
           <i class="fa fa-chevron-left"></i>
         </button>
         <button type="button"
                 class="btn btn-light btn-sm col-4"
-                (click)="datePicker.toggleMode(event: $event)"
+                (click)="datePicker.toggleMode(1, $event)"
                 [disabled]="false"
                 [class.disabled]="false" tabindex="-1"
                 [hidden]="!datePicker.showWeeks">
@@ -19,7 +19,7 @@
         </button>
         <button type="button"
                 class="btn btn-light btn-sm col-4"
-                (click)="datePicker.toggleMode(2, event: $event)"
+                (click)="datePicker.toggleMode(2, $event)"
                 [disabled]="datePicker.datePickerMode == maxMode"
                 [class.disabled]="datePicker.datePickerMode == maxMode"
                 [hidden]="!datePicker.showWeeks"
@@ -28,7 +28,7 @@
         </button>
         <button type="button"
                 class="btn btn-light btn-sm col-2"
-                (click)="datePicker.move(1, event: $event)"
+                (click)="datePicker.move(1, $event)"
                 tabindex="-1">
           <i class="fa fa-chevron-right"></i>
         </button>

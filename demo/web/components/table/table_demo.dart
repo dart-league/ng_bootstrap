@@ -1,7 +1,6 @@
 library table.table_demo;
 
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
@@ -37,7 +36,7 @@ class TableConfig {
 
 @Component (selector: 'table-demo',
     templateUrl: 'table_demo.html',
-    directives: const [
+    directives: [
       bsTableDirectives,
       BsPaginationComponent,
       bsTabsxDirectives,
@@ -60,9 +59,10 @@ class TableDemoComponent implements OnInit {
 
   TableDemoComponent(this.client);
 
+  @override
   void ngOnInit() {
-    this.filterRows();
-    this.filterComplexRows();
+    filterRows();
+    filterComplexRows();
   }
 
   void handleSalaryFiltererChange(String comparer, event, BsColumnDirective column) {
@@ -90,7 +90,7 @@ class TableDemoComponent implements OnInit {
           if (filters[fieldName] is String) {
             return item[fieldName].contains(filters[fieldName]);
           } else {
-            bool get = true, let = true;
+            var get = true, let = true;
             if (filters[fieldName].containsKey('>=')) {
               get = item[fieldName] >= filters[fieldName]['>='];
             }
@@ -126,7 +126,7 @@ class TableDemoComponent implements OnInit {
 
   void filterRemoteRows([num currentPage = 1, BsColumnDirective column]) async {
     if (remoteMapConfig.debounceTimer != null) return;
-    remoteMapConfig.debounceTimer = new Timer(Duration(milliseconds: 500), () {
+    remoteMapConfig.debounceTimer = Timer(Duration(milliseconds: 500), () {
       remoteMapConfig.debounceTimer = null;
     });
 
@@ -147,12 +147,12 @@ class TableDemoComponent implements OnInit {
       response = await client.get('$uri&q=${remoteMapConfig.filterString}');
       remoteMapConfig.totalItems = int.parse(response.headers['x-total-count']);
     }
-    remoteMapConfig.rows = fromJson(response.body, [() => List<Post>(), Post]);
+    remoteMapConfig.rows = fromJson(response.body, [() => <Post>[], Post]);
   }
 
   void filterRemoteComplexRows([num currentPage = 1, BsColumnDirective column]) async {
     if (remoteComplexConfig.debounceTimer != null) return;
-    remoteComplexConfig.debounceTimer = new Timer(Duration(milliseconds: 500), () {
+    remoteComplexConfig.debounceTimer = Timer(Duration(milliseconds: 500), () {
       remoteComplexConfig.debounceTimer = null;
     });
 
@@ -173,14 +173,18 @@ class TableDemoComponent implements OnInit {
       response = await client.get('$uri&q=${remoteComplexConfig.filterString}');
       remoteComplexConfig.totalItems = int.parse(response.headers['x-total-count']);
     }
-    remoteComplexConfig.rows = fromJson(response.body, [() => List<Post>(), Post]);
+    remoteComplexConfig.rows = fromJson(response.body, [() => <Post>[], Post]);
   }
 }
 
 @serializable
 class Post extends _$PostSerializable {
+  @override
   int id;
+  @override
   String title;
+  @override
   String body;
+  @override
   int userId;
 }

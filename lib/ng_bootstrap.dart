@@ -42,7 +42,7 @@ export 'components/tooltip/tooltip.dart';
 export 'components/typeahead/typeahead.dart';
 export 'core/position.dart';
 
-const bsDirectives = const [
+const bsDirectives = [
   BsAccordionComponent,
   BsAccordionPanelComponent,
   BsAlertComponent,

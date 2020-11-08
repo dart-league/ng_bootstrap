@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:html';
 
-import "package:angular/angular.dart";
+import 'package:angular/angular.dart';
 import 'package:ng_bootstrap/components/dropdown/index.dart';
 import 'package:stream_transform/stream_transform.dart';
 import 'package:ng_bootstrap/components/button/toggle.dart';
@@ -12,7 +12,14 @@ import 'package:angular_forms/angular_forms.dart';
 ///
 /// [demo](http://dart-league.github.io/ng_bootstrap/#typeahed)
 @Component(
-    selector: "bs-typeahead", templateUrl: 'typeahead.html', directives: const [bsDropdownDirectives, BsToggleButtonDirective, coreDirectives, formDirectives])
+    selector: 'bs-typeahead',
+    templateUrl: 'typeahead.html',
+    directives: [
+      bsDropdownDirectives,
+      BsToggleButtonDirective,
+      coreDirectives,
+      formDirectives
+    ])
 class BsTypeAheadComponent extends DefaultValueAccessor {
   /// binds to string user's input
   NgModel ngModel;
@@ -23,7 +30,7 @@ class BsTypeAheadComponent extends DefaultValueAccessor {
   /// local value to handle loading value
   bool loadingVal = false;
 
-  final _loadingCtrl = new StreamController<bool>.broadcast();
+  final _loadingCtrl = StreamController<bool>.broadcast();
 
   /// fires 'busy' state of this component was changed, fired on `async` mode only, returns
   /// `boolean`
@@ -33,13 +40,13 @@ class BsTypeAheadComponent extends DefaultValueAccessor {
   /// local value to handle noResults value
   bool noResultsVal = false;
 
-  final _noResultsCtrl = new StreamController<bool>.broadcast();
+  final _noResultsCtrl = StreamController<bool>.broadcast();
 
   /// fires `true` in case of matches are not detected when any user key event occurs
   @Output()
   Stream<bool> get noResults => _noResultsCtrl.stream;
 
-  final _selectedItemChangeCtrl = new StreamController<dynamic>.broadcast();
+  final _selectedItemChangeCtrl = StreamController<dynamic>.broadcast();
 
   /// fired when option was selected, return object with data of this option
   @Output()
@@ -111,17 +118,21 @@ class BsTypeAheadComponent extends DefaultValueAccessor {
   /// if `true` the dropdown-menu will be open, and the date-picker visible
   bool isOpen = false;
 
-  final _queryStreamCtrl = new StreamController<dynamic>.broadcast();
+  final _queryStreamCtrl = StreamController<dynamic>.broadcast();
 
   Stream get _queryStream => _queryStreamCtrl.stream;
 
   var selectedItem;
 
   /// Construct a [BsTypeAheadComponent] component injecting [ngModel], [renderer], [elementRef]
-  BsTypeAheadComponent(this.ngModel, HtmlElement elementRef) : super(elementRef) {
+  BsTypeAheadComponent(this.ngModel, HtmlElement elementRef)
+      : super(elementRef) {
     ngModel.valueAccessor = this;
 
-    _queryStream.transform(debounce(new Duration(milliseconds: waitMs))).transform(switchMap((term) => source(term).asStream())).forEach((matchesAux) {
+    _queryStream
+        .debounce(Duration(milliseconds: waitMs))
+        .switchMap((term) => source(term).asStream())
+        .forEach((matchesAux) {
       matches = matchesAux.take(optionsLimit).toList();
       _loadingCtrl.add(loadingVal = false);
       if (matches.isEmpty) _noResultsCtrl.add(noResultsVal = true);
@@ -144,8 +155,11 @@ class BsTypeAheadComponent extends DefaultValueAccessor {
         matches.clear();
         _queryStreamCtrl.add(value);
       } else if (source is Iterable) {
-        var query = new RegExp(value, caseSensitive: false);
-        matches = source.where((item) => query.hasMatch(_itemString(item))).take(optionsLimit).toList();
+        var query = RegExp(value, caseSensitive: false);
+        matches = source
+            .where((item) => query.hasMatch(_itemString(item)))
+            .take(optionsLimit)
+            .toList();
       }
     } else {
       matches.clear();
@@ -159,11 +173,12 @@ class BsTypeAheadComponent extends DefaultValueAccessor {
   }
 
   /// fired when user do a keyboard event on the text-box
-  onTypeaheadChange(KeyboardEvent e) {
+  void onTypeaheadChange(KeyboardEvent e) {
     if (!isOpen) {
-      if ((e.keyCode == KeyCode.DOWN || e.keyCode == KeyCode.UP) && !matches.isEmpty)
+      if ((e.keyCode == KeyCode.DOWN || e.keyCode == KeyCode.UP) &&
+          matches.isNotEmpty) {
         isOpen = true;
-      else {
+      } else {
         return;
       }
     }
@@ -192,31 +207,38 @@ class BsTypeAheadComponent extends DefaultValueAccessor {
   }
 
   /// selects the matched item
-  selectMatch(value, [Event e = null]) {
+  void selectMatch(value, [Event e]) {
     ngModel.viewToModelUpdate('');
-    Future.delayed(const Duration(milliseconds: 1), () => ngModel.viewToModelUpdate(_itemString(value)));
+    Future.delayed(const Duration(milliseconds: 1),
+        () => ngModel.viewToModelUpdate(_itemString(value)));
     isOpen = false;
     _selectedItemChangeCtrl.add(selectedItem = value);
   }
 
   /// Returns the item as string
-  _itemString(/*String | Map*/ item) => item is String
+  dynamic/*String | Map*/ _itemString(/*String | Map*/ item) => item is String
       ? item
       : item is Map
           ? item[optionField]
-          : throw new Exception('Type of item is not supported, please use a Map, SerializableMap or an String');
+          : throw Exception(
+              'Type of item is not supported, please use a Map, SerializableMap or an String');
 
   /// highlights the matching part of the matched item. For example if user types "a" and the matched
   /// word is "Alaska" the result will be `<strong>A</strong>l<strong>a</strong>sk<strong>a</strong>`
   String highlight(item, String query) {
     String itemStr = _itemString(item);
     // Replaces the capture string with a the same string inside of a "strong" tag
-    return query != null && !query.isEmpty ? itemStr.replaceAllMapped(_escapeRegexp(query), (m) => "<strong>${m[0]}</strong>") : itemStr;
+    return query != null && query.isNotEmpty
+        ? itemStr.replaceAllMapped(
+            _escapeRegexp(query), (m) => '<strong>${m[0]}</strong>')
+        : itemStr;
   }
 
   /// captures the whole query string and replace it with the string that will be used to match
   /// the results, for example if the capture is "a" the result will be \a
-  RegExp _escapeRegexp(String queryToEscape) => new RegExp(queryToEscape.replaceAll(new RegExp(r'([.?*+^$[\]\\(){}|-])'), r"\$1"), caseSensitive: false);
+  RegExp _escapeRegexp(String queryToEscape) => RegExp(
+      queryToEscape.replaceAll(RegExp(r'([.?*+^$[\]\\(){}|-])'), r'\$1'),
+      caseSensitive: false);
 
   /// makes the next item active/highlighted
   void _prevActiveMatch() {
@@ -235,8 +257,8 @@ class BsTypeAheadComponent extends DefaultValueAccessor {
     selectMatch(selectedItem);
   }
 
-  @HostListener('input', const ['\$event'])
+  @HostListener('input', ['\$event'])
   bool onInput($event) => true;
 
-  inputMatchTemplateOutlet(dynamic match) => {r"$implicit": match};
+  Map<String, dynamic> inputMatchTemplateOutlet(dynamic match) => {r'$implicit': match};
 }

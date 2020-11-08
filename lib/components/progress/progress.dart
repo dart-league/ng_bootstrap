@@ -23,7 +23,7 @@ import 'package:angular/angular.dart';
   </div>
 </div>
 <template [ngTemplateOutlet]="labelTemplate" [ngTemplateOutletContext]="basicLabelTemplateOutput(percentage)"></template>''',
-    directives: const [coreDirectives])
+    directives: [coreDirectives])
 class BsProgressComponent implements OnInit, OnDestroy {
   /// if `true` changing `value` of progress bar will be animated (*note*: not supported by Bootstrap 4)
   @Input()
@@ -45,35 +45,32 @@ class BsProgressComponent implements OnInit, OnDestroy {
   /// Handles the width of the element
   String elementWidth;
 
-  HtmlElement _elementRef;
+  final HtmlElement _elementRef;
 
   Timer _resizeTimer;
 
   BsProgressComponent(this._elementRef);
 
   /// initialize the attributes
-  ngOnInit() {
+  @override
+  void ngOnInit() {
     animate ??= true;
     max = max ??= 100;
     Element nativeElement = _elementRef;
     elementWidth = nativeElement.getComputedStyle().width;
-    // TODO: change this event something else
-//    window.onResize.listen((e) {
-//      elementWidth = nativeElement.getComputedStyle().width;
-//    });
     _resizeTimer =
         Timer.periodic(Duration(milliseconds: 500), (_) => elementWidth = nativeElement.getComputedStyle().width);
   }
 
   @override
   void ngOnDestroy() {
-//    _resizeTimer.cancel();
+   _resizeTimer.cancel();
   }
 
-  basicLabelTemplateOutput(dynamic label) => {r"$implicit": label};
+  Map<String, dynamic> basicLabelTemplateOutput(dynamic label) => {r'$implicit': label};
 
-  completeLabelTemplateOutput(dynamic label) =>
-      {r"$implicit": label,
-        "value" : value,
-        "max": max};
+  Map<String, dynamic> completeLabelTemplateOutput(dynamic label) =>
+      {r'$implicit': label,
+        'value' : value,
+        'max': max};
 }

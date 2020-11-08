@@ -4,7 +4,6 @@ import 'package:angular/angular.dart';
 
 import '../modal/modal.dart';
 import 'prompt.dart';
-// ignore: uri_has_not_been_generated
 import 'prompt.template.dart' as ng_prompt;
 
 /// Service that creates a modal in the DOM

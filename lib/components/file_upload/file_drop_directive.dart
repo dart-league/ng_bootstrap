@@ -2,13 +2,13 @@ part of bs_file_upload;
 
 @Directive(selector: 'bs-file-drop, [bsFileDrop]')
 class BsFileDropDirective {
-  final _fileOverCtrl = new StreamController<bool>.broadcast();
+  final _fileOverCtrl = StreamController<bool>.broadcast();
   @Output() Stream<bool> get fileOver => _fileOverCtrl.stream;
 
-  final _filesChangeCtrl = new StreamController<List<File>>.broadcast();
+  final _filesChangeCtrl = StreamController<List<File>>.broadcast();
   @Output() Stream<List<File>> get filesChange => _filesChangeCtrl.stream;
 
-  @HostListener('drop', const ['\$event'])
+  @HostListener('drop', ['\$event'])
   void onDrop(MouseEvent event) {
     _preventAndStop(event);
     var transfer = event.dataTransfer;
@@ -16,7 +16,7 @@ class BsFileDropDirective {
     _filesChangeCtrl.add(transfer.files);
   }
 
-  @HostListener ('dragover', const ['\$event'])
+  @HostListener ('dragover', ['\$event'])
   void onDragOver(MouseEvent event) {
     _preventAndStop(event);
     var transfer = event.dataTransfer;
@@ -26,13 +26,13 @@ class BsFileDropDirective {
     _fileOverCtrl.add(true);
   }
 
-  @HostListener ('dragleave', const ['\$event'])
-  onDragLeave(Event event) {
+  @HostListener ('dragleave', ['\$event'])
+  void onDragLeave(Event event) {
     _preventAndStop(event);
     _fileOverCtrl.add(false);
   }
 
-  _preventAndStop(Event event) {
+  void _preventAndStop(Event event) {
     event
       ..preventDefault()
       ..stopPropagation();

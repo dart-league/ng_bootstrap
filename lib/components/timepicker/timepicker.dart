@@ -1,4 +1,4 @@
-import "package:angular/angular.dart";
+import 'package:angular/angular.dart';
 import 'dart:html';
 import 'package:angular_forms/angular_forms.dart';
 
@@ -10,14 +10,14 @@ import 'package:angular_forms/angular_forms.dart';
 
 // todo: replace increment/decrement blockers with getters, or extract
 /// add [minutes] to [time]
-DateTime addMinutes(DateTime time, int minutes) => time.add(new Duration(minutes: minutes));
+DateTime addMinutes(DateTime time, int minutes) => time.add(Duration(minutes: minutes));
 
 /// A lightweight & configurable timepicker directive
 ///
 /// [demo](http://dart-league.github.io/ng_bootstrap/#timepicker)
-@Component (selector: "bs-time-picker",
+@Component (selector: 'bs-time-picker',
     templateUrl: 'timepicker.html',
-    directives: const [coreDirectives, formDirectives])
+    directives: [coreDirectives, formDirectives])
 class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   ///
   BsTimePickerComponent(this.cd, HtmlElement elementRef)
@@ -26,7 +26,7 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   }
 
   /// result value
-  DateTime _selected = new DateTime.now();
+  DateTime _selected = DateTime.now();
 
   /// hours change step
   @Input() num hourStep = 1;
@@ -38,7 +38,7 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   dynamic meridian;
 
   /// works in 12H mode and displays AM/PM. If `false` works in 24H mode and hides AM/PM
-  @Input() List<String> meridians = ["AM", "PM"];
+  @Input() List<String> meridians = ['AM', 'PM'];
 
   /// if `true` hours and minutes fields will be readonly
   @Input() bool readonlyInput = false;
@@ -72,9 +72,9 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   /// selected DateTime to handle time
   set selected(DateTime v) {
     if (v != null) {
-      this._selected = v;
-      this.updateTemplate();
-      this.cd.viewToModelUpdate(this.selected.toIso8601String());
+      _selected = v;
+      updateTemplate();
+      cd.viewToModelUpdate(selected.toIso8601String());
     }
   }
 
@@ -88,11 +88,11 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
 
   /// if `true` works in 12H mode and displays AM/PM. If `false` works in 24H mode and hides AM/PM
   bool get showMeridian {
-    return this._showMeridian;
+    return _showMeridian;
   }
 
   /// sets the value of showing meridian, if `true` works in 12H mode and displays AM/PM. If `false` works in 24H mode and hides AM/PM
-  @Input() void set showMeridian(bool value) {
+  @Input() set showMeridian(bool value) {
     _showMeridian = value;
     // || !this.$error.DateTime
     if (true) {
@@ -105,7 +105,8 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   NgModel cd;
 
   // todo: add formatter value to DateTime object
-  ngOnInit() {
+  @override
+  void ngOnInit() {
     // todo: take in account $locale.DATETIME_FORMATS.AMPMS;
     if (mousewheel) {
       setupMousewheelEvents();
@@ -122,14 +123,14 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
 //  }
 
   /// refresh the template
-  refresh([ String type ]) {
+  void refresh([ String type ]) {
     // this.makeValid();
     updateTemplate();
     cd.viewToModelUpdate(selected.toIso8601String());
   }
 
   /// updates the template
-  updateTemplate([dynamic keyboardChange]) {
+  void updateTemplate([dynamic keyboardChange]) {
     var _hours = selected.hour;
     var _minutes = selected.minute;
     if (showMeridian) {
@@ -149,7 +150,7 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   }
 
   /// get the value of hours from template
-  getHoursFromTemplate() {
+  int getHoursFromTemplate() {
     var hours = int.tryParse(this.hours) ?? 0;
     var valid = showMeridian ? (hours > 0 && hours < 13) : (hours >= 0 &&
         hours < 24);
@@ -168,28 +169,28 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   }
 
   /// parse the minutes string from the template
-  getMinutesFromTemplate() {
+  int getMinutesFromTemplate() {
     var _minutes = int.tryParse(minutes) ?? 0;
     return (_minutes >= 0 && _minutes < 60) ? _minutes : null;
   }
 
   /// add zeroes at the left if [value] has one digit
-  pad(value) =>
+  String pad(value) =>
       (value != null && value.toString().length < 2)
-        ? "0" + value.toString()
+        ? '0' + value.toString()
         : value.toString();
 
   ///
-  setupMousewheelEvents() {}
+  void setupMousewheelEvents() {}
 
   ///
-  setupArrowkeyEvents() {}
+  void setupArrowkeyEvents() {}
 
   ///
-  setupInputEvents() {}
+  void setupInputEvents() {}
 
   /// updates the value of hour
-  updateHours() {
+  void updateHours() {
     if (readonlyInput) {
       return;
     }
@@ -198,12 +199,12 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
     if (hours == null || minutes == null) {}
     selected = _updateDateTime(selected, hours: hours);
     if (min != null && !(selected.isBefore(min) || max != null && selected.isAfter(max))) {
-      refresh("h");
+      refresh('h');
     }
   }
 
   /// fired when the hours input blur
-  hoursOnBlur(Event event) {
+  void hoursOnBlur(Event event) {
     if (readonlyInput) {
       return;
     }
@@ -214,7 +215,7 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   }
 
   /// update the minutes value
-  updateMinutes() {
+  void updateMinutes() {
     if (readonlyInput) {
       return;
     }
@@ -224,13 +225,13 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
     selected = _updateDateTime(selected, minutes: minutes);
 //    selected.minute = minutes;
     if (!(min != null && selected.isBefore(min) || max != null && selected.isAfter(max))) {
-      refresh("m");
+      refresh('m');
     }
   }
 
   /// update the whole datetime value
-  _updateDateTime(DateTime selected, {int minutes, int hours}) =>
-      new DateTime(
+  DateTime _updateDateTime(DateTime selected, {int minutes, int hours}) =>
+      DateTime(
           selected.year,
           selected.month,
           selected.day,
@@ -239,7 +240,7 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
           selected.second);
 
   /// fired when minutes input blur
-  minutesOnBlur(Event event) {
+  void minutesOnBlur(Event event) {
     if (readonlyInput) {
       return;
     }
@@ -292,41 +293,41 @@ class BsTimePickerComponent extends DefaultValueAccessor implements OnInit {
   }
 
   /// increment hours using [hourStep]
-  incrementHours() {
+  void incrementHours() {
     if (!noIncrementHours()) {
       addMinutesToSelected(hourStep * 60);
     }
   }
 
   /// decrement hours using [hourStep]
-  decrementHours() {
+  void decrementHours() {
     if (!noDecrementHours()) {
       addMinutesToSelected(-hourStep * 60);
     }
   }
 
   /// increment minutes using [minuteStep]
-  incrementMinutes() {
+  void incrementMinutes() {
     if (!noIncrementMinutes()) {
       addMinutesToSelected(minuteStep);
     }
   }
 
   /// decrement minutes using [minuteStep]
-  decrementMinutes() {
+  void decrementMinutes() {
     if (!noDecrementMinutes()) {
       addMinutesToSelected(-minuteStep);
     }
   }
 
   /// toggle the status of meridian
-  toggleMeridian() {
+  void toggleMeridian() {
     if (!noToggleMeridian()) {
       var sign = selected.hour < 12 ? 1 : -1;
       addMinutesToSelected(12 * 60 * sign);
     }
   }
 
-  @HostListener('input', const ['\$event'])
+  @HostListener('input', ['\$event'])
   bool onInput(Event $event) => true;
 }

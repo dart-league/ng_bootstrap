@@ -16,4 +16,5 @@ analyzer:
   # Angular plugin support is in beta. You're welcome to try it and report
   # issues: https://github.com/dart-lang/angular_analyzer_plugin/issues
   plugins:
-    - angular
+    angular:
+      enabled: true

@@ -1,9 +1,9 @@
 import 'dart:html';
-import "package:angular/angular.dart";
+import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 
 @Directive(
-    selector: "bs-toggle-button")
+    selector: 'bs-toggle-button')
 class BsToggleButtonDirective extends DefaultValueAccessor {
   NgModel ngModel;
 
@@ -27,18 +27,19 @@ class BsToggleButtonDirective extends DefaultValueAccessor {
   }
 
   /// this function is fired whenever a new write is done to the [ngModel]
-  writeValue(value) async {
+  @override
+  void writeValue(value) async {
     _value = value;
     super.writeValue(_value);
   }
 
   /// toggles the state of the [active] attribute
-  toggle(bool checked) {
+  void toggle(bool checked) {
     _value = checked ? trueValue : falseValue;
     ngModel.viewToModelUpdate(_value);
   }
 
   /// Listens on the click event of the button
   @HostListener('click')
-  onClick() => toggle(!active);
+  void onClick() => toggle(!active);
 }

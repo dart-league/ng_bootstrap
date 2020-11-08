@@ -5,16 +5,16 @@ String _defaultLocale = 'en_US';
 
 /// Creates an [NgBsDatePickerPopup], this is a date-picker component that is popup when user clicks
 /// on the input box or on the button at the right of the input box.
-@Component (selector: "bs-date-picker-popup",
+@Component (selector: 'bs-date-picker-popup',
     templateUrl: 'date_picker_popup.html',
-    directives: const [
+    directives: [
       bsDropdownDirectives,
       BsDatePickerComponent,
       BsToggleButtonDirective,
       coreDirectives,
       formDirectives
     ],
-    pipes: const [commonPipes]
+    pipes: [commonPipes]
 )
 class BsDatePickerPopupComponent extends BsDatePickerBase {
   /// Constructs a DatePickerPopup
@@ -49,8 +49,8 @@ class BsDatePickerPopupComponent extends BsDatePickerBase {
   /// locale used to localize the output values
   @Input() String locale = _defaultLocale;
 
-  valueChanged(value) {
-    var df = new DateFormat(format, locale);
+  void valueChanged(value) {
+    var df = DateFormat(format, locale);
     try {
       ngModel.viewToModelUpdate(df.parse(value));
     } catch (e) {

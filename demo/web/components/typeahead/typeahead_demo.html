@@ -14,8 +14,7 @@ Selected Item: {{selectedItem}}</pre>
     <bs-typeahead [(ngModel)]="selected"
                   [source]="statesComplex"
                   (selectedItemChange)="typeaheadOnSelect(selectedItem = $event)"
-                  optionField="name"
-    class="form-control">
+                  optionField="name">
       <!-- You can also use custom templates -->
       <!--<template let-item>{{item['name']}}</template>-->
     </bs-typeahead>

@@ -1,10 +1,10 @@
-import "package:angular/angular.dart";
+import 'package:angular/angular.dart';
 
-import "package:js_shims/js_shims.dart";
+import 'package:js_shims/js_shims.dart';
 import 'dart:async';
 
 /// List of Directives needed to create a carousel
-const bsCarouselComponents = const [BsCarouselComponent, BsSlideComponent];
+const bsCarouselComponents = [BsCarouselComponent, BsSlideComponent];
 
 @Deprecated('Renamed to "bsCarouselComponents"')
 const NG_BOOTSTRAP_CAROUSEL_DIRECTIVES = bsCarouselComponents;
@@ -19,16 +19,19 @@ enum Direction { UNKNOWN, NEXT, PREV }
 /// [bootstrap 4](http://v4-alpha.getbootstrap.com/components/carousel/)
 ///
 /// [demo](http://dart-league.github.io/ng_bootstrap/#carousel)
-@Component(selector: "bs-carousel", templateUrl: 'carousel.html', directives: const [coreDirectives])
+@Component(selector: 'bs-carousel', templateUrl: 'carousel.html', directives: [coreDirectives])
 class BsCarouselComponent implements OnDestroy, AfterContentInit {
   /// if `true` will disable pausing on carousel mouse hover
-  @Input() bool noPause = false;
+  @Input()
+  bool noPause = false;
 
   /// if `true` the carousel will not cycle continuously and will have hard stops (prevent looping)
-  @Input() bool noWrap;
+  @Input()
+  bool noWrap;
 
   /// if `true` the carousel is not going to have transitions between slides
-  @Input() bool noTransition;
+  @Input()
+  bool noTransition;
 
   /// provides the slides of the carousel
   @ContentChildren(BsSlideComponent)
@@ -47,20 +50,22 @@ class BsCarouselComponent implements OnDestroy, AfterContentInit {
   BsSlideComponent currentSlide;
 
   /// amount of time in milliseconds to delay between automatically cycling an item. If `false`, carousel will not automatically cycle
-  @Input() num interval;
+  @Input()
+  num interval;
 
   @override
-  ngAfterContentInit() {
+  void ngAfterContentInit() {
     play();
   }
 
   /// Listen when the Carousel is destroyed
-  ngOnDestroy() {
+  @override
+  void ngOnDestroy() {
     destroyed = true;
   }
 
   /// listen when an slide is selected
-  select(BsSlideComponent nextSlide, [Direction direction = Direction.UNKNOWN]) {
+  void select(BsSlideComponent nextSlide, [Direction direction = Direction.UNKNOWN]) {
     var nextIndex = nextSlide.index;
     if (identical(direction, Direction.UNKNOWN)) {
       direction = nextIndex > getCurrentIndex() ? Direction.NEXT : Direction.PREV;
@@ -72,7 +77,7 @@ class BsCarouselComponent implements OnDestroy, AfterContentInit {
   }
 
   /// go to next slide after being selected
-  goNext(BsSlideComponent slide, Direction direction) {
+  void goNext(BsSlideComponent slide, Direction direction) {
     if (destroyed) {
       return;
     }
@@ -88,46 +93,39 @@ class BsCarouselComponent implements OnDestroy, AfterContentInit {
   }
 
   /// gets the slide by index
-  getSlideByIndex(num index) {
-    var len = slides.length;
-    for (var i = 0; i < len; ++i) {
-      if (identical(slides[i].index, index)) {
-        return slides[i];
-      }
-    }
-  }
+  BsSlideComponent getSlideByIndex(num index) =>
+      slides.firstWhere((s) => s.index == index);
 
   /// gets the index of the current selected slide
-  int getCurrentIndex() {
-    return falsey(currentSlide) ? 0 : currentSlide.index;
-  }
+  int getCurrentIndex() =>
+      falsey(currentSlide) ? 0 : currentSlide.index;
 
   /// listen when a user wants to go to next slide
-  next() {
+  void next() {
     var newIndex = (getCurrentIndex() + 1) % slides.length;
-    if (identical(newIndex, 0) && noWrap) {
+    if (newIndex == 0 && noWrap) {
       pause();
-      return null;
+      return;
     }
-    return select(getSlideByIndex(newIndex), Direction.NEXT);
+    select(getSlideByIndex(newIndex), Direction.NEXT);
   }
 
   /// listen when a user wants to go to a previous slide
-  prev() {
+  void prev() {
     var newIndex = getCurrentIndex() - 1 < 0 ? slides.length - 1 : getCurrentIndex() - 1;
     if (noWrap && identical(newIndex, slides.length - 1)) {
       pause();
-      return null;
+      return;
     }
-    return select(getSlideByIndex(newIndex), Direction.PREV);
+    select(getSlideByIndex(newIndex), Direction.PREV);
   }
 
   /// restart the timer of the slides
-  restartTimer() {
+  void restartTimer() {
     resetTimer();
     var intervalAux = interval.toInt();
     if (intervalAux != double.nan && intervalAux > 0) {
-      currentInterval = new Timer(new Duration(milliseconds: intervalAux), () {
+      currentInterval = Timer(Duration(milliseconds: intervalAux), () {
         var nInterval = interval;
         if (isPlaying && intervalAux != double.nan && nInterval > 0 && truthy(slides.length)) {
           next();
@@ -139,7 +137,7 @@ class BsCarouselComponent implements OnDestroy, AfterContentInit {
   }
 
   /// stops the slides timer and reset its value
-  resetTimer() {
+  void resetTimer() {
     if (truthy(currentInterval)) {
       currentInterval.cancel();
       currentInterval = null;
@@ -147,7 +145,7 @@ class BsCarouselComponent implements OnDestroy, AfterContentInit {
   }
 
   /// starts the slides timer
-  play() {
+  void play() {
     if (!isPlaying) {
       isPlaying = true;
       restartTimer();
@@ -155,7 +153,7 @@ class BsCarouselComponent implements OnDestroy, AfterContentInit {
   }
 
   /// event group name which pauses the cycling of the carousel, if `hover` pauses on mouseenter and resumes on mouseleave
-  pause() {
+  void pause() {
     if (!noPause) {
       isPlaying = false;
       resetTimer();
@@ -163,13 +161,13 @@ class BsCarouselComponent implements OnDestroy, AfterContentInit {
   }
 
   /// add an slide to the carousel
-  addSlide(BsSlideComponent slide) {
+  void addSlide(BsSlideComponent slide) {
     slide.index = slides.length;
     slides.add(slide);
   }
 
   /// removes an slide to the carousel
-  removeSlide(BsSlideComponent slide) {
+  void removeSlide(BsSlideComponent slide) {
     splice(slides, slide.index, 1);
     if (identical(slides.length, 0)) {
       currentSlide = null;
@@ -184,14 +182,11 @@ class BsCarouselComponent implements OnDestroy, AfterContentInit {
 /// Creates the slide element that will be displayed in the carousel
 ///
 /// [demo](http://dart-league.github.io/ng_bootstrap/#carousel)
-@Component(
-    selector: "bs-slide",
-    template: '''
+@Component(selector: 'bs-slide', template: '''
   <div class="text-center">
     <ng-content></ng-content>
   </div>
-  ''',
-    directives: const [NgClass])
+  ''', directives: [NgClass])
 class BsSlideComponent {
   /// Constructs a new slide injecting the parent carousel
   BsSlideComponent();

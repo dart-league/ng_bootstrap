@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:html';
-import "package:angular/angular.dart";
+import 'package:angular/angular.dart';
 
 /// Provide contextual feedback messages for typical user actions
 /// with the handful of available and flexible alert messages.
 @Component (
-    selector: "bs-alert",
-    styles: const [':host { display:block; }'],
+    selector: 'bs-alert',
+    styles: [':host { display:block; }'],
     template: '''
     <button *ngIf="dismissible" type="button" class="close" (click)="close()">
         <span aria-hidden="true">&times;</span>
@@ -14,16 +14,16 @@ import "package:angular/angular.dart";
     </button>
     <ng-content></ng-content>
     ''',
-    directives: const [coreDirectives])
+    directives: [coreDirectives])
 class BsAlertComponent implements OnInit {
   /// provides the element reference to get native element
-  HtmlElement _elementRef;
+  final HtmlElement _elementRef;
 
   ///  provide one of the four supported contextual classes:
   ///  `success`,`info`, `warning`, `danger`
   @Input() String type = 'warning';
 
-  final _onCloseCtrl = new StreamController<BsAlertComponent>.broadcast();
+  final _onCloseCtrl = StreamController<BsAlertComponent>.broadcast();
 
   /// fired when `alert` closed with inline button or by timeout,
   /// `$event` is an instance of `Alert` component
@@ -60,13 +60,14 @@ class BsAlertComponent implements OnInit {
 
   BsAlertComponent(this._elementRef);
 
-  ngOnInit() {
+  @override
+  void ngOnInit() {
     if (hasTimeout) {
-      new Timer(new Duration(milliseconds: timeout), close);
+      Timer(Duration(milliseconds: timeout), close);
     }
   }
 
-  close() {
+  void close() {
     _onCloseCtrl.add(this);
     _elementRef.remove();
   }

@@ -1,13 +1,13 @@
 import 'dart:html';
 
-import "package:angular/angular.dart";
-import "package:ng_bootstrap/ng_bootstrap.dart";
+import 'package:angular/angular.dart';
+import 'package:ng_bootstrap/ng_bootstrap.dart';
 import 'package:string_converters/string_converters.dart';
 
 @Component (
-    selector: "demo-section",
+    selector: 'demo-section',
     templateUrl: 'demo_section.html',
-    directives: const [bsDirectives])
+    directives: [bsDirectives])
 class DemoSection implements OnInit {
   @Input() String name;
 
@@ -20,7 +20,7 @@ class DemoSection implements OnInit {
   DemoSection(@Inject(ViewContainerRef) this.viewRef);
 
   @override
-  ngOnInit() async {
+  void ngOnInit() async {
     nameTN = toTableName(name);
     var docPathNameTN = 'components_$nameTN\_$nameTN';
     var rawMasterUrl = 'https://raw.githubusercontent.com/dart-league/ng_bootstrap/develop/demo';

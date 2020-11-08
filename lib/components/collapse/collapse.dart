@@ -51,7 +51,7 @@ class BsCollapseDirective {
   @HostBinding('class.collapsing')
   bool get collapsing => _collapsing;
 
-  void set collapsing(bool collapsing) {
+  set collapsing(bool collapsing) {
     _collapsing = collapsing;
     _collapsingChangeController.add(collapsing);
     _changeDetectorRef.markForCheck();
@@ -68,13 +68,13 @@ class BsCollapseDirective {
 
   String get _scrollHeight => _element.scrollHeight.toString() + 'px';
 
-  final _bsCollapseChangeController = new StreamController<bool>.broadcast();
+  final _bsCollapseChangeController = StreamController<bool>.broadcast();
 
   /// Emits the Collapse state of the component
   @Output() Stream<bool> get bsCollapseChange =>
       _bsCollapseChangeController.stream;
 
-  final _collapsingChangeController = new StreamController<bool>.broadcast();
+  final _collapsingChangeController = StreamController<bool>.broadcast();
 
   Timer showTimer;
 
@@ -84,15 +84,15 @@ class BsCollapseDirective {
   @Output() Stream<bool> get collapsingChange =>
       _collapsingChangeController.stream;
 
-  _hide() {
+  void _hide() {
     expanded = false;
     height = _scrollHeight;
     collapsing = true;
     showTimer?.cancel();
     _changeDetectorRef.markForCheck();
-    new Timer(const Duration(milliseconds: 10), () {
+    Timer(const Duration(milliseconds: 10), () {
       height = '0';
-      hideTimer = new Timer(const Duration(milliseconds: 50), () {
+      hideTimer = Timer(const Duration(milliseconds: 50), () {
         collapsing = false;
         collapsed = true;
         height = '';
@@ -101,15 +101,15 @@ class BsCollapseDirective {
     });
   }
 
-  _show() {
+  void _show() {
     collapsed = false;
     height = '0';
     collapsing = true;
     hideTimer?.cancel();
     _changeDetectorRef.markForCheck();
-    new Future(() {
+    Future(() {
       height = _scrollHeight;
-      showTimer = new Timer(const Duration(milliseconds: 50), () {
+      showTimer = Timer(const Duration(milliseconds: 50), () {
         collapsing = false;
         expanded = true;
         height = '';
