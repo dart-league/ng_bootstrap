@@ -1,3 +1,5 @@
+import 'dart:html';
+
 class FileType {
   /*  MS office  */
   static List<String> mime_doc = [
