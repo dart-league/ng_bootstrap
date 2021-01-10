@@ -28,8 +28,13 @@ pubspec.lock
 /docs/packages/build_modules/
 /docs/packages/build_runner/
 /docs/packages/build_web_compilers/
+/docs/packages/font_awesome/js/
 /docs/packages/font_awesome/less/
+/docs/packages/font_awesome/metadata/
+/docs/packages/font_awesome/otfs/
 /docs/packages/font_awesome/scss/
+/docs/packages/font_awesome/sprites/
+/docs/packages/font_awesome/svgs/
 /docs/packages/font_awesome/css/
 /docs/packages/front_end/
 /docs/packages/kernel/
@@ -40,3 +45,4 @@ pubspec.lock
 /docs/**/*.manifest
 /docs/**/*.txt
 /docs/**/*.md
+/docs/.dart_tool/
